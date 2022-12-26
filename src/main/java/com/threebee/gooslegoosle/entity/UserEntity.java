@@ -3,6 +3,7 @@ package com.threebee.gooslegoosle.entity;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -22,11 +23,11 @@ import lombok.ToString;
 
 @Data
 @ToString
+@Entity
 public class UserEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
 	private int id;
 	
 	@Column(nullable = false, length = 10)
@@ -36,7 +37,7 @@ public class UserEntity {
 	
 	@Column(nullable = false, length = 100)
 	@NotNull
-	@Size(min = 4, max = 8)
+	@Size(min = 4, max = 100)
 	private String password;
 	
 	@Column(nullable = false, length = 13)

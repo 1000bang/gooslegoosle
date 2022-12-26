@@ -23,5 +23,4 @@ public class UserController {
 	public String fetchJoin() {
 		 return "user/join_form";
 	}
-	
 }
