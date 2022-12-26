@@ -5,11 +5,6 @@ server:
     context-path: "/"
     
 
-logging:
-  level:
-    org.apache.http: DEBUG
-    httpclient.wire: DEBUG   
-
 spring:
   mvc:
     view:
