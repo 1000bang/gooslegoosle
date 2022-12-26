@@ -3,6 +3,7 @@ package com.threebee.gooslegoosle.entity;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -17,11 +18,18 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.threebee.gooslegoosle.model.LoginType;
 import com.threebee.gooslegoosle.model.UserRole;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
 public class UserEntity {
 	
 	@Id

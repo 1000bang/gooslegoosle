@@ -1,6 +1,7 @@
 package com.threebee.gooslegoosle.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+import lombok.ToString;
+
+@Data
+@ToString
+@Entity
 public class MenuEntity {
 	
 	@Id
@@ -28,4 +35,5 @@ public class MenuEntity {
 	@JoinColumn(name = "storeId")
 	private StoreEntity store;
 
+	
 }

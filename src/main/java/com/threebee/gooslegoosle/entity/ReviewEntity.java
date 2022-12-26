@@ -1,6 +1,7 @@
 package com.threebee.gooslegoosle.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+import lombok.ToString;
+
+@Data
+@ToString
+@Entity
 public class ReviewEntity {
 	
 	@Id
@@ -19,7 +26,7 @@ public class ReviewEntity {
 	
 	@Lob
 	@NotNull
-	private String content;
+	private String reviewContent;
 	
 	@Column(nullable = false, length = 50)
 	@NotNull

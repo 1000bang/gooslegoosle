@@ -1,6 +1,7 @@
 package com.threebee.gooslegoosle.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -14,6 +15,12 @@ import javax.validation.constraints.Size;
 
 import com.threebee.gooslegoosle.model.CategoryType;
 
+import lombok.Data;
+import lombok.ToString;
+
+@Data
+@ToString
+@Entity
 public class StoreEntity {
 	
 	@Id
