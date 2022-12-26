@@ -1,4 +1,4 @@
-package com.threebee.gooslegoosle.dto;
+package com.threebee.gooslegoosle.dto.exception;
 
 import org.springframework.http.HttpStatus;
 

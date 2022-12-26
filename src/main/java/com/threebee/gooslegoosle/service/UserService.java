@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.service;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,7 +34,17 @@ public class UserService {
 			return 1;
 		}
 
-		
-	
 
-}
+
+		public UserEntity searchUserName(@NotNull String username) {
+			
+			return iUserRepository.findbyUsername(username).orElseGet(()->{
+				return new UserEntity();
+			});
+			
+			}
+					
+					
+		}
+
+	
