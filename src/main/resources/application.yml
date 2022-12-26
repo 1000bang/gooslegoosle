@@ -3,12 +3,6 @@ server:
   port: 9090
   servlet:
     context-path: "/"
-    
-
-logging:
-  level:
-    org.apache.http: DEBUG
-    httpclient.wire: DEBUG   
 
 spring:
   mvc:
