@@ -6,28 +6,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-public class ReviewEntity {
+public class MenuEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	private int id;
 	
-	@Lob
 	@NotNull
-	private String content;
+	@Column(nullable = false, unique = true)
+	private String menuName;
 	
-	@Column(nullable = false, length = 50)
 	@NotNull
-	private String starScore;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	private UserEntity user;
+	@Column(nullable = false)
+	private int menuPrice;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
