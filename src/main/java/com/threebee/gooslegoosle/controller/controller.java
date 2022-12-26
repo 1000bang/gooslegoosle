@@ -6,9 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class controller {
 
-
-    @GetMapping({ "", "/", "index" })
-    public String index() {
-         return "index";
-    }
+	
+	@GetMapping({ "", "/", "index" })
+	public String fetchIndex() {
+		 return "index";
+	}
+	
+	
+	@GetMapping("/auth/login")
+	public String fetchLogin() {
+		 return "user/login_form";
+	}
+	
+	
 }
