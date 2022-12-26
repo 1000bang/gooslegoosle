@@ -33,7 +33,7 @@ public class StoreEntity {
 	
 	@Column(nullable = false, length = 13)
 	@NotNull
-	@Size(min = 12, max = 13)
+	@Size(min = 12, max = 14)
 	private String phoneNumber;
 	
 	@NotNull

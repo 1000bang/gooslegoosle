@@ -19,4 +19,9 @@ public class controller {
 	}
 	
 	
+	@GetMapping("/partner/join_form")
+	public String partnerJoin() {
+		return "partner/join_form";
+	}
+	
 }
