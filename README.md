@@ -1,4 +1,5 @@
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5d0aafdd-bab2-49da-853f-7c9dcb09bae5/Untitled.png)
+
+![Untitled](https://user-images.githubusercontent.com/113667600/209509785-9dc5a84a-8544-414e-b7de-604497148e5d.png)
 
 <h2>사용자가 잘지은 한끼를 먹을 수 있게 맛집정보를 공유하고 예약하는 사이트</h2>
 
