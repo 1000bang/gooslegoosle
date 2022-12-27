@@ -17,7 +17,7 @@ import lombok.ToString;
 @ToString
 @Entity
 public class MenuEntity {
-	
+	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull

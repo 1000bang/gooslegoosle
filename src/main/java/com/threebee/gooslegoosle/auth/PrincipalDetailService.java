@@ -11,7 +11,7 @@ import com.threebee.gooslegoosle.repository.IUserRepository;
 
 
 
-@Service
+@Service 
 public class PrincipalDetailService implements UserDetailsService{
 
 	@Autowired

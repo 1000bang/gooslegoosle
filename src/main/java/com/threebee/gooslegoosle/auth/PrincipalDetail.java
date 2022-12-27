@@ -20,7 +20,7 @@ public class PrincipalDetail implements UserDetails{
 		this.user = user;
 	}
 	
-	@Override
+	@Override 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> collection = new ArrayList<>();
 		collection.add(new GrantedAuthority() {

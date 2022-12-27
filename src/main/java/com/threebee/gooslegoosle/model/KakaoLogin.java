@@ -23,7 +23,7 @@ public class KakaoLogin  implements ISocialLogin{
 		// 헤더 만들기
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-
+ 
 		// 바디 만들기
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("grant_type", "authorization_code");

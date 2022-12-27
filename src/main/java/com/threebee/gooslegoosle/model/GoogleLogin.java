@@ -16,7 +16,7 @@ import com.threebee.gooslegoosle.entity.UserEntity;
 
 public class GoogleLogin implements ISocialLogin{
 
-	 
+	  
 	String scope;
 
 	public GoogleLogin( String scope) {

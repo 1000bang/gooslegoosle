@@ -26,7 +26,7 @@ import lombok.ToString;
 @Entity
 public class UserEntity {
 	
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
