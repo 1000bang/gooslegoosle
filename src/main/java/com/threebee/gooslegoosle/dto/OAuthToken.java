@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 			"refresh_token_expires_in" })
 
 	public class OAuthToken {
-
+ 
 		@JsonProperty("access_token")
 		public String accessToken;
 		@JsonProperty("token_type")

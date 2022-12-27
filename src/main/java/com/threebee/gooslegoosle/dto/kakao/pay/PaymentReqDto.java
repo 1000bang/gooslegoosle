@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentReqDto {
-
+ 
 	private String username;
 	private String count;
 	private String amount;

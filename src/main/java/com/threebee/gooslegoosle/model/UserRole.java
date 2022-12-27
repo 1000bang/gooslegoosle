@@ -4,3 +4,4 @@ public enum UserRole {
 	USER, ADMIN, HOST
 
 }
+ 

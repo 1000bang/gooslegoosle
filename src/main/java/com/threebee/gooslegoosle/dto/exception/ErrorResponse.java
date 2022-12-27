@@ -21,4 +21,4 @@ public class ErrorResponse {
 	private String resultCode;
 	private List<CustomError> errorList;
 	
-}
+} 

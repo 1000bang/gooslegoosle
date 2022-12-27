@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "id", "email", "verified_email", "name", "given_name", "family_name", "picture", "locale" })
 public class GoogleProfileDto {
-
+ 
 	@JsonProperty("id")
 	public String id;
 	@JsonProperty("email")

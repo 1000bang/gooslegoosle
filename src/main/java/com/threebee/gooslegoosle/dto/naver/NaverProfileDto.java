@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({ "resultcode", "message", "response" })
 @Generated("jsonschema2pojo")
 public class NaverProfileDto {
-
+ 
 	@JsonProperty("resultcode")
 	public String resultcode;
 	@JsonProperty("message")

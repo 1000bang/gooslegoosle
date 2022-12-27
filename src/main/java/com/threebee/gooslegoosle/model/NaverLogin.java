@@ -21,7 +21,7 @@ public class NaverLogin implements ISocialLogin{
 	private String state;
 	public NaverLogin(String state) {
 	this.state = state;
-	}
+	} 
 	
 	@Override
 	public UserEntity login(String code) {

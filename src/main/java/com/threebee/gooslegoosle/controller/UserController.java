@@ -19,7 +19,7 @@ import com.threebee.gooslegoosle.model.SocialLogin;
 import com.threebee.gooslegoosle.service.UserService;
 
 @Controller
-public class UserController {
+public class UserController { 
 
 	
 	@GetMapping({ "", "/", "index" })

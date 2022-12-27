@@ -15,7 +15,7 @@ import com.threebee.gooslegoosle.repository.IUserRepository;
 public class UserService {
 
 	
-	@Autowired
+	@Autowired 
 	private IUserRepository iUserRepository;
 	
 	@Autowired

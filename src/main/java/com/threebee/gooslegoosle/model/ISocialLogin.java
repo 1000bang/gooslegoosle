@@ -9,3 +9,4 @@ public interface ISocialLogin {
 	UserEntity login(String code);
 	
 }
+ 

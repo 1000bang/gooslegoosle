@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({ "id", "connected_at", "properties", "kakao_account" })
 
 public class KakaoProfileDto {
-
+ 
 	@JsonProperty("id")
 	public Long id;
 	@JsonProperty("connected_at")

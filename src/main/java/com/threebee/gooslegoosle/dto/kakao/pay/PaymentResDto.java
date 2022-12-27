@@ -25,7 +25,7 @@ import lombok.ToString;
 "android_app_scheme",
 "ios_app_scheme",
 "created_at"
-})
+}) 
 @Data
 @ToString
 @NoArgsConstructor

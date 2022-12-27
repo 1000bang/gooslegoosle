@@ -4,3 +4,4 @@ public enum CategoryType {
 	
 	KOREAN, JAPANESE, CHINESE, WESTERN
 }
+ 

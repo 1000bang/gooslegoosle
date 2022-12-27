@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "nickname" })
 public class Profile {
-
+ 
 	@JsonProperty("nickname")
 	public String nickname;
 	@JsonIgnore

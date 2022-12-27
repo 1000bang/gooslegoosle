@@ -16,7 +16,7 @@ import com.threebee.gooslegoosle.model.CategoryType;
 
 public class StoreEntity {
 	
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	private int id;

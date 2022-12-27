@@ -18,4 +18,4 @@ public class SocialLogin {
 		return iSocialLogin.login(code);
 	}
 	
-}
+} 
