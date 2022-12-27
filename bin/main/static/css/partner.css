@@ -1,0 +1,50 @@
+html{
+    background-color: darksalmon;
+}
+
+#wrap{
+    width: 100%;
+    background-color: darksalmon;
+}
+
+.header-color{
+    background-color: brown;
+}
+
+#partner-join{
+    margin: 50px;
+}
+
+.info-title{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.info-box{
+    background-color: white;
+    padding: 50px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+}
+
+.form-group >label {
+    margin-bottom: 10px;
+}
+
+.info{
+    margin-bottom: 10px;
+}
+
+.ma-bo{
+    margin-top: 20px;
+}
+
+#partner-btn{
+    width: 400px;
+    height: 50px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 50px;
+    padding: 0;
+    margin: 0 auto;
+}
