@@ -39,9 +39,22 @@
 							<li class="nav-item b-menu"><a class="nav-link" href="/auth/join_form">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
+						
+							<c:choose>
+							<c:when test="${principal.user.role eq 'ADMIN'}">
+							
+							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+							<li class="nav-item"><a class="nav-link" href="/admin/manage">점주관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="/logout">로그아웃 </a></li>
+							</c:when>
+							<c:otherwise>
 							<li class="nav-item"><a class="nav-link" href="#">매거진</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">고객지원</a></li>
+							<c:if test="${principal.user.id eq '1'}">
+							<li class="nav-item"><a class="nav-link" href="/api/user/${principal.user.id}">관리자 등록 </a></li>
+							</c:if>
 
 							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> 설정 </a>
 								<div class="dropdown-menu">
@@ -49,10 +62,22 @@
 									<a class="dropdown-item text-dark" href="/logout">로그아웃 </a>
 									<a class="dropdown-item text-dark" href="/reviews">리뷰</a>
 								</div></li>
+							</c:otherwise>
+							
+							</c:choose>
+							
 
 						</c:otherwise>
 					</c:choose>
-					<li class="nav-item"><a class="nav-link" href="/auth/partner/main_page" target="_blank">우리매장 등록하기</a></li>
+					<li class="nav-item">
+						<c:choose>
+							<c:when test="${principal.user.role eq 'ADMIN'}">
+							</c:when>
+							<c:otherwise>
+							<a class="nav-link" href="/auth/partner/main_page" target="_blank">우리매장 등록하기</a>
+							</c:otherwise>
+							</c:choose>
+					</li>
 				</ul>
 			</div>
 		</nav>

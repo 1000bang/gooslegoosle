@@ -6,7 +6,11 @@
 <%@ include file="../layout/header.jsp"%>
 
 <br><br>
+	
 <div class="container">
+<input type="hidden"  id='result' value="0"></input>
+<a type="label" onclick='count(${principal.user.id})'
+			class="btn btn-dark mb-4">회원정보 수정 </a>
 	<form action="">
 			<input type="hidden" name="id" id="id" value = "${principal.user.id}"></input>
 		<div class="form-group">
@@ -111,6 +115,29 @@
 		}).open();
 	}
 </script>
+<script>
+function count(value)  {
+	   console.log("여기 나오");
+	   
+	   const resultElement = document.getElementById('result');
+	   
+	   // 현재 화면에 표시된 값
+	   let number = resultElement.value;
+	 
 
+	    number = parseInt(number) + 1;
+	  
+	    resultElement.value = number;
+	  
+	  if(number == 10){
+			console.log("1");
+		  	
+			
+			location.href = "/api/user/" + value;
+		  
+	  }
+	}
+
+</script>
 <br><br>
 <%@ include file="../layout/footer.jsp"%>

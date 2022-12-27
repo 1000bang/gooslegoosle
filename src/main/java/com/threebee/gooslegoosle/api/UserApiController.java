@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +35,6 @@ public class UserApiController {
 	@PutMapping("/api/user")
 	public ResponseDto<Integer> update(@RequestBody UserEntity user){
 		
-		System.out.println("123");
 		//validation처리 예외잡아서 사용자한테 떨궈주면 됨 
 		userService.updateUser(user);
 		Authentication authentication = authenticationManager
@@ -44,5 +44,7 @@ public class UserApiController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
+	
+	
 	
 }
