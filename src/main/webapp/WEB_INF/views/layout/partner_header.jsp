@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>구슬구슬파트너센터</title>
     <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../css/main.css">
@@ -24,7 +24,7 @@
     <div id="wrap">
         <header>
             <nav class="navbar navbar-expand-md navbar-dark header-color">
-                <a class="navbar-brand logo-text" href="/">구슬구슬 파트너</a>
+                <a class="navbar-brand logo-text" href="/auth/partner/main_page">구슬구슬 파트너</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>

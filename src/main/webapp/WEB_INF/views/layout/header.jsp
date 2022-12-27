@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>구슬구슬</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../css/main.css">
@@ -62,7 +62,7 @@
 
 						</c:otherwise>
 					</c:choose>
-					<li class="nav-item"><a class="nav-link" href="/auth/partner/join_form">우리매장 등록하기</a></li>
+					<li class="nav-item"><a class="nav-link" href="/auth/partner/main_page" target="_blank">우리매장 등록하기</a></li>
 				</ul>
 			</div>
 		</nav>
