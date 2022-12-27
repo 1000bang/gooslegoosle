@@ -31,7 +31,7 @@ public class UserService {
 		return 1;
 	}
 
-	public UserEntity findUserName(@NotNull String username) {
+	public UserEntity findUserName(String username) {
 
 		return iUserRepository.findbyUsername(username)
 				.orElseGet(() -> {

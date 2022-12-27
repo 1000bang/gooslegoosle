@@ -48,7 +48,7 @@ public class UserController {
 		GoogleLogin google = new GoogleLogin(scope);
 		NaverLogin naver = new NaverLogin(state);
 		SocialLogin socialLogin = new SocialLogin(kakao);
-		UserEntity userData = null;
+		UserEntity userData;
 
 		if (state.equals("kakao")) {
 			userData = socialLogin.login(code);

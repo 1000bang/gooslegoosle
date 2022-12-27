@@ -51,7 +51,7 @@ public class UserEntity {
 	@Size(min = 12, max = 13)
 	private String phoneNumber;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 100) 
 	@NotNull
 	@Email
 	private String email;
