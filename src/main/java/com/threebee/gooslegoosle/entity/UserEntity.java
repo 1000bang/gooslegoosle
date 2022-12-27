@@ -31,8 +31,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 public class UserEntity {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
@@ -40,12 +40,12 @@ public class UserEntity {
 	@NotNull
 	@Size(min = 2)
 	private String username;
-	
+
 	@Column(nullable = false, length = 100)
 	@NotNull
 	@Size(min = 4, max = 100)
 	private String password;
-	
+
 	@Column(nullable = false, length = 100)
 	@NotNull
 	@Size(min = 12, max = 13)
@@ -55,14 +55,20 @@ public class UserEntity {
 	@NotNull
 	@Email
 	private String email;
-	
+
 	private String address;
-	 
+
+	private int postCode;
+
+	private String extraAddress;
+
+	private String detailAddress;
+
 	@Enumerated(EnumType.STRING)
 	private UserRole role; // user, admin, host
-	
+
 	@Enumerated(EnumType.STRING)
-	private LoginType loginType; // 이거 만들어야함
+	private LoginType loginType;
 	
 	@CreationTimestamp
 	private Timestamp createdDate;

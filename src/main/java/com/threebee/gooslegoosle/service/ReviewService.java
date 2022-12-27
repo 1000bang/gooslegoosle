@@ -1,8 +1,8 @@
 package com.threebee.gooslegoosle.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,9 +19,8 @@ public class ReviewService {
 	private final ReviewRepository reviewRepository;
 
 	@Transactional
-	public List<ReviewEntity> getReviewList() {
-
-		return reviewRepository.findAll();
+	public Page<ReviewEntity> getReviewList(String search, Pageable pageable) {
+		return reviewRepository.findByreviewContentContaining(search, pageable);
 	}
 
 }

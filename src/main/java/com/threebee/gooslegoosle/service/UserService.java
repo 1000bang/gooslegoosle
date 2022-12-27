@@ -19,6 +19,25 @@ public class UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder bcencoder;
+	
+		@Transactional
+		public int saveUser1(UserEntity user) {
+			System.out.println(user);
+			String rawPassword = user.getPassword();
+			String bcPassword = bcencoder.encode(rawPassword);
+			user.setPassword(bcPassword);
+			user.setRole(UserRole.USER);
+			iUserRepository.save(user);          
+			return 1;
+		}
+		
+		public UserEntity searchUserName(@NotNull String username) {
+			
+			return iUserRepository.findbyUsername(username).orElseGet(()->{
+				return new UserEntity();
+			});
+			
+			}
 
 	@Transactional
 	public int saveUser(UserEntity user) {
