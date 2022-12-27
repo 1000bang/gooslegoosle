@@ -36,7 +36,7 @@ public class KakaoLogin  implements ISocialLogin{
 		// 헤더 변조 해서 실행 시키는 메서드 RestTemplate exchange() 이다.
 		ResponseEntity<OAuthToken> response = rt.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST,
 				requestKakaoToken, OAuthToken.class);
-
+ 
 		//////////////////// 여기까지 토큰 받기 완료 //////////////////////
 
 		// 다시 한번 더 kapi.kakaocom 로 토큰을 가지고 요청하여 사용자 정보를 응답받아야 한다.
