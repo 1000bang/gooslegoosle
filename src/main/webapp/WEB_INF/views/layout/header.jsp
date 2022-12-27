@@ -10,19 +10,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
 <title>구슬구슬</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 <title>Document</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
-=======
-<title>Document</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
-<title>구슬구슬</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
->>>>>>> binstarr
 <link rel="stylesheet" href="../css/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,29 +39,48 @@
 							<li class="nav-item b-menu"><a class="nav-link" href="/auth/join_form">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
+						
+							<c:choose>
+							<c:when test="${principal.user.role eq 'ADMIN'}">
+							
+							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+							<li class="nav-item"><a class="nav-link" href="/admin/manage">점주관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="/logout">로그아웃 </a></li>
+							</c:when>
+							<c:otherwise>
 							<li class="nav-item"><a class="nav-link" href="#">매거진</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">고객지원</a></li>
+							<c:if test="${principal.user.id eq '1'}">
+							<li class="nav-item"><a class="nav-link" href="/api/user/${principal.user.id}">관리자 등록 </a></li>
+							</c:if>
 
 							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> 설정 </a>
 								<div class="dropdown-menu">
-<<<<<<< HEAD
+
 									<a class="dropdown-item text-dark" href="/user/update">회원정보</a> 
 									<a class="dropdown-item text-dark" href="/logout">로그아웃 </a>
 									<a class="dropdown-item text-dark" href="/reviews">리뷰</a>
 								</div></li>
-=======
-									<a class="dropdown-item" href="/user/update">회원정보</a> 
-									<a class="dropdown-item" href="/logout">로그아웃</a> 
-									<a class="dropdown-item" href="/reviews">리뷰</a>
-								</div>
-							</li>
-								
->>>>>>> binstarr
+
+							</c:otherwise>
+							
+							</c:choose>
+							
+
 
 						</c:otherwise>
 					</c:choose>
-					<li class="nav-item"><a class="nav-link" href="/auth/partner/main_page" target="_blank">우리매장 등록하기</a></li>
+					<li class="nav-item">
+						<c:choose>
+							<c:when test="${principal.user.role eq 'ADMIN'}">
+							</c:when>
+							<c:otherwise>
+							<a class="nav-link" href="/auth/partner/main_page" target="_blank">우리매장 등록하기</a>
+							</c:otherwise>
+							</c:choose>
+					</li>
 				</ul>
 			</div>
 		</nav>
