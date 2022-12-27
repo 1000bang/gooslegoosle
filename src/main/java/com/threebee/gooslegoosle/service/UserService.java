@@ -28,7 +28,7 @@ public class UserService {
 			String bcPassword = bcencoder.encode(rawPassword);
 			user.setPassword(bcPassword);
 			user.setRole(UserRole.USER);
-			iUserRepository.save(user);
+			iUserRepository.save(user);          
 			return 1;
 		}
 
