@@ -39,6 +39,11 @@ public class UserController {
 		 return "user/join_form";
 	}
 	
+	@GetMapping("/user/update")
+	public String fetchUpdate() {
+		return "user/update_form";
+	}
+	
 	
 	
 	//소셜 로그인 
