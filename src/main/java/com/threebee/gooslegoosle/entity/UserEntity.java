@@ -26,15 +26,14 @@ import lombok.ToString;
 
 @Data
 @ToString
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
 public class UserEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
 	private int id;
 	
 	@Column(nullable = false, length = 10)
@@ -44,7 +43,7 @@ public class UserEntity {
 	
 	@Column(nullable = false, length = 100)
 	@NotNull
-	@Size(min = 4, max = 8)
+	@Size(min = 4, max = 100)
 	private String password;
 	
 	@Column(nullable = false, length = 13)
