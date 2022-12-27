@@ -50,7 +50,7 @@ public class UserEntity {
 	@NotNull
 	@Size(min = 12, max = 13)
 	private String phoneNumber;
-
+	
 	@Column(nullable = false, length = 100)
 	@NotNull
 	@Email
@@ -69,7 +69,7 @@ public class UserEntity {
 
 	@Enumerated(EnumType.STRING)
 	private LoginType loginType;
-	
+
 	@CreationTimestamp
 	private Timestamp createdDate;
 
