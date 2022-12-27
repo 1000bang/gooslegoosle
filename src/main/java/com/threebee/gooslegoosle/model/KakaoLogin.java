@@ -62,7 +62,6 @@ public class KakaoLogin  implements ISocialLogin{
 				.role(UserRole.USER)
 				.loginType(LoginType.KAKAO)
 				.build();
-	System.out.println(">>>>>>>>>>>> : " + kakaoUser.getUsername());
 		return kakaoUser;
 	}
 }

@@ -2,6 +2,8 @@ package com.threebee.gooslegoosle.repository;
 
 import java.util.Optional;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -25,5 +27,6 @@ public interface IUserRepository extends JpaRepository<UserEntity, Integer>{
 //			String email, String loginType, String password, String phoneNumber,
 //			String role, String username);
 
+	
 }
  

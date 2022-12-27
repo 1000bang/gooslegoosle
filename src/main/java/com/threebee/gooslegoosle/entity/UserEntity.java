@@ -36,7 +36,7 @@ public class UserEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = false, length = 10)
+	@Column(nullable = false, length = 100)
 	@NotNull
 	@Size(min = 2)
 	private String username;
@@ -46,12 +46,12 @@ public class UserEntity {
 	@Size(min = 4, max = 100)
 	private String password;
 	
-	@Column(nullable = false, length = 13)
+	@Column(nullable = false, length = 100)
 	@NotNull
 	@Size(min = 12, max = 13)
 	private String phoneNumber;
 	
-	@Column(nullable = false, length = 15)
+	@Column(nullable = false, length = 100)
 	@NotNull
 	@Email
 	private String email;

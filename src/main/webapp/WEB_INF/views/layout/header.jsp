@@ -56,8 +56,8 @@
 								class="nav-link dropdown-toggle" href="#" id="navbardrop"
 								data-toggle="dropdown"> 설정 </a>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="/user/update">회원정보</a> <a
-										class="dropdown-item" href="/logout">로그아웃 </a></a>
+									<a class="dropdown-item text-dark" href="/user/update">회원정보</a> <a
+										class="dropdown-item text-dark" href="/logout">로그아웃 </a></a>
 								</div></li>
 
 						</c:otherwise>
