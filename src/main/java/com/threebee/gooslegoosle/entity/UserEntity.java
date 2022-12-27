@@ -39,7 +39,7 @@ public class UserEntity {
 	
 	@Column(nullable = false, length = 10)
 	@NotNull
-	@Size(min = 2, max = 8)
+	@Size(min = 2)
 	private String username;
 	
 	@Column(nullable = false, length = 100)
