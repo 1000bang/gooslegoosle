@@ -20,6 +20,6 @@ public class UserApiController {
 	public ResponseDto<Integer> save(@RequestBody UserEntity user) {
 		userService.saveUser(user);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
-	}
+	}         
 	
 }
