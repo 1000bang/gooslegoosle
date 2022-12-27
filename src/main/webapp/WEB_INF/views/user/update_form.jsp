@@ -30,7 +30,7 @@
 		<div class="form-group">
 			<div class="d-flex mb-1">
 				<input type="text" id="postcode" placeholder="우편번호"
-					class="form-control mr-1"> <input type="button" style="width: 15vh"
+					class="form-control mr-1" value = "${principal.user.postCode}"> <input type="button" style="width: 15vh"
 					onclick="daumPostcode()" class="form-control mr-1 btn btn-danger"
 					value="우편번호 찾기">
 			</div>
@@ -38,16 +38,24 @@
 			<br> <input type="text" class="form-control" id="address"
 				placeholder="주소" value = "${principal.user.address}"><br> 
 				<input type="text"
-				id="extraAddress" placeholder="참고항목" class="form-control mb-3">
+				id="extraAddress" placeholder="참고항목" class="form-control mb-3" value = "${principal.user.extraAddress}">
 			<input class="form-control mb-4" type="text" id="detailAddress"
-				placeholder="상세주소">
+				placeholder="상세주소" value = "${principal.user.detailAddress}">
 		</div>
 
 	</form>
 	<div class="input-group justify-content-end">
-
+<c:choose >
+<c:when test="${empty principal.user.loginType}">
 		<button type="button" id="btn--update"
 			class="btn btn-danger align-self-end"> update </button>
+	</c:when>
+	<c:otherwise>
+<label > 소셜 로그인 회원은 정보를 수정할 수 없습니다. </label>
+	</c:otherwise>
+	</c:choose>
+	
+	
 	</div>
 </div>
 <script type="text/javascript" src="/js/user.js"></script>
