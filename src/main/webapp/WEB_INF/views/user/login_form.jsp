@@ -21,7 +21,7 @@
 				name="password" value="asd123">
 		</div>
 
-		<%-- <input type="hidden" name="${error}" content="${exception}"></input>
+		 <input type="hidden" name="${error}" content="${exception}"></input>
 		<c:choose>
 		<c:when test = "${empty error}">
 		</c:when>
@@ -30,7 +30,7 @@
             <p id="valid" class="alert alert-danger">"${exception}"</p>
             </span>
 		</c:otherwise>		
-		 </c:choose>  --%>
+		 </c:choose>  
 
 <br><br>
 
