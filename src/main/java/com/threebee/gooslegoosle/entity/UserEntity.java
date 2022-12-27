@@ -9,9 +9,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -37,23 +34,15 @@ public class UserEntity {
 	private int id;
 	
 	@Column(nullable = false, length = 10)
-	@NotNull
-	@Size(min = 2)
 	private String username;
 	
-	@Column(nullable = false, length = 100)
-	@NotNull
-	@Size(min = 4, max = 100)
+	@Column(nullable = false, length = 500)
 	private String password;
 	
 	@Column(nullable = false, length = 13)
-	@NotNull
-	@Size(min = 12, max = 13)
 	private String phoneNumber;
 	
 	@Column(nullable = false, length = 15)
-	@NotNull
-	@Email
 	private String email;
 	
 	private String address;
