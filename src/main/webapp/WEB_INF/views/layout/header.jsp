@@ -62,7 +62,7 @@
 
 						</c:otherwise>
 					</c:choose>
-
+					<li class="nav-item"><a class="nav-link" href="/auth/partner/join_form">우리매장 등록하기</a></li>
 				</ul>
 			</div>
 		</nav>

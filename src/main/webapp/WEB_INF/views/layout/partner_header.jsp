@@ -9,6 +9,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/partner.css">
+    <link rel="stylesheet" href="../../css/partner_main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -31,6 +32,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/auth/partner/join_form">파트너신청하기</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">광고상품</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">고객지원</a></li>

@@ -57,7 +57,7 @@ public class UserEntity {
 	private String email;
 	
 	private String address;
-	
+	 
 	@Enumerated(EnumType.STRING)
 	private UserRole role; // user, admin, host
 	

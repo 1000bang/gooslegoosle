@@ -73,4 +73,6 @@
 		class="btn btn-primary d-flex justify-content-center" id="btn-partner-join">파트너
 		신청하기</button>
 </section>
+
+<script type="text/javascript" src="../../js/partner.js"></script>
 <%@ include file="../layout/footer.jsp"%>

@@ -15,6 +15,15 @@ public interface IUserRepository extends JpaRepository<UserEntity, Integer>{
 			+ " where username = ?1 "
 			, nativeQuery = true)
 	Optional<UserEntity> findbyUsername(String username);
+	
+//	@Query(value = " INSERT INTO userentity (address, createdDate, email, "
+//			+ " loginType, password, phoneNumber, "
+//			+ " role, username) VALUES ( ?, now(), ? , ?, ?, ? "
+//			+ " ?, ?) "
+//			,nativeQuery = true)
+//	Optional<UserEntity> savePartner(String address,
+//			String email, String loginType, String password, String phoneNumber,
+//			String role, String username);
 
 }
  
