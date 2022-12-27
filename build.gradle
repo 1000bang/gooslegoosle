@@ -31,7 +31,9 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.70'
 	implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
-	// implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '6.0.0'
+
+	implementation 'org.springframework.security:spring-security-taglibs'
+
 	
 	
 	}
