@@ -16,6 +16,6 @@ public class PartnerController {
 	public String partnerJoinForm() {
 		return "partner/join_form";
 	}
-	
+
 }
  

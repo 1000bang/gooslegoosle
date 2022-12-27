@@ -32,9 +32,17 @@ public class StoreEntity {
 	@Column(nullable = false)
 	private String storeName;
 	
-	@Column(nullable = false, length = 50)
+//	@Column(nullable = false, length = 50)
 	private String address;
+//	
+	private String mainnumber;
 	
+	private int postCode;
+
+	private String extraAddress;
+
+	private String detailAddress;
+//	
 	@Column(nullable = false, length = 13)
 	@NotNull
 	@Size(min = 12, max = 14)

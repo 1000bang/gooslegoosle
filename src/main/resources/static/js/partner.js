@@ -3,26 +3,26 @@ let index = {
 	init: function() {
 
 		$("#btn-partner-join").bind("click", () => {
-			this.join();
+			this.applyUser();
 		});
 
 	},
 
-	join: function() {
+	applyUser: function() {
 
 		let data = {
 			username: $("#username").val(),
-			phoneNumber: $("#phonenumber").val(),
 			email: $("#email").val(),
+			phoneNumber: $("#phonenumber").val(),
 			password: $("#password").val(),
-			stroename: $("#storename").val(),
+			storeName: $("#storename").val(),
 			address: $("#address").val(),
 			mainnumber: $("#mainnumber").val(),
 		}
 
 		$.ajax({
 			type: "POST",
-			url: "/auth/partner",
+			url: "/api/partner",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json"
@@ -36,9 +36,10 @@ let index = {
 			
 		}).fail(function(error){
 			alert("실패" + error);
-			console.log(error);
+			console.log(error.responseJSON.message);
 		});
-	}
+	},
+	
 
 
 }

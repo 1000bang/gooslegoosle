@@ -26,7 +26,7 @@ let index = {
 			dataType: "json" // 응답이 왔을 때 mime type 지정
 						
 		}).done(function(data, textStatus, xhr ){
-			alert("회원가성공 ")
+			alert("회원가입성공 ")
 			location.href = "/"; // 성공하면 루트컨텍스트로 가
 		}).fail(function(error){
 			console.log(error);

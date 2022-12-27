@@ -1,14 +1,15 @@
 package com.threebee.gooslegoosle.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import com.threebee.gooslegoosle.entity.UserEntity;
-import com.threebee.gooslegoosle.model.UserRole;
+import com.threebee.gooslegoosle.dto.PartnerDTO;
+import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.repository.IPartnerRepository;
-import com.threebee.gooslegoosle.repository.IUserRepository;
+import com.threebee.gooslegoosle.repository.IStoreRepository;
 
 @Service
 public class PartnerService {
@@ -17,37 +18,15 @@ public class PartnerService {
 	private IPartnerRepository partnerRepository;
 
 	@Autowired
-	private IUserRepository userRepository;
-	
+	private IStoreRepository storeRepository;
+
 	@Autowired
-	private BCryptPasswordEncoder bcencoder;
+	private BCryptPasswordEncoder bEncoder;
 
-	public int savePartner(@RequestBody UserEntity user) {
-		System.out.println(user);
-		String rawPassword = user.getPassword();
-		String bcPassword = bcencoder.encode(rawPassword);
-		user.setPassword(bcPassword);
-		user.setRole(UserRole.HOST);
-		userRepository.save(user);
-//		userRepository.savePartner(bcPassword, bcPassword, bcPassword, bcPassword, bcPassword, rawPassword, bcPassword)
-		
-		return 1;
+	@Transactional
+	public void savePartner(StoreEntity store) {
+
+		partnerRepository.save(store);		
+
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
