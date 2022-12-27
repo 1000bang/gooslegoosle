@@ -14,7 +14,7 @@ import com.threebee.gooslegoosle.service.UserService;
 public class UserApiController {
 
 	@Autowired
-	UserService userService;
+	UserService userService;     
 	
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody UserEntity user) {
