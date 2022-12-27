@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.threebee.gooslegoosle.dto.exception.ResponseDto;
+import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.service.UserService;
 
