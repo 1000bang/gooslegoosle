@@ -35,7 +35,7 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(nullable = false, length = 100)
 	@NotNull
 	@Size(min = 2)
@@ -69,7 +69,7 @@ public class UserEntity {
 
 	@Enumerated(EnumType.STRING)
 	private LoginType loginType;
-	
+
 	@CreationTimestamp
 	private Timestamp createdDate;
 

@@ -10,11 +10,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>구슬구슬</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 <title>Document</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+=======
+<title>Document</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+<title>구슬구슬</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+>>>>>>> binstarr
 <link rel="stylesheet" href="../css/main.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,10 +53,19 @@
 
 							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> 설정 </a>
 								<div class="dropdown-menu">
+<<<<<<< HEAD
 									<a class="dropdown-item text-dark" href="/user/update">회원정보</a> 
 									<a class="dropdown-item text-dark" href="/logout">로그아웃 </a>
 									<a class="dropdown-item text-dark" href="/reviews">리뷰</a>
 								</div></li>
+=======
+									<a class="dropdown-item" href="/user/update">회원정보</a> 
+									<a class="dropdown-item" href="/logout">로그아웃</a> 
+									<a class="dropdown-item" href="/reviews">리뷰</a>
+								</div>
+							</li>
+								
+>>>>>>> binstarr
 
 						</c:otherwise>
 					</c:choose>
