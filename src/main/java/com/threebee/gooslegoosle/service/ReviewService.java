@@ -23,4 +23,10 @@ public class ReviewService {
 		return reviewRepository.findByreviewContentContaining(search, pageable);
 	}
 
+	public Object reviewDetail(int id) {
+		return reviewRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
+		});
+	}
+
 }

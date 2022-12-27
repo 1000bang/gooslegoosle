@@ -10,6 +10,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.threebee.gooslegoosle.entity.ReviewEntity;
@@ -45,6 +46,12 @@ public class ReviewController {
 		model.addAttribute("search", searchTitle);
 		model.addAttribute("reviews", reviews);
 		return "review/review_page";
+	}
+	
+	@GetMapping("/review/{id}")
+	public String showReviewDetail(@PathVariable int id, Model model) {
+		model.addAttribute("reviews", reviewService.reviewDetail(id));
+		return "review/review_detail";
 	}
 
 }
