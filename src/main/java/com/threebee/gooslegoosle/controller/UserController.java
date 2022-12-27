@@ -1,7 +1,20 @@
 package com.threebee.gooslegoosle.controller;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.model.GoogleLogin;
+import com.threebee.gooslegoosle.model.KakaoLogin;
+import com.threebee.gooslegoosle.model.NaverLogin;
+import com.threebee.gooslegoosle.model.SocialLogin;
+import com.threebee.gooslegoosle.service.UserService;
 
 @Controller
 public class UserController { 

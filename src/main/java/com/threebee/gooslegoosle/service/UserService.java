@@ -19,8 +19,6 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder bcencoder;
 	
-	
-	
 		@Transactional
 		public int saveUser(UserEntity user) {
 			System.out.println(user);
