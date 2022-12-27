@@ -22,7 +22,7 @@ import lombok.ToString;
 @Entity
 public class ReservationEntity {
 	
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	private int id;

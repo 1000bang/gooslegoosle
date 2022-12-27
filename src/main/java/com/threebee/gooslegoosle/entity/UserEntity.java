@@ -18,15 +18,21 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.threebee.gooslegoosle.model.LoginType;
 import com.threebee.gooslegoosle.model.UserRole;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserEntity {
 	
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	

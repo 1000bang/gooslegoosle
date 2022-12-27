@@ -70,7 +70,7 @@
 		<!-- store_info ======== -->
 	</form>
 	<button type="button"
-		class="btn btn-primary d-flex justify-content-center" id="partner-btn">파트너
+		class="btn btn-primary d-flex justify-content-center" id="btn-partner-join">파트너
 		신청하기</button>
 </section>
 <%@ include file="../layout/footer.jsp"%>

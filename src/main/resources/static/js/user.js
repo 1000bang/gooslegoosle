@@ -4,6 +4,9 @@ let index = {
 		$("#btn--save").bind("click", () => {
 			this.save();
 		});
+		$("#btn--update").bind("click", () => {
+			this.update();
+		});
 
 	},
 	save: function() {

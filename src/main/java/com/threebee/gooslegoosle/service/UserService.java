@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.service;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,13 +15,11 @@ import com.threebee.gooslegoosle.repository.IUserRepository;
 public class UserService {
 
 	
-	@Autowired
+	@Autowired 
 	private IUserRepository iUserRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder bcencoder;
-	
-	
 	
 		@Transactional
 		public int saveUser(UserEntity user) {
@@ -31,6 +31,14 @@ public class UserService {
 			iUserRepository.save(user);          
 			return 1;
 		}
+		
+		public UserEntity searchUserName(@NotNull String username) {
+			
+			return iUserRepository.findbyUsername(username).orElseGet(()->{
+				return new UserEntity();
+			});
+			
+			}
 
 		
 	
