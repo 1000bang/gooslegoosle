@@ -15,6 +15,7 @@ import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.repository.IPartnerRepository;
+import com.threebee.gooslegoosle.repository.IUserRepository;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.UserService;
 
@@ -29,14 +30,16 @@ public class PartnerApiController {
 	private IPartnerRepository partnerRepository;
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
+	
+	@Autowired
+	private IUserRepository userRepository;
 	
 	@PostMapping("/partner/{id}")
 	public ResponseDto<Integer> savePartner(@RequestBody StoreEntity storeEntity, 
 			@PathVariable int id){
 		    
-		System.out.println(id);
-		UserEntity user = userService.findbyid(id);
+		UserEntity user =
 		
 		partnerService.savePartner(storeEntity, user);
 		 

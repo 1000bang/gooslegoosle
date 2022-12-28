@@ -17,37 +17,40 @@ import com.threebee.gooslegoosle.service.UserService;
 
 @Controller
 public class AdminController {
-	
-	
+
 	@Autowired
 	PartnerService partnerService;
-	
+
 	@Autowired
 	UserService userService;
-	
-	
+
 	@GetMapping("/admin/manage")
-	public String fetchAwaitingList(Model model ,
+	public String fetchAwaitingList(Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
-		
 		Page<StoreEntity> store = partnerService.getApplyList(pageable);
-		
+
 		model.addAttribute("store", store);
 		return "admin/manage";
 	}
-	
+
 	@GetMapping("/admin/manage/approve/{id}")
 	public String fetchApprove(@PathVariable int id) {
-	System.out.println(id);
+		System.out.println("id >>>>>>" + id);
 		StoreEntity store = partnerService.findStore(id);
+		System.out.println(store);
 		UserEntity user = store.getUser();
 		userService.setHost(user.getId());
 		partnerService.setApprove(store, user);
-		
-		return null;
+
+		return "/admin/manage";
 	}
 	
-		
+	@GetMapping("/admin/manage/deny/{id}")
+	public String fetchDeny(@PathVariable int id) {
+		System.out.println("id >>>>>>" + id);
+		partnerService.setDeny(id);
+		return "/admin/manage";
+	}
+
 }
- 

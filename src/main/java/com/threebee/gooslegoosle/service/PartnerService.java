@@ -31,7 +31,10 @@ public class PartnerService {
 
 	@Transactional
 	public void savePartner(StoreEntity store, UserEntity user) {
+<<<<<<< HEAD
 		store.setUser(user);
+=======
+>>>>>>> developer
 		store.setStatus("await");
 		partnerRepository.save(store);		
 
@@ -49,13 +52,9 @@ public class PartnerService {
 
 
 	public StoreEntity findStore(int id) {
-		StoreEntity store = partnerRepository.findById(id).orElseThrow(()->{
-			return new IllegalArgumentException("해당 가게를 찾을 수 없습니다. ");
-		});
-	
+		StoreEntity store = partnerRepository.findByID(id);
+		
 		return store;
-		
-		
 	}
 
 	@Transactional
@@ -66,6 +65,18 @@ public class PartnerService {
 		editingStore.setUser(user);
 		System.out.println("setapprov 끝  ");
 	}
+<<<<<<< HEAD
 	
 	
+=======
+
+
+
+	@Transactional
+	public void setDeny(int id) {
+		StoreEntity editingStore = findStore(id);
+		editingStore.setStatus("deny");
+
+	}
+>>>>>>> developer
 }
