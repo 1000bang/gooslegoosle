@@ -10,7 +10,11 @@ let index = {
 
 	applyPartner: function() {
 
+		let id = $("#id").val();	
+
+console.log(id);
 		let data = {
+			
 			username: $("#username").val(),
 			email: $("#email").val(),
 			phoneNumber: $("#phonenumber").val(),
@@ -22,14 +26,14 @@ let index = {
 
 		$.ajax({
 			type: "POST",
-			url: "/api/partner",
+			url: `/api/partner/${id}`,
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json"
 
 		}).done(function(data, textStatus, xhr){
 			
-			if(data.status == "OK"){
+			if(data.httpStatus == "OK"){
 				alert("신청이 완료되었습니다.");
 				location.href = "/";
 			}

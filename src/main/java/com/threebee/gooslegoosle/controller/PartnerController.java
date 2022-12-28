@@ -16,16 +16,6 @@ public class PartnerController {
 		return "partner/join_form";
 	}
 
-	@GetMapping("/partner")
-	public String applyPartner() {
-		
-		return "redirect:/";
-	}
-	
-	
-	
-	
-	
 	
 	
 }

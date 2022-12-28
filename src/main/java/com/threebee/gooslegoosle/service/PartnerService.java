@@ -30,7 +30,7 @@ public class PartnerService {
 	private BCryptPasswordEncoder bEncoder;
 
 	@Transactional
-	public void savePartner(StoreEntity store) {
+	public void savePartner(StoreEntity store, UserEntity user) {
 		store.setStatus("await");
 		partnerRepository.save(store);		
 
