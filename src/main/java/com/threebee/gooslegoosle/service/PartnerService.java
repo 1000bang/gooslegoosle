@@ -51,7 +51,7 @@ public class PartnerService {
 	}
 	
 	public StoreEntity findStoreByUserId(int id) {
-		return partnerRepository .findByID(id);
+		return partnerRepository.findByID(id);
 		
 	}
 	
@@ -80,9 +80,8 @@ public class PartnerService {
 	public void setApprove(StoreEntity store, UserEntity user) {
 	System.out.println("setapprove");
 		StoreEntity editingStore =  findStore(store.getId());
-		editingStore.setUser(user);
+		editingStore.setUser(user); 
 		editingStore.setStatus("approve");
-		System.out.println(">>>>store :" +editingStore);
 		
 	}
 	
