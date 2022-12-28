@@ -42,10 +42,26 @@ public class NoticeController {
 	@GetMapping("/notice/board")
 	public String fetchNotice() {
 		
-
-		return "/notice/save_form";
+		return "/notice/notice_save";
 	}
 
+	@GetMapping("/notice/update/{id}")
+	public String fetchNoticeUpdate(@PathVariable int id, Model model) {
+		NoticeEntity notice = noticeservice.getNoticeDetail(id);
+		model.addAttribute("notice", notice);
+		return "/notice/notice_update";
+	}	
 	
+	@GetMapping("/notice/delete/{id}")
+	public String fetchNoticedelete(@PathVariable int id, Model model,
+			@PageableDefault(size = 6, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		
+		
+		noticeservice.deleteNoticeById(id);
+		Page<NoticeEntity> notice = noticeservice.getNoticeList(pageable);
+		
+		model.addAttribute("notice", notice);
+		return "notice/notice_list";
+	}
 	
 }

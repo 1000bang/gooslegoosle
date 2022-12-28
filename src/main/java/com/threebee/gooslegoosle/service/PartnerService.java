@@ -90,6 +90,9 @@ public class PartnerService {
 	public void setDeny(int id) {
 		StoreEntity editingStore = findStore(id);
 		editingStore.setStatus("deny");
-
+	}
+	
+	public Page<StoreEntity> findApprove(Pageable pageable) {
+		return partnerRepository.findApprove(pageable);
 	}
 }
