@@ -12,40 +12,38 @@
 
 <section class="py-5">
 	<div class="container px-4 px-lg-5 mt-5">
-		<div class="d-flex justify-content-end m-2">
-
+		<div class="d-flex justify-content-between m-2">
+		<div class="d-flex justify-content m-2">
+			<button class="btn btn-warning">
+				<a href="/review/review_save">리뷰 작성하기</a>
+			</button>
+		</div>
+		<div>
 			<form action="/review/search" method="get" class="form-inline">
 				<input class="form-control mr-1" type="text" placeholder="생각나는 음식 리뷰 검색" name="search" value="${search}">
 				<button type="submit" class="btn btn-warning">TITLE</button>
 			</form>
+			</div>
 		</div>
-		<div class="column">
-
+		
+		<div class="Row">
 			<c:forEach var="review" items="${reviews.getContent()}">
-				<div class="col mb-5">
-					<div class="card h-100">
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">${review.getReviewTitle()}</h5>
-								<br>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill">${review.getReviewContent()}</div>
-								</div>
-
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">더보기</a>
-							</div>
-						</div>
+				<div class="my_container">
+					<div class="username">${review.getUser().getUsername()}님의 리뷰</div>
+					<div class="review_picture">
+						<p>사진이 들어갈 곳입니다.</p>
 					</div>
+					<div class="about_story">
+						<h2>${review.getReviewTitle()}</h2>
+						<div class="content_text">${review.getReviewContent()}</div>
+						<a class="btn btn-outline-dark mt-auto" href="review/${review.getId()}">더보기</a>
+						<br><br>
+					</div>
+
 				</div>
 			</c:forEach>
 		</div>
+		<br><br>
 		<ul class="pagination justify-content-center">
 			<c:set var="isDisabled" value="disabled"></c:set>
 			<c:set var="isNotDisabled" value=""></c:set>

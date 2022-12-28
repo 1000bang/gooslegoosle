@@ -80,9 +80,10 @@ public class PartnerService {
 	public void setApprove(StoreEntity store, UserEntity user) {
 	System.out.println("setapprove");
 		StoreEntity editingStore =  findStore(store.getId());
-		editingStore.setStatus("approve");
 		editingStore.setUser(user);
-		System.out.println("setapprov 끝  ");
+		editingStore.setStatus("approve");
+		System.out.println(">>>>store :" +editingStore);
+		
 	}
 	
 

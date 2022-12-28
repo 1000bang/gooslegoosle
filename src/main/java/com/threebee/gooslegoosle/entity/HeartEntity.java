@@ -1,14 +1,13 @@
 package com.threebee.gooslegoosle.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -19,37 +18,33 @@ import lombok.ToString;
 
 @Data
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Entity
-public class ReviewEntity {
-	
-	@Id 
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "heart")
+public class HeartEntity {
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@NotNull
-	private int id;
+	private int heartId;
 	
-//	@NotNull
-	@Column(nullable = false, length = 15)
-	private String reviewTitle;
+	@JoinColumn(name = "reviewId")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@NotNull
+	private ReviewEntity review;
 	
-	@Lob
-	private String reviewContent;
-	
-	@Column(nullable = false, length = 50)
-//	@NotNull
-	private String starScore;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "storeId")
-	private StoreEntity store;
+	public static HeartEntity toLikeEntity(UserEntity userEntity, ReviewEntity reviewEntity){
+		HeartEntity heartEntity = new HeartEntity();
+		heartEntity.setUser(userEntity);
+		heartEntity.setReview(reviewEntity);
+
+        return heartEntity;
+    }
 	
 	
-
-
 }

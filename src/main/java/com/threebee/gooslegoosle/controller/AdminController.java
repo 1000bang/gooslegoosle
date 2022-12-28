@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.threebee.gooslegoosle.entity.NoticeEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.service.NoticeService;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.UserService;
 
@@ -33,24 +37,32 @@ public class AdminController {
 		model.addAttribute("store", store);
 		return "admin/manage";
 	}
+	
+
+	@GetMapping("/admin/user")
+	public String fetchUser(Model model) {
+		//@Todo paging 처리 
+		List<UserEntity> user = userService.findAll();
+		model.addAttribute("user", user);
+		return "admin/user_list";
+	}
 
 	@GetMapping("/admin/manage/approve/{id}")
 	public String fetchApprove(@PathVariable int id) {
-		System.out.println("id >>>>>>" + id);
 		StoreEntity store = partnerService.findStore(id);
 		System.out.println(store);
 		UserEntity user = store.getUser();
 		userService.setHost(user.getId());
 		partnerService.setApprove(store, user);
 
-		return "/admin/manage";
+		return "redirect:/admin/manage";
 	}
 	
 	@GetMapping("/admin/manage/deny/{id}")
 	public String fetchDeny(@PathVariable int id) {
 		System.out.println("id >>>>>>" + id);
 		partnerService.setDeny(id);
-		return "/admin/manage";
+		return "redirect:/admin/manage";
 	}
 
 }
