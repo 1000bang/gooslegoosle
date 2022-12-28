@@ -96,10 +96,10 @@
 				</div>
 				<!-- store_info ======== -->
 			</form>
-			<a href="/auth/partner/main_page">
+			
 				<button type="button" class="btn btn-primary" id="btn-partner-join">파트너
 					신청하기</button>
-			</a>
+		<!-- <a href="/auth/partner/main_page"></a> -->	
 		</c:otherwise>
 	</c:choose>
 
