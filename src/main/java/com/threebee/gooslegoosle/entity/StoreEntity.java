@@ -48,11 +48,15 @@ public class StoreEntity {
 	@Size(min = 12, max = 14)
 	private String phoneNumber;
 	
+	
+	private String status;
+	
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	
-	// 이미지 엔티티 넣어야함 
+	//  이미지 엔티티 넣어야함 
 	
 	
 
