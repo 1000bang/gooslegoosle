@@ -12,7 +12,7 @@ html{
 }
 
 #partner-join{
-    margin: 50px;
+ 
 }
 
 .info-title{
@@ -62,7 +62,39 @@ html{
 	margin-bottom: 12px;
 }
 
+#warning--wrap{
+	width: 100%;
+	height: auto;
+    background: url(../images/bg-header.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+	text-align: center;
+	color: white;
+	padding-top: 80px;
+}
 
+#login-warning{
+	font-size: 32px;
+	font-weight: 600;
+}
 
+.warning-msg{
+	margin: 20px auto;
+}
 
+.move--btn{
+	margin-bottom: 50px;
+	margin-top: 10px;
+	background-color: white;
+}
+
+.move--btn:hover{
+    background-color: brown;
+    color: white;
+}
+
+.btn--mar{
+	margin-right: 20px;
+}
 

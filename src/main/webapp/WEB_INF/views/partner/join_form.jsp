@@ -5,13 +5,18 @@
 
 	<c:choose>
 		<c:when test="${empty principal}">
-			<div id="login-warring">로그인 후 이용 부탁드립니다.</div>
-			<p>파트너 신청은 회원가입 이용바랍니다. (소셜 로그인 지원 X)</p>
-			<a href="/auth/login_form">로그인 하러 가기</a>
-			<a href="/auth/join_form">회원가입 하러 가기</a>
+			<div id="warning--wrap">
+				<div id="login-warning">로그인 후 이용 부탁드립니다.</div>
+				<p class="warning-msg">파트너 신청은 회원가입 이용바랍니다.</p>
+				<p class="warning-msg">소셜 로그인은 파트너 신청이 어렵습니다.</p>
+				<a href="/auth/login_form">
+				<button class="btn move--btn btn--mar">로그인 하러 가기</button></a> 
+				<a href="/auth/join_form">
+				<button class="btn move--btn">회원가입 하러 가기</button></a>
+			</div>
 		</c:when>
 		<c:otherwise>
-			<form action="" class="was-validated">
+			<form class="was-validated">
 				<input type="hidden" id="id" value="${principal.user.id}">
 				<div id="partner-info" class="info-box">
 					<p class="info-title">사장님 정보를 입력해주세요 !</p>
@@ -69,7 +74,7 @@
 						<label for="storename">주소</label>
 						<div class="">
 							<input type="text" id="postcode" placeholder="우편번호"
-								class="form-control"> 
+								class="form-control">
 						</div>
 						<input type="text" class="form-control" id="address"
 							placeholder="주소" value="${principal.user.address}"><br>
@@ -77,11 +82,10 @@
 							class="form-control mb-3" value="${principal.user.extraAddress}">
 						<input class="form-control mb-4" type="text" id="detailAddress"
 							placeholder="상세주소" value="${principal.user.detailAddress}">
-							<input type="button"
-								style="width: 15vh" onclick="daumPostcode()"
-								class="form-control btn btn-danger" value="주소 찾기" id="find--btn">
+						<input type="button" style="width: 15vh" onclick="daumPostcode()"
+							class="form-control btn btn-danger" value="주소 찾기" id="find--btn">
 					</div>
-					
+
 					<div class="form-group">
 						<label for="mainnumber">식당 대표 전화번호</label> <input type="text"
 							class="form-control" id="mainnumber"
@@ -93,9 +97,8 @@
 				<!-- store_info ======== -->
 			</form>
 			<a href="/auth/partner/main_page">
-				<button type="button"
-					class="btn btn-primary"
-					id="btn-partner-join">파트너 신청하기</button>
+				<button type="button" class="btn btn-primary" id="btn-partner-join">파트너
+					신청하기</button>
 			</a>
 		</c:otherwise>
 	</c:choose>
