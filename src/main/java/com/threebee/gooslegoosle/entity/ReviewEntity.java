@@ -27,10 +27,10 @@ public class ReviewEntity {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
+//	@NotNull
 	private int id;
 	
-	@NotNull
+//	@NotNull
 	@Column(nullable = false, length = 15)
 	private String reviewTitle;
 	
@@ -38,7 +38,7 @@ public class ReviewEntity {
 	private String reviewContent;
 	
 	@Column(nullable = false, length = 50)
-	@NotNull
+//	@NotNull
 	private String starScore;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -48,5 +48,8 @@ public class ReviewEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
 	private StoreEntity store;
+	
+	
+
 
 }

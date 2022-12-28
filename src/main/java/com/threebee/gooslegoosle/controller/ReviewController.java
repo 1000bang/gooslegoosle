@@ -41,7 +41,7 @@ public class ReviewController {
 
 	@GetMapping({ "/reviews", "/review/search" })
 	public String fetchShowReview(Model model, @RequestParam(required = false) String search,
-			@PageableDefault(size = 3, sort = "reviewContent", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 3, sort = "reviewContent", direction = Direction.ASC) Pageable pageable) {
 
 		String searchTitle = search == null ? "" : search;
 		Page<ReviewEntity> reviews = reviewService.getReviewList(searchTitle.replace("//", ""), pageable);
@@ -71,7 +71,6 @@ public class ReviewController {
 		Optional<ReviewEntity> reviewEntity = iReviewRepository.findById(id);
 		
 		model.addAttribute("heart", heartService.saveLike(id, principalDetail.getUser().getId()));
-		System.out.println(heartEntity);
 		model.addAttribute("reviews", reviewService.reviewDetail(id));
 		return "review/review_detail";
 	}
@@ -82,6 +81,26 @@ public class ReviewController {
 		return result;
 	}
 	
-//	@GetMapping("/review/save-from")
+	@GetMapping("/review/review_save")
+	public String reviewSave() {
+		return "/review/review_save";
+	}
+	
+	@PostMapping("/api/reviews")
+	public String save(ReviewEntity review, 
+			@AuthenticationPrincipal PrincipalDetail detail) {
 
+		System.out.println(review);
+		reviewService.write(review, detail.getUser());
+
+		return "redirect:/reviews";
+
+	}
+	
+	@GetMapping("/review/{reviewId}/review_update")
+	public String updateReview(@PathVariable int reviewId, Model model) {
+		model.addAttribute("review", reviewService.reviewDetail(reviewId));
+		return "/review/review_update";
+	}
+	
 }

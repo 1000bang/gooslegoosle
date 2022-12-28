@@ -45,3 +45,7 @@
 	white-space: nowrap;
 	text-overflow : ellipsis;
 }
+
+.username{
+	flex-direction: row-reverse;
+}

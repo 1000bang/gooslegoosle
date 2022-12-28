@@ -7,7 +7,7 @@
 <input type="hidden" id="id" value="${principal.user.id}">
 <input type="hidden" id="review-id" value="${reviews.getId()}"> 글 번호 : <span><i>${reviews.getId() + 100}</i></span>
 	<c:if test="${reviews.user.id == principal.user.id}">
-		<a class="btn btn-warning" id="" href="/review/${reviews.id}/update_form">수정하기</a>
+		<a class="btn btn-warning" id="" href="/review/${reviews.id}/review_update">수정하기</a>
 		<button class="btn btn-danger" id="btn--delete">삭제하기</button>
 	</c:if>
 	<div class="detail-body">

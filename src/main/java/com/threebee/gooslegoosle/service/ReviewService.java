@@ -30,6 +30,25 @@ public class ReviewService {
 		});
 	}
 
+	public void write(ReviewEntity review, UserEntity user) {
+		review.setId(review.getId());
+		review.setUser(user);
+		review.setStarScore("4");
+		iReviewRepository.save(review);
+		
+	}
+
+	@Transactional
+	public int updateReview(int id, ReviewEntity review) {
+		
+		ReviewEntity reviewEntity = iReviewRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 글을 찾을 수 없네요");
+		});
+		reviewEntity.setReviewTitle(review.getReviewTitle());
+		reviewEntity.setReviewContent(review.getReviewContent());
+		return 1;
+	}
+
 
 
 }

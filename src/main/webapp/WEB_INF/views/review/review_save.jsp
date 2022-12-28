@@ -2,15 +2,16 @@
 <%@include file="../layout/header.jsp"%>
 
 <div class="container">
-	<form action="/api/board" method="POST">
+	<form action="/api/reviews" method="POST">
+	
 		<div class="form-group">
 		
 			<label for="title">Title</label> 
-			<input type="text" name="title" id="title" class="form-control">
+			<input type="text" name="reviewTitle" id="reviewTitle" class="form-control">
 		</div>
 		<div class="form-group">
 			<label for="content">Content</label>
-			<textarea name="content" id="content" rows="5" class="form-control content"></textarea>
+			<textarea name="reviewContent" id="reviewContent" rows="5" class="form-control content"></textarea>
 			<button type="submit" class="btn btn-primary" id="">글쓰기 완료</button>
 			</form>
 </div>

@@ -7,7 +7,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.GoogleLogin;
@@ -24,8 +26,17 @@ public class UserController {
 		return "index";
 	}
 
+	@GetMapping("/api/user/{id}")
+	public String fetchAdmin(@PathVariable int id) {
+		UserEntity user = userService.setAdmin(id);
+		return "redirect:/";
+	}
+	
 	@GetMapping("/auth/login_form")
-	public String fetchLogin() {
+	public String fetchLogin(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "exception", required = false) String exception, Model model) {
+		model.addAttribute("error", error);
+		model.addAttribute("exception", exception);
 		return "user/login_form";
 	}
 
@@ -48,7 +59,7 @@ public class UserController {
 		GoogleLogin google = new GoogleLogin(scope);
 		NaverLogin naver = new NaverLogin(state);
 		SocialLogin socialLogin = new SocialLogin(kakao);
-		UserEntity userData = null;
+		UserEntity userData;
 
 		if (state.equals("kakao")) {
 			userData = socialLogin.login(code);

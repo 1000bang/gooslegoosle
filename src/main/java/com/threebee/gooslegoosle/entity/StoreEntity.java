@@ -32,19 +32,31 @@ public class StoreEntity {
 	@Column(nullable = false)
 	private String storeName;
 	
-	@Column(nullable = false, length = 50)
+//	@Column(nullable = false, length = 50)
 	private String address;
+//	
+	private String mainnumber;
 	
+	private int postCode;
+
+	private String extraAddress;
+
+	private String detailAddress;
+//	
 	@Column(nullable = false, length = 13)
 	@NotNull
 	@Size(min = 12, max = 14)
 	private String phoneNumber;
 	
+	
+	private String status;
+	
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	
-	// 이미지 엔티티 넣어야함 
+	//  이미지 엔티티 넣어야함 
 	
 	
 

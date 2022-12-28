@@ -9,10 +9,6 @@ import com.threebee.gooslegoosle.entity.ReviewEntity;
 public interface IReviewRepository extends JpaRepository<ReviewEntity, Integer> {
 
 	Page<ReviewEntity> findByreviewContentContaining(String search, Pageable pageable);
-
-//	void plusLike(int reviewId);
-//
-//	void minusLike(int reviewId);
 	
 
 }
