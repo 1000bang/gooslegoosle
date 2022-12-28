@@ -1,0 +1,69 @@
+.detail-body{
+			display: flex;
+			justify-content: center;
+		}
+		.review-profile{
+			width: 100vw;
+			height: 100vh;
+			flex-direction: column;
+		}
+        .about-profile{
+			width: 1000px;
+			height: 450px;
+			margin-bottom: 30px;
+			display: grid;
+			grid-template-columns: 250px 250px 250px 250px;
+			grid-template-rows: 150px 150px 150px;
+			background-color: aquamarine;
+		}
+		.items:nth-child(2n+1){
+			background-color: #bbb;
+		}
+
+		.items:nth-child(2n){
+			background-color: #eee;
+		}
+		.title{
+			overflow: hidden;
+    		margin-bottom: 15px;
+		}
+		.title p{
+			font-size: 35px;
+			display: inline;
+    		color: #222228;
+    		line-height: 44px;
+    		font-weight: 600;
+    		float: left;
+    		letter-spacing: -0.03em;
+		
+		}
+		.address {
+			font-size: 13px;
+    		color: #222228;
+    		margin-bottom: 15px;
+		}
+		.rate{
+			border-bottom: 1px solid #e6e6eb;
+			margin-bottom: 15px;
+			letter-spacing: -0.03em;
+		}
+		.like{
+			margin-top: 10px;
+			display: inline-block;
+    		line-height: 32px;
+    		padding: 2px 18px 0px 18px;
+    		border-radius: 20px;
+    		border: none;
+    		margin-right: 10px;
+    		float: left;
+    		margin-bottom: 15px;
+    		letter-spacing: -0.03em;
+    		background-color: white;
+		}
+		.review-content{
+			margin-bottom: 15px;
+		}
+		.like img{
+		width: 20px;
+		height: 20px;
+		}
