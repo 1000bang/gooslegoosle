@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.threebee.gooslegoosle.entity.NoticeEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.service.NoticeService;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.UserService;
 
@@ -33,6 +35,37 @@ public class AdminController {
 		model.addAttribute("store", store);
 		return "admin/manage";
 	}
+	
+	@Autowired
+	NoticeService noticeservice;
+	
+	@GetMapping("/admin/notice")
+	public String fetchNoticeList(Model model,
+			@PageableDefault(size = 6, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		
+		Page<NoticeEntity> notice = noticeservice.getNoticeList(pageable);
+		
+		
+		
+		
+		model.addAttribute("notice", notice);
+		return "admin/notice";
+	}	
+	
+	@GetMapping("/admin/notice/{id}")
+	public String fetchNoticeDetail(@PathVariable int id, Model model) {
+		
+		model.addAttribute("notice", noticeservice.getNoticeDetail(id));
+		return "/admin/notice_detail";
+	}
+	
+	@GetMapping("/admin/notice/board")
+	public String fetchBoard() {
+		
+
+		return "admin/save_form";
+	}
+
 
 	@GetMapping("/admin/manage/approve/{id}")
 	public String fetchApprove(@PathVariable int id) {
