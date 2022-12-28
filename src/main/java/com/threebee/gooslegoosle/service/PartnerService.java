@@ -30,14 +30,9 @@ public class PartnerService {
 	private BCryptPasswordEncoder bEncoder;
 
 	@Transactional
-<<<<<<< HEAD
 	public void savePartner(StoreEntity store, UserEntity user) {
-
 		store.setUser(user);
-=======
-	public void savePartner(StoreEntity store) {
 		store.setStatus("await");
->>>>>>> df98b14c380bd1b822a32ece556468716f34c8d1
 		partnerRepository.save(store);		
 
 	}
@@ -71,4 +66,6 @@ public class PartnerService {
 		editingStore.setUser(user);
 		System.out.println("setapprov 끝  ");
 	}
+	
+	
 }
