@@ -11,11 +11,22 @@ public class PartnerController {
 		return "partner/main_page";
 	}
 	
-	
 	@GetMapping("/auth/partner/join_form")
 	public String partnerJoinForm() {
 		return "partner/join_form";
 	}
 
+	@GetMapping("/partner")
+	public String applyPartner() {
+		
+		return "redirect:/";
+	}
+	
+	
+	
+	
+	
+	
+	
 }
  

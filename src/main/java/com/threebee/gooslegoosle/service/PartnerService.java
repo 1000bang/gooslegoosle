@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.threebee.gooslegoosle.dto.PartnerDTO;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.repository.IPartnerRepository;
 import com.threebee.gooslegoosle.repository.IStoreRepository;

@@ -3,12 +3,12 @@ let index = {
 	init: function() {
 
 		$("#btn-partner-join").bind("click", () => {
-			this.applyUser();
+			this.applyPartner();
 		});
 
 	},
 
-	applyUser: function() {
+	applyPartner: function() {
 
 		let data = {
 			username: $("#username").val(),

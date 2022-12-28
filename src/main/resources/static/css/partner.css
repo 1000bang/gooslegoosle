@@ -40,11 +40,13 @@ html{
 }
 
 #find--btn{
-	margin-left: 10px;
-	width: 10%;
+	width: 800px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+
 }
 
-#partner-btn{
+#btn-partner-join{
     width: 400px;
     height: 50px;
     font-size: 18px;
@@ -52,4 +54,15 @@ html{
     line-height: 50px;
     padding: 0;
     margin: 0 auto;
+    display: block;
 }
+
+#postcode{
+	width: 50%;
+	margin-bottom: 12px;
+}
+
+
+
+
+
