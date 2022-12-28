@@ -24,7 +24,7 @@
 
 		<c:forEach var="num" items="${notice.content}">
 		<tbody >
-			<tr onclick="location.href = '/admin/notice/'+ ${num.id}" >
+			<tr onclick="location.href = '/notice/'+ ${num.id}" >
 				<td>${num.id}</td>
 				<td>${num.title}</td>
 				<td>${num.userId.username}</td>
@@ -35,7 +35,9 @@
 	</table>
 
 <hr/>
-<a type="button" class="btn btn-danger" href="/admin/notice/board" style="float: right">글쓰기 </a>
+<c:if test="${principal.user.role eq 'ADMIN'}">
+<a type="button" class="btn btn-danger" href="/notice/board" style="float: right">글쓰기 </a>
+</c:if>
 </div>
 <br/>
 <br/>

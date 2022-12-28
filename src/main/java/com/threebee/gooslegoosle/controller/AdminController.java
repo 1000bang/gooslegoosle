@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -36,54 +38,31 @@ public class AdminController {
 		return "admin/manage";
 	}
 	
-	@Autowired
-	NoticeService noticeservice;
-	
-	@GetMapping("/admin/notice")
-	public String fetchNoticeList(Model model,
-			@PageableDefault(size = 6, sort = "id", direction = Direction.DESC) Pageable pageable) {
-		
-		Page<NoticeEntity> notice = noticeservice.getNoticeList(pageable);
-		
-		
-		
-		
-		model.addAttribute("notice", notice);
-		return "admin/notice";
-	}	
-	
-	@GetMapping("/admin/notice/{id}")
-	public String fetchNoticeDetail(@PathVariable int id, Model model) {
-		
-		model.addAttribute("notice", noticeservice.getNoticeDetail(id));
-		return "/admin/notice_detail";
-	}
-	
-	@GetMapping("/admin/notice/board")
-	public String fetchBoard() {
-		
 
-		return "admin/save_form";
+	@GetMapping("/admin/user")
+	public String fetchUser(Model model) {
+		//@Todo paging 처리 
+		List<UserEntity> user = userService.findAll();
+		model.addAttribute("user", user);
+		return "admin/user_list";
 	}
-
 
 	@GetMapping("/admin/manage/approve/{id}")
 	public String fetchApprove(@PathVariable int id) {
-		System.out.println("id >>>>>>" + id);
 		StoreEntity store = partnerService.findStore(id);
 		System.out.println(store);
 		UserEntity user = store.getUser();
 		userService.setHost(user.getId());
 		partnerService.setApprove(store, user);
 
-		return "/admin/manage";
+		return "redirect:/admin/manage";
 	}
 	
 	@GetMapping("/admin/manage/deny/{id}")
 	public String fetchDeny(@PathVariable int id) {
 		System.out.println("id >>>>>>" + id);
 		partnerService.setDeny(id);
-		return "/admin/manage";
+		return "redirect:/admin/manage";
 	}
 
 }

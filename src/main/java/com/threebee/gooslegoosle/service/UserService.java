@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.service;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,6 +105,13 @@ public class UserService {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});;
 		return user;
+	}
+
+
+
+
+	public List<UserEntity> findAll() {
+		return iUserRepository.findAll();
 	}
 
 }

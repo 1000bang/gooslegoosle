@@ -58,16 +58,16 @@
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">
 
-									<li class="nav-item"><a class="nav-link" href="/admin/notice">공지사항</a></li>
+									<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="/admin/manage">점주관리</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">회원관리</a></li>
+									<li class="nav-item"><a class="nav-link" href="/admin/user">회원관리</a></li>
 									<li class="nav-item"><a class="nav-link" href="/logout">로그아웃
 									</a></li>
 								</c:when>
 								<c:otherwise>
 									<li class="nav-item"><a class="nav-link" href="#">매거진</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+									<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
 									<li class="nav-item"><a class="nav-link" href="#">고객지원</a></li>
 									<c:if test="${principal.user.id eq '1'}">
 										<li class="nav-item"><a class="nav-link"
