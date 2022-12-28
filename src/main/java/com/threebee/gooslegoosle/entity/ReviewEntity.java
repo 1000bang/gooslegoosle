@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,7 +42,7 @@ public class ReviewEntity {
 //	@NotNull
 	private String starScore;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	
