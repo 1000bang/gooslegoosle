@@ -48,13 +48,9 @@ public class PartnerService {
 
 
 	public StoreEntity findStore(int id) {
-		StoreEntity store = partnerRepository.findById(id).orElseThrow(()->{
-			return new IllegalArgumentException("해당 가게를 찾을 수 없습니다. ");
-		});
-	
+		StoreEntity store = partnerRepository.findByID(id);
+		
 		return store;
-		
-		
 	}
 
 	@Transactional
@@ -64,5 +60,14 @@ public class PartnerService {
 		editingStore.setStatus("approve");
 		editingStore.setUser(user);
 		System.out.println("setapprov 끝  ");
+	}
+
+
+
+	@Transactional
+	public void setDeny(int id) {
+		StoreEntity editingStore = findStore(id);
+		editingStore.setStatus("deny");
+
 	}
 }
