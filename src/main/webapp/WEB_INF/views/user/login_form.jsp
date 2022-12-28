@@ -65,7 +65,7 @@
 				src="/images/btnG_완성형.png" /></a> <a
 				href="https://accounts.google.com/o/oauth2/v2/auth?client_id=581731462324-vd9i5jd12s0j4d97jcv6n57l1nf2suik.apps.googleusercontent.com&redirect_uri=http://localhost:9090/auth/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email&state=google">
 
-				<img alt="구글 로그인 " src="/images/google.png" style="width: 31vh; height: 10vh" ">
+				<img alt="구글 로그인 " src="/images/google.png" style="width: 31vh; height: 10vh" >
 			</a>
 		</div>
 	</form>
