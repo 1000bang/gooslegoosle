@@ -28,12 +28,12 @@ public class UserController {
 
 	@GetMapping("/api/user/{id}")
 	public String fetchAdmin(@PathVariable int id) {
-		UserEntity user = userService.findbyid(id);
+		UserEntity user = userService.setAdmin(id);
 		return "redirect:/";
 	}
 	
 	@GetMapping("/auth/login_form")
-	public String login(@RequestParam(value = "error", required = false) String error,
+	public String fetchLogin(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "exception", required = false) String exception, Model model) {
 		model.addAttribute("error", error);
 		model.addAttribute("exception", exception);
