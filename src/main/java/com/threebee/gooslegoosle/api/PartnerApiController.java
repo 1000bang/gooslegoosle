@@ -39,7 +39,8 @@ public class PartnerApiController {
 	public ResponseDto<Integer> savePartner(@RequestBody StoreEntity storeEntity, 
 			@PathVariable int id){
 		    
-		UserEntity user =
+		System.out.println(id);
+		UserEntity user = userService.findId(id);
 		
 		partnerService.savePartner(storeEntity, user);
 		 

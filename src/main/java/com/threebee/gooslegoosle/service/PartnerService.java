@@ -31,10 +31,7 @@ public class PartnerService {
 
 	@Transactional
 	public void savePartner(StoreEntity store, UserEntity user) {
-<<<<<<< HEAD
 		store.setUser(user);
-=======
->>>>>>> developer
 		store.setStatus("await");
 		partnerRepository.save(store);		
 
@@ -65,10 +62,8 @@ public class PartnerService {
 		editingStore.setUser(user);
 		System.out.println("setapprov 끝  ");
 	}
-<<<<<<< HEAD
 	
 	
-=======
 
 
 
@@ -78,5 +73,4 @@ public class PartnerService {
 		editingStore.setStatus("deny");
 
 	}
->>>>>>> developer
 }

@@ -28,6 +28,9 @@ public class UserService {
 
 	}
 
+	
+	
+	
 	@Transactional
 	public int saveUser(UserEntity user) {
 		System.out.println(user);
@@ -46,6 +49,8 @@ public class UserService {
 		});
 
 	}
+	
+	
 
 	@Transactional
 	public void updateUser(UserEntity user) {
@@ -88,6 +93,16 @@ public class UserService {
 		});
 		userEntity.setRole(UserRole.HOST);
 		System.out.println("sethost끝 ");
+	}
+
+
+
+
+	public UserEntity findId(int id) {
+		UserEntity user = iUserRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
+		});;
+		return user;
 	}
 
 }
