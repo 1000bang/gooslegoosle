@@ -3,7 +3,6 @@ package com.threebee.gooslegoosle.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.threebee.gooslegoosle.dto.PartnerDTO;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 
 public interface IPartnerRepository extends JpaRepository<StoreEntity, Integer>{
@@ -19,7 +18,8 @@ public interface IPartnerRepository extends JpaRepository<StoreEntity, Integer>{
 			+ " FROM "
 			+ "    storeentity "
 			+ " WHERE"
-			+ "    id = ?1", nativeQuery = true)
+			+ "    id = ?1", 			
+			nativeQuery = true)
 	public StoreEntity findByID(int id);
 	
 	

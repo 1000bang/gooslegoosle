@@ -35,8 +35,6 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-
 	
 	@Column(nullable = false, length = 100, unique = true)
 

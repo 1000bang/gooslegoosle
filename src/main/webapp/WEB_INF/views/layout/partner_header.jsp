@@ -13,9 +13,10 @@
 <title>구슬구슬파트너센터</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../../css/main.css">
-<link rel="stylesheet" href="../../css/partner.css">
-<link rel="stylesheet" href="../../css/partner_main.css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/partner.css">
+<link rel="stylesheet" href="/css/partner_main.css">
+<link rel="stylesheet" href="/css/apply_store.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -48,7 +49,7 @@
 									href="/auth/partner/join_form">파트너신청하기</a></li>
 							</c:when>
 							<c:otherwise>
-							<li class="nav-item"><a class="nav-link" href="#">가게 관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auth/partner/apply_store">가게 관리</a></li>
 								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃 </a></li>
 							</c:otherwise>
 						</c:choose>
