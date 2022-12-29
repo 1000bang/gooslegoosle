@@ -26,16 +26,18 @@ public class PartnerController {
 		return "partner/join_form";
 	}
 
-	@GetMapping("/auth/partner/apply_store")
-	public String applyStore() {
+	@GetMapping("/auth/partner/apply_store/{id}")
+	public String applyStore(@PathVariable int id, Model model) {
+		StoreEntity store = partnerService.findStoreByUserId(id);
+		model.addAttribute("store", store);
 		return "partner/apply_store";
 	}
 	
 	@GetMapping("/auth/partner/apply_menu/{id}")
 	public String applyMenu(@PathVariable int id, Model model) {
-		
-		StoreEntity store = partnerService.findStoreByUserId(id);
-		System.out.println(">>>>>>>>>>>>>>>>> store" + store);
+		partnerService.setUpload(id);
+		StoreEntity store = partnerService.findStoreByStoreId(id);
+		System.out.println(store);
 		model.addAttribute("store", store);
 		return "partner/apply_menu";
 	}

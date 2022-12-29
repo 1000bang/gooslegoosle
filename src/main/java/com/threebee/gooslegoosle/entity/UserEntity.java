@@ -3,6 +3,7 @@ package com.threebee.gooslegoosle.entity;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -72,7 +73,7 @@ public class UserEntity {
 	@ColumnDefault("0")
 	private int warning;
 	
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<HeartEntity> hearts;
 
 	@Enumerated(EnumType.STRING)

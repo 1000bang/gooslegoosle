@@ -49,7 +49,7 @@
 									href="/auth/partner/join_form">파트너신청하기</a></li>
 							</c:when>
 							<c:otherwise>
-							<li class="nav-item"><a class="nav-link" href="/auth/partner/apply_store">가게 관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="/auth/partner/apply_store/${principal.user.id}">가게 관리</a></li>
 								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃 </a></li>
 							</c:otherwise>
 						</c:choose>
