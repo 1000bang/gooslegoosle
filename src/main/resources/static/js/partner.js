@@ -94,7 +94,7 @@ let index = {
 			menuName: $("#menuname").val(),
 			menuPrice: $("#menuprice").val(),
 		};
-		
+		console.log(id);
 		console.log(data);
 
 		$.ajax({

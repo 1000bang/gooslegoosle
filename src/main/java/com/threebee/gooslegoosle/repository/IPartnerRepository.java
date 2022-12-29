@@ -20,11 +20,18 @@ public interface IPartnerRepository extends JpaRepository<StoreEntity, Integer>{
 			+ " FROM "
 			+ "    storeentity "
 			+ " WHERE"
+			+ "    userId = ?1", 			
+			nativeQuery = true)
+	public StoreEntity findByUserId(int id);
+	
+	@Query(value = " SELECT "
+			+ "    * "
+			+ " FROM "
+			+ "    storeentity "
+			+ " WHERE"
 			+ "    id = ?1", 			
 			nativeQuery = true)
-	public StoreEntity findByID(int id);
-	
-	
+	public StoreEntity findByStoreId(int id);
 	
 	@Query(value = "SELECT * FROM storeEntity WHERE status = 'approve'",
 			nativeQuery = true)

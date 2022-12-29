@@ -42,7 +42,7 @@ public class ReviewEntity {
 //	@NotNull
 	private String starScore;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	

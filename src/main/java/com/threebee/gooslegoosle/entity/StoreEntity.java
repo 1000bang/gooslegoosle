@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.threebee.gooslegoosle.model.CategoryType;
 
 import lombok.Data;
@@ -52,8 +54,10 @@ public class StoreEntity {
 	
 	private String status;
 	
+	@ColumnDefault("FALSE")
+	private Boolean upload;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	

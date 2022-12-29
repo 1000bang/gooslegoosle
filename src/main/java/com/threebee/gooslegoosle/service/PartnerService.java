@@ -51,7 +51,7 @@ public class PartnerService {
 	}
 	
 	public StoreEntity findStoreByUserId(int id) {
-		return partnerRepository.findByID(id);
+		return partnerRepository.findByUserId(id);
 		
 	}
 	
@@ -95,4 +95,16 @@ public class PartnerService {
 	public Page<StoreEntity> findApprove(Pageable pageable) {
 		return partnerRepository.findApprove(pageable);
 	}
+
+	public StoreEntity findStoreByStoreId(int id) {
+		return partnerRepository.findByStoreId(id);
+	}
+	
+	
+	@Transactional
+	public void setUpload(int id) {
+		StoreEntity store = findStoreByStoreId(id);
+		store.setUpload(true);
+	}
+	
 }
