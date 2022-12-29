@@ -56,6 +56,8 @@ public class ReviewEntity {
 	@JoinColumn(name = "storeId")
 	private StoreEntity store;
 	
+	private int replyCount;
+	
 	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@OrderBy("id desc")
 	@JsonIgnoreProperties({"review", "replyContent"})

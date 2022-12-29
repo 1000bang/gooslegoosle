@@ -29,14 +29,13 @@
 		<div class="Row">
 			<c:forEach var="review" items="${reviews.getContent()}">
 				<div class="my_container">
-					<div class="username">${review.getUser().getUsername()}님의 리뷰</div>
 					<div class="review_picture">
 						<p>사진이 들어갈 곳입니다.</p>
 					</div>
 					<div class="about_story">
 						<h2>${review.getReviewTitle()}</h2>
 						<div class="content_text">${review.getReviewContent()}</div>
-						<a class="btn btn-outline-dark mt-auto" href="review/${review.getId()}">더보기</a>
+						<a id="into" class="btn btn-outline-dark mt-auto" href="review/${review.getId()}">더보기</a>
 						<br><br>
 					</div>
 

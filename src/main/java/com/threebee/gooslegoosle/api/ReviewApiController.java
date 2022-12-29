@@ -32,20 +32,25 @@ public class ReviewApiController {
 	
 	@DeleteMapping("/api/review/{reviewId}")
 	public ResponseDto<Integer> deleteReview(@PathVariable int reviewId){
-		System.out.println("들어옴>>>>>>>>>>>>>>>>>>>");
-		System.out.println(reviewId);
 		reviewService.deleteReview(reviewId);
-		System.out.println("들어옴2>>>>>>>>>>>>>>>>>>>");
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 	
 	@PostMapping("/api/review/{reviewId}/replySave")
 	public ResponseDto<Integer> replySave(@PathVariable int reviewId,@RequestBody ReviewReplyEntity reqReply,
 			@AuthenticationPrincipal PrincipalDetail principalDetail){
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>");
-		System.out.println(reqReply.getReplyContent());
 		reviewService.writeReply(reviewId, reqReply, principalDetail.getUser());
 		return new ResponseDto<Integer>(HttpStatus.OK,1);
+	}
+	
+	@DeleteMapping("/api/review/{reviewId}/reply/{replyId}")
+	public ResponseDto<Integer> replyDelete(@PathVariable int reviewId, @PathVariable int replyId,
+			@AuthenticationPrincipal PrincipalDetail principalDetail){
+		System.out.println(">	>>>>>>>>>> 들어옴");
+		System.out.println(reviewId);
+		System.out.println(replyId);
+		reviewService.deleteReplyById(replyId, principalDetail.getUser().getId());
+		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 
 

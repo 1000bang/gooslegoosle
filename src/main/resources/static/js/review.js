@@ -1,5 +1,5 @@
 let index = {
-	init: function(){reviewDelete
+	init: function(){
 		$('#update').bind('click', () => {
 			this.update();
 		});
@@ -8,6 +8,9 @@ let index = {
 		});
 		$('#reviewDelete').bind('click', () => {
 			this.delete();
+		});
+		$('#replyDelete').bind('click', () => {
+			this.replyDelete();
 		});
 	},
 	update : function(){	
@@ -68,7 +71,26 @@ let index = {
 			console.log(error)
 			console.log(replyData)
 		})
-	}
+	},
+	
+	replyDelete : function(reviewId, replyId){
+		console.log(reviewId);
+		console.log(replyId);
+		$.ajax({
+			type:'DELETE',
+			url:`/api/review/${reviewId}/reply/${replyId}`,
+			dataType:'json',
+
+		}).done(function(data, textStatus, xhr){
+			if(data.httpStatus == 'OK'){
+				alert("댓글이 삭제 되었습니다.")
+				location.href = `/review/${reviewId}`;
+			}
+		}).fail(function(error){
+			console.log(error)
+			console.log("리뷰 삭제에 실패했습니다.")
+		});
+	},
 }
 
 index.init();

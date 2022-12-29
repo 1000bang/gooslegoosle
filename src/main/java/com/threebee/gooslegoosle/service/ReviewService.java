@@ -71,6 +71,27 @@ public class ReviewService {
 		iReplyRepository.save(reqReply);
 	}
 
+	@Transactional
+	public void deleteReplyById(int replyId, int userId) {
+		
+		ReviewReplyEntity replyEntity = iReplyRepository.findById(replyId).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 댓글을 찾을 수 없네요");
+		});
+		try {
+			int dbWriterInfo = replyEntity.getUser().getId();
+			int principalId = userId;
+			if(dbWriterInfo == principalId) {
+				iReplyRepository.deleteById(replyId);				
+			}else {
+				throw new IllegalArgumentException("본인 댓글만 삭제가 가능합니다.");
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
 
 
 }
