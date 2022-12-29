@@ -11,13 +11,14 @@
 				<p class="warning-msg">소셜 로그인은 파트너 신청이 어렵습니다.</p>
 				<a href="/auth/login_form">
 				<button class="btn move--btn btn--mar">로그인 하러 가기</button></a> 
-				<a href="/auth/join_form">
+				<a href="/auth/application_partner">
 				<button class="btn move--btn">회원가입 하러 가기</button></a>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<form class="was-validated">
 				<input type="hidden" id="id" value="${principal.user.id}">
+				
 				<div id="partner-info" class="info-box">
 					<p class="info-title">사장님 정보를 입력해주세요 !</p>
 					<div class="form-group">
@@ -26,15 +27,17 @@
 							value="${principal.user.username}" name="username" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div>
+					</div> <!-- username end -->
+					
 					<div class="form-group">
-						<label for="phonenumber">휴대전화번호</label> <input type="text"
-							class="form-control" id="phonenumber"
+						<label for="phoneNumber">휴대전화번호</label> <input type="text"
+							class="form-control" id="phoneNumber"
 							placeholder="휴대전화번호를 입력해주세요."
-							value="${principal.user.phoneNumber}" name="phonenumber" required>
+							value="${principal.user.phoneNumber}" name="phoneNumber" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div>
+					</div><!-- phoneNumber end -->
+					
 					<div class="form-group">
 						<label for="email">이메일</label> <input type="email"
 							class="form-control" id="email" placeholder="이메일을 입력해주세요."
@@ -42,6 +45,7 @@
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="password">비밀번호</label> <input type="password"
 							class="form-control" id="password" placeholder="비밀번호를 입력해주세요."
@@ -49,9 +53,8 @@
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
 					</div>
-				</div>
+				</div> <!-- password end -->
 				<!-- partner info end ======== -->
-
 
 				<div id="store-info" class="info-box">
 					<p class="info-title">가게 정보를 입력해주세요 !</p>
@@ -64,12 +67,13 @@
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
 					</div>
 					<div class="form-group">
-						<label for="storename" class="ma-bo">식당 상호명 </label> <input
-							type="text" class="form-control" id="storename"
-							placeholder="식당 상호명을 입력해주세요." name="storename" required>
+						<label for="storeName" class="ma-bo">식당 상호명 </label> <input
+							type="text" class="form-control" id="storeName"
+							placeholder="식당 상호명을 입력해주세요." name="storeName" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div>
+					</div><!-- storeName end -->
+					
 					<div class="form-group " id="address-wrap">
 						<label for="storename">주소</label>
 						<div class="">
@@ -84,20 +88,20 @@
 							placeholder="상세주소" value="${principal.user.detailAddress}">
 						<input type="button" style="width: 15vh" onclick="daumPostcode()"
 							class="form-control btn btn-danger" value="주소 찾기" id="find--btn">
-					</div>
+					</div> <!-- address end -->
 
 					<div class="form-group">
-						<label for="mainnumber">식당 대표 전화번호</label> <input type="text"
-							class="form-control" id="mainnumber"
-							placeholder="식당 대표 전화번호를 입력해주세요." name="mainnumber" required>
+						<label for="mainNumber">식당 대표 전화번호</label> <input type="text"
+							class="form-control" id="mainNumber"
+							placeholder="식당 대표 전화번호를 입력해주세요." name="mainNumber" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div>
-				</div>
+					</div> <!-- mainNumber end -->
+				</div> 
 				<!-- store_info ======== -->
 			</form>
 			
-				<button type="button" class="btn btn-primary" id="btn-partner-join">파트너
+				<button type="button" class="btn btn-primary" id="partner-join-btn">파트너
 					신청하기</button>
 		<!-- <a href="/auth/partner/main_page"></a> -->	
 		</c:otherwise>

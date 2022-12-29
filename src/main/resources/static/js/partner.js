@@ -2,7 +2,7 @@
 let index = {
 	init: function() {
 
-		$("#btn-partner-join").bind("click", () => {
+		$("#partner-join-btn").bind("click", () => {
 			this.applyPartner();
 		});
 
@@ -24,11 +24,11 @@ let index = {
 
 			username: $("#username").val(),
 			email: $("#email").val(),
-			phoneNumber: $("#phonenumber").val(),
+			phoneNumber: $("#phoneNumber").val(),
 			password: $("#password").val(),
-			storeName: $("#storename").val(),
+			storeName: $("#storeName").val(),
 			address: $("#address").val(),
-			mainnumber: $("#mainnumber").val(),
+			mainNumber: $("#mainNumber").val(),
 		}
 
 		$.ajax({
@@ -42,7 +42,7 @@ let index = {
 
 			if (data.httpStatus == "OK") {
 				alert("신청이 완료되었습니다.");
-				location.href = "/";
+				location.href = "/auth/partner/main_partner";
 			}
 
 		}).fail(function(error) {
@@ -57,11 +57,11 @@ let index = {
 
 		let data = {
 
-			storename: $("#storename").val(),
+			storeName: $("#storeName").val(),
 			category: $("#category_select").val(),
-			openTime: $("#opentime").val(),
-			closeTime: $("#closetime").val(),
-			breakTime: $("#breaktime").val(),
+			openTime: $("#openTime").val(),
+			closeTime: $("#closeTime").val(),
+			breakTime: $("#breakTime").val(),
 		};
 		
 		console.log(data);

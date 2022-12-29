@@ -9,8 +9,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.threebee.gooslegoosle.entity.MenuEntity;
-import com.threebee.gooslegoosle.entity.StoreDetailEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
+import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.CategoryType;
 import com.threebee.gooslegoosle.repository.IMenuRepository;
@@ -22,53 +22,53 @@ import com.threebee.gooslegoosle.repository.IUserRepository;
 public class PartnerService {
 
 	@Autowired
-	private IPartnerRepository partnerRepository;
+	private IPartnerRepository iPartnerRepository;
 
 	@Autowired
-	private IStoreRepository storeRepository;
+	private IStoreRepository iStoreRepository;
 
 	@Autowired
-	private IUserRepository userRepository;
+	private IUserRepository iUserRepository;
 	
 	@Autowired
-	private IMenuRepository menuRepository;
+	private IMenuRepository iMenuRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder bEncoder;
 
 	@Transactional
-	public void savePartner(StoreEntity store, UserEntity user) {
-		store.setUser(user);
-		store.setStatus("await");
-		partnerRepository.save(store);		
+	public void savePartner(PartnerEntity partner, UserEntity user) {
+		partner.setUser(user);
+		partner.setStatus("await");
+		iPartnerRepository.save(partner);		
 
 	}
 
-	public void saveStore(StoreDetailEntity store, StoreEntity storeId) {
-		store.setStore(storeId);
-		storeRepository.save(store);
+	public void saveStore(StoreEntity store, PartnerEntity partner) {
+		store.setStore(partner);
+		iStoreRepository.save(store);
 		
 	}
 	
-	public StoreEntity findStoreByUserId(int id) {
-		return partnerRepository.findByID(id);
+	public PartnerEntity findStoreByUserId(int id) {
+		return iPartnerRepository.findByID(id);
 		
 	}
 	
-	public void saveMenu(MenuEntity menu, StoreEntity storeId) {
-		menu.setStore(storeId);
-		menuRepository.save(menu);
+	public void saveMenu(MenuEntity menu, PartnerEntity partner) {
+		menu.setStore(partner);
+		iMenuRepository.save(menu);
 		
 	}
 	
-	public Page<StoreEntity> getApplyList(Pageable page) {
-		return partnerRepository.findAll(page);
+	public Page<PartnerEntity> getApplyList(Pageable page) {
+		return iPartnerRepository.findAll(page);
 		
 	}
 
-	public StoreEntity findStore(int id) {
+	public PartnerEntity findStore(int id) {
 		
-		StoreEntity store = partnerRepository.findById(id).orElseThrow(() -> {
+		PartnerEntity store = iPartnerRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});;
 		
@@ -77,9 +77,9 @@ public class PartnerService {
 	}
 
 	@Transactional
-	public void setApprove(StoreEntity store, UserEntity user) {
+	public void setApprove(PartnerEntity partner, UserEntity user) {
 	System.out.println("setapprove");
-		StoreEntity editingStore =  findStore(store.getId());
+		PartnerEntity editingStore =  findStore(partner.getId());
 		editingStore.setUser(user); 
 		editingStore.setStatus("approve");
 		
@@ -88,7 +88,7 @@ public class PartnerService {
 
 	@Transactional
 	public void setDeny(int id) {
-		StoreEntity editingStore = findStore(id);
+		PartnerEntity editingStore = findStore(id);
 		editingStore.setStatus("deny");
 
 	}

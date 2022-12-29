@@ -47,7 +47,7 @@ public class ReviewEntity {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
-	private StoreEntity store;
+	private PartnerEntity store;
 	
 	
 

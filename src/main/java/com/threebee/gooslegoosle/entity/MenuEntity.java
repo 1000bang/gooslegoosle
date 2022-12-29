@@ -33,7 +33,7 @@ public class MenuEntity {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
-	private StoreEntity store;
+	private PartnerEntity store;
 
 	
 }

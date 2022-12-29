@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.MenuEntity;
-import com.threebee.gooslegoosle.entity.StoreDetailEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
+import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.repository.IPartnerRepository;
 import com.threebee.gooslegoosle.repository.IStoreRepository;
@@ -47,13 +47,13 @@ public class PartnerApiController {
 
 	
 	@PostMapping("/partner/{id}")
-	public ResponseDto<Integer> savePartner(@RequestBody StoreEntity storeEntity, 
+	public ResponseDto<Integer> savePartner(@RequestBody PartnerEntity partnerEntity, 
 			@PathVariable int id){
 		    
 		System.out.println("<<<<<>>>>>>><<<<<>>>>>>"+id);
 		UserEntity user = userService.findId(id);
 		
-		partnerService.savePartner(storeEntity, user);
+		partnerService.savePartner(partnerEntity, user);
 		 
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 		
@@ -61,9 +61,9 @@ public class PartnerApiController {
 	
 	
 	@PostMapping("/partner/apply_store/{id}")
-	public ResponseDto<Integer> saveStore(@RequestBody StoreDetailEntity store, @PathVariable int id){
+	public ResponseDto<Integer> saveStore(@RequestBody StoreEntity store, @PathVariable int id){
 		
-		StoreEntity storeId = partnerService.findStore(id);
+		PartnerEntity storeId = partnerService.findStore(id);
 		
 		partnerService.saveStore(store, storeId);
 		
@@ -77,7 +77,7 @@ public class PartnerApiController {
 	@PostMapping("/partner/apply_menu/{id}")
 	public ResponseDto<Integer> saveMenu(@RequestBody MenuEntity menu, @PathVariable int id){
 		
-		StoreEntity storeId = partnerService.findStore(id);
+		PartnerEntity storeId = partnerService.findStore(id);
 		
 		partnerService.saveMenu(menu, storeId);
 		

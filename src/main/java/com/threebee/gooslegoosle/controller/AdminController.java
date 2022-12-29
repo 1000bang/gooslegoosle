@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.threebee.gooslegoosle.entity.NoticeEntity;
-import com.threebee.gooslegoosle.entity.StoreEntity;
+import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.service.NoticeService;
 import com.threebee.gooslegoosle.service.PartnerService;
@@ -32,7 +32,7 @@ public class AdminController {
 	public String fetchAwaitingList(Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
-		Page<StoreEntity> store = partnerService.getApplyList(pageable);
+		Page<PartnerEntity> store = partnerService.getApplyList(pageable);
 
 		model.addAttribute("store", store);
 		return "admin/manage";
@@ -49,7 +49,7 @@ public class AdminController {
 
 	@GetMapping("/admin/manage/approve/{id}")
 	public String fetchApprove(@PathVariable int id) {
-		StoreEntity store = partnerService.findStore(id);
+		PartnerEntity store = partnerService.findStore(id);
 		System.out.println(store);
 		UserEntity user = store.getUser();
 		userService.setHost(user.getId());

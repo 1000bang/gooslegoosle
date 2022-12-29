@@ -5,7 +5,7 @@
 
 <section id="banner">
 	<div id="banner-wrap">
-		<div class="banner-in" id="banner-logo">구슬구슬 파트너</div>
+		<div class="banner-in" id="banner-logo" >구슬구슬 파트너</div>
 		<p class="banner-in b--text">
 			장사 잘 되는 가게의<br />든든한 파트너
 		</p>
@@ -14,7 +14,7 @@
 		<p class="banner-in xs--text">가게 정보관리, 리뷰, 할인정보등록, 주변식당의 상권 분석까지
 			저비용으로 효율적인 내 가게 운영이 가능합니다. 구슬구슬 파트너 서비스를 이용해보세요.</p>
 		<button type="button" class="btn" id="put-in-partner-btn">
-			<a href="/auth/partner/join_form" id="btn-in-a">구슬구슬 파트너 신청하기</a>
+			<a href="/partner/application_partner" id="btn-in-a">구슬구슬 파트너 신청하기</a>
 		</button>
 	</div>
 </section>

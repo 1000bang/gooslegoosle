@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.threebee.gooslegoosle.entity.StoreEntity;
+import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.service.PartnerService;
 
 @Controller
@@ -16,17 +16,17 @@ public class PartnerController {
 	PartnerService partnerService;
 	
 
-	@GetMapping("/auth/partner/main_page")
+	@GetMapping("/auth/partner/main_partner")
 	public String partnerMain() {
-		return "partner/main_page";
+		return "partner/main_partner";
 	}
 	
-	@GetMapping("/auth/partner/join_form")
+	@GetMapping("/partner/application_partner")
 	public String partnerJoinForm() {
-		return "partner/join_form";
+		return "partner/application_partner";
 	}
 
-	@GetMapping("/auth/partner/apply_store")
+	@GetMapping("/partner/apply_store")
 	public String applyStore() {
 		return "partner/apply_store";
 	}
@@ -34,9 +34,9 @@ public class PartnerController {
 	@GetMapping("/auth/partner/apply_menu/{id}")
 	public String applyMenu(@PathVariable int id, Model model) {
 		
-		StoreEntity store = partnerService.findStoreByUserId(id);
-		System.out.println(">>>>>>>>>>>>>>>>> store" + store);
+		PartnerEntity store = partnerService.findStoreByUserId(id);
 		model.addAttribute("store", store);
+		
 		return "partner/apply_menu";
 	}
 	

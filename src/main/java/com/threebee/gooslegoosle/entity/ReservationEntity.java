@@ -53,7 +53,7 @@ public class ReservationEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "storeId")
-	private StoreEntity store;
+	private PartnerEntity store;
 	
 	@OneToMany
 	@JoinColumn(name = "menuId")

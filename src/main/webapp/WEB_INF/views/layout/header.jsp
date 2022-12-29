@@ -94,7 +94,7 @@
 							<c:when test="${principal.user.role eq 'ADMIN'}">
 							</c:when>
 							<c:otherwise>
-								<a class="nav-link" href="/auth/partner/main_page">우리매장 등록하기</a>
+								<a class="nav-link" href="/auth/partner/main_partner">우리매장 등록하기</a>
 							</c:otherwise>
 						</c:choose></li>
 				</ul>
