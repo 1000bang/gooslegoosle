@@ -27,7 +27,7 @@
 				<div class="items"><img src="./img/11.jpg" alt=""></div>
 				<div class="items"><img src="./img/12.jpg" alt=""></div>
 		</div>
-		<div class="title"><p>TITLE</p></div>
+		<div class="title"><p>${reviews.getReviewTitle()}</p></div>
 		<div class="address"><p>ADDRESS</p></div>
 		<div class="review-content">${reviews.getReviewContent()}</div>
 		<div class="rate"><p>★★★★★</p> </div>

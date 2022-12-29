@@ -23,6 +23,7 @@ let index = {
 		}).done(function(data, textStatus, xhr){
 			if(data.httpStatus == 'OK'){
 				alert("수정 성공")
+				location.href = `/review/${reviewId}`
 			}
 		}).fail(function(error){
 			console.log(error)

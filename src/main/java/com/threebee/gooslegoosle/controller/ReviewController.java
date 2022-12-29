@@ -41,7 +41,7 @@ public class ReviewController {
 
 	@GetMapping({ "/reviews", "/review/search" })
 	public String fetchShowReview(Model model, @RequestParam(required = false) String search,
-			@PageableDefault(size = 3, sort = "reviewContent", direction = Direction.ASC) Pageable pageable) {
+			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
 		String searchTitle = search == null ? "" : search;
 		Page<ReviewEntity> reviews = reviewService.getReviewList(searchTitle.replace("//", ""), pageable);
