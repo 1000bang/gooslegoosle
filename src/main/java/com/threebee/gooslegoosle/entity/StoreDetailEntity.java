@@ -2,6 +2,7 @@ package com.threebee.gooslegoosle.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -43,7 +44,7 @@ public class StoreDetailEntity {
 	@Column(nullable = false)
 	private String closeTime;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@NotNull
 	@Column(nullable = false)
 	@JoinColumn(name = "menuList")

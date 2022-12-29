@@ -2,6 +2,7 @@ package com.threebee.gooslegoosle.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,11 +48,11 @@ public class ReservationEntity {
 	@Lob
 	private String request;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "storeId")
 	private StoreEntity store;
 	

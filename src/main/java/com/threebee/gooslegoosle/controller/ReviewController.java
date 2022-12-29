@@ -17,11 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.threebee.gooslegoosle.auth.PrincipalDetail;
-import com.threebee.gooslegoosle.entity.HeartEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
-import com.threebee.gooslegoosle.repository.IHeartRepository;
 import com.threebee.gooslegoosle.repository.IReviewRepository;
-import com.threebee.gooslegoosle.service.HeartService;
 import com.threebee.gooslegoosle.service.ReviewService;
 
 @Controller
@@ -29,15 +26,9 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewService reviewService;
-	
-	@Autowired
-	private HeartService heartService;
-	
+
 	@Autowired
 	private IReviewRepository iReviewRepository;
-	
-	@Autowired
-	private IHeartRepository iHeartRepository;
 
 	@GetMapping({ "/reviews", "/review/search" })
 	public String fetchShowReview(Model model, @RequestParam(required = false) String search,
@@ -64,31 +55,23 @@ public class ReviewController {
 		model.addAttribute("reviews", reviews);
 		return "review/review_page";
 	}
-	
+
 	@GetMapping("/review/{id}")
-	public String showReviewDetail(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
-		Optional<HeartEntity> heartEntity = iHeartRepository.findById(id);
+	public String showReviewDetail(@PathVariable int id, Model model,
+			@AuthenticationPrincipal PrincipalDetail principalDetail) {
 		Optional<ReviewEntity> reviewEntity = iReviewRepository.findById(id);
-		
-		model.addAttribute("heart", heartService.saveLike(id, principalDetail.getUser().getId()));
+
 		model.addAttribute("reviews", reviewService.reviewDetail(id));
 		return "review/review_detail";
 	}
-	
-	@PostMapping("/review/{id}/like")
-	public int like(int reviewId, int userId) {
-		int result = heartService.saveLike(reviewId, userId);
-		return result;
-	}
-	
+
 	@GetMapping("/review/review_save")
 	public String reviewSave() {
 		return "/review/review_save";
 	}
-	
+
 	@PostMapping("/api/reviews")
-	public String save(ReviewEntity review, 
-			@AuthenticationPrincipal PrincipalDetail detail) {
+	public String save(ReviewEntity review, @AuthenticationPrincipal PrincipalDetail detail) {
 
 		System.out.println(review);
 		reviewService.write(review, detail.getUser());
@@ -96,11 +79,11 @@ public class ReviewController {
 		return "redirect:/reviews";
 
 	}
-	
+
 	@GetMapping("/review/{reviewId}/review_update")
 	public String updateReview(@PathVariable int reviewId, Model model) {
 		model.addAttribute("review", reviewService.reviewDetail(reviewId));
 		return "/review/review_update";
 	}
-	
+
 }

@@ -1,10 +1,13 @@
 let index = {
-	init: function(){
-		$('#like').bind('click', () => {
-			this.clickLike();
-		});
+	init: function(){reviewDelete
 		$('#update').bind('click', () => {
 			this.update();
+		});
+		$('#replySave').bind('click', () => {
+			this.replySave();
+		});
+		$('#reviewDelete').bind('click', () => {
+			this.delete();
 		});
 	},
 	update : function(){	
@@ -28,6 +31,43 @@ let index = {
 		}).fail(function(error){
 			console.log(error)
 		});
+	},
+	delete : function(){
+		let reviewId = $("#review-id").val();
+		console.log(reviewId)
+		$.ajax({
+			type:'DELETE',
+			url: `/api/review/${reviewId}`,
+		}).done(function(data, textStatus, xhr){
+			if(data.httpStatus == 'OK'){
+				alert("리뷰가 삭제 되었습니다.")
+				location.href = "/reviews"
+			}
+		}).fail(function(error){
+			console.log("리뷰 삭제에 실패했습니다.")
+		});
+	},
+	replySave : function(){
+		let replyData = {
+			reviewId : $('#review-id').val(),
+			replyContent : $('#replyContent').val(),
+		};
+		console.log(replyData)
+		$.ajax({
+			type:'POST',
+			url:`/api/review/${replyData.reviewId}/replySave`,
+			data:JSON.stringify(replyData),
+			contentType:'application/json; charset=utf-8',
+			dataType:'json'
+		}).done(function(data, textStatus, xhr){
+			 if(data.httpStatus == 'OK'){
+				 alert("댓글이 작성 되었습니다.")
+				 location.href = `/review/${replyData.reviewId}`;
+			 }
+		}).fail(function(error){
+			console.log(error)
+			console.log(replyData)
+		})
 	}
 }
 

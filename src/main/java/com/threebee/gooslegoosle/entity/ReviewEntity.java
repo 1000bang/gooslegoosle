@@ -1,5 +1,8 @@
 package com.threebee.gooslegoosle.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,6 +55,11 @@ public class ReviewEntity {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
 	private StoreEntity store;
+	
+	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@OrderBy("id desc")
+	@JsonIgnoreProperties({"review", "replyContent"})
+	private List<ReviewReplyEntity> reviewReplys;
 	
 	
 

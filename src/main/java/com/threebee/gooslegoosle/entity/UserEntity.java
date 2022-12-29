@@ -69,9 +69,6 @@ public class UserEntity {
 	private String extraAddress;
 
 	private String detailAddress;
-	
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private List<HeartEntity> hearts;
 
 	@Enumerated(EnumType.STRING)
 	private UserRole role; // user, admin, host

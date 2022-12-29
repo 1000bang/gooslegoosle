@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +32,7 @@ public class MenuEntity {
 	@Column(nullable = false)
 	private int menuPrice;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "storeId")
 	private StoreEntity store;
 
