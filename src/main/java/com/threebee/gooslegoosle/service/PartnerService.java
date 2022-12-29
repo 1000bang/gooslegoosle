@@ -45,7 +45,7 @@ public class PartnerService {
 	}
 
 	public void saveStore(StoreEntity store, PartnerEntity partner) {
-		store.setStore(partner);
+		store.setPartner(partner);
 		iStoreRepository.save(store);
 		
 	}
@@ -56,9 +56,10 @@ public class PartnerService {
 	}
 	
 	public void saveMenu(MenuEntity menu, PartnerEntity partner) {
+		System.out.println("=========2222=============================");
 		menu.setStore(partner);
 		iMenuRepository.save(menu);
-		
+		System.out.println("======================================");
 	}
 	
 	public Page<PartnerEntity> getApplyList(Pageable page) {
@@ -66,7 +67,8 @@ public class PartnerService {
 		
 	}
 
-	public PartnerEntity findStore(int id) {
+	@Transactional
+	public PartnerEntity findStoreById(int id) {
 		
 		PartnerEntity store = iPartnerRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
@@ -79,7 +81,7 @@ public class PartnerService {
 	@Transactional
 	public void setApprove(PartnerEntity partner, UserEntity user) {
 	System.out.println("setapprove");
-		PartnerEntity editingStore =  findStore(partner.getId());
+		PartnerEntity editingStore =  findStoreById(partner.getId());
 		editingStore.setUser(user); 
 		editingStore.setStatus("approve");
 		
@@ -88,7 +90,7 @@ public class PartnerService {
 
 	@Transactional
 	public void setDeny(int id) {
-		PartnerEntity editingStore = findStore(id);
+		PartnerEntity editingStore = findStoreById(id);
 		editingStore.setStatus("deny");
 
 	}

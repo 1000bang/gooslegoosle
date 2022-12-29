@@ -24,7 +24,7 @@ public class MenuEntity {
 	private int id;
 	
 	@NotNull
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String menuName;
 	
 	@NotNull

@@ -5,7 +5,9 @@
 
 <section id="banner">
 	<div id="banner-wrap">
-		<div class="banner-in" id="banner-logo" >구슬구슬 파트너</div>
+		<div class="banner-in" id="banner-logo">
+			구슬구슬 파트너
+		</div>
 		<p class="banner-in b--text">
 			장사 잘 되는 가게의<br />든든한 파트너
 		</p>

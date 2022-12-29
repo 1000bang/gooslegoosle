@@ -49,7 +49,7 @@ public class AdminController {
 
 	@GetMapping("/admin/manage/approve/{id}")
 	public String fetchApprove(@PathVariable int id) {
-		PartnerEntity store = partnerService.findStore(id);
+		PartnerEntity store = partnerService.findStoreById(id);
 		System.out.println(store);
 		UserEntity user = store.getUser();
 		userService.setHost(user.getId());

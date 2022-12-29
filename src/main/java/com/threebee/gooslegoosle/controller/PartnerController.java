@@ -15,30 +15,38 @@ public class PartnerController {
 	@Autowired
 	PartnerService partnerService;
 	
-
 	@GetMapping("/auth/partner/main_partner")
-	public String partnerMain() {
+	public String fetchPartner() {
 		return "partner/main_partner";
 	}
 	
 	@GetMapping("/partner/application_partner")
-	public String partnerJoinForm() {
+	public String fetchApplicationPartnerForm() {
 		return "partner/application_partner";
 	}
 
-	@GetMapping("/partner/apply_store")
-	public String applyStore() {
-		return "partner/apply_store";
+	@GetMapping("/partner/add_store")
+	public String fetchAddStore() {
+		return "partner/add_store";
 	}
 	
-	@GetMapping("/auth/partner/apply_menu/{id}")
-	public String applyMenu(@PathVariable int id, Model model) {
+	@GetMapping("/partner/add_partner/{id}")
+	public String fetchAddPartner(@PathVariable int id, Model model) {
 		
-		PartnerEntity store = partnerService.findStoreByUserId(id);
-		model.addAttribute("store", store);
+		PartnerEntity partner = partnerService.findStoreByUserId(id);
+		model.addAttribute("partner", partner);
 		
-		return "partner/apply_menu";
+		return "partner/add_partner";
 	}
+	
+	@GetMapping("/partner/add_menu/{id}")
+	public String fetchAddMenu(@PathVariable int id, Model model) {
+		PartnerEntity partner = partnerService.findStoreById(id);
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>" + partner);
+		return "partner/add_menu";	
+				
+	}
+	
 	
 }
  

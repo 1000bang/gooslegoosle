@@ -52,7 +52,6 @@
                 <div class="form-group">
                     <label for="mainNumber" id="main">가게 대표 전화</label>
                     <input type="text" class="form-control" id="mainNumber" placeholder="가게 대표 전화를 입력해주세요."
-                    	
                         name="mainNumber" required>
                     <div class="valid-feedback">완료 ! </div>
                     <div class="invalid-feedback">필수 입력 사항입니다.</div>
@@ -60,7 +59,7 @@
 
 		</div>
         </form>
-        <button type="button" class="btn btn-primary d-flex justify-content-center" id="partner-btn">다음 (메뉴 등록)</button>
+        <button type="button" class="btn btn-primary d-flex justify-content-center" id="add-store-btn">다음 (메뉴 등록)</button>
     </section>
     
     <script type="text/javascript" src="/js/partner.js"></script>

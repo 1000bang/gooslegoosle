@@ -101,7 +101,7 @@
 				<!-- store_info ======== -->
 			</form>
 			
-				<button type="button" class="btn btn-primary" id="partner-join-btn">파트너
+				<button type="button" class="btn btn-primary" id="add-partner-btn">파트너
 					신청하기</button>
 		<!-- <a href="/auth/partner/main_page"></a> -->	
 		</c:otherwise>

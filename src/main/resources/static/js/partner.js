@@ -2,21 +2,21 @@
 let index = {
 	init: function() {
 
-		$("#partner-join-btn").bind("click", () => {
-			this.applyPartner();
+		$("#add-partner-btn").bind("click", () => {
+			this.addPartner();
 		});
 
-		$("#partner-btn").bind("click", () => {
-			this.applyStore();
+		$("#add-store-btn").bind("click", () => {
+			this.addStore();
 		});
 		
-		$("#apply-store-btn").bind("click", () => {
-			this.applyMenu();
+		$("#add-menu-btn").bind("click", () => {
+			this.addMenu();
 		});
 
 	},
 
-	applyPartner: function() {
+	addPartner: function() {
 
 		let id = $("#id").val();
 
@@ -51,7 +51,7 @@ let index = {
 		});
 	},
 
-	applyStore: function() {
+	addStore: function() {
 		
 		let id = $("#id").val();
 
@@ -62,20 +62,21 @@ let index = {
 			openTime: $("#openTime").val(),
 			closeTime: $("#closeTime").val(),
 			breakTime: $("#breakTime").val(),
+			mainNumber: $("#mainNumber").val(),
 		};
 		
 		console.log(data);
 
 		$.ajax({
 			type: "POST",
-			url: `/api/partner/apply_store/${id}`,
+			url: `/api/partner/add_store/${id}`,
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json"
 		}).done(function(data, textStatus, xhr) {
 			if (data.httpStatus == "OK") {
 				alert("가게등록 완료");
-				location.href = `/auth/partner/apply_menu/${id}`;
+				location.href = `/partner/add_menu/${id}`;
 			}
 
 		}).fail(function(error) {
@@ -85,28 +86,28 @@ let index = {
 
 	},
 	
-	applyMenu: function() {
+	addMenu: function() {
 		
 		let id = $("#id").val();
 
 		let data = {
 
-			menuName: $("#menuname").val(),
-			menuPrice: $("#menuprice").val(),
+			menuName: $("#menuName").val(),
+			menuPrice: $("#menuPrice").val(),
 		};
 		
-		console.log(data);
 
 		$.ajax({
 			type: "POST",
-			url: `/api/partner/apply_menu/${id}`,
+			url: `/api/partner/add_menu/${id}`,
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json"
 		}).done(function(data, textStatus, xhr) {
+			
 			if (data.httpStatus == "OK") {
 				alert("메뉴 등록 완료");
-				location.href = "/";
+				location.href = "/auth/partner/main_partner";
 			}
 
 		}).fail(function(error) {

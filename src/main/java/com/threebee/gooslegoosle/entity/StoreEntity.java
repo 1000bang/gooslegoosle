@@ -47,6 +47,6 @@ public class StoreEntity {
 	private List<MenuEntity> menu;
 	
 	@OneToOne
-	private PartnerEntity store;
+	private PartnerEntity partner;
 	
 }

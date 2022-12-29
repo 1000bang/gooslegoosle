@@ -33,7 +33,7 @@
 	<div id="wrap">
 		<header>
 			<nav class="navbar navbar-expand-md navbar-dark header-color">
-				<a class="navbar-brand logo-text" href="/auth/partner/main_page">구슬구슬
+				<a class="navbar-brand logo-text" href="/auth/partner/main_partner">구슬구슬
 					파트너</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#collapsibleNavbar">
@@ -46,10 +46,10 @@
 								<li class="nav-item b-menu"><a class="nav-link"
 									href="/auth/login_form">로그인</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="/auth/partner/join_form">파트너신청하기</a></li>
+									href="/partner/application_partner">파트너신청하기</a></li>
 							</c:when>
 							<c:otherwise>
-							<li class="nav-item"><a class="nav-link" href="/auth/partner/apply_store">가게 관리</a></li>
+							<li class="nav-item"><a class="nav-link" href="/partner/add_store">가게 등록</a></li>
 								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃 </a></li>
 							</c:otherwise>
 						</c:choose>
