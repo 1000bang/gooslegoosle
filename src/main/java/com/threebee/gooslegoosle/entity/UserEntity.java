@@ -16,6 +16,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.threebee.gooslegoosle.model.LoginType;
@@ -38,8 +39,6 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-
 	
 	@Column(nullable = false, length = 100, unique = true)
 
@@ -69,6 +68,9 @@ public class UserEntity {
 	private String extraAddress;
 
 	private String detailAddress;
+	
+	@ColumnDefault("0")
+	private int warning;
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<HeartEntity> hearts;

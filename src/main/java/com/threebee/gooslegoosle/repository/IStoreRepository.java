@@ -2,9 +2,12 @@ package com.threebee.gooslegoosle.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.threebee.gooslegoosle.entity.StoreEntity;
+import com.threebee.gooslegoosle.entity.StoreDetailEntity;
+;
 
-public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
+public interface IStoreRepository extends JpaRepository<StoreDetailEntity, Integer>{
+
+
 
 	
 	

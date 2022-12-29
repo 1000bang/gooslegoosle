@@ -8,8 +8,8 @@
 
 	<button class="btn bg-secondary" onclick="history.back();">돌아가기</button>
 	<c:if test="${notice.userId.id == principal.user.id}">
-		<a class="btn btn-warning" id="" href="/board/${notice.id}/update_form">수정</a>
-		<a class="btn btn-danger" id="" href="/board/delete/${notice.id}">삭제</a>
+		<a class="btn btn-warning" id="" href="/notice/update/${notice.id}">수정</a>
+		<a class="btn btn-danger" id="" href="/notice/delete/${notice.id}">삭제</a>
 	</c:if>
 	<br /> <br /> <br />
 

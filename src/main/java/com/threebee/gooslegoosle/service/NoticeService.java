@@ -37,6 +37,20 @@ public class NoticeService {
 			return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
 		});
 	}
+
+	@Transactional
+	public int modifyNotice(int id, NoticeEntity notice) {
+		NoticeEntity boardEntity = noticeRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
+		});
+		boardEntity.setTitle(notice.getTitle());
+		boardEntity.setContent(notice.getContent());
+		return 1;
+	}
+
+	public void deleteNoticeById(int id) {
+		noticeRepository.deleteById(id);
+	}
 	
 	
 }

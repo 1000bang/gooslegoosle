@@ -26,10 +26,9 @@ public class StoreDetailEntity {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
 	private int id;
 	
-	@Enumerated(EnumType.STRING) 
+	@Enumerated(EnumType.STRING)
 	@NotNull
 	private CategoryType category; // KOREAN, JAPANESE, CHINESE, WESTERN
 
@@ -44,13 +43,10 @@ public class StoreDetailEntity {
 	private String closeTime;
 	
 	@OneToMany
-	@NotNull
-	@Column(nullable = false)
 	@JoinColumn(name = "menuList")
 	private List<MenuEntity> menu;
 	
 	@OneToOne
-	@NotNull
 	private StoreEntity store;
 	
 }
