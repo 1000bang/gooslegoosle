@@ -13,6 +13,7 @@
 				<th>회원 이름</th>
 				<th>회원 역할</th>
 				<th>가입 날짜</th>
+				<th>경고 횟수</th>
 				<th> 강티  </th>
 			</tr>
 		</thead>
@@ -24,9 +25,11 @@
 				<td>${users.username}</td>
 				<td>${users.role}</td>
 				<td>${users.createdDate}</td>
+				<td>${users.warning}</td>
+				
 				<td>
-				<a type="button" class="btn-sm btn-warning" href="#"> 경고 </a>
-				<a type="button" class="btn-sm btn-danger" href="#">삭제 </a>
+				<a type="button" class="btn-sm btn-warning" href="/admin/warning/${users.id}"> 경고 </a>
+				<a type="button" class="btn-sm btn-danger" href="/admin/delete/${users.id}">삭제 </a>
 				</td>
 				
 			</tr>

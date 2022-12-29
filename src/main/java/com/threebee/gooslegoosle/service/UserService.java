@@ -114,4 +114,19 @@ public class UserService {
 		return iUserRepository.findAll();
 	}
 
+
+
+	@Transactional
+	public void setWarningUser(int id) {
+		UserEntity user = findId(id);
+		user.setWarning(user.getWarning() + 1);
+	}
+
+
+
+
+	public void deleteUser(int id) {
+		iUserRepository.deleteById(id);
+	}
+
 }

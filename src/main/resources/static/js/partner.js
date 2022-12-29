@@ -13,6 +13,10 @@ let index = {
 		$("#add-menu-btn").bind("click", () => {
 			this.addMenu();
 		});
+		
+		$("#add-store-menu-btn").bind("click", () =>{
+			this.addStoreMenu();
+		});
 
 	},
 
@@ -53,7 +57,7 @@ let index = {
 
 	addStore: function() {
 		
-		let id = $("#id").val();
+		let id = $("#storeId").val();
 
 		let data = {
 
@@ -66,6 +70,7 @@ let index = {
 		};
 		
 		console.log(data);
+		console.log("==========="+id);
 
 		$.ajax({
 			type: "POST",
@@ -86,7 +91,7 @@ let index = {
 
 	},
 	
-	addMenu: function() {
+	addStoreMenu: function() {
 		
 		let id = $("#id").val();
 
@@ -95,7 +100,6 @@ let index = {
 			menuName: $("#menuName").val(),
 			menuPrice: $("#menuPrice").val(),
 		};
-		
 
 		$.ajax({
 			type: "POST",

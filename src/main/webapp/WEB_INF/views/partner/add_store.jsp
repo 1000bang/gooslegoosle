@@ -3,10 +3,9 @@
 <%@ include file="../layout/partner_header.jsp"%>
     <section id="store-apply">
         <form action="" class="was-validated" id="store-info-bg">
-        <input type="hidden" id="id" value="${principal.user.id}">
+        <input type="hidden" id="storeId" value="${store.id}">
             <div id="store-info" class="info-box">
                 <p class="info-title">가게 영업 정보를 입력해주세요 !</p>
-                
                 <div class="form-group">
                     <label for="storeName">가게 상호명</label>
                     <input type="text" class="form-control" id="storeName" placeholder="가게 상호명을 입력해주세요."

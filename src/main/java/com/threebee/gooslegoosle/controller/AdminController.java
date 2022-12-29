@@ -39,13 +39,6 @@ public class AdminController {
 	}
 	
 
-	@GetMapping("/admin/user")
-	public String fetchUser(Model model) {
-		//@Todo paging 처리 
-		List<UserEntity> user = userService.findAll();
-		model.addAttribute("user", user);
-		return "admin/user_list";
-	}
 
 	@GetMapping("/admin/manage/approve/{id}")
 	public String fetchApprove(@PathVariable int id) {
@@ -60,9 +53,38 @@ public class AdminController {
 	
 	@GetMapping("/admin/manage/deny/{id}")
 	public String fetchDeny(@PathVariable int id) {
-		System.out.println("id >>>>>>" + id);
 		partnerService.setDeny(id);
 		return "redirect:/admin/manage";
 	}
+	
+	@GetMapping("/admin/user")
+	public String fetchUser(Model model) {
+		//@Todo paging 처리 
+		attribute(model);
+		return "admin/user_list";
+	}
+	
+	@GetMapping("/admin/warning/{id}")
+	public String fetchWarningUser(@PathVariable int id, Model model) {
+		userService.setWarningUser(id);
+		attribute(model);
+		
+		return "admin/user_list";
+	}
+
+	@GetMapping("/admin/delete/{id}")
+	public String fetchDeleteUser(@PathVariable int id, Model model) {
+		userService.deleteUser(id);
+		attribute(model);
+		
+		return "admin/user_list";
+	}
+	
+	//@Todo paging 처리필
+	public void attribute(Model model){
+		List<UserEntity> user = userService.findAll();
+		model.addAttribute("user", user);
+	}
+
 
 }
