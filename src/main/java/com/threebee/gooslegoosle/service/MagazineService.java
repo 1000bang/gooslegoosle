@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.threebee.gooslegoosle.dto.FileDTO;
+import com.threebee.gooslegoosle.dto.MagazineFileDTO;
 import com.threebee.gooslegoosle.entity.MagazineEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.repository.IMagazineRepository;
@@ -27,7 +27,7 @@ public class MagazineService {
 	@Value("${file.path}")
 	private String uploadFolder;
 	
-	public void writeMagazine(FileDTO file, UserEntity user) {
+	public void writeMagazine(MagazineFileDTO file, UserEntity user) {
 		UUID uuid = UUID.randomUUID();
 		
 		String filename = uuid + "_"+file.getFile().getOriginalFilename(); 

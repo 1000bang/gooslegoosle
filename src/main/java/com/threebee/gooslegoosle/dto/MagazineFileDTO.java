@@ -11,7 +11,7 @@ import com.threebee.gooslegoosle.entity.UserEntity;
 import lombok.Data;
 
 @Data
-public class FileDTO {
+public class MagazineFileDTO {
 
 	private MultipartFile file;
 	private String title;

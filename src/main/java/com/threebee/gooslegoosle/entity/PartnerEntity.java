@@ -18,12 +18,18 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class PartnerEntity {
 	
 	@Id 
@@ -38,11 +44,8 @@ public class PartnerEntity {
 //	@Column(nullable = false, length = 50)
 	private String address;
 //	
-	private int postCode;
-	
 	private String mainNumber;
 
-	private String extraAddress;
 
 	private String detailAddress;
 //	
@@ -52,6 +55,8 @@ public class PartnerEntity {
 	private String phoneNumber;
 	
 	private String status;
+	
+	private String businessCard;
 	
 	@ManyToOne(fetch = FetchType.EAGER )
 	@JoinColumn(name = "userId")

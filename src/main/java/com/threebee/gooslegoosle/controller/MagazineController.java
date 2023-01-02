@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.threebee.gooslegoosle.auth.PrincipalDetail;
-import com.threebee.gooslegoosle.dto.FileDTO;
+import com.threebee.gooslegoosle.dto.MagazineFileDTO;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.MagazineEntity;
 import com.threebee.gooslegoosle.service.MagazineService;
@@ -53,7 +53,7 @@ public class MagazineController {
 
 
 	@PostMapping("/magazine/save")
-	public String fetchSave(FileDTO file, 
+	public String fetchSave(MagazineFileDTO file, 
 			@AuthenticationPrincipal PrincipalDetail detail) {
 		System.out.println(detail);
 		System.out.println("file >>>>>>>"+ file.getFile().getOriginalFilename());

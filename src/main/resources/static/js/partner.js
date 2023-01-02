@@ -22,25 +22,18 @@ let index = {
 
 	addPartner: function() {
 
-		let id = $("#id").val();
-
-		let data = {
-
-			username: $("#username").val(),
-			email: $("#email").val(),
-			phoneNumber: $("#phoneNumber").val(),
-			password: $("#password").val(),
-			storeName: $("#storeName").val(),
-			address: $("#address").val(),
-			mainNumber: $("#mainNumber").val(),
-		}
+		var form = $('#uploadForm')[0];
+	
+    	var formData = new FormData(form);
 
 		$.ajax({
 			type: "POST",
 			url: `/api/partner/${id}`,
-			data: JSON.stringify(data),
-			contentType: "application/json; charset=UTF-8",
-			dataType: "json"
+			data: formDate,
+			dataType:'json',
+    		processData:false,
+    		contentType:false,
+			enctype:'multipart/form-data',
 
 		}).done(function(data, textStatus, xhr) {
 

@@ -1,13 +1,21 @@
 package com.threebee.gooslegoosle.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.threebee.gooslegoosle.dto.PartnerFileDTO;
 import com.threebee.gooslegoosle.entity.MenuEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
@@ -30,12 +38,29 @@ public class PartnerService {
 	private IMenuRepository iMenuRepository;
 
 	
+	@Value("${file.path}")
+	private String uploadFolder;
 
 	@Transactional
-	public void savePartner(PartnerEntity partner, UserEntity user) {
-		partner.setUser(user);
-		partner.setStatus("await");
-		iPartnerRepository.save(partner);
+	public void savePartner(PartnerFileDTO partner, UserEntity user) {
+		UUID uuid = UUID.randomUUID();
+		
+		String filename = uuid + "_"+partner.getBusinessCard().getOriginalFilename(); 
+		
+		Path imageFilePath = Paths.get(uploadFolder + filename );
+		try {
+			Files.write(imageFilePath, partner.getBusinessCard().getBytes());
+			
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		PartnerEntity partners = partner.toEntity(filename, user);
+		
+		partners.setStatus("await");
+		iPartnerRepository.save(partners);
 
 	}
 

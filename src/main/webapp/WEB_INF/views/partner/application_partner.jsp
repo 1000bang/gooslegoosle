@@ -16,7 +16,7 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<form class="was-validated">
+			<form class="was-validated"  id="uploadForm" action="/partner/${principal.user.id}" method="POST" enctype="multipart/form-data">
 				<input type="hidden" id="id" value="${principal.user.id}">
 				
 				<div id="partner-info" class="info-box">
@@ -46,13 +46,6 @@
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
 					</div>
 					
-					<div class="form-group">
-						<label for="password">비밀번호</label> <input type="password"
-							class="form-control" id="password" placeholder="비밀번호를 입력해주세요."
-							value="${principal.user.password}" name="password" required>
-						<div class="valid-feedback">완료 !</div>
-						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div>
 				</div> <!-- password end -->
 				<!-- partner info end ======== -->
 
@@ -60,8 +53,8 @@
 					<p class="info-title">가게 정보를 입력해주세요 !</p>
 					<p class="info">사업자 등록증 첨부</p>
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="customFile"
-							required="required" name="file"> <label
+						<input type="file" class="custom-file-input" id="businessCard"
+							required="required" name="businessCard"> <label
 							class="custom-file-label" for="customFile">파일을 선택해주세요.</label>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
@@ -80,11 +73,11 @@
 							<input type="text" id="postcode" placeholder="우편번호"
 								class="form-control">
 						</div>
-						<input type="text" class="form-control" id="address"
+						<input type="text" class="form-control" id="address" name="address"
 							placeholder="주소" value="${principal.user.address}"><br>
 						<input type="text" id="extraAddress" placeholder="참고항목"
 							class="form-control mb-3" value="${principal.user.extraAddress}">
-						<input class="form-control mb-4" type="text" id="detailAddress"
+						<input class="form-control mb-4" type="text" id="detailAddress"  name="detailAddress"
 							placeholder="상세주소" value="${principal.user.detailAddress}">
 						<input type="button" style="width: 15vh" onclick="daumPostcode()"
 							class="form-control btn btn-danger" value="주소 찾기" id="find--btn">
@@ -99,10 +92,10 @@
 					</div> <!-- mainNumber end -->
 				</div> 
 				<!-- store_info ======== -->
+				<button type="submit" class="btn btn-primary" id="">파트너
+					신청하기</button>
 			</form>
 			
-				<button type="button" class="btn btn-primary" id="add-partner-btn">파트너
-					신청하기</button>
 		<!-- <a href="/auth/partner/main_page"></a> -->	
 		</c:otherwise>
 	</c:choose>

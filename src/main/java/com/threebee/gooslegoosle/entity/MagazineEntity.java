@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.threebee.gooslegoosle.dto.FileDTO;
+import com.threebee.gooslegoosle.dto.MagazineFileDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

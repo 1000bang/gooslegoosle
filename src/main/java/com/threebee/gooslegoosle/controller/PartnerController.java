@@ -1,14 +1,20 @@
 package com.threebee.gooslegoosle.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.threebee.gooslegoosle.dto.PartnerFileDTO;
+import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
+import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.service.PartnerService;
+import com.threebee.gooslegoosle.service.UserService;
 
 @Controller
 public class PartnerController {
@@ -55,6 +61,23 @@ public class PartnerController {
 		model.addAttribute("partner", partner);
 		return "partner/add_menu";
 
+	}
+	
+	@Autowired
+	private UserService userService;
+	
+	@PostMapping("/partner/{id}")
+	public String savePartner( PartnerFileDTO partner,
+			@PathVariable int id){
+		
+			System.out.println("111111111");
+		    System.out.println(partner);
+		    UserEntity user = userService.findId(id);
+		
+		partnerService.savePartner(partner, user);
+		 
+		return "partner/main_partner";
+		
 	}
 
 }

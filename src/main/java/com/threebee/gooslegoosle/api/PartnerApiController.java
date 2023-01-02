@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.threebee.gooslegoosle.dto.PartnerFileDTO;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.MenuEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
@@ -26,17 +27,7 @@ public class PartnerApiController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/partner/{id}")
-	public ResponseDto<Integer> savePartner(@RequestBody PartnerEntity partnerEntity, 
-			@PathVariable int id){
-		    
-		UserEntity user = userService.findId(id);
-		
-		partnerService.savePartner(partnerEntity, user);
-		 
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
-		
-	}
+	
 	
 	
 	@PostMapping("/partner/add_store/{id}")

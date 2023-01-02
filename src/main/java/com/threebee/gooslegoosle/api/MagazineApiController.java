@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.threebee.gooslegoosle.auth.PrincipalDetail;
-import com.threebee.gooslegoosle.dto.FileDTO;
+import com.threebee.gooslegoosle.dto.MagazineFileDTO;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.MagazineEntity;
 import com.threebee.gooslegoosle.entity.NoticeEntity;
@@ -31,7 +31,7 @@ public class MagazineApiController {
 	
 	
 	@PostMapping("/api/magazine")
-	public ResponseDto<Integer> fetchSave(FileDTO file, 
+	public ResponseDto<Integer> fetchSave(MagazineFileDTO file, 
 			@AuthenticationPrincipal PrincipalDetail detail) {
 		System.out.println(detail);
 		System.out.println("file >>>>>>>"+ file.getFile().getOriginalFilename());
