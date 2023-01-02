@@ -49,7 +49,7 @@ public class NoticeEntity {
 	private int count;
 
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "userId") 
 	private UserEntity userId;
 

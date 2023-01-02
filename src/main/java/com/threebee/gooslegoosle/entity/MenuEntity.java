@@ -32,7 +32,7 @@ public class MenuEntity {
 	@Column(nullable = false)
 	private int menuPrice;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "storeId")
 	private PartnerEntity store;
 

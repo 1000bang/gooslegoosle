@@ -61,7 +61,7 @@ public class StoreEntity {
 	@ColumnDefault("FALSE")
 	private Boolean upload;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	

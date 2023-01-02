@@ -26,10 +26,10 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewService reviewService;
-	
-	
+
 	@Autowired
 	private IReviewRepository iReviewRepository;
+	
 	
 
 	@GetMapping({ "/reviews", "/review/search" })
@@ -57,7 +57,7 @@ public class ReviewController {
 		model.addAttribute("reviews", reviews);
 		return "review/review_page";
 	}
-	
+
 	@GetMapping("/review/{id}")
 	public String showReviewDetail(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
 		Optional<ReviewEntity> reviewEntity = iReviewRepository.findById(id);
@@ -66,15 +66,13 @@ public class ReviewController {
 		return "review/review_detail";
 	}
 
-	
 	@GetMapping("/review/review_save")
 	public String reviewSave() {
 		return "/review/review_save";
 	}
-	
+
 	@PostMapping("/api/reviews")
-	public String save(ReviewEntity review, 
-			@AuthenticationPrincipal PrincipalDetail detail) {
+	public String save(ReviewEntity review, @AuthenticationPrincipal PrincipalDetail detail) {
 
 		System.out.println(review);
 		reviewService.write(review, detail.getUser());
@@ -82,11 +80,11 @@ public class ReviewController {
 		return "redirect:/reviews";
 
 	}
-	
+
 	@GetMapping("/review/{reviewId}/review_update")
 	public String updateReview(@PathVariable int reviewId, Model model) {
 		model.addAttribute("review", reviewService.reviewDetail(reviewId));
 		return "/review/review_update";
 	}
-	
+
 }

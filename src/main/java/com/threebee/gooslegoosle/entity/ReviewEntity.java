@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,32 +30,34 @@ import lombok.ToString;
 @Builder
 @Entity
 public class ReviewEntity {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@NotNull
 	private int id;
-	
+
 //	@NotNull
 	@Column(nullable = false, length = 15)
 	private String reviewTitle;
-	
+
 	@Lob
 	private String reviewContent;
-	
+
 	@Column(nullable = false, length = 50)
 //	@NotNull
 	private String starScore;
-	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
 	private PartnerEntity store;
-	
-	
 
+	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@OrderBy("id desc")
+	@JsonIgnoreProperties({ "review"})
+	private List<ReviewReplyEntity> reviewReplys;
 
 }

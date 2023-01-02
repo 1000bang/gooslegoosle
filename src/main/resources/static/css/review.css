@@ -49,3 +49,14 @@
 .username{
 	flex-direction: row-reverse;
 }
+.rate {
+	display: flex;
+	justify-content: space-between;
+}
+.rate p{
+	font-size: 14px;
+}
+.rate span{
+	font-size: 16px;
+	font-weight: 600
+}

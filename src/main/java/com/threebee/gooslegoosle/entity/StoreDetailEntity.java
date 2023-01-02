@@ -5,15 +5,17 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import com.threebee.gooslegoosle.model.CategoryType;
 
 import lombok.Data;
 import lombok.ToString;
@@ -21,44 +23,35 @@ import lombok.ToString;
 @Data
 @ToString
 @Entity
-public class ReservationEntity {
+public class StoreDetailEntity {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	private int id;
+	
+	@Enumerated(EnumType.STRING) 
+	@NotNull
+	private CategoryType category; // KOREAN, JAPANESE, CHINESE, WESTERN
 
 	@NotNull
 	@Column(nullable = false)
-	private String date;
+	private String openTime;
+	
+	private String breakTime;
 	
 	@NotNull
 	@Column(nullable = false)
-	private String time;
+	private String closeTime;
 	
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@NotNull
 	@Column(nullable = false)
-	private int headCount;
-	
-	@Column(nullable = false, length = 13)
-	@NotNull
-	@Size(min = 12, max = 13)
-	private String phoneNumber;
-	
-	@Lob
-	private String request;
-	
-	@ManyToOne(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "userId")
-	private UserEntity user;
-	
-	@ManyToOne(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "storeId")
-	private PartnerEntity store;
-	
-	@OneToMany
-	@JoinColumn(name = "menuId")
+	@JoinColumn(name = "menuList")
 	private List<MenuEntity> menu;
 	
-
+	@OneToOne
+	@NotNull
+	private StoreEntity store;
+	
 }

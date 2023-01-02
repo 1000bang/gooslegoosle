@@ -44,6 +44,7 @@
 		}
 		.rate{
 			border-bottom: 1px solid #e6e6eb;
+			padding-bottom: 15px;
 			margin-bottom: 15px;
 			letter-spacing: -0.03em;
 		}
@@ -66,4 +67,12 @@
 		.like img{
 		width: 20px;
 		height: 20px;
+		}
+		.replyText{
+			padding-top: 10px;
+		}
+		.replyTextTitle{
+			padding-top: 10px;
+			padding-right: 10px;
+			border-right: 1px solid #ccc;
 		}
