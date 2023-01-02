@@ -27,7 +27,6 @@ public class UserService {
 		return iUserRepository.findbyUsername(username).orElseGet(() -> {
 			return new UserEntity();
 		});
-
 	}
 
 	

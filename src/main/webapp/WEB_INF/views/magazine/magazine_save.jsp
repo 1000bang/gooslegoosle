@@ -4,7 +4,7 @@
 
 <br><br>
 <div class="container">
-	<form action="/api/magazine" method="post" enctype="multipart/form-data">
+	<form action="/magazine/save" method="post" enctype="multipart/form-data">
 			<label for="thumb"> 썸네일  </label>
 			<div class="custom-file mb-2">
 			<input type="file" name="file" class="custom-file-input" id="customFile" required="required"> 
@@ -19,7 +19,7 @@
 			<textarea name="content" id="content" rows="5" class="form-control content">
 	</textarea>
 		</div>
-	<button type="submit" id="btn--save" class="btn btn-danger" style="float: right">글쓰기 완료</button>
+	<button type="submit" class="btn btn-danger" style="float: right">글쓰기 완료</button>
 
 	</form>
 	<br>

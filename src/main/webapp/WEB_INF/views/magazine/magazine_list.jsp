@@ -28,7 +28,7 @@
 		</div>
 		<div class="col-md-4 mb-5">
 			<a href="#!"><img class="card-img"
-				src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
+				src="http://localhost:9090/magazine/${mag.thumbnail}" alt="..."></a>
 
 		</div>
 	</div>

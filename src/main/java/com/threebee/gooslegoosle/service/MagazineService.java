@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.threebee.gooslegoosle.dto.FileDTO;
@@ -23,13 +24,15 @@ public class MagazineService {
 	@Autowired
 	IMagazineRepository magazineRepository;
 	
+	@Value("${file.path}")
+	private String uploadFolder;
 	
 	public void writeMagazine(FileDTO file, UserEntity user) {
 		UUID uuid = UUID.randomUUID();
 		
 		String filename = uuid + "_"+file.getFile().getOriginalFilename(); 
 		
-		Path imageFilePath = Paths.get("/Users/1000bang/workspace/soulfood/gooslegoosle/src/main/resources/static/images" + filename );
+		Path imageFilePath = Paths.get(uploadFolder + filename );
 		try {
 			Files.write(imageFilePath, file.getFile().getBytes());
 			
@@ -62,6 +65,10 @@ public class MagazineService {
 	public  List<MagazineEntity> findAllMagazine() {
 		 List<MagazineEntity> magazines = magazineRepository.findAll();
 		return magazines;
+	}
+
+	public void deleteMagazine(int id) {
+		magazineRepository.deleteById(id);
 	}
 	
 }

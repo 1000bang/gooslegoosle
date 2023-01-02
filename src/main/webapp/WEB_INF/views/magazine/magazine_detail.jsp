@@ -8,8 +8,8 @@
 
 	<button class="btn bg-secondary" onclick="history.back();">돌아가기</button>
 	<c:if test="${magazine.userId.id == principal.user.id}">
-		<a class="btn btn-warning" id="" href="/magazine/update/${magazine.id}">수정</a>
-		<a class="btn btn-danger" id="" href="/magazine/delete/${magazine.id}">삭제</a>
+		<a class="btn btn-warning" id="" href="/api/magazine/update/${magazine.id}">수정</a>
+		<a class="btn btn-danger" id="" href="/api/magazine/delete/${magazine.id}">삭제</a>
 	</c:if>
 	<br /> <br /> <br />
 
@@ -34,7 +34,6 @@
 	
 
 
-<script type="text/javascript" src="/js/notice.js">
 	
 </script>
 <%@ include file="../layout/footer.jsp"%>

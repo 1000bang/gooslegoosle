@@ -19,6 +19,8 @@ public class ReviewApiController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	
+	
 	@PutMapping("/api/review/{reviewId}")
 	public ResponseDto<Integer> updateReview(@PathVariable int reviewId, @RequestBody ReviewEntity review){
 		int result = reviewService.updateReview(reviewId, review);

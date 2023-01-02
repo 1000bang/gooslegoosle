@@ -27,13 +27,9 @@ public class PartnerService {
 	private IStoreRepository iStoreRepository;
 
 	@Autowired
-	private IUserRepository iUserRepository;
-
-	@Autowired
 	private IMenuRepository iMenuRepository;
 
-	@Autowired
-	private BCryptPasswordEncoder bEncoder;
+	
 
 	@Transactional
 	public void savePartner(PartnerEntity partner, UserEntity user) {
@@ -43,22 +39,26 @@ public class PartnerService {
 
 	}
 
+	@Transactional
 	public void saveStore(StoreEntity store, PartnerEntity partner) {
 		store.setPartner(partner);
 		iStoreRepository.save(store);
 
 	}
 
+	@Transactional
 	public PartnerEntity findStoreByUserId(int id) {
 		return iPartnerRepository.findByUserId(id);
 
 	}
 
+	@Transactional
 	public void saveMenu(MenuEntity menu, PartnerEntity partner) {
 		menu.setStore(partner);
 		iMenuRepository.save(menu);
 	}
 
+	@Transactional
 	public Page<PartnerEntity> getApplyList(Pageable page) {
 		return iPartnerRepository.findAll(page);
 
@@ -90,10 +90,13 @@ public class PartnerService {
 		editingStore.setStatus("deny");
 	}
 
+	@Transactional
 	public Page<PartnerEntity> findApprove(Pageable pageable) {
 		return iPartnerRepository.findApprove(pageable);
 	}
-
+	
+	
+	@Transactional
 	public PartnerEntity findStoreByStoreId(int id) {
 		return iPartnerRepository.findByStoreId(id);
 	}
