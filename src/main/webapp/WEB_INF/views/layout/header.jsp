@@ -32,72 +32,68 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
 
 </head>
 <body>
 	<div id="wrap">
-		<nav class="navbar navbar-expand-md navbar-dark header-color">
-			<a class="navbar-brand logo-text" href="/">구슬구슬</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#collapsibleNavbar">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
-				<ul class="navbar-nav">
+		<header id="header">
+
+			<div id="logo">
+				<a href="/"><img src="../images/logo.png" alt=""></a>
+			</div>
+			<div class="searchBox">
+				<button class="searchButton">
+					<img src="../images/search.png" alt="">
+				</button>
+				<input type="text" placeholder="음식 또는 식당명 입력">
+			</div>
+			<nav id="nav">
+				<ul>
 					<c:choose>
 						<c:when test="${empty principal}">
-
-							<li class="nav-item b-menu"><a class="nav-link"
-								href="/auth/login_form">로그인</a></li>
-							<li class="nav-item b-menu"><a class="nav-link"
-								href="/auth/join_form">회원가입</a></li>
+							<li><a href="/magazine">Magazine</a></li>
+							<li><a href="/notice">Notice</a></li>
+							<li><a href="#">Review</a></li>
+							<li><a href="/auth/login_form">Login</a></li>
+							<li><a href="/auth/join_form">Join</a></li>
 						</c:when>
 						<c:otherwise>
-
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">
-
-									<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
-									<li class="nav-item"><a class="nav-link" href="/magazine">매거진</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="/admin/manage">점주관리</a></li>
-									<li class="nav-item"><a class="nav-link" href="/admin/user">회원관리</a></li>
-									<li class="nav-item"><a class="nav-link" href="/logout">로그아웃
-									</a></li>
+									<li><a href="/magazine">Magazine</a></li>
+									<li><a href="/notice">Notice</a></li>
+									<li><a href="#">Review</a></li>
+									<li id="more--view"><a href="#">Manage</a>
+										<ul id="nave--moreview--item" style="padding-top: 0">
+                                    		<li><a class="dropdown-item" href="/admin/manage">Store M</a></li>
+                                    		<li><a class="dropdown-item" href="/admin/user">User M</a></li>
+                                		</ul> 
+									</li>
+									<!-- 회원 관리, 점주 관리 -->
+									<li><a href="/logout">LogOut</a></li>
 								</c:when>
 								<c:otherwise>
-									<li class="nav-item"><a class="nav-link" href="/magazine">매거진</a></li>
-									<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">리뷰 </a></li>
-									<c:if test="${principal.user.id eq '1'}">
-										<li class="nav-item"><a class="nav-link"
-											href="/api/user/${principal.user.id}">관리자 등록 </a></li>
-									</c:if>
-
-									<li class="nav-item dropdown"><a
-										class="nav-link dropdown-toggle" href="#" id="navbardrop"
-										data-toggle="dropdown"> 설정 </a>
-										<div class="dropdown-menu">
-											<a class="dropdown-item text-dark" href="/user/update">회원정보</a>
-											<a class="dropdown-item text-dark" href="/logout">로그아웃 </a> <a
-												class="dropdown-item text-dark" href="/reviews"> 내리뷰 관리 </a>
-										</div></li>
+									<li><a href="/magazine">Magazine</a></li>
+									<li><a href="/notice">Notice</a></li>
+									<li><a href="#">Review</a></li>
+									<li id="more--view"><a href="#">About Me</a>
+										<ul id="nave--moreview--item" style="padding-top: 0">
+                                    		<li><a class="dropdown-item" href="/user/update">Profile</a></li>
+                                    		<li><a class="dropdown-item" href="/user/update">My Review</a></li>
+                            				<li><a class="dropdown-item" href="/logout">LogOut</a></li>
+                                		</ul> 
+									</li>
+									<li><a href="/auth/partner/main_partner">Partner?</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:otherwise>
 					</c:choose>
-
-
-					<li class="nav-item"><c:choose>
-							<c:when test="${principal.user.role eq 'ADMIN'}">
-							</c:when>
-							<c:otherwise>
-								<a class="nav-link" href="/auth/partner/main_partner">우리매장 등록하기</a>
-							</c:otherwise>
-						</c:choose></li>
 				</ul>
-			</div>
-		</nav>
+			</nav>
+		</header>

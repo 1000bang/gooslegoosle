@@ -24,6 +24,14 @@ public class ReviewApiController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	@PostMapping("/api/review")
+	public ResponseDto<Integer> fetchSaveReview(@RequestBody ReviewEntity review, @AuthenticationPrincipal PrincipalDetail principalDetail){
+		int result = reviewService.write(review, principalDetail.getUser());
+		
+		return new ResponseDto<Integer>(HttpStatus.OK, result);
+	}
+	
+	
 	@PutMapping("/api/review/{reviewId}")
 	public ResponseDto<Integer> updateReview(@PathVariable int reviewId, @RequestBody ReviewEntity review){
 		int result = reviewService.updateReview(reviewId, review);

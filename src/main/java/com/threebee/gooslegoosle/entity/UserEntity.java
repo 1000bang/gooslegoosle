@@ -66,7 +66,7 @@ public class UserEntity {
 
 	private String extraAddress;
 
-	private String detailAddress;
+	private String detailAddress; 
 	@ColumnDefault("0")
 	private int warning;
 

@@ -47,7 +47,7 @@ public class ReviewEntity {
 //	@NotNull
 	private String starScore;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 
@@ -57,7 +57,7 @@ public class ReviewEntity {
 
 	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@OrderBy("id desc")
-	@JsonIgnoreProperties({ "review", "replyContent" })
+	@JsonIgnoreProperties({ "review"})
 	private List<ReviewReplyEntity> reviewReplys;
 
 }
