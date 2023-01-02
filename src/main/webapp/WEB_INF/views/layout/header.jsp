@@ -14,6 +14,7 @@
 <meta charset="UTF-8">
 
 <title>구슬구슬</title>
+<link rel="shortcut icon" href="/images/fav.png">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/review.css">
