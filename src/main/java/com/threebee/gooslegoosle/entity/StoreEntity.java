@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -61,8 +62,9 @@ public class StoreEntity {
 	@JoinColumn(name = "menuList")
 	private List<MenuEntity> menu;
 	
-	@Convert(converter = StringListConverter.class)
-	private List<String> storePics;
+//	@Convert(converter = StringListConverter.class)
+	@ElementCollection
+	private List<String> storePics = new ArrayList<>();
 	
 	@OneToOne
 	private PartnerEntity partner;
