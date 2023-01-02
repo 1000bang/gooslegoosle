@@ -21,6 +21,7 @@ public class StoreController {
 		StoreEntity detail = storeService.findStoreDetailByStoreId(id);
 		
 		model.addAttribute("storeDetail",detail);
+		System.out.println(">>>>>>>>>>>>>>:" + detail);
 		return "/store/detail";
 	}
 	

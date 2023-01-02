@@ -1,9 +1,7 @@
 package com.threebee.gooslegoosle.entity;
 
 import java.sql.Timestamp;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,14 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.threebee.gooslegoosle.dto.FileDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,13 +28,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class NoticeEntity {
+public class MagazineEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Size(min = 1, max = 20, message = "제목은 1자 이상 20자 미만으로 넣어주세요 ")
+	
 	@Column(nullable = false, length = 150)
 	private String title;
 
@@ -48,6 +44,8 @@ public class NoticeEntity {
 	@ColumnDefault("0") // @Todo 
 	private int count;
 
+	private String thumbnail;
+	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId") 
@@ -55,5 +53,5 @@ public class NoticeEntity {
 
 	@CreationTimestamp
 	private Timestamp createDate;
-
+	
 }

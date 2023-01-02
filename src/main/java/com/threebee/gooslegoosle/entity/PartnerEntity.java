@@ -53,11 +53,11 @@ public class PartnerEntity {
 	
 	private String status;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER )
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "menuList")
 	private List<MenuEntity> menu;
 

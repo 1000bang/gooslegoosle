@@ -6,7 +6,7 @@
 
 <br />
 <br />
-<input type="hidden" id="address" value="${storeDetail.store.address}"></input>
+<input type="hidden" id="address" value="${storeDetail.partner.address}"></input>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
@@ -15,16 +15,16 @@
 					src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
 				<div class="card-body">
 					<div class="small text-muted"># ${storeDetail.category}</div>
-					<h1 class="card-title h1">${storeDetail.store.storeName}</h1>
+					<h1 class="card-title h1">${storeDetail.partner.storeName}</h1>
 
 				</div>
 			</div>
 			<div class="card mb-4">
 				<div class="card-body">
 
-					<p class="card-text">주소 : ${storeDetail.store.address}
-						${storeDetail.store.extraAddress}</p>
-					<p class="card-text">대표번호 : ${storeDetail.store.phoneNumber}</p>
+					<p class="card-text">주소 : ${storeDetail.partner.address}
+						${storeDetail.partner.extraAddress}</p>
+					<p class="card-text">대표번호 : ${storeDetail.partner.phoneNumber}</p>
 
 					<c:forEach var="menu" items="${storeDetail.menu}">
 						<p class="card-text">${menu.menuName}</p>
@@ -65,8 +65,8 @@
 				<div class="card-header">지도</div>
 				<div class="card-body">
 					<div id="map" style="width: 100%; height: 350px;"></div>
-				<p class="card-text">주소 : ${storeDetail.store.address}
-						${storeDetail.store.extraAddress}</p>
+				<p class="card-text">주소 : ${storeDetail.partner.address}
+						${storeDetail.partner.extraAddress}</p>
 				
 				</div>
 			</div>
@@ -121,7 +121,7 @@
 							// 인포윈도우로 장소에 대한 설명을 표시합니다
 							var infowindow = new kakao.maps.InfoWindow(
 									{
-										content : '<div style="width:150px;text-align:center;padding:6px 0;">${storeDetail.store.storeName}</div>'
+										content : '<div style="width:150px;text-align:center;padding:6px 0;">${storeDetail.partner.storeName}</div>'
 									});
 							infowindow.open(map, marker);
 

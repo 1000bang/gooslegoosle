@@ -12,9 +12,9 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 	@Query(value = "SELECT "
 			+ "    * "
 			+ "FROM "
-			+ "    StoreDetailEntity "
+			+ "    StoreEntity "
 			+ "WHERE "
-			+ "    store_id = ?1 ", nativeQuery = true)
+			+ "   partner_id = ?1 ", nativeQuery = true)
 	Optional<StoreEntity> findStoreDetailById(int id);
 
 

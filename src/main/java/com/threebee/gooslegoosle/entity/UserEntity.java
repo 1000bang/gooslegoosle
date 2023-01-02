@@ -41,8 +41,10 @@ public class UserEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	
+	private String userId;
+	
 	@Column(nullable = false, length = 100, unique = true)
-
 	@NotNull
 	@Size(min = 2)
 	private String username;
@@ -72,9 +74,6 @@ public class UserEntity {
 	
 	@ColumnDefault("0")
 	private int warning;
-	
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<HeartEntity> hearts;
 
 	@Enumerated(EnumType.STRING)
 	private UserRole role; // user, admin, host

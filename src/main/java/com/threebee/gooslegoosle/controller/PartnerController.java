@@ -50,6 +50,7 @@ public class PartnerController {
 
 	@GetMapping("/partner/add_menu/{id}")
 	public String fetchAddMenu(@PathVariable int id, Model model) {
+		partnerService.setUpload(id);
 		PartnerEntity partner = partnerService.findStoreById(id);
 		model.addAttribute("partner", partner);
 		return "partner/add_menu";
