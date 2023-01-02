@@ -61,6 +61,7 @@
 								<c:when test="${principal.user.role eq 'ADMIN'}">
 
 									<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
+									<li class="nav-item"><a class="nav-link" href="/magazine">매거진</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="/admin/manage">점주관리</a></li>
 									<li class="nav-item"><a class="nav-link" href="/admin/user">회원관리</a></li>
@@ -68,9 +69,9 @@
 									</a></li>
 								</c:when>
 								<c:otherwise>
-									<li class="nav-item"><a class="nav-link" href="#">매거진</a></li>
+									<li class="nav-item"><a class="nav-link" href="/magazine">매거진</a></li>
 									<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">고객지원</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">리뷰 </a></li>
 									<c:if test="${principal.user.id eq '1'}">
 										<li class="nav-item"><a class="nav-link"
 											href="/api/user/${principal.user.id}">관리자 등록 </a></li>
@@ -82,7 +83,7 @@
 										<div class="dropdown-menu">
 											<a class="dropdown-item text-dark" href="/user/update">회원정보</a>
 											<a class="dropdown-item text-dark" href="/logout">로그아웃 </a> <a
-												class="dropdown-item text-dark" href="/reviews">리뷰</a>
+												class="dropdown-item text-dark" href="/reviews"> 내리뷰 관리 </a>
 										</div></li>
 								</c:otherwise>
 							</c:choose>
@@ -94,7 +95,7 @@
 							<c:when test="${principal.user.role eq 'ADMIN'}">
 							</c:when>
 							<c:otherwise>
-								<a class="nav-link" href="/auth/partner/main_page">우리매장 등록하기</a>
+								<a class="nav-link" href="/auth/partner/main_partner">우리매장 등록하기</a>
 							</c:otherwise>
 						</c:choose></li>
 				</ul>

@@ -3,6 +3,7 @@ package com.threebee.gooslegoosle.entity;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,6 +17,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.threebee.gooslegoosle.model.LoginType;
@@ -38,11 +40,11 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-
+	
+	
+	private String userId;
 	
 	@Column(nullable = false, length = 100, unique = true)
-
 	@NotNull
 	@Size(min = 2)
 	private String username;
@@ -69,6 +71,8 @@ public class UserEntity {
 	private String extraAddress;
 
 	private String detailAddress;
+	@ColumnDefault("0")
+	private int warning;
 
 	@Enumerated(EnumType.STRING)
 	private UserRole role; // user, admin, host

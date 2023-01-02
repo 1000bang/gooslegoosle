@@ -1,19 +1,22 @@
 package com.threebee.gooslegoosle.entity;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import lombok.Data;
 import lombok.ToString;
@@ -21,44 +24,45 @@ import lombok.ToString;
 @Data
 @ToString
 @Entity
-public class ReservationEntity {
+public class PartnerEntity {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
 	private int id;
+	
+	@NotNull
+	@Column(nullable = false)
+	private String storeName;
+	
+//	@Column(nullable = false, length = 50)
+	private String address;
+//	
+	private int postCode;
+	
+	private String mainNumber;
 
-	@NotNull
-	@Column(nullable = false)
-	private String date;
-	
-	@NotNull
-	@Column(nullable = false)
-	private String time;
-	
-	@NotNull
-	@Column(nullable = false)
-	private int headCount;
-	
+	private String extraAddress;
+
+	private String detailAddress;
+//	
 	@Column(nullable = false, length = 13)
 	@NotNull
-	@Size(min = 12, max = 13)
+	@Size(min = 12, max = 14)
 	private String phoneNumber;
 	
-	@Lob
-	private String request;
+	private String status;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER )
 	@JoinColumn(name = "userId")
 	private UserEntity user;
-	
-	@ManyToOne(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "storeId")
-	private PartnerEntity store;
-	
-	@OneToMany
-	@JoinColumn(name = "menuId")
+
+	@OneToMany(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "menuList")
 	private List<MenuEntity> menu;
+
+	@ColumnDefault("FALSE")
+    private Boolean upload;
 	
 
 }

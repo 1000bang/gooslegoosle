@@ -29,6 +29,8 @@ public class ReviewController {
 
 	@Autowired
 	private IReviewRepository iReviewRepository;
+	
+	
 
 	@GetMapping({ "/reviews", "/review/search" })
 	public String fetchShowReview(Model model, @RequestParam(required = false) String search,
@@ -57,10 +59,9 @@ public class ReviewController {
 	}
 
 	@GetMapping("/review/{id}")
-	public String showReviewDetail(@PathVariable int id, Model model,
-			@AuthenticationPrincipal PrincipalDetail principalDetail) {
+	public String showReviewDetail(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
 		Optional<ReviewEntity> reviewEntity = iReviewRepository.findById(id);
-
+		
 		model.addAttribute("reviews", reviewService.reviewDetail(id));
 		return "review/review_detail";
 	}

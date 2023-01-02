@@ -14,7 +14,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -31,37 +30,34 @@ import lombok.ToString;
 @Builder
 @Entity
 public class ReviewEntity {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@NotNull
 	private int id;
-	
+
 //	@NotNull
 	@Column(nullable = false, length = 15)
 	private String reviewTitle;
-	
+
 	@Lob
 	private String reviewContent;
-	
+
 	@Column(nullable = false, length = 50)
 //	@NotNull
 	private String starScore;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
-	private StoreEntity store;
-	
+	private PartnerEntity store;
+
 	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@OrderBy("id desc")
-	@JsonIgnoreProperties({"review", "replyContent"})
+	@JsonIgnoreProperties({ "review", "replyContent" })
 	private List<ReviewReplyEntity> reviewReplys;
-	
-	
-
 
 }

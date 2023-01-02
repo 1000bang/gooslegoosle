@@ -25,7 +25,7 @@ public class MenuEntity {
 	private int id;
 	
 	@NotNull
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String menuName;
 	
 	@NotNull
@@ -34,7 +34,7 @@ public class MenuEntity {
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "storeId")
-	private StoreEntity store;
+	private PartnerEntity store;
 
 	
 }

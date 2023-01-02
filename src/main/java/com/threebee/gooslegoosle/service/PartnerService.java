@@ -8,8 +8,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.threebee.gooslegoosle.entity.MenuEntity;
+import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.repository.IMenuRepository;
 import com.threebee.gooslegoosle.repository.IPartnerRepository;
 import com.threebee.gooslegoosle.repository.IStoreRepository;
 import com.threebee.gooslegoosle.repository.IUserRepository;
@@ -18,60 +21,87 @@ import com.threebee.gooslegoosle.repository.IUserRepository;
 public class PartnerService {
 
 	@Autowired
-	private IPartnerRepository partnerRepository;
+	private IPartnerRepository iPartnerRepository;
 
 	@Autowired
-	private IStoreRepository storeRepository;
+	private IStoreRepository iStoreRepository;
 
 	@Autowired
-	private IUserRepository userRepository;
-	
+	private IUserRepository iUserRepository;
+
+	@Autowired
+	private IMenuRepository iMenuRepository;
+
 	@Autowired
 	private BCryptPasswordEncoder bEncoder;
 
 	@Transactional
-	public void savePartner(StoreEntity store, UserEntity user) {
-		store.setUser(user);
-		store.setStatus("await");
-		partnerRepository.save(store);		
+	public void savePartner(PartnerEntity partner, UserEntity user) {
+		partner.setUser(user);
+		partner.setStatus("await");
+		iPartnerRepository.save(partner);
 
 	}
 
-	
-	
-	
-	public Page<StoreEntity> getApplyList(Pageable page) {
-		return partnerRepository.findAll(page);
-		
+	public void saveStore(StoreEntity store, PartnerEntity partner) {
+		store.setPartner(partner);
+		iStoreRepository.save(store);
+
 	}
 
+	public PartnerEntity findStoreByUserId(int id) {
+		return iPartnerRepository.findByUserId(id);
 
+	}
 
+	public void saveMenu(MenuEntity menu, PartnerEntity partner) {
+		menu.setStore(partner);
+		iMenuRepository.save(menu);
+	}
 
-	public StoreEntity findStore(int id) {
-		StoreEntity store = partnerRepository.findByID(id);
-		
-		return store;
+	public Page<PartnerEntity> getApplyList(Pageable page) {
+		return iPartnerRepository.findAll(page);
+
 	}
 
 	@Transactional
-	public void setApprove(StoreEntity store, UserEntity user) {
-	System.out.println("setapprove");
-		StoreEntity editingStore =  findStore(store.getId());
+	public PartnerEntity findStoreById(int id) {
+
+		PartnerEntity store = iPartnerRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
+		});
+
+		return store;
+
+	}
+
+	@Transactional
+	public void setApprove(PartnerEntity partner, UserEntity user) {
+		System.out.println("setapprove");
+		PartnerEntity editingStore = findStoreById(partner.getId());
 		editingStore.setUser(user);
 		editingStore.setStatus("approve");
-		System.out.println(">>>>store :" +editingStore);
-		
+
 	}
-	
-	
-
-
 
 	@Transactional
 	public void setDeny(int id) {
-		StoreEntity editingStore = findStore(id);
+		PartnerEntity editingStore = findStoreById(id);
 		editingStore.setStatus("deny");
-
 	}
+
+	public Page<PartnerEntity> findApprove(Pageable pageable) {
+		return iPartnerRepository.findApprove(pageable);
+	}
+
+	public PartnerEntity findStoreByStoreId(int id) {
+		return iPartnerRepository.findByStoreId(id);
+	}
+
+	@Transactional
+	public void setUpload(int id) {
+		PartnerEntity store = findStoreByStoreId(id);
+		store.setUpload(true);
+	}
+
 }
