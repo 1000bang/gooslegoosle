@@ -65,23 +65,26 @@
 							placeholder="식당 상호명을 입력해주세요." name="storeName" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div><!-- storeName end -->
-					
+					</div>
+					<!-- storeName end -->
+
 					<div class="form-group " id="address-wrap">
 						<label for="storename">주소</label>
 						<div class="">
 							<input type="text" id="postcode" placeholder="우편번호"
 								class="form-control">
 						</div>
-						<input type="text" class="form-control" id="address" name="address"
-							placeholder="주소" value="${principal.user.address}"><br>
+						<input type="text" class="form-control" id="address"
+							name="address" placeholder="주소" value="${principal.user.address}"><br>
 						<input type="text" id="extraAddress" placeholder="참고항목"
 							class="form-control mb-3" value="${principal.user.extraAddress}">
-						<input class="form-control mb-4" type="text" id="detailAddress"  name="detailAddress"
-							placeholder="상세주소" value="${principal.user.detailAddress}">
-						<input type="button" style="width: 15vh" onclick="daumPostcode()"
+						<input class="form-control mb-4" type="text" id="detailAddress"
+							name="detailAddress" placeholder="상세주소"
+							value="${principal.user.detailAddress}"> <input
+							type="button" style="width: 15vh" onclick="daumPostcode()"
 							class="form-control btn btn-danger" value="주소 찾기" id="find--btn">
-					</div> <!-- address end -->
+					</div>
+					<!-- address end -->
 
 					<div class="form-group">
 						<label for="mainNumber">식당 대표 전화번호</label> <input type="text"
@@ -89,8 +92,9 @@
 							placeholder="식당 대표 전화번호를 입력해주세요." name="mainNumber" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div> <!-- mainNumber end -->
-				</div> 
+					</div>
+					<!-- mainNumber end -->
+				</div>
 				<!-- store_info ======== -->
 				<button type="submit" class="btn btn-primary" id="">파트너
 					신청하기</button>

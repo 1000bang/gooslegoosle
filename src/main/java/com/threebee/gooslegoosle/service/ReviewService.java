@@ -41,7 +41,7 @@ public class ReviewService {
 	}
 
 	public int write(ReviewEntity review, UserEntity user) {
-		PartnerEntity partner = partnerService.findStoreById(1);
+		PartnerEntity partner = partnerService.findPartnerById(1);
 		review.setStore(partner);
 		review.setUser(user);
 		review.setStarScore("4");

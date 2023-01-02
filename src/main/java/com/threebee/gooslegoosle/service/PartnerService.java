@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
@@ -14,8 +17,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.threebee.gooslegoosle.dto.PartnerFileDTO;
+import com.threebee.gooslegoosle.dto.StoreFileDTO;
 import com.threebee.gooslegoosle.entity.MenuEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
@@ -65,9 +70,24 @@ public class PartnerService {
 	}
 
 	@Transactional
-	public void saveStore(StoreEntity store, PartnerEntity partner) {
-		store.setPartner(partner);
-		iStoreRepository.save(store);
+	public void saveStore(StoreFileDTO store, PartnerEntity partner) {
+		UUID uuid = UUID.randomUUID();
+		
+		List<String> filename = new ArrayList<>();
+		for (MultipartFile temp : store.getStorePics()) {
+			filename.add(uuid+"_"+temp.getOriginalFilename());
+			Path imageFilePath = Paths.get(uploadFolder + filename );
+			try {
+				Files.write(imageFilePath, temp.getBytes());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		StoreEntity stores = store.toEntity(filename, partner);
+		
+		
+		iStoreRepository.save(stores);
 
 	}
 
@@ -90,7 +110,7 @@ public class PartnerService {
 	}
 
 	@Transactional
-	public PartnerEntity findStoreById(int id) {
+	public PartnerEntity findPartnerById(int id) {
 
 		PartnerEntity store = iPartnerRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
@@ -103,7 +123,7 @@ public class PartnerService {
 	@Transactional
 	public void setApprove(PartnerEntity partner, UserEntity user) {
 		System.out.println("setapprove");
-		PartnerEntity editingStore = findStoreById(partner.getId());
+		PartnerEntity editingStore = findPartnerById(partner.getId());
 		editingStore.setUser(user);
 		editingStore.setStatus("approve");
 
@@ -111,7 +131,7 @@ public class PartnerService {
 
 	@Transactional
 	public void setDeny(int id) {
-		PartnerEntity editingStore = findStoreById(id);
+		PartnerEntity editingStore = findPartnerById(id);
 		editingStore.setStatus("deny");
 	}
 

@@ -26,27 +26,13 @@ public class PartnerApiController {
 	
 	@Autowired
 	private UserService userService;
-	
-	
-	
-	
-	@PostMapping("/partner/add_store/{id}")
-	public ResponseDto<Integer> saveStore(@RequestBody StoreEntity store, @PathVariable int id){
-		
-		PartnerEntity storeId = partnerService.findStoreById(id);
-		
-		partnerService.saveStore(store, storeId);
-		
-		return new ResponseDto<>(HttpStatus.OK, 1);
-		
-	}
-	
+
 
 	@PostMapping("/partner/add_menu/{id}")
 	public ResponseDto<Integer> saveMenu(@RequestBody MenuEntity menu, @PathVariable int id){
 		
 		System.out.println(menu+"----------------------------");
-		PartnerEntity partner = partnerService.findStoreById(id);
+		PartnerEntity partner = partnerService.findPartnerById(id);
 		
 		partnerService.saveMenu(menu, partner);
 

@@ -1,10 +1,12 @@
 package com.threebee.gooslegoosle.entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,14 +22,21 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.threebee.gooslegoosle.converter.StringListConverter;
 import com.threebee.gooslegoosle.model.CategoryType;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StoreEntity {
 	
 	@Id 
@@ -51,6 +60,9 @@ public class StoreEntity {
 	@OneToMany
 	@JoinColumn(name = "menuList")
 	private List<MenuEntity> menu;
+	
+	@Convert(converter = StringListConverter.class)
+	private List<String> storePics;
 	
 	@OneToOne
 	private PartnerEntity partner;

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/partner_header.jsp"%>
     <section id="store-apply">
-        <form action="" class="was-validated" id="store-info-bg">
+        <form action="/partner/add_store/${store.id}" class="was-validated" id="store-info-bg" method="post" enctype="multipart/form-data">
         <input type="hidden" id="storeId" value="${store.id}">
             <div id="store-info" class="info-box">
                 <p class="info-title">가게 영업 정보를 입력해주세요 !</p>
@@ -13,10 +13,17 @@
                     <div class="valid-feedback">완료 ! </div>
                     <div class="invalid-feedback">필수 입력 사항입니다.</div>
                 </div> <!-- storeName end -->
-                
+                <p class="info">사업장 사진</p>
+					<div class="custom-file">
+						<input type="file" multiple="multiple" class="custom-file-input" id="storePics"
+							required="required" name="storePics"> <label
+							class="custom-file-label" for="customFile">파일을 선택해주세요.</label>
+						<div class="valid-feedback">완료 !</div>
+						<div class="invalid-feedback">필수 입력 사항입니다.</div>
+					</div>
                 <div class="form-group">
                     <label for="category">카테고리</label>
-                    <select class="form-control" id="category_select" name="category_select">
+                    <select class="form-control" id="category_select" name="category">
                         <option value = "KOREAN" id = "01">한식</option>
                         <option value = "JAPANESE" id = "02">일식</option>
                         <option value = "CHINESE" id = "03">중식</option>
@@ -57,9 +64,9 @@
                 </div>
 
 		</div>
+        <button type="submit" class="btn btn-primary d-flex justify-content-center">다음 (메뉴 등록)</button>
         </form>
-        <button type="button" class="btn btn-primary d-flex justify-content-center" id="add-store-btn">다음 (메뉴 등록)</button>
     </section>
     
-    <script type="text/javascript" src="/js/partner.js"></script>
+  
 <%@ include file="../layout/footer.jsp"%>
