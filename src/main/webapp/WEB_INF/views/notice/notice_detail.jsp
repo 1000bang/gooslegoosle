@@ -4,7 +4,7 @@
 
 <br>
 <br>
-<div class="container">
+<div class="container" style="min-height: 630px">
 
 	<button class="btn bg-secondary" onclick="history.back();">돌아가기</button>
 	<c:if test="${notice.userId.id == principal.user.id}">
@@ -26,7 +26,7 @@
 	<br /> <br />
 	<div>${notice.content}</div>
 	<br /> <br /> <br />
-	
+</div>	
 
 
 <script type="text/javascript" src="/js/notice.js">

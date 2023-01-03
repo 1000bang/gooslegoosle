@@ -144,7 +144,9 @@
 				<c:forEach var="storeInfo" items="${store.content}">
          			<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
 				  <c:if test="${storeInfo.category eq 'KOREAN'}">
-				<li><a href="#"><img src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}" alt=""></a>
+				<li>
+				
+			<%-- 	<a href="#"><img src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}" alt=""></a> --%>
 					<p>${storeInfo.partner.storeName}</p> </li>
 				</c:if>
 				</c:forEach> 

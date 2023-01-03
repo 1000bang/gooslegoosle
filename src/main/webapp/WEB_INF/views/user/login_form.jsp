@@ -7,7 +7,7 @@
 
 <br>
 <br>
-<div class="container">
+<div class="container" style="min-height: 590px; padding-top: 50px;">
 	<form action="/auth/loginProc" method="Post">
 		<div class="form-group">
 			<label for="usernmae">이름 :</label> <input type="text"
@@ -42,7 +42,7 @@
 
 
 			<hr />
-			<span class="social-sign-in__title">간편 로그인</span> <br>
+			<span class="social-sign-in__title" style="text-decoration: underline;">간편 로그인</span> <br>
 			<div class="d-flex ">
 				<a
 					href="https://kauth.kakao.com/oauth/authorize?client_id=026e230aaa7d30f98a0e8cad9f217377&redirect_uri=http://localhost:9090/auth/callback&response_type=code&state=kakao">

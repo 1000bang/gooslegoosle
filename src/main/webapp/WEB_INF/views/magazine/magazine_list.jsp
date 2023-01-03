@@ -7,7 +7,7 @@
 <br />
 <br />
 
-<div class="container">
+<div class="container" style="min-height: 630px">
 	<h2 class="h2">매거진</h2>
 	<br />
 	

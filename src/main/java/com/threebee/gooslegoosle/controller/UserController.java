@@ -42,7 +42,6 @@ public class UserController {
 		Page<StoreEntity> store = storeService.findApprove(pageable);
 		System.out.println("is empty : "+ store.getContent().isEmpty());
 		System.out.println("size : "+ store.getContent().get(0).getImage().size());
-		System.out.println("store >>>" + store.getContent().get(0).getImage().get(0).getPostImageUrl());
 		model.addAttribute("store",store);
 		return "index";
 	}
