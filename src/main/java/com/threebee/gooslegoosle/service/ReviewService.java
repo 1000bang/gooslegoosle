@@ -1,11 +1,18 @@
 package com.threebee.gooslegoosle.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.threebee.gooslegoosle.dto.ReviewFileDto;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
 import com.threebee.gooslegoosle.entity.ReviewReplyEntity;
@@ -28,6 +35,9 @@ public class ReviewService {
 	@Autowired
 	private PartnerService partnerService;
 	
+	@Value("${file.path}")
+	private String uploadFolder;
+	
 	@Transactional
 	public Page<ReviewEntity> getReviewList(String search, Pageable pageable) {
 		return iReviewRepository.findByreviewContentContaining(search, pageable);
@@ -40,12 +50,22 @@ public class ReviewService {
 		});
 	}
 
-	public int write(ReviewEntity review, UserEntity user) {
+	public int write(ReviewFileDto file, ReviewEntity review, UserEntity user) {
+		UUID uuid = UUID.randomUUID();
+		String filename = uuid + "_" + file.getFile().getOriginalFilename();
+		Path imageFilePath = Paths.get(uploadFolder + filename);
+		try {
+			Files.write(imageFilePath, file.getFile().getBytes());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		review = file.toEntity(filename, review);
 		PartnerEntity partner = partnerService.findPartnerById(1);
-		review.setStore(partner);
 		review.setUser(user);
+		review.setStore(partner);
 		review.setStarScore("4");
 		 iReviewRepository.save(review);
+		 System.out.println("review>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + review);
 		return 1; 
 	}
 

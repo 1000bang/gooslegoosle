@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.threebee.gooslegoosle.auth.PrincipalDetail;
+import com.threebee.gooslegoosle.dto.ReviewFileDto;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
 import com.threebee.gooslegoosle.repository.IReviewRepository;
 import com.threebee.gooslegoosle.service.ReviewService;
@@ -98,10 +99,10 @@ public class ReviewController {
 	}
 
 	@PostMapping("/api/reviews")
-	public String save(ReviewEntity review, @AuthenticationPrincipal PrincipalDetail detail) {
+	public String save(ReviewFileDto file, ReviewEntity review, @AuthenticationPrincipal PrincipalDetail detail) {
 
-		System.out.println(review);
-		reviewService.write(review, detail.getUser());
+		System.out.println(">>>>>>>>>>>>>>>>>>>>" + file.getFile().getOriginalFilename());
+		reviewService.write(file,review, detail.getUser());
 
 		return "redirect:/reviews";
 

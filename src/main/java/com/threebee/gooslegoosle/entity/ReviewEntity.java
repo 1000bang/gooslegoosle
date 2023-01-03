@@ -46,6 +46,8 @@ public class ReviewEntity {
 	@Column(nullable = false, length = 50)
 //	@NotNull
 	private String starScore;
+	
+	private String thumbnail;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")

@@ -1,19 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 
 <div class="container" style="min-height: 675px">
-	<form action="/api/reviews" method="POST">
-	
-		<div class="form-group">
-		
-			<label for="title">Title</label> 
-			<input type="text" name="reviewTitle" id="reviewTitle" class="form-control">
+	<form action="/api/reviews" method="POST" enctype="multipart/form-data">
+		<label for="thumb" style="margin-top: 30px; font-weight: 600">썸네일</label>
+		<div class="custom-file mb-2">
+			<input type="file" name="file" class="custom-file-input"
+				id="customFile" required="required"> <label
+				class="custom-file-label" for="customFile">파일을 선택해주세요 </label>
 		</div>
 		<div class="form-group">
-			<label for="content">Content</label>
-			<textarea name="reviewContent" id="reviewContent" rows="5" class="form-control content"></textarea>
+
+			<label for="title" style="font-weight: 600">리뷰 제목</label> <input
+				type="text" name="reviewTitle" id="reviewTitle" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="content" style="font-weight: 600">리뷰 내용</label>
+			<textarea name="reviewContent" id="reviewContent" rows="5"
+				class="form-control content"></textarea>
 			<button type="submit" class="btn btn-primary" id="">글쓰기 완료</button>
-			</form>
+	</form>
 </div>
 </div>
 <script>
@@ -22,6 +29,16 @@
 		tabsize : 2,
 		height : 300
 	});
+</script>
+<script>
+	// Add the following code if you want the name of the file appear on select
+	$(".custom-file-input").on(
+			"change",
+			function() {
+				var fileName = $(this).val().split("\\").pop();
+				$(this).siblings(".custom-file-label").addClass("selected")
+						.html(fileName);
+			});
 </script>
 <script type="text/javascript" src="/js/review.js"></script>
 
