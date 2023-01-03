@@ -61,7 +61,7 @@ public class StoreEntity {
 	@Column(nullable = false)
 	private String closeTime;
 	
-	@OneToMany(cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "store", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({"store"})
 	private List<MenuEntity> menu;
 
