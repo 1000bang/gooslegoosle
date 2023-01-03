@@ -3,7 +3,7 @@
 
 
 <br><br>
-<div class="container">
+<div class="container" style="min-height: 630px">
 	<form action="">
 		<div class="form-group">
 			<label for="title">제목 </label> <input type="text" name="title" id="title" class="form-control">

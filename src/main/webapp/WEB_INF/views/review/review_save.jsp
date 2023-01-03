@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 
-<div class="container">
+<div class="container" style="min-height: 675px">
 	<form action="/api/reviews" method="POST">
 	
 		<div class="form-group">

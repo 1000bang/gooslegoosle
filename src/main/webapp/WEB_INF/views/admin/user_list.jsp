@@ -3,7 +3,7 @@
 
 
 <br><br>
-<div class="container">
+<div class="container" style="min-height: 630px">
 <h1 class="h2"> 회원관리  </h1>
 <br>
 	<table class="table table-hover">

@@ -8,7 +8,7 @@
 <br>
 <br>
 
-<div class="container">
+<div class="container" style="min-height: 558px">
 <h1 class="h2"> 공지사항 </h1>
 <br>
 	<table class="table table-hover">
