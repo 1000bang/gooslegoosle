@@ -17,7 +17,7 @@
 
 	</form>
 	<br>
-	<button type="button" id="btn--save" class="btn btn-danger" style="float: right">글쓰기 완료</button>
+	<button type="button" id="btn--save" class="btn" style="float: right; color: white; background-color: #63BFBC;">글쓰기 완료</button>
 <br><br><br><br>
 </div>
 

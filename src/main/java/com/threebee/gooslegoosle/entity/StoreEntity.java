@@ -67,6 +67,7 @@ public class StoreEntity {
 
 	
 	@OneToOne
+//	@JsonIgnoreProperties({"menu"})
 	private PartnerEntity partner;
 
 	

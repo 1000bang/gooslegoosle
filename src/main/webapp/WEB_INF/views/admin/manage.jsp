@@ -39,9 +39,9 @@
 								src="http://localhost:9090/magazine/${request.businessCard}" alt="..."></a>
 
 						</div>
-
-						<p>${request.address}</p>
-						<p>${request.phoneNumber}</p>
+						<p><strong>ID :</strong>  ${request.user.username}</p>
+						<p><strong>주소 :</strong> ${request.address}</p>
+						<p><strong>PN :</strong> ${request.phoneNumber}</p>
 						<c:if test="${request.status eq 'await'}">
 							<a class="btn btn-success mr-1"
 								href="/admin/manage/approve/${request.id}">승인</a>
@@ -54,6 +54,7 @@
 		</c:forEach>
 	</div>
 </div>
-
+<br/>
+<br/>
 <%@ include file="../layout/footer.jsp"%>
 

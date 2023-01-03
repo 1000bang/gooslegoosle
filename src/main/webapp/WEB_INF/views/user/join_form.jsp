@@ -21,24 +21,24 @@
 			 <input type="text"
 				class="form-control mr-1 " placeholder="Enter phoneNumber"
 				id="phoneNumber" value="010-9411-0807">
-				<input type="button" style="width: 10vh"
-					onclick="" class="form-control mr-1 btn btn-danger"
+				<input type="button" style="width: 10vh; color: white; background-color: #63BFBC;"
+					onclick="" class="form-control mr-1 btn"
 					value="sms전송">
 		</div>
 		<div class="form-group d-flex">
 			 <input type="text"
 				class="form-control mr-1 " placeholder="Enter code"
 				id="authCode" value="sms로 수신한 인증번호 5자리를 입력하세요">
-				<input type="button" style="width: 10vh"
-					onclick="" class="form-control mr-1 btn btn-danger"
+				<input type="button" style="width: 10vh; color: white; background-color: #63BFBC;" 
+					onclick="" class="form-control mr-1 btn"
 					value="인증하기">
 		</div>	
 		
 		<div class="form-group">
 			<div class="d-flex mb-1">
 				<input type="text" id="postcode" placeholder="우편번호"
-					class="form-control mr-1"> <input type="button" style="width: 15vh"
-					onclick="daumPostcode()" class="form-control mr-1 btn btn-danger"
+					class="form-control mr-1"> <input type="button" style="color: white; background-color: #63BFBC; width: 15vh"
+					onclick="daumPostcode()" class="form-control mr-1 btn"
 					value="우편번호 찾기">
 			</div>
 
@@ -59,10 +59,12 @@
 
 
 	</form>
+	<br/>
+	<br/>
 	<div class="input-group justify-content-end">
 
 		<button type="button" id="btn--save"
-			class="btn btn-danger align-self-end">signUp</button>
+			class="btn align-self-end" style="width:15vh; color: white; background-color: #63BFBC;">signUp</button>
 	</div>
 
 	<br>

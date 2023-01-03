@@ -21,6 +21,14 @@
 				class="form-control content"></textarea>
 			<button type="submit" class="btn btn-primary" id="">글쓰기 완료</button>
 	</form>
+			<label for="content">Content</label>
+			<textarea name="reviewContent" id="reviewContent" rows="5" class="form-control content"></textarea>
+			<br/>
+			<br/>
+			<button type="submit" class="btn" style="color: white; background-color: #63BFBC; float:right" id="">글쓰기 완료</button>
+			</form>
+			<br/>
+			<br/>
 </div>
 </div>
 <script>

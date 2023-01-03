@@ -9,8 +9,9 @@
 	
 <div class="container">
 <input type="hidden"  id='result' value="0"></input>
-<a type="label" onclick='count(${principal.user.id})'
-			class="btn btn-dark mb-4">회원정보 수정 </a>
+<div onclick='count(${principal.user.id})'
+			class="mb-4"><h2 class="h2">회원정보 수정 </h2></div>
+			
 	<form action="">
 			<input type="hidden" name="id" id="id" value = "${principal.user.id}"></input>
 		<div class="form-group">
@@ -34,8 +35,8 @@
 		<div class="form-group">
 			<div class="d-flex mb-1">
 				<input type="text" id="postcode" placeholder="우편번호"
-					class="form-control mr-1" value = "${principal.user.postCode}"> <input type="button" style="width: 15vh"
-					onclick="daumPostcode()" class="form-control mr-1 btn btn-danger"
+					class="form-control mr-1" value = "${principal.user.postCode}"> <input type="button" style="width: 15vh; color: white; background-color: #63BFBC;"
+					onclick="daumPostcode()" class="form-control mr-1 btn"
 					value="우편번호 찾기">
 			</div>
 
@@ -52,7 +53,7 @@
 <c:choose >
 <c:when test="${empty principal.user.loginType}">
 		<button type="button" id="btn--update"
-			class="btn btn-danger align-self-end"> update </button>
+			class="btn align-self-end" style="width:15vh; color: white; background-color: #63BFBC;"> update </button>
 	</c:when>
 	<c:otherwise>
 <label > 소셜 로그인 회원은 정보를 수정할 수 없습니다. </label>

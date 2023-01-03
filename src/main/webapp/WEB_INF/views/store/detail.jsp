@@ -12,7 +12,7 @@
 		<div class="col-lg-8">
 			<div class="card mb-4">
 				<a href="#!"><img class="card-img-top"
-					src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
+					src="http://localhost:9090/magazine/${storeDetail.image[0].postImageUrl}" alt="..."></a>
 				<div class="card-body">
 					<div class="small text-muted"># ${storeDetail.category}</div>
 					<h1 class="card-title h1">${storeDetail.partner.storeName}</h1>
@@ -23,7 +23,7 @@
 				<div class="card-body">
 
 					<p class="card-text">주소 : ${storeDetail.partner.address}
-						${storeDetail.partner.extraAddress}</p>
+						${storeDetail.partner.detailAddress}</p>
 					<p class="card-text">대표번호 : ${storeDetail.partner.phoneNumber}</p>
 
 					<c:forEach var="menu" items="${storeDetail.menu}">
@@ -66,7 +66,7 @@
 				<div class="card-body">
 					<div id="map" style="width: 100%; height: 350px;"></div>
 				<p class="card-text">주소 : ${storeDetail.partner.address}
-						${storeDetail.partner.extraAddress}</p>
+						${storeDetail.partner.detailAddress}</p>
 				
 				</div>
 			</div>

@@ -36,7 +36,7 @@
 
 <hr/>
 <c:if test="${principal.user.role eq 'ADMIN'}">
-<a type="button" class="btn btn-danger" href="/notice/board" style="float: right">글쓰기 </a>
+<a type="button" class="btn" href="/notice/board" style="float: right; color: white; background-color: #63BFBC;">글쓰기 </a>
 </c:if>
 </div>
 <br/>
