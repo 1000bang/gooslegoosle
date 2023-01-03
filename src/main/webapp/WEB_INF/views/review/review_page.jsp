@@ -14,14 +14,14 @@
 	<div class="container px-4 px-lg-5 mt-5">
 		<div class="d-flex justify-content-between m-2">
 		<div class="d-flex justify-content m-2">
-			<button class="btn btn-warning">
+			<button class="btn" style="color: white; background-color: #63BFBC;">
 				<a href="/review/review_save">리뷰 작성하기</a>
 			</button>
 		</div>
 		<div>
 			<form action="/review/search" method="get" class="form-inline">
 				<input class="form-control mr-1" type="text" placeholder="생각나는 음식 리뷰 검색" name="search" value="${search}">
-				<button type="submit" class="btn btn-warning">TITLE</button>
+				<button type="submit" class="btn" style="color: white; background-color: #63BFBC;">TITLE</button>
 			</form>
 			</div>
 		</div>

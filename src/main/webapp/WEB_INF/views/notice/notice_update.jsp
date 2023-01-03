@@ -35,7 +35,7 @@
 
 	</form>
 
-	<button type="button" id="btn--update" class="btn btn-success">글 수정하기 </button>
+	<button type="button" id="btn--update" class="btn" style="color: white; background-color: #63BFBC;">글 수정하기 </button>
 
 </div>
 

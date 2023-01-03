@@ -10,15 +10,18 @@
 				<p class="warning-msg">파트너 신청은 회원가입 이용바랍니다.</p>
 				<p class="warning-msg">소셜 로그인은 파트너 신청이 어렵습니다.</p>
 				<a href="/auth/login_form">
-				<button class="btn move--btn btn--mar">로그인 하러 가기</button></a> 
-				<a href="/auth/application_partner">
-				<button class="btn move--btn">회원가입 하러 가기</button></a>
+					<button class="btn move--btn btn--mar">로그인 하러 가기</button>
+				</a> <a href="/auth/application_partner">
+					<button class="btn move--btn">회원가입 하러 가기</button>
+				</a>
 			</div>
 		</c:when>
 		<c:otherwise>
-			<form class="was-validated"  id="uploadForm" action="/partner/${principal.user.id}" method="POST" enctype="multipart/form-data">
+			<form class="was-validated" id="uploadForm"
+				action="/partner/${principal.user.id}" method="POST"
+				enctype="multipart/form-data">
 				<input type="hidden" id="id" value="${principal.user.id}">
-				
+
 				<div id="partner-info" class="info-box">
 					<p class="info-title">사장님 정보를 입력해주세요 !</p>
 					<div class="form-group">
@@ -27,8 +30,9 @@
 							value="${principal.user.username}" name="username" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div> <!-- username end -->
-					
+					</div>
+					<!-- username end -->
+
 					<div class="form-group">
 						<label for="phoneNumber">휴대전화번호</label> <input type="text"
 							class="form-control" id="phoneNumber"
@@ -36,8 +40,9 @@
 							value="${principal.user.phoneNumber}" name="phoneNumber" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
-					</div><!-- phoneNumber end -->
-					
+					</div>
+					<!-- phoneNumber end -->
+
 					<div class="form-group">
 						<label for="email">이메일</label> <input type="email"
 							class="form-control" id="email" placeholder="이메일을 입력해주세요."
@@ -45,8 +50,9 @@
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
 					</div>
-					
-				</div> <!-- password end -->
+
+				</div>
+				<!-- password end -->
 				<!-- partner info end ======== -->
 
 				<div id="store-info" class="info-box">
@@ -70,19 +76,25 @@
 
 					<div class="form-group " id="address-wrap">
 						<label for="storename">주소</label>
-						<div class="">
-							<input type="text" id="postcode" name="postcode"  placeholder="우편번호"
-								class="form-control">
+
+
+						<div class="d-flex mb-1">
+							<input type="text" id="postcode" placeholder="우편번호"
+								class="form-control mr-1"> <input type="button"
+								style="width: 20vh; color: white; background-color: #63BFBC;"
+								onclick="daumPostcode()" class="form-control mr-1 btn"
+								value="주소 찾기 ">
 						</div>
+
+
+
 						<input type="text" class="form-control" id="address"
 							name="address" placeholder="주소" value="${principal.user.address}"><br>
 						<input type="text" id="extraAddress" placeholder="참고항목"
 							class="form-control mb-3" value="${principal.user.extraAddress}">
 						<input class="form-control mb-4" type="text" id="detailAddress"
 							name="detailAddress" placeholder="상세주소"
-							value="${principal.user.detailAddress}"> <input
-							type="button" style="width: 15vh" onclick="daumPostcode()"
-							class="form-control btn btn-danger" value="주소 찾기" id="find--btn">
+							value="${principal.user.detailAddress}">
 					</div>
 					<!-- address end -->
 
@@ -94,13 +106,21 @@
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
 					</div>
 					<!-- mainNumber end -->
+					
+					<br/>
+					<br/>
+					<div class="input-group justify-content-center">
+					
+						<button type="submit" class="btn"
+							style="width: 20vh; color: white; background-color: #63BFBC;">파트너
+							신청하기</button>
+					</div>
 				</div>
 				<!-- store_info ======== -->
-				<button type="submit" class="btn btn-primary" id="">파트너
-					신청하기</button>
+
 			</form>
-			
-		<!-- <a href="/auth/partner/main_page"></a> -->	
+
+			<!-- <a href="/auth/partner/main_page"></a> -->
 		</c:otherwise>
 	</c:choose>
 

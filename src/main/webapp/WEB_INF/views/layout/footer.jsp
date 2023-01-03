@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <footer id="footer">
             <div id="endLogo">
-                <a href=""><img src="../images/logo2.png" alt=""></a>
+                <a href=""><img src="/images/logo2.png" alt=""></a>
             </div>
             <div id="endAbout">
                 <ul class="aboutUl">

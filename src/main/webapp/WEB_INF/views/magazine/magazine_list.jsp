@@ -22,7 +22,7 @@
 					<p class="card-text" >${mag.content}</p>
 				</div>
 				<div class="card-footer">
-					<a class="btn btn-primary btn-sm" href="/magazine/detail/${mag.id}">More Info</a>
+					<a class="btn btn-sm" style="color: white; background-color: #63BFBC;" href="/magazine/detail/${mag.id}">More Info</a>
 				</div>
 			</div>
 		</div>
@@ -35,8 +35,8 @@
 	</c:forEach>
 	<hr />
 	<c:if test="${principal.user.role eq 'ADMIN'}">
-		<a type="button" class="btn btn-danger" href="/magazine/board"
-			style="float: right">글쓰기 </a>
+		<a type="button" class="btn" href="/magazine/board"
+			style="float: right; color: white; background-color: #63BFBC;">글쓰기 </a>
 	</c:if>
 
 	<br /> <br /> <br />
