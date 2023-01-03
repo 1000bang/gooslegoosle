@@ -3,7 +3,7 @@
 
 <%@ include file="../layout/partner_header.jsp"%>
 
-<section id="banner">
+<section id="banner" >
 	<div id="banner-wrap">
 		<div class="banner-in" id="banner-logo">
 			구슬구슬 파트너
@@ -20,5 +20,6 @@
 		</button>
 	</div>
 </section>
-
+<section style="width: 100%; min-height: 145px;">
+</section>
 <%@ include file="../layout/footer.jsp"%>

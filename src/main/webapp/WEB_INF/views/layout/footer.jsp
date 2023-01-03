@@ -22,8 +22,8 @@
                     <li class="snsImage"><a href="#"><img src="../images/youtube.jpg" alt=""></a></li>
                 </ul> -->
                 <div class="sns">
-                	<img src="../images/sns.png" alt="">
-                	<a class="instagram" href="https://www.instagram.com/bin__starr/"><img src="../images/insta.png" alt=""></a>
+                	<img src="/images/sns.png" alt="">
+                	<a class="instagram" href="https://www.instagram.com/bin__starr/"><img src="/images/insta.png" alt=""></a>
                 	<p>Click!!</p>
                 </div>
             </div>

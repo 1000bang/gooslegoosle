@@ -22,7 +22,7 @@
 				enctype="multipart/form-data">
 				<input type="hidden" id="id" value="${principal.user.id}">
 
-				<div id="partner-info" class="info-box">
+				<div id="partner-info" class="info-box" style="border: 1px solid #000; margin: 30px">
 					<p class="info-title">사장님 정보를 입력해주세요 !</p>
 					<div class="form-group">
 						<label for="username">이름</label> <input type="text"
@@ -55,7 +55,7 @@
 				<!-- password end -->
 				<!-- partner info end ======== -->
 
-				<div id="store-info" class="info-box">
+				<div id="store-info" class="info-box" style="border: 1px solid #000; margin: 30px">
 					<p class="info-title">가게 정보를 입력해주세요 !</p>
 					<p class="info">사업자 등록증 첨부</p>
 					<div class="custom-file">

@@ -9,12 +9,11 @@ html{
     background-size: cover;
     width: 100%;
     height: 600px;
-    position: absolute;
+    padding-top: 30px;
 }
 
 #banner-wrap{
     width: 95%;
-
     color: white;
     text-align: center;
     margin: 120px auto;
