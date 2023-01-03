@@ -18,6 +18,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -63,8 +65,8 @@ public class PartnerEntity {
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 
-	@OneToMany(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "menuList")
+	@OneToMany(
+			cascade = CascadeType.REMOVE)
 	private List<MenuEntity> menu;
 
 	@ColumnDefault("FALSE")

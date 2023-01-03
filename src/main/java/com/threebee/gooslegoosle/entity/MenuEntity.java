@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -34,6 +36,7 @@ public class MenuEntity {
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "storeId")
+	@JsonIgnoreProperties({"menu"})
 	private StoreEntity store;
 
 	

@@ -33,9 +33,7 @@ public class PartnerApiController {
 	
 	@PostMapping("/partner/add_menu/{id}")
 	public ResponseDto<Integer> saveMenu(@RequestBody MenuEntity menu, @PathVariable int id){
-		System.out.println("=======" +menu);
 		StoreEntity store = storeService.findStoreByStoreId(id);
-		System.out.println("=======" +store);
 		partnerService.saveMenu(menu, store);
 
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
