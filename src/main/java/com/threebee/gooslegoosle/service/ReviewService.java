@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
 import com.threebee.gooslegoosle.entity.ReviewReplyEntity;
-import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.repository.IReplyRepository;
 import com.threebee.gooslegoosle.repository.IReviewRepository;
@@ -33,6 +32,7 @@ public class ReviewService {
 	public Page<ReviewEntity> getReviewList(String search, Pageable pageable) {
 		return iReviewRepository.findByreviewContentContaining(search, pageable);
 	}
+
 
 	public Object reviewDetail(int id) {
 		return iReviewRepository.findById(id).orElseThrow(() -> {
@@ -96,6 +96,11 @@ public class ReviewService {
 			// TODO: handle exception
 		}
 		
+	}
+	
+	@Transactional
+	public Page<ReviewEntity> myReviewList(int id, Pageable pageable){
+		return iReviewRepository.myReviewList(id, pageable);
 	}
 
 

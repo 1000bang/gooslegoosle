@@ -46,7 +46,7 @@
 		<header id="header">
 
 			<div id="logo">
-				<a href="/"><img src="../images/logo.png" alt=""></a>
+				<a href="/"><img src="../images/logo2.png" alt=""></a>
 			</div>
 			<div class="searchBox">
 				<button class="searchButton">
@@ -60,7 +60,7 @@
 						<c:when test="${empty principal}">
 							<li><a href="/magazine">Magazine</a></li>
 							<li><a href="/notice">Notice</a></li>
-							<li><a href="#">Review</a></li>
+							<li><a href="/reviews">Review</a></li>
 							<li><a href="/auth/login_form">Login</a></li>
 							<li><a href="/auth/join_form">Join</a></li>
 						</c:when>
@@ -69,7 +69,7 @@
 								<c:when test="${principal.user.role eq 'ADMIN'}">
 									<li><a href="/magazine">Magazine</a></li>
 									<li><a href="/notice">Notice</a></li>
-									<li><a href="#">Review</a></li>
+									<li><a href="/reviews">Review</a></li>
 									<li id="more--view"><a href="#">Manage</a>
 										<ul id="nave--moreview--item" style="padding-top: 0">
                                     		<li><a class="dropdown-item" href="/admin/manage">Store M</a></li>
@@ -82,11 +82,11 @@
 								<c:otherwise>
 									<li><a href="/magazine">Magazine</a></li>
 									<li><a href="/notice">Notice</a></li>
-									<li><a href="#">Review</a></li>
+									<li><a href="/reviews">Review</a></li>
 									<li id="more--view"><a href="#">About Me</a>
 										<ul id="nave--moreview--item" style="padding-top: 0">
                                     		<li><a class="dropdown-item" href="/user/update">Profile</a></li>
-                                    		<li><a class="dropdown-item" href="/user/update">My Review</a></li>
+                                    		<li><a class="dropdown-item" href="/myReview">My Review</a></li>
                             				<li><a class="dropdown-item" href="/logout">LogOut</a></li>
                                 		</ul> 
 									</li>

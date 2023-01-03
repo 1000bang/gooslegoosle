@@ -19,11 +19,12 @@ html{
     text-align: center;
     margin: 120px auto;
 }
-#banner-logo{
+#banner-logo {
     font-size: 48px;
     font-weight: 900;
-    color: brown;
+    color: #52e4dc;
 }
+
 
 .b--text{
     font-size: 28px;
@@ -56,7 +57,7 @@ html{
 }
 
 #put-in-partner-btn:hover{
-    background-color: brown;
+    background-color: #63BFBC;
     color: white;
 }
 #put-in-partner-btn:hover > #btn-in-a{
