@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.csrf().disable();
 
-		http.authorizeHttpRequests().antMatchers("/auth/**", "/", "/js/**", "/images/**", "/css/**").permitAll()
+		http.authorizeHttpRequests().antMatchers("/auth/**", "/", "/js/**", "/images/**", "/css/**", "/magazine/**").permitAll()
 				.anyRequest().authenticated().and().formLogin().loginPage("/auth/login_form")
 				.loginProcessingUrl("/auth/loginProc")
 				.failureHandler(customAuthFailureHandler())// 이 요청이 오면 캐치해라

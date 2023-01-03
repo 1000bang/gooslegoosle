@@ -46,7 +46,8 @@ public class PartnerEntity {
 //	
 	private String mainNumber;
 
-
+	private String postcode;
+	
 	private String detailAddress;
 //	
 	@Column(nullable = false, length = 13)

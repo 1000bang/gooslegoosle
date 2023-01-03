@@ -109,7 +109,7 @@ let index = {
 
 		}).fail(function(error) {
 			console.log(error);
-			alert("메뉴 등록 실패" + error);
+			alert("메뉴 등록 실패" + error.responseJSON.message);
 		});
 
 	},

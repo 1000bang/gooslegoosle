@@ -135,33 +135,26 @@
 			</ul>
 		</div>
 	</div>
-	<c:forEach var="item" items="${store.content}">
-	<c:if test="${item.category eq 'KOREAN'}">
 	<div class="c-container">
 		<div class="title">
 			<h2>#한식</h2>
 		</div>
 		<div class="main-Content">
 			<ul class="food-slice">
-				<li><a href="#"><img src="../images/c-food/j-1.jpg" alt=""></a>
-					<p>란주칼면</p></li>
-				<li><a href="#"><img src="../images/c-food/j-2.jpg" alt=""></a>
-					<p>송죽장</p></li>
-				<li><a href="#"><img src="../images/c-food/j-3.jpg" alt=""></a>
-					<p>마담밍</p></li>
-				<li><a href="#"><img src="../images/c-food/j-4.jpg" alt=""></a>
-					<p>오향가</p></li>
-				<li><a href="#"><img src="../images/c-food/j-5.jpg" alt=""></a>
-					<p>안동장</p></li>
-				<!-- <li>
-                            <a href="#"><img src="./img/c-food/j-6.jpg" alt=""></a>
-                            <p>대관원</p>
-                        </li> -->
+				<c:forEach var="storeInfo" items="${store.content}">
+         			<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
+				  <c:if test="${storeInfo.category eq 'KOREAN'}">
+				<li><a href="#"><img src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}" alt=""></a>
+					<p>${storeInfo.partner.storeName}</p> </li>
+				</c:if>
+				</c:forEach> 
+				
+				
+			
 
 			</ul>
 		</div>
 	</div>
-</c:if></c:forEach>
 </article>
 <br />
 <br />

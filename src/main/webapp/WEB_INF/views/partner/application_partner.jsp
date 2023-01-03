@@ -71,7 +71,7 @@
 					<div class="form-group " id="address-wrap">
 						<label for="storename">주소</label>
 						<div class="">
-							<input type="text" id="postcode" placeholder="우편번호"
+							<input type="text" id="postcode" name="postcode"  placeholder="우편번호"
 								class="form-control">
 						</div>
 						<input type="text" class="form-control" id="address"
