@@ -7,11 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.threebee.gooslegoosle.dto.PartnerFileDTO;
 import com.threebee.gooslegoosle.dto.ResponseDto;
+import com.threebee.gooslegoosle.dto.StoreFileDTO;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
+import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.UserService;
@@ -57,7 +60,7 @@ public class PartnerController {
 	@GetMapping("/partner/add_menu/{id}")
 	public String fetchAddMenu(@PathVariable int id, Model model) {
 		partnerService.setUpload(id);
-		PartnerEntity partner = partnerService.findStoreById(id);
+		PartnerEntity partner = partnerService.findPartnerById(id);
 		model.addAttribute("partner", partner);
 		return "partner/add_menu";
 
@@ -79,5 +82,7 @@ public class PartnerController {
 		return "partner/main_partner";
 		
 	}
+	
+
 
 }

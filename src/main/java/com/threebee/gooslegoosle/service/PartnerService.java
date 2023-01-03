@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
@@ -12,28 +14,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.threebee.gooslegoosle.dto.PartnerFileDTO;
+import com.threebee.gooslegoosle.dto.StoreFileDTO;
+import com.threebee.gooslegoosle.entity.ImageEntity;
 import com.threebee.gooslegoosle.entity.MenuEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.repository.IImageReopository;
 import com.threebee.gooslegoosle.repository.IMenuRepository;
 import com.threebee.gooslegoosle.repository.IPartnerRepository;
 import com.threebee.gooslegoosle.repository.IStoreRepository;
-import com.threebee.gooslegoosle.repository.IUserRepository;
 
 @Service
 public class PartnerService {
 
 	@Autowired
 	private IPartnerRepository iPartnerRepository;
-
-	@Autowired
-	private IStoreRepository iStoreRepository;
-
+	
 	@Autowired
 	private IMenuRepository iMenuRepository;
 
@@ -64,12 +65,7 @@ public class PartnerService {
 
 	}
 
-	@Transactional
-	public void saveStore(StoreEntity store, PartnerEntity partner) {
-		store.setPartner(partner);
-		iStoreRepository.save(store);
-
-	}
+	
 
 	@Transactional
 	public PartnerEntity findStoreByUserId(int id) {
@@ -78,8 +74,8 @@ public class PartnerService {
 	}
 
 	@Transactional
-	public void saveMenu(MenuEntity menu, PartnerEntity partner) {
-		menu.setStore(partner);
+	public void saveMenu(MenuEntity menu, StoreEntity store) {
+		menu.setStore(store);
 		iMenuRepository.save(menu);
 	}
 
@@ -90,20 +86,20 @@ public class PartnerService {
 	}
 
 	@Transactional
-	public PartnerEntity findStoreById(int id) {
+	public PartnerEntity findPartnerById(int id) {
 
-		PartnerEntity store = iPartnerRepository.findById(id).orElseThrow(() -> {
+		PartnerEntity partner = iPartnerRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});
 
-		return store;
+		return partner;
 
 	}
 
 	@Transactional
 	public void setApprove(PartnerEntity partner, UserEntity user) {
 		System.out.println("setapprove");
-		PartnerEntity editingStore = findStoreById(partner.getId());
+		PartnerEntity editingStore = findPartnerById(partner.getId());
 		editingStore.setUser(user);
 		editingStore.setStatus("approve");
 
@@ -111,7 +107,7 @@ public class PartnerService {
 
 	@Transactional
 	public void setDeny(int id) {
-		PartnerEntity editingStore = findStoreById(id);
+		PartnerEntity editingStore = findPartnerById(id);
 		editingStore.setStatus("deny");
 	}
 

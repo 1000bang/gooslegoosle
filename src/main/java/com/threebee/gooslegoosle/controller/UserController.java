@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.threebee.gooslegoosle.entity.PartnerEntity;
+import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.GoogleLogin;
 import com.threebee.gooslegoosle.model.KakaoLogin;
 import com.threebee.gooslegoosle.model.NaverLogin;
 import com.threebee.gooslegoosle.model.SocialLogin;
 import com.threebee.gooslegoosle.service.PartnerService;
+import com.threebee.gooslegoosle.service.StoreService;
 import com.threebee.gooslegoosle.service.UserService;
 
 @Controller
@@ -31,10 +33,16 @@ public class UserController {
 	@Autowired
 	PartnerService partnerService;
 	
+	@Autowired
+	StoreService storeService;
+	
+	
 	@GetMapping({ "", "/", "index" })
 	public String fetchIndex(Model model, @PageableDefault(size = 6, sort = "id", direction = Direction.DESC) Pageable pageable) {
-		Page<PartnerEntity> store = partnerService.findApprove(pageable);
-		
+		Page<StoreEntity> store = storeService.findApprove(pageable);
+		System.out.println("is empty : "+ store.getContent().isEmpty());
+		System.out.println("size : "+ store.getContent().get(0).getImage().size());
+		System.out.println("store >>>" + store.getContent().get(0).getImage().get(0).getPostImageUrl());
 		model.addAttribute("store",store);
 		return "index";
 	}

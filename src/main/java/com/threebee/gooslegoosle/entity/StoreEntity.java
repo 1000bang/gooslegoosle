@@ -1,10 +1,15 @@
 package com.threebee.gooslegoosle.entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,14 +25,22 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.threebee.gooslegoosle.converter.StringListConverter;
 import com.threebee.gooslegoosle.model.CategoryType;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StoreEntity {
 	
 	@Id 
@@ -48,9 +61,10 @@ public class StoreEntity {
 	@Column(nullable = false)
 	private String closeTime;
 	
-	@OneToMany
-	@JoinColumn(name = "menuList")
+	@OneToMany(cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({"store"})
 	private List<MenuEntity> menu;
+
 	
 	@OneToOne
 	private PartnerEntity partner;
@@ -61,11 +75,14 @@ public class StoreEntity {
 	@ColumnDefault("FALSE")
 	private Boolean upload;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private UserEntity user;
 	
 	//  이미지 엔티티 넣어야함 
+	@OneToMany(mappedBy = "store", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({"store"})
+	private List<ImageEntity> image;
 	
-
+	
 }
