@@ -1,13 +1,13 @@
 package com.threebee.gooslegoosle.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.threebee.gooslegoosle.entity.MagazineEntity;
+import com.threebee.gooslegoosle.entity.ImageEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
-import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.CategoryType;
 
 import lombok.Data;
@@ -22,17 +22,19 @@ public class StoreFileDTO {
 	private PartnerEntity partner;
 	
 	
-	public StoreEntity toEntity(List<String> postImageUrl, PartnerEntity partner) {
+	
+	public StoreEntity toEntity(PartnerEntity partner) {
 		return StoreEntity.builder()
-				.storePics(postImageUrl)
 				.category(category)
 				.breakTime(breakTime)
 				.closeTime(closeTime)
 				.openTime(openTime)
 				.partner(partner)
 				.user(partner.getUser())
-				.build()
-				;
+				.image(null)
+				.build();
+	
+			
 				
 	}
 	

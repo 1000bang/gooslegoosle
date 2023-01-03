@@ -15,6 +15,7 @@ import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.service.PartnerService;
+import com.threebee.gooslegoosle.service.StoreService;
 import com.threebee.gooslegoosle.service.UserService;
 
 @RestController
@@ -26,17 +27,18 @@ public class PartnerApiController {
 	
 	@Autowired
 	private UserService userService;
-
-
+	
+	@Autowired
+	private StoreService storeService;
+	
 	@PostMapping("/partner/add_menu/{id}")
 	public ResponseDto<Integer> saveMenu(@RequestBody MenuEntity menu, @PathVariable int id){
-		
-		System.out.println(menu+"----------------------------");
-		PartnerEntity partner = partnerService.findPartnerById(id);
-		
-		partnerService.saveMenu(menu, partner);
+		System.out.println("=======" +menu);
+		StoreEntity store = storeService.findStoreByStoreId(id);
+		System.out.println("=======" +store);
+		partnerService.saveMenu(menu, store);
 
-		return new ResponseDto<>(HttpStatus.OK, 1);
+		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 		
 	}
 	

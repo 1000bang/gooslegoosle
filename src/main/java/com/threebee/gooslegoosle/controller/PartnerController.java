@@ -83,16 +83,6 @@ public class PartnerController {
 		
 	}
 	
-	@PostMapping("/partner/add_store/{id}")
-	public String saveStore(StoreFileDTO store, @PathVariable int id){
-		
-		System.out.println("store>>>>>>" +store);
-		PartnerEntity partner = partnerService.findPartnerById(id);
-		System.out.println("partner>>>>>"+partner);
-		partnerService.saveStore(store, partner);
-		
-		return "partner/add_menu";
-		
-	}
+
 
 }
