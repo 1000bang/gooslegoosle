@@ -21,7 +21,7 @@
 			<textarea name="reviewContent" id="reviewContent" rows="5" class="form-control content">${review.reviewContent}</textarea>
 		</div>
 	</form>
-	<button type="button" class="btn btn-primary" id="update">글 수정하기</button>
+	<button type="button" class="btn" style="color: white; background-color: #63BFBC;" id="update">글 수정하기</button>
 </div>
 
 <script>

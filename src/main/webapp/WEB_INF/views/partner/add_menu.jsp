@@ -22,12 +22,15 @@
 				<div class="invalid-feedback">필수 입력 사항입니다.</div>
 			</div>
 		</div>
+		<div class="input-group d-flex flex-column justify-content-center">
+		<div class="d-flex justify-content-center">
 		<button type="button"
-			class="btn btn-primary d-flex justify-content-center"
-			id="add-menu-btn">메뉴 추가 등록</button>
-		<button type="button"
-			class="btn btn-primary d-flex justify-content-center"
-			id="add-store-menu-btn" >가게 등록하기</button>
+			class="btn" style="width:20vh; color: white; background-color: #63BFBC;"
+			id="add-menu-btn">메뉴 추가 등록</button></div> <br/>
+		<div class="d-flex justify-content-center"><button type="button"
+			class="btn" style="width:20vh; color: white; background-color: #63BFBC;"
+			id="add-store-menu-btn" >가게 등록하기</button></div>
+		</div>
 	</form>
 
 

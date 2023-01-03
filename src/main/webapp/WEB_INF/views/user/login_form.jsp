@@ -37,8 +37,8 @@
 
 		<div class="d-flex flex-column align-items-center">
 
-			<button type="submit" id="" class="btn btn-danger"
-				style="width: 30vh; height: 7vh">Log-in</button>
+			<button type="submit" id="" class="btn"
+				style="width: 30vh; height: 5vh; color: white; background-color: #63BFBC;">Log-in</button>
 
 
 			<hr />
@@ -63,7 +63,7 @@
 					href="https://accounts.google.com/o/oauth2/v2/auth?client_id=581731462324-vd9i5jd12s0j4d97jcv6n57l1nf2suik.apps.googleusercontent.com&redirect_uri=http://localhost:9090/auth/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email&state=google">
 
 					<img class="m-2"
-					style="border: 1px solid #555; border-radius: 100px; -moz-border-radius: 100px; -khtml-border-radius: 100px; -webkit-border-radius: 100px; width: 10vh; height: 10vh;"
+					style="border: 3px solid #555; border-radius: 100px; -moz-border-radius: 100px; -khtml-border-radius: 100px; -webkit-border-radius: 100px; border-color: red blue green transparent;  width: 10vh; height: 10vh;"
 					alt="구글 로그인 " src="/images/social/google.png">
 				</a>
 			</div>

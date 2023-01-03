@@ -64,7 +64,9 @@
                 </div>
 
 		</div>
-        <button type="submit" class="btn btn-primary d-flex justify-content-center">다음 (메뉴 등록)</button>
+        <button type="submit" class="btn" style="color: white; background-color: #63BFBC; float: right">다음 (메뉴 등록)</button>
+       	<br/>
+       	<br/>
         </form>
     </section>
     

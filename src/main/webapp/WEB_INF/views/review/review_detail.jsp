@@ -9,8 +9,8 @@
 글 번호 :
 <span><i>${reviews.getId() + 100}</i></span>
 <c:if test="${reviews.user.id == principal.user.id}">
-	<a class="btn btn-warning" id="" href="/review/${reviews.id}/review_update">수정하기</a>
-	<button class="btn btn-danger" id="reviewDelete">삭제하기</button>
+	<a class="btn btn-outline-warning" id="" href="/review/${reviews.id}/review_update">수정하기</a>
+	<button class="btn btn-outline-danger" id="reviewDelete">삭제하기</button>
 </c:if>
 <div class="detail-body">
 	<div id="review-profile">
@@ -34,7 +34,7 @@
 				<textarea rows="1" class="form-control" id="replyContent"></textarea>
 			</div>
 			<div class="card-footer">
-				<button class="btn btn-primary" id="replySave">등록</button>
+				<button class="btn" style="color: white; background-color: #63BFBC;" id="replySave">등록</button>
 			</div>
 		</div>
 		<br>

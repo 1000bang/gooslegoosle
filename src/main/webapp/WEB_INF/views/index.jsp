@@ -142,15 +142,23 @@
 		<div class="main-Content">
 			<ul class="food-slice">
 				<c:forEach var="storeInfo" items="${store.content}">
-         			<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
-				  <c:if test="${storeInfo.category eq 'KOREAN'}">
-				<li><a href="#"><img src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}" alt=""></a>
-					<p>${storeInfo.partner.storeName}</p> </li>
-				</c:if>
-				</c:forEach> 
-				
-				
-			
+					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
+					<c:if test="${storeInfo.category eq 'KOREAN'}">
+						<li><c:choose>
+								<c:when test="${storeInfo.image[0] eq null}"></c:when>
+								<c:otherwise>
+									<a href="/store/${storeInfo.id}"> <img
+										src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+										alt="">
+									</a>
+									<p>${storeInfo.partner.storeName}</p>
+								</c:otherwise>
+							</c:choose></li>
+					</c:if>
+				</c:forEach>
+
+
+
 
 			</ul>
 		</div>

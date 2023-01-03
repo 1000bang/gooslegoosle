@@ -6,10 +6,10 @@
 <br>
 <div class="container">
 
-	<button class="btn bg-secondary" onclick="history.back();">돌아가기</button>
+	<button class="btn btn-outline-secondary" onclick="history.back();">돌아가기</button>
 	<c:if test="${magazine.userId.id == principal.user.id}">
-		<a class="btn btn-warning" id="" href="/api/magazine/update/${magazine.id}">수정</a>
-		<a class="btn btn-danger" id="" href="/api/magazine/delete/${magazine.id}">삭제</a>
+		<a class="btn btn-outline-warning" id="" href="/api/magazine/update/${magazine.id}">수정</a>
+		<a class="btn btn-outline-danger" id="" href="/api/magazine/delete/${magazine.id}">삭제</a>
 	</c:if>
 	<br /> <br /> <br />
 
