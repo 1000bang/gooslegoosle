@@ -41,6 +41,11 @@
 				</button>
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="/">구슬구슬</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">광고상품</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">고객지원</a></li>
+						
 						<c:choose>
 							<c:when test="${empty principal}">
 								<li class="nav-item b-menu"><a class="nav-link"
@@ -49,15 +54,12 @@
 									href="/partner/application_partner">파트너신청하기</a></li>
 							</c:when>
 							<c:otherwise>
-							<li class="nav-item"><a class="nav-link" href="/partner/add_store/${principal.user.id}">가게 등록</a></li>
-
-								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃 </a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/partner/add_store/${principal.user.id}">가게 등록</a></li>
+								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃
+								</a></li>
 							</c:otherwise>
 						</c:choose>
-						<li class="nav-item"><a class="nav-link" href="#">광고상품</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">고객지원</a></li>
-						<li class="nav-item"><a class="nav-link" href="/">구슬구슬</a></li>
 					</ul>
 				</div>
 			</nav>

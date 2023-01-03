@@ -57,6 +57,32 @@ public class ReviewController {
 		model.addAttribute("reviews", reviews);
 		return "review/review_page";
 	}
+	
+	@GetMapping("/myReview")
+	public String fetchShowMyReview(Model model,
+			@PageableDefault(size = 100, sort = "id", direction = Direction.ASC) Pageable pageable,
+			@AuthenticationPrincipal PrincipalDetail detail) {
+		Page<ReviewEntity> reviews = reviewService.myReviewList(detail.getUser().getId(), pageable);
+		
+		int pageBlock = 2;
+		int nowPage = reviews.getPageable().getPageNumber() + 1;
+		int startPage = Math.max(nowPage - pageBlock, 1);
+		int endPage = Math.min(nowPage + pageBlock, reviews.getTotalPages());
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPage; i <= endPage; i++) {
+			pageNumbers.add(i);
+		}
+		
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("reviews", reviews);
+		
+
+		return "review/my_review";
+	}
 
 	@GetMapping("/review/{id}")
 	public String showReviewDetail(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
@@ -86,5 +112,7 @@ public class ReviewController {
 		model.addAttribute("review", reviewService.reviewDetail(reviewId));
 		return "/review/review_update";
 	}
+	
+	
 
 }

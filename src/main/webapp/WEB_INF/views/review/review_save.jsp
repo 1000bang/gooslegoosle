@@ -15,7 +15,7 @@
 			<button type="submit" class="btn btn-primary" id="">글쓰기 완료</button>
 			</form>
 </div>
-
+</div>
 <script>
 	$('.content').summernote({
 		placeholder : '내용을 입력해주세요',
@@ -24,4 +24,6 @@
 	});
 </script>
 <script type="text/javascript" src="/js/review.js"></script>
+
 <%@include file="../layout/footer.jsp"%>
+

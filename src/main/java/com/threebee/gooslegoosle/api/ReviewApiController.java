@@ -33,26 +33,26 @@ public class ReviewApiController {
 	
 	
 	@PutMapping("/api/review/{reviewId}")
-	public ResponseDto<Integer> updateReview(@PathVariable int reviewId, @RequestBody ReviewEntity review){
+	public ResponseDto<Integer> fetchUpdateReview(@PathVariable int reviewId, @RequestBody ReviewEntity review){
 		int result = reviewService.updateReview(reviewId, review);
 		return new ResponseDto<Integer>(HttpStatus.OK, result);
 	}
 	
 	@DeleteMapping("/api/review/{reviewId}")
-	public ResponseDto<Integer> deleteReview(@PathVariable int reviewId){
+	public ResponseDto<Integer> fetchDeleteReview(@PathVariable int reviewId){
 		reviewService.deleteReview(reviewId);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 	
 	@PostMapping("/api/review/{reviewId}/replySave")
-	public ResponseDto<Integer> replySave(@PathVariable int reviewId,@RequestBody ReviewReplyEntity reqReply,
+	public ResponseDto<Integer> fetchReplySave(@PathVariable int reviewId,@RequestBody ReviewReplyEntity reqReply,
 			@AuthenticationPrincipal PrincipalDetail principalDetail){
 		reviewService.writeReply(reviewId, reqReply, principalDetail.getUser());
 		return new ResponseDto<Integer>(HttpStatus.OK,1);
 	}
 	
 	@DeleteMapping("/api/review/{reviewId}/reply/{replyId}")
-	public ResponseDto<Integer> replyDelete(@PathVariable int reviewId, @PathVariable int replyId,
+	public ResponseDto<Integer> fetchReplyDelete(@PathVariable int reviewId, @PathVariable int replyId,
 			@AuthenticationPrincipal PrincipalDetail principalDetail){
 		System.out.println(">	>>>>>>>>>> 들어옴");
 		System.out.println(reviewId);

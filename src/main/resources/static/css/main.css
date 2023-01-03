@@ -40,6 +40,7 @@ a{
 #logo{
 	width: 170px;
     margin-right: 20px;
+    z-index: 1;
 }
 #logo img{
     width: 170px;
@@ -374,14 +375,15 @@ a{
     margin-left: 70px;
 }
 #endLogo img{
-    width: 130px;
+    width: 150px;
     height: 130px;
 }
 
 #endAbout{
     width: 1050px;
     display: flex;
-    flex-direction: column;       
+    flex-direction: column;   
+    padding-top: 30px;    
 }
 #endAbout .address{
     margin-left: 50px;
@@ -401,7 +403,7 @@ a{
 }
 #endAbout ul li a{
     font-weight: 600;
-    text-decoration-line: underline;
+    border-right: 1px solid #ccc;
     color: #fff;
 }
 
@@ -410,12 +412,23 @@ a{
     height: 100%;
 }
 
-#endSNS ul{
-    display: flex;
-    margin-top: 60px;
+#endSNS .sns{
+    position: relative;
+    top: -216px;
+    right: -100px;
+    width: 150px;
+    height: 150px;
 }
-#endSNS ul li{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+#endSNS .instagram{
+	position: absolute;
+	top: 150px;
+	right: -95px;
+	z-index: 9999;
+}
+#endSNS .sns p{
+	position: absolute;
+	top: 115px;
+	right: -105px;
+	z-index: 9999;
+	font-weight: 600;
 }
