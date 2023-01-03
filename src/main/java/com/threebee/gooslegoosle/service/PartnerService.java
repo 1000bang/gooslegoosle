@@ -76,7 +76,8 @@ public class PartnerService {
 	@Transactional
 	public void saveMenu(MenuEntity menu, StoreEntity store) {
 		menu.setStore(store);
-		iMenuRepository.save(menu);
+		MenuEntity menus = iMenuRepository.save(menu);
+		
 	}
 
 	@Transactional

@@ -32,7 +32,6 @@ public class StoreController {
 		StoreEntity detail = storeService.findStoreDetailByStoreId(id);
 		
 		model.addAttribute("storeDetail",detail);
-		
 		return "/store/detail";
 	}
 	

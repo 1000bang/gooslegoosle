@@ -27,8 +27,8 @@
 					<p class="card-text">대표번호 : ${storeDetail.partner.phoneNumber}</p>
 
 					<c:forEach var="menu" items="${storeDetail.menu}">
-						<p class="card-text">${menu.menuName}</p>
-						<p class="card-text">가격 : ${menu.menuPrice}</p>
+						<p class="card-text">#${menu.menuName}</p>
+						
 					</c:forEach>
 				</div>
 			</div>
@@ -46,8 +46,10 @@
 				<div class="card-body">
 					<h3 class="card-title h3">메뉴 </h3>
 					<c:forEach var="menu" items="${storeDetail.menu}">
+					<div class="d-flex justify-content-around">
 						<p class="card-text">${menu.menuName}</p>
-						<p class="card-text">가격 : ${menu.menuPrice}</p>
+						<p class="card-text">----- &nbsp; ${menu.menuPrice}원</p>
+					</div>
 					</c:forEach>
 				</div>
 			</div>
