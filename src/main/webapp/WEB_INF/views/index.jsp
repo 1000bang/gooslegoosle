@@ -183,6 +183,7 @@
 <br />
 <br />
 <script type="text/javascript">
+$(".loginInfo").fadeOut(5000);
 const swiper = new Swiper('.swiper', {
 	  // Optional parameters
 	  direction: 'horizontal',
