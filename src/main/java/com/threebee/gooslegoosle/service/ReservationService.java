@@ -18,13 +18,18 @@ public class ReservationService {
 	IReservationRepository reservationRepository;
 
 	@Transactional
-	public void saveReservation(ReservationEntity res, StoreEntity store, UserEntity user) {
+	public void saveReservation(ReservationEntity res, UserEntity user) {
 		res.setPhoneNumber(user.getPhoneNumber());
 		res.setUser(user);
 		res.setReviewd(false);
-		res.setStore(store);
+
 		
 		reservationRepository.save(res);
+	}
+	
+
+	public ReservationEntity findid(int id) {
+		return reservationRepository.findByid(id);
 	}
 	
 	

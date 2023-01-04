@@ -27,7 +27,24 @@ a{
 	color: #fff;
 }
 /* header */
-
+#popup{
+	position: absolute;
+	top: 234px;
+    left: 36%;
+	z-index: 9999;
+	width: 500px;
+	height: 600px;
+	border: 1px solid #000;
+}
+#popup img{
+	width: 100%;
+	height: 100%;
+}
+#popup a{
+	position: absolute;
+	right: 10px;
+	bottom: -1px;
+}
 #header{
     width: 1600px;
     height: 120px;

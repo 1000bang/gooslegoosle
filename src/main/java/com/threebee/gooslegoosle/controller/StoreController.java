@@ -64,14 +64,52 @@ public class StoreController {
 	@Autowired
 	private ReservationService reservationService;
 	
+	
+	private ReservationEntity resData;
+	
+	
 	@PostMapping("/store/reservation/{id}/save")
 	@ResponseBody
 	public ResponseDto<Integer> fetchSaveReserve(@RequestBody ReservationEntity res, @PathVariable int id, @AuthenticationPrincipal PrincipalDetail detail) {
 		StoreEntity store = storeService.findStoreDetailByStoreId(id);
-		reservationService.saveReservation(res, store, detail.getUser());
-		
+		res.setStore(store);
+		resData = res;
+		//reservationService.saveReservation(resData detail.getUser()); 카카오결제 후에 사용 Reservation DB에 Insert!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
+	
+	@GetMapping("/store/reservation/{id}/reservation_next")
+	public String reservationNext(Model model, @PathVariable int id, @AuthenticationPrincipal PrincipalDetail detail) {
+		
+		
+		//ReservationEntity reservationEntity = reservationService.findid(detail.getUser().getId()); 위에 insert 후에 영수증 느낌으로 뿌려줄 때 사용
+		model.addAttribute("reservationDetail", resData);
 
+		return "/store/reservation_next";
+	}
+
+	
+	//////////////////////////SUCCESS APPROVAL/////////////////////////////////
+	@GetMapping("/pay/success")
+	public String payCompleted(@RequestParam("pg_token") String pgToken, Model model) {
+		System.out.println("성공???????");
+		
+		// 카카오 결재 요청하기
+//		ApproveRes approve = paymentService.payApprove(tid, pgToken, dtoData);	
+//		
+//		ApproveRes payment = ApproveRes.builder()
+//				.partnerUserId(approve.getPartnerUserId())
+//				.quantity(approve.getQuantity())
+//				.amount(approve.getAmount())
+//				.itemName(approve.getItemName())
+//				.approvedAt(approve.getApprovedAt())
+//				.amount(approve.getAmount())
+//				.paymentMethodType(approve.getPaymentMethodType())
+//				.build();
+				
+	
+		//reservationService.saveReservation(resData detail.getUser()); 
+		return "item/success";
+	}
 	
 }

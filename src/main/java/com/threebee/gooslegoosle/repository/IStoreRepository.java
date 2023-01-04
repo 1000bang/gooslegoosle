@@ -16,7 +16,7 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 			+ "FROM "
 			+ "    StoreEntity "
 			+ "WHERE "
-			+ "   partner_id = ?1 ", nativeQuery = true)
+			+ "   id = ?1 ", nativeQuery = true)
 	Optional<StoreEntity> findStoreDetailById(int id);
 
 	

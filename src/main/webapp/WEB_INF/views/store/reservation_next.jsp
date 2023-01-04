@@ -16,11 +16,6 @@
 				value="${principal.user.username}" readonly="readonly">
 
 		</div>
-		
-		<div id="popup">
-			<img alt="" src="/images/popup.jpg">
-			<a href="#" class="close-btn">닫기</a>
-		</div>
 
 		<div class="form-group">
 			<input type="text" class="form-control mr-1 "
@@ -32,7 +27,7 @@
 
 		<div class="form-group">
 			<input type="text" class="form-control mr-1 "
-				value="${storeDetail.partner.storeName}" readonly="readonly">
+				value="${reservationDetail.store.partner.storeName}" readonly="readonly">
 		</div>
 
 		<div class="form-group">
@@ -42,77 +37,37 @@
 
 		<div class="form-group">
 
-			<select class="custom-select mb-1 form-control" id="headCount"
-				name="headCount">
-				<option selected>예약하실 인원을 선택하세요</option>
-				<option value="1">1명</option>
-				<option value="2">2명</option>
-				<option value="3">3명</option>
-				<option value="4">4명</option>
-				<option value="5">5명</option>
-			</select>
+			<input type="text" class="form-control" placeholder=""
+				value="인원수 : ${reservationDetail.headCount}" readonly="readonly">
 		</div>
 
 		<div class="form-group">
-			<label class="form-label" for="date">예약 날짜</label> <input
-				class="form-control" id="date" pattern="\d{4}-\d{2}-\d{2}"
-				placeholder="원하는 예약 날짜를 선택하세요" required th:field="*{date}"
-				type="text" value="">
+			<input type="text" class="form-control" placeholder=""
+				value="예약 날짜 : ${reservationDetail.date}" readonly="readonly">
 		</div>
 
 		<div class="form-group">
-			<select class="custom-select mb-1 form-control" id="time" name="time">
-				<option selected>예약하실 시간을 선택하세요</option>
-				<option value="18시">18시</option>
-				<option value="18시30분">18시 30분</option>
-				<option value="19시">19시</option>
-				<option value="19시30분">19시30분</option>
-				<option value="20시">20시</option>
-			</select>
+			<input type="text" class="form-control" placeholder=""
+				value="예약 시간 : ${reservationDetail.time}" readonly="readonly">
 
 		</div>
 
 		<div class="form-group">
-			<input type="text" class="form-control mr-1 " id="request"
-				name="request" value="" placeholder="요청사항을 입력하세요 ">
+			<input type="text" class="form-control" placeholder=""
+				value="예약 시간 : ${reservationDetail.time}" readonly="readonly">
 		</div>
 		<br /> <br />
 	</form>
 	<div class="input-group justify-content-center">
-
+<button id="back" class="btn" onclick="history.back();" style="background-color: #63BFBC; color: white; border-radius: 50px; width: 121px; height: 50px; margin-top: 8px; font-weight: 600">돌아가기</button>
 		<button type="button" class="btn" onclick="reservation()"
-			style="width: 15vh; color: white; background-color: #63BFBC;">다음 단계
+			style="width: 15vh;"><img alt="" src="/images/kakao-pay.png">
 		</button>
 	</div>
 
 	<br /> <br>
 </div>
 
-
-<script type="text/javascript">
-
-$(document).ready(function (){
-	$('#popup').show();
-	
-	$('.close-btn').click(function(){
-		$('#popup').hide();
-	});
-});
-
-var fp = flatpickr(document.getElementById("date"), {
-      'monthSelectorType' : 'static',
-      "locale": "ko" 
-   });
-var today, date;
-today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-fp.setDate(today);
-date = $('#date').flatpickr({
-   format : "yyyy-mm-dd",
-   language: "english",
-   startDate : '-3d',
-   minDate: today
-});
-</script>
 <script>
 	function reservation() {
 		let data = {
@@ -141,7 +96,7 @@ date = $('#date').flatpickr({
 			if (data.httpStatus == "OK") {
 				alert("예약 완료 ");
 			}
-			location.href = "/store/reservation/" + store + "/reservation_next";
+			location.href = "/";
 		}).fail(function(error) {
 			console.log(error);
 			alert("예약 실패  " + error.responseJSON.error)
