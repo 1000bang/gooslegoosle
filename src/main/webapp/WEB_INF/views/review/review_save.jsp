@@ -12,10 +12,10 @@
 		</div>
 
 		<div class="form-group">
-			<select class="custom-select mb-1 form-control" id="time" name="time">
+			<select class="custom-select mb-1 form-control" id="store" name="store">
 				<option selected> 리뷰할 식당 </option>
-				<c:forEach var="item" items="principal.user.reservation">
-				<option value="">${item.store.partner.storeName}</option>
+				<c:forEach var="item" items="${store}">
+				<option value="">${item}</option>
 				</c:forEach>
 			</select>
 

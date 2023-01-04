@@ -45,7 +45,7 @@ public class ReviewService {
 	}
 
 
-	public Object reviewDetail(int id) {
+	public ReviewEntity reviewDetail(int id) {
 		return iReviewRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
 		});
@@ -62,8 +62,7 @@ public class ReviewService {
 			// TODO: handle exception
 		}
 		ReviewEntity review = file.toEntity(filename, user);
-//		StoreEntity store = storeService.findStoreByStoreId(file.getStore());
-		StoreEntity store = storeService.findStoreByStoreId(1);
+		StoreEntity store = storeService.findStoreByStoreName(file.getStore());
 		review.setStore(store);
 		review.setStarScore("4");
 		 iReviewRepository.save(review);

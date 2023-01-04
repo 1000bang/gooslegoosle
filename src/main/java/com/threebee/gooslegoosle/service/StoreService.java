@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
@@ -19,6 +20,7 @@ import com.threebee.gooslegoosle.dto.StoreFileDTO;
 import com.threebee.gooslegoosle.entity.ImageEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
+import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.repository.IImageReopository;
 import com.threebee.gooslegoosle.repository.IStoreRepository;
 
@@ -76,6 +78,18 @@ public class StoreService {
 		return storeRepository.findById(id).orElseThrow(()->{
 			return new IllegalArgumentException("해당 가게를 찾을 수 없습니다.");
 		});
+	}
+
+	@Transactional
+	public List<String> findReservedStore(UserEntity user) {
+		List<String> abc = storeRepository.findStoreNameByUserId(user.getId());
+		System.out.println(abc.size());
+		return abc;
+	}
+
+	public StoreEntity findStoreByStoreName(String store) {
+		
+		return storeRepository.findByStoreName(store);
 	}
 	
 	
