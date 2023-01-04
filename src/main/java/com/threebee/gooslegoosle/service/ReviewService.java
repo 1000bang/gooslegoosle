@@ -134,6 +134,13 @@ public class ReviewService {
 	}
 
 
+	@Transactional
+	public Page<ReviewEntity> getStoreReviewList(int id, Pageable pageable) {
+	
+		return iReviewRepository.findAllStoreReview(id, pageable);
+	}
+
+
 
 
 

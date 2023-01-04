@@ -17,6 +17,15 @@ public interface IReviewRepository extends JpaRepository<ReviewEntity, Integer> 
 			+ " WHERE userId = ?1 "
 			, nativeQuery = true)
 	Page<ReviewEntity> myReviewList(int id, Pageable pageable);
+
+
+	@Query(value = " SELECT * "
+			+ " FROM reviewentity "
+			+ " WHERE storeId = ?1 "
+			, nativeQuery = true)
+	Page<ReviewEntity> findAllStoreReview(int id, Pageable pageable);
+	
+	
 	
 
 }
