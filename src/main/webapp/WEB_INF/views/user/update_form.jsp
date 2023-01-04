@@ -118,7 +118,6 @@
 </script>
 <script>
 function count(value)  {
-	   console.log("여기 나오");
 	   
 	   const resultElement = document.getElementById('result');
 	   
@@ -131,9 +130,7 @@ function count(value)  {
 	    resultElement.value = number;
 	  
 	  if(number == 10){
-			console.log("1");
-		  	
-			
+	
 			location.href = "/api/user/" + value;
 		  
 	  }
