@@ -37,6 +37,7 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">영업시간</h3>
+					<hr/>
 					<p class="card-text">영업시간 : ${storeDetail.openTime}시 ~
 						${storeDetail.closeTime}시</p>
 					<p class="card-text">브레이크타임 : ${storeDetail.breakTime}</p>
@@ -46,6 +47,7 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">메뉴</h3>
+					<hr/>
 					<c:forEach var="menu" items="${storeDetail.menu}">
 						<div class="d-flex justify-content-around">
 							<p class="card-text">${menu.menuName}</p>
@@ -58,7 +60,45 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">방문자 평가</h3>
-
+					<hr/>
+					
+					<c:forEach var="reviews" items="${review.content}">
+					<div class="card m-4">
+					<div class="card-body">
+					<h6 class="card-title h6"><strong>작성자 :</strong>  ${reviews.user.username} </h6>
+					<c:choose>
+					<c:when test="${reviews.starScore eq 1}">
+					<p class="card-text"><strong>별점 :</strong>   ⭐ </p>
+					</c:when>
+					<c:when test="${reviews.starScore eq 2}">
+					<p class="card-text"><strong>별점 :</strong>  ⭐⭐ </p>
+					</c:when>
+					<c:when test="${reviews.starScore eq 3}">
+					<p class="card-text"><strong>별점 :</strong>  ⭐⭐⭐ </p>
+					</c:when>
+					<c:when test="${reviews.starScore eq 4}">
+					<p class="card-text"><strong>별점 :</strong>  ⭐⭐⭐⭐ </p>
+					</c:when>
+					<c:when test="${reviews.starScore eq 5}">
+					<p class="card-text"><strong>별점 :</strong>  ⭐⭐⭐⭐⭐ </p>
+					</c:when>
+					
+					
+					</c:choose>
+					<hr/>
+					<h5 class="card-title h5"> ${reviews.reviewTitle} </h5>
+					<p class="card-text"> ${reviews.reviewContent}  </p>
+					<p><img class="card-img"
+					src="http://localhost:9090/magazine/${reviews.thumbnail}"
+					alt="..."></p>
+					
+					<a type="button" class="btn"
+					style="color: white; background-color: #63BFBC; width : 15vh" href="#">
+					더보기</a>
+					</div>
+					
+					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

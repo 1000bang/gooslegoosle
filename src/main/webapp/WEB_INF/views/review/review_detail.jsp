@@ -1,27 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
-<div class="container"></div>
 
 
-<button id="back" class="btn bg-secondary" onclick="history.back();">돌아가기</button>
+<div class="container">
+
+
+
 <input type="hidden" id="id" value="${principal.user.id}">
 <input type="hidden" id="review-id" value="${reviews.getId()}">
-글 번호 :
-<span><i>${reviews.getId() + 100}</i></span>
+<button id="back" class="btn btn-outline-secondary" onclick="history.back();">돌아가기</button>
 <c:if test="${reviews.user.id == principal.user.id}">
 	<a class="btn btn-outline-warning" id="" href="/review/${reviews.id}/review_update">수정하기</a>
 	<button class="btn btn-outline-danger" id="reviewDelete">삭제하기</button>
 </c:if>
+</div>
+<br/>
+<br/>
 <div class="detail-body">
 	<div id="review-profile">
 		<div class="about-profile">
-			<!-- foreach문으로 사진 돌리기 -->
+			<img alt="" style="width: 100%; height: 100%; object-fit: cover" src="http://localhost:9090/magazine/${reviews.thumbnail}">
 		</div>
 		<div class="title">
 			<p>${reviews.getReviewTitle()}</p>
 		</div>
 		<div class="address">
-			<strong>ADDRESS</strong>
+			<strong>주소  : </strong>${reviews.store.partner.address}
 		</div>
 		<div class="review-content">${reviews.getReviewContent()}</div>
 		<div class="rate">
@@ -59,7 +63,9 @@
 	</div>
 
 </div>
-
+<br/>
+<br/>
+<br/>
 <script src="/js/review.js"></script>
 
 <%@include file="../layout/footer.jsp"%>

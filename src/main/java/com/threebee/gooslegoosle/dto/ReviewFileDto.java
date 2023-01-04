@@ -15,12 +15,15 @@ public class ReviewFileDto {
 	private String reviewTitle;
 	private String reviewContent;
 	private String store;
+	private String starScore;
+	private int resId;
 	
 	public ReviewEntity toEntity(String postImageUrl, UserEntity user) {
 		return ReviewEntity.builder()
 							.reviewTitle(reviewTitle)
 							.reviewContent(reviewContent)
 							.thumbnail(postImageUrl)
+							.starScore(starScore)
 							.user(user).build();
 	}
 	

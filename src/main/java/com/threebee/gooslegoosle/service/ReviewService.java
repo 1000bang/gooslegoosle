@@ -45,12 +45,17 @@ public class ReviewService {
 	}
 
 
-	public Object reviewDetail(int id) {
+	public ReviewEntity reviewDetail(int id) {
 		return iReviewRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
 		});
 	}
 
+	
+	@Autowired
+	private ReservationService reservationService;
+	
+	@Transactional
 	public int write(ReviewFileDto file, UserEntity user) {
 		UUID uuid = UUID.randomUUID();
 		String filename = uuid + "_" + file.getFile().getOriginalFilename();
@@ -62,11 +67,15 @@ public class ReviewService {
 			// TODO: handle exception
 		}
 		ReviewEntity review = file.toEntity(filename, user);
-//		StoreEntity store = storeService.findStoreByStoreId(file.getStore());
-		StoreEntity store = storeService.findStoreByStoreId(1);
+		
+		String temp = file.getStore();
+		int idx = temp.indexOf("/");
+		String storeName = temp.substring(0,idx);
+		int resId = Integer.parseInt(temp.substring(idx+1));	
+		StoreEntity store = storeService.findStoreByStoreName(storeName);
 		review.setStore(store);
-		review.setStarScore("4");
-		 iReviewRepository.save(review);
+		reservationService.setReviewTrue(resId);
+		iReviewRepository.save(review);
 		return 1; 
 	}
 
@@ -122,6 +131,13 @@ public class ReviewService {
 	@Transactional
 	public Page<ReviewEntity> myReviewList(int id, Pageable pageable){
 		return iReviewRepository.myReviewList(id, pageable);
+	}
+
+
+	@Transactional
+	public Page<ReviewEntity> getStoreReviewList(int id, Pageable pageable) {
+	
+		return iReviewRepository.findAllStoreReview(id, pageable);
 	}
 
 

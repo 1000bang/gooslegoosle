@@ -26,6 +26,15 @@ public class ReservationService {
 		
 		reservationRepository.save(res);
 	}
+
+	@Transactional
+	public void setReviewTrue(int resId) {
+		ReservationEntity res = reservationRepository.findById(resId).orElseThrow(()->{
+			return new IllegalArgumentException("예약내역이 확인불가");
+		});
+		
+		res.setReviewd(true);
+	}
 	
 
 	public ReservationEntity findid(int id) {
