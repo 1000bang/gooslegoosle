@@ -27,10 +27,10 @@
 		</div>
 		
 		<div class="Row">
-			<c:forEach var="review" items="${reviews.getContent()}">
+			<c:forEach var="review" items="${reviews.content}">
 				<div class="my_container">
 					<div class="review_picture">
-						<p>사진이 들어갈 곳입니다.</p>
+						<img alt="" src="http://localhost:9090/magazine/${review.thumbnail}">
 					</div>
 					<div class="about_story">
 						<h2>${review.getReviewTitle()}</h2>

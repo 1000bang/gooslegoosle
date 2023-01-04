@@ -16,20 +16,17 @@
 				type="text" name="reviewTitle" id="reviewTitle" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="content" style="font-weight: 600">리뷰 내용</label>
+
+			<label for="content">Content</label>
 			<textarea name="reviewContent" id="reviewContent" rows="5"
 				class="form-control content"></textarea>
-			<button type="submit" class="btn btn-primary" id="">글쓰기 완료</button>
+			<br /> <br />
+			<button type="submit" class="btn"
+				style="color: white; background-color: #63BFBC; float: right" id="">글쓰기
+				완료</button>
+		</div>
 	</form>
-			<label for="content">Content</label>
-			<textarea name="reviewContent" id="reviewContent" rows="5" class="form-control content"></textarea>
-			<br/>
-			<br/>
-			<button type="submit" class="btn" style="color: white; background-color: #63BFBC; float:right" id="">글쓰기 완료</button>
-			</form>
-			<br/>
-			<br/>
-</div>
+	<br /> <br />
 </div>
 <script>
 	$('.content').summernote({

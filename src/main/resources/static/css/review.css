@@ -15,20 +15,27 @@
 
 .review_picture {
 	width: 280px;
-	height: 200px;
+	height: 180px;
 	margin: 10px;
 	border-radius: 8%;
-	background-color: aqua;
+	
+}
+.review_picture img{
+	width: 100%;
+	height: 100%;
+	border-radius: 8%;
+	object-fit: cover;
 }
 
 .Row {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	
 }
 .about_story{
 	width: 300px;
-	height: 300px;
+	height: 150px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -44,9 +51,8 @@
 	width: 250px;
 	height: 40px;
 	margin-top: 20px;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	text-align: left;
-	overflow: hidden;
 	white-space: nowrap;
 	text-overflow : ellipsis;
 }

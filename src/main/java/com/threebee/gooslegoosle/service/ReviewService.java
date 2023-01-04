@@ -16,6 +16,7 @@ import com.threebee.gooslegoosle.dto.ReviewFileDto;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
 import com.threebee.gooslegoosle.entity.ReviewReplyEntity;
+import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.repository.IReplyRepository;
 import com.threebee.gooslegoosle.repository.IReviewRepository;
@@ -33,7 +34,7 @@ public class ReviewService {
 	private final IReplyRepository iReplyRepository;
 
 	@Autowired
-	private PartnerService partnerService;
+	private StoreService storeService;
 	
 	@Value("${file.path}")
 	private String uploadFolder;
@@ -50,22 +51,22 @@ public class ReviewService {
 		});
 	}
 
-	public int write(ReviewFileDto file, ReviewEntity review, UserEntity user) {
+	public int write(ReviewFileDto file, UserEntity user) {
 		UUID uuid = UUID.randomUUID();
 		String filename = uuid + "_" + file.getFile().getOriginalFilename();
 		Path imageFilePath = Paths.get(uploadFolder + filename);
+		System.out.println(imageFilePath);
 		try {
 			Files.write(imageFilePath, file.getFile().getBytes());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		review = file.toEntity(filename, review);
-		PartnerEntity partner = partnerService.findPartnerById(1);
-		review.setUser(user);
-		review.setStore(partner);
+		ReviewEntity review = file.toEntity(filename, user);
+//		StoreEntity store = storeService.findStoreByStoreId(file.getStore());
+		StoreEntity store = storeService.findStoreByStoreId(1);
+		review.setStore(store);
 		review.setStarScore("4");
 		 iReviewRepository.save(review);
-		 System.out.println("review>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + review);
 		return 1; 
 	}
 

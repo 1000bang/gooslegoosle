@@ -3,6 +3,7 @@ package com.threebee.gooslegoosle.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.threebee.gooslegoosle.entity.ReviewEntity;
+import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 
 import lombok.Data;
@@ -11,15 +12,16 @@ import lombok.Data;
 public class ReviewFileDto {
 
 	private MultipartFile file;
-	private String title;
-	private String content;
+	private String reviewTitle;
+	private String reviewContent;
+	private String store;
 	
-	public ReviewEntity toEntity(String postImageUrl, ReviewEntity review) {
+	public ReviewEntity toEntity(String postImageUrl, UserEntity user) {
 		return ReviewEntity.builder()
-							.reviewTitle(title)
-							.reviewContent(content)
+							.reviewTitle(reviewTitle)
+							.reviewContent(reviewContent)
 							.thumbnail(postImageUrl)
-							.user(review.getUser()).build();
+							.user(user).build();
 	}
 	
 }

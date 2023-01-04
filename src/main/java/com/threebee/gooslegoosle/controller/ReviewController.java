@@ -99,10 +99,10 @@ public class ReviewController {
 	}
 
 	@PostMapping("/api/reviews")
-	public String save(ReviewFileDto file, ReviewEntity review, @AuthenticationPrincipal PrincipalDetail detail) {
+	public String save(ReviewFileDto file, @AuthenticationPrincipal PrincipalDetail detail) {
 
 		System.out.println(">>>>>>>>>>>>>>>>>>>>" + file.getFile().getOriginalFilename());
-		reviewService.write(file,review, detail.getUser());
+		reviewService.write(file, detail.getUser());
 
 		return "redirect:/reviews";
 

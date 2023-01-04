@@ -55,7 +55,7 @@ public class ReviewEntity {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
-	private PartnerEntity store;
+	private StoreEntity store;
 
 	@OneToMany(mappedBy = "review", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@OrderBy("id desc")
