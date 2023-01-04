@@ -37,6 +37,7 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">영업시간</h3>
+					<hr/>
 					<p class="card-text">영업시간 : ${storeDetail.openTime}시 ~
 						${storeDetail.closeTime}시</p>
 					<p class="card-text">브레이크타임 : ${storeDetail.breakTime}</p>
@@ -46,6 +47,7 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">메뉴</h3>
+					<hr/>
 					<c:forEach var="menu" items="${storeDetail.menu}">
 						<div class="d-flex justify-content-around">
 							<p class="card-text">${menu.menuName}</p>
@@ -58,6 +60,7 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">방문자 평가</h3>
+					<hr/>
 
 				</div>
 			</div>

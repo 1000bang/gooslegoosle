@@ -15,8 +15,22 @@
 			<select class="custom-select mb-1 form-control" id="store" name="store">
 				<option selected> 리뷰할 식당 </option>
 				<c:forEach var="item" items="${store}">
-				<option value="">${item}</option>
+				<option value="${item.storeName}/${item.resId}">${item.storeName}</option>
 				</c:forEach>
+			</select>
+
+		</div>
+		
+		<div class="form-group">
+			<select class="custom-select mb-1 form-control" id="starScore" name="starScore">
+				<option selected> 별점 </option>
+				
+				<option value="1"> ⭐ </option>
+				<option value="2"> ⭐⭐ </option>
+				<option value="3"> ⭐⭐⭐ </option>
+				<option value="4"> ⭐⭐⭐⭐ </option>
+				<option value="5"> ⭐⭐⭐⭐⭐ </option>
+				
 			</select>
 
 		</div>

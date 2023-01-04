@@ -51,6 +51,11 @@ public class ReviewService {
 		});
 	}
 
+	
+	@Autowired
+	private ReservationService reservationService;
+	
+	@Transactional
 	public int write(ReviewFileDto file, UserEntity user) {
 		UUID uuid = UUID.randomUUID();
 		String filename = uuid + "_" + file.getFile().getOriginalFilename();
@@ -62,10 +67,15 @@ public class ReviewService {
 			// TODO: handle exception
 		}
 		ReviewEntity review = file.toEntity(filename, user);
-		StoreEntity store = storeService.findStoreByStoreName(file.getStore());
+		
+		String temp = file.getStore();
+		int idx = temp.indexOf("/");
+		String storeName = temp.substring(0,idx);
+		int resId = Integer.parseInt(temp.substring(idx+1));	
+		StoreEntity store = storeService.findStoreByStoreName(storeName);
 		review.setStore(store);
-		review.setStarScore("4");
-		 iReviewRepository.save(review);
+		reservationService.setReviewTrue(resId);
+		iReviewRepository.save(review);
 		return 1; 
 	}
 

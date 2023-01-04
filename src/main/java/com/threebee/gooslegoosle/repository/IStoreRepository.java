@@ -27,7 +27,7 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 
 
 	@Query(value = "SELECT "
-			+ "    p.storeName "
+			+ "    p.storeName, r.id "
 			+ "FROM "
 			+ "    reservationEntity AS r "
 			+ "        JOIN "
@@ -36,7 +36,7 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 			+ "    partnerEntity AS p "
 			+ "WHERE "
 			+ "    r.storeid = s.id AND p.id = s.partner_id "
-			+ "        AND r.userid = ?1", nativeQuery = true)
+			+ "     AND r.isReviewd = false AND r.userid = ?1", nativeQuery = true)
 	List<String> findStoreNameByUserId(int id);
 
 

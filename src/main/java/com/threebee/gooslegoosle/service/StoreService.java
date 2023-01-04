@@ -82,9 +82,9 @@ public class StoreService {
 
 	@Transactional
 	public List<String> findReservedStore(UserEntity user) {
-		List<String> abc = storeRepository.findStoreNameByUserId(user.getId());
-		System.out.println(abc.size());
-		return abc;
+		List<String> store = storeRepository.findStoreNameByUserId(user.getId());
+		
+		return store;
 	}
 
 	public StoreEntity findStoreByStoreName(String store) {

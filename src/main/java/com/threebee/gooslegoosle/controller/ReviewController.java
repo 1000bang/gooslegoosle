@@ -1,7 +1,9 @@
 package com.threebee.gooslegoosle.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,15 +104,26 @@ public class ReviewController {
 	@GetMapping("/review/review_save")
 	public String reviewSave(Model model, @AuthenticationPrincipal PrincipalDetail detail) {
 		List<String> storename = storeService.findReservedStore(detail.getUser());
-		System.out.println("storename >>>>>>>>>" +storename);
-		model.addAttribute("store",storename);
+		List<Map<String, String>> storeAndResData = new ArrayList<>();
 		
+		for (int i = 0; i < storename.size(); i++) {
+			Map<String, String> storeAndRes = new HashMap<>();
+			String text = storename.get(i);
+			int index = text.indexOf(",");
+			String temp = text.substring(0,index);
+			String temp2 = text.substring(index+1);
+			storeAndRes.put("storeName", temp);
+			storeAndRes.put("resId", temp2);	
+			storeAndResData.add(storeAndRes);
+		}
+		model.addAttribute("store",storeAndResData);
+	
 		return "/review/review_save";
 	}
 
 	@PostMapping("/api/reviews")
 	public String save(ReviewFileDto file, @AuthenticationPrincipal PrincipalDetail detail) {
-
+		System.out.println(file);
 		reviewService.write(file, detail.getUser());
 
 		return "redirect:/reviews";
