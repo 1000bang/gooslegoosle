@@ -23,14 +23,28 @@
 </c:choose>
 <article id="m-content1">
 	<section id="image">
-		<div class="imageBox">
-			<ul>
-				<li class="img1"><img src="../images/k-food.jpg" alt=""></li>
-				<li class="img2"><img src="../images/j-food.jpg" alt=""></li>
-				<li class="img3"><img src="../images/c-food.jpg" alt=""></li>
-				<li class="img3"><img src="../images/w-food.jpg" alt=""></li>
-			</ul>
-		</div>
+			<!-- Slider main container -->
+			<div class="swiper">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide"><img src="../images/k-food.jpg" alt=""></div>
+					<div class="swiper-slide"><img src="../images/j-food.jpg" alt=""></div>
+					<div class="swiper-slide"><img src="../images/c-food.jpg" alt=""></div>
+					<div class="swiper-slide"><img src="../images/w-food.jpg" alt=""></div>
+					...
+				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
+
+				<!-- If we need navigation buttons -->
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+
+				<!-- If we need scrollbar -->
+				<div class="swiper-scrollbar"></div>
+			</div>
+
 
 	</section>
 
@@ -143,8 +157,8 @@
 			<ul class="food-slice">
 				<c:forEach var="storeInfo" items="${store.content}">
 
-         
-	
+
+
 					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
 					<c:if test="${storeInfo.category eq 'KOREAN'}">
 						<li><c:choose>
@@ -168,5 +182,28 @@
 </article>
 <br />
 <br />
-<%@ include file="layout/footer.jsp"%>
+<script type="text/javascript">
+const swiper = new Swiper('.swiper', {
+	  // Optional parameters
+	  direction: 'horizontal',
+	  loop: true,
 
+	  // If we need pagination
+	  pagination: {
+	    el: '.swiper-pagination',
+	  },
+
+	  // Navigation arrows
+	  navigation: {
+	    nextEl: '.swiper-button-next',
+	    prevEl: '.swiper-button-prev',
+	  },
+
+	  // And if we need scrollbar
+	  scrollbar: {
+	    el: '.swiper-scrollbar',
+	  },
+	});
+</script>
+<%@ include file="layout/footer.jsp"%>
+ 
