@@ -36,5 +36,5 @@ spring:
       max-file-size: 20MB
       
 file:
-#  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/images/magazine/'
-   path: C:\androidworkspace\gooslegoosle\images\magazine/
+  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/images/magazine/'
+#   path: C:\androidworkspace\gooslegoosle\images\magazine/
