@@ -105,7 +105,7 @@
 		<!-- 오른쪽   -->
 		<div class="col-lg-4">
 			<div class="card mb-4">
-				<div class="card-header">지도</div>
+				<div class="card-header"><strong>가게 위치 보기</strong>  </div>
 				<div class="card-body">
 					<div id="map" style="width: 100%; height: 350px;"></div>
 					<p class="card-text">주소 : ${storeDetail.partner.address}
@@ -118,7 +118,7 @@
 			</div>
 			<div class="input-group justify-content-center">
 				<a type="button" class="btn"
-					style="color: white; background-color: #63BFBC; width : 15vh" href="/store/reservation/${storeDetail.id}">
+					style="color: white; background-color: #63BFBC; width : 37vh" href="/store/reservation/${storeDetail.id}">
 					예약하기</a>
 
 			</div>

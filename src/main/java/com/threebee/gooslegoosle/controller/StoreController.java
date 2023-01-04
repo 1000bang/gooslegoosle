@@ -54,17 +54,6 @@ public class StoreController {
 		return "/store/detail";
 	}
 	
-	@PostMapping("/partner/add_store/{id}")
-	public String saveStore(StoreFileDTO store, @PathVariable int id, Model model){
-		
-		System.out.println("store>>>>>>" +store);
-		PartnerEntity partner = partnerService.findPartnerById(id);
-		System.out.println("partner>>>>>"+partner);
-		StoreEntity stores = storeService.saveStore(store, partner);
-		model.addAttribute("store", stores);
-		return "partner/add_menu";	
-	}
-	
 	@GetMapping("/store/reservation/{id}")
 	public String fetchReserve(Model model, @PathVariable int id) {
 		

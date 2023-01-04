@@ -31,14 +31,7 @@ public class PartnerApiController {
 	@Autowired
 	private StoreService storeService;
 	
-	@PostMapping("/partner/add_menu/{id}")
-	public ResponseDto<Integer> saveMenu(@RequestBody MenuEntity menu, @PathVariable int id){
-		StoreEntity store = storeService.findStoreByStoreId(id);
-		partnerService.saveMenu(menu, store);
 
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
-		
-	}
 	
 	
 	
