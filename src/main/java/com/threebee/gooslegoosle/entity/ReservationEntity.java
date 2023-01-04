@@ -19,12 +19,16 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReservationEntity {
 	
 	@Id 
@@ -58,11 +62,7 @@ public class ReservationEntity {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "storeId")
-	private PartnerEntity store;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "menuId")
-	private MenuEntity menu;
+	private StoreEntity store;
 	
 
 }

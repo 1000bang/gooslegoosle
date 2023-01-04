@@ -12,7 +12,8 @@
 		<div class="col-lg-8">
 			<div class="card mb-4">
 				<a href="#!"><img class="card-img-top"
-					src="http://localhost:9090/magazine/${storeDetail.image[0].postImageUrl}" alt="..."></a>
+					src="http://localhost:9090/magazine/${storeDetail.image[0].postImageUrl}"
+					alt="..."></a>
 				<div class="card-body">
 					<div class="small text-muted"># ${storeDetail.category}</div>
 					<h1 class="card-title h1">${storeDetail.partner.storeName}</h1>
@@ -28,7 +29,7 @@
 
 					<c:forEach var="menu" items="${storeDetail.menu}">
 						<p class="card-text">#${menu.menuName}</p>
-						
+
 					</c:forEach>
 				</div>
 			</div>
@@ -41,38 +42,46 @@
 					<p class="card-text">브레이크타임 : ${storeDetail.breakTime}</p>
 				</div>
 			</div>
-			
+
 			<div class="card mb-4">
 				<div class="card-body">
-					<h3 class="card-title h3">메뉴 </h3>
+					<h3 class="card-title h3">메뉴</h3>
 					<c:forEach var="menu" items="${storeDetail.menu}">
-					<div class="d-flex justify-content-around">
-						<p class="card-text">${menu.menuName}</p>
-						<p class="card-text">----- &nbsp; ${menu.menuPrice}원</p>
-					</div>
+						<div class="d-flex justify-content-around">
+							<p class="card-text">${menu.menuName}</p>
+							<p class="card-text">----- &nbsp; ${menu.menuPrice}원</p>
+						</div>
 					</c:forEach>
 				</div>
 			</div>
-			
+
 			<div class="card mb-4">
 				<div class="card-body">
-					<h3 class="card-title h3">방문자 평가 </h3>
-					
+					<h3 class="card-title h3">방문자 평가</h3>
+
 				</div>
 			</div>
 		</div>
-		<!-- 왼쪽   -->
+		<!-- 오른쪽   -->
 		<div class="col-lg-4">
 			<div class="card mb-4">
 				<div class="card-header">지도</div>
 				<div class="card-body">
 					<div id="map" style="width: 100%; height: 350px;"></div>
-				<p class="card-text">주소 : ${storeDetail.partner.address}
+					<p class="card-text">주소 : ${storeDetail.partner.address}
 						${storeDetail.partner.detailAddress}</p>
-				
-				</div>
-			</div>
 
+				</div>
+
+
+
+			</div>
+			<div class="input-group justify-content-center">
+				<a type="button" class="btn"
+					style="color: white; background-color: #63BFBC; width : 15vh" href="/store/reservation/${storeDetail.id}">
+					예약하기</a>
+
+			</div>
 
 		</div>
 
