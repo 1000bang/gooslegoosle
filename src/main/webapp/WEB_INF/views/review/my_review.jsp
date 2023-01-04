@@ -10,7 +10,7 @@
 				<c:forEach var="review" items="${reviews.getContent()}">
 					<div class="my_container" style="margin-bottom: 50px">
 						<div class="review_picture">
-							<p>사진이 들어갈 곳입니다.</p>
+							<img alt="" src="http://localhost:9090/magazine/${review.thumbnail}">
 						</div>
 						<div class="about_story">
 							<h2>${review.getReviewTitle()}</h2>
