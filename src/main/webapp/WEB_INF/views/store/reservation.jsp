@@ -10,7 +10,7 @@
 	<form action="" method="">
 		<h2>예약자 정보</h2>
 		<div hidden="true" id=userid>${principal.user.id}</div>
-		<input hidden="true" id=storeId type="text" value="${storeDetail.id}"/>
+		<input hidden="true" id=storeId type="text" value="${storeDetail.id}" />
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Enter usernmae"
 				value="${principal.user.username}" readonly="readonly">
@@ -50,9 +50,10 @@
 		</div>
 
 		<div class="form-group">
-			<label class="form-label" for="reservationDate">예약 날짜</label>
-    <input class="form-control" id="date" pattern="\d{4}-\d{2}-\d{2}" placeholder="원하는 예약 날짜를 선택하세요"
-           required th:field="*{date}" type="text" value="">
+			<label class="form-label" for="date">예약 날짜</label> <input
+				class="form-control" id="date" pattern="\d{4}-\d{2}-\d{2}"
+				placeholder="원하는 예약 날짜를 선택하세요" required th:field="*{date}"
+				type="text" value="">
 		</div>
 
 		<div class="form-group">
@@ -84,37 +85,42 @@
 </div>
 
 
-<script>
+<script type="text/javascript">
+var fp = flatpickr(document.getElementById("date"), {
+      'monthSelectorType' : 'static',
+      "locale": "ko" 
+   });
 var today, date;
 today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
 fp.setDate(today);
 date = $('#date').flatpickr({
-	format : "yyyy-mm-dd",
-	language: "english",
-	startDate : '-3d',
-	minDate: today
+   format : "yyyy-mm-dd",
+   language: "english",
+   startDate : '-3d',
+   minDate: today
 });
-function reservation(){
-	let data = {		
-			request: $("#request").val(),
-			date: $("#date").val(),
-			time: $("#time").val(),
-			headCount: $("#headCount").val(),
+</script>
+<script>
+	function reservation() {
+		let data = {
+			request : $("#request").val(),
+			date : $("#date").val(),
+			time : $("#time").val(),
+			headCount : $("#headCount").val(),
 		};
 
-	let store = $("#storeId").val();
-	
-	
-	console.log(store);
-	console.log(data);
-	
+		let store = $("#storeId").val();
+
+		console.log(store);
+		console.log(data);
+
 		$.ajax({
-			type: "POST",
-			url: "/store/reservation/"+ store +"/save",
-			data: JSON.stringify(data),
-			contentType: "application/json; charset = utf-8",
-			dataType: "json"
-			
+			type : "POST",
+			url : "/store/reservation/" + store + "/save",
+			data : JSON.stringify(data),
+			contentType : "application/json; charset = utf-8",
+			dataType : "json"
+
 		}).done(function(data, textStatus, xhr) {
 			console.log(data);
 			console.log(textStatus);
@@ -127,9 +133,8 @@ function reservation(){
 			console.log(error);
 			alert("예약 실패  " + error.responseJSON.error)
 		});
-	
-}
 
+	}
 </script>
 
 

@@ -94,7 +94,8 @@ public class ReviewController {
 	}
 
 	@GetMapping("/review/review_save")
-	public String reviewSave() {
+	public String reviewSave(@AuthenticationPrincipal PrincipalDetail detail) {
+		
 		return "/review/review_save";
 	}
 

@@ -1,14 +1,19 @@
 package com.threebee.gooslegoosle.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,6 +21,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.threebee.gooslegoosle.model.LoginType;
 import com.threebee.gooslegoosle.model.UserRole;
 
@@ -69,6 +75,10 @@ public class UserEntity {
 	private String detailAddress; 
 	@ColumnDefault("0")
 	private int warning;
+	
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({ "user"})
+	private List<ReservationEntity> reservation;
 
 	@Enumerated(EnumType.STRING)
 	private UserRole role; // user, admin, host

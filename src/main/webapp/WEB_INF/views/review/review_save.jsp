@@ -10,6 +10,17 @@
 				id="customFile" required="required"> <label
 				class="custom-file-label" for="customFile">파일을 선택해주세요 </label>
 		</div>
+
+		<div class="form-group">
+			<select class="custom-select mb-1 form-control" id="time" name="time">
+				<option selected> 리뷰할 식당 </option>
+				<c:forEach var="item" items="principal.user.reservation">
+				<option value="">${item.store.partner.storeName}</option>
+				</c:forEach>
+			</select>
+
+		</div>
+
 		<div class="form-group">
 
 			<label for="title" style="font-weight: 600">리뷰 제목</label> <input

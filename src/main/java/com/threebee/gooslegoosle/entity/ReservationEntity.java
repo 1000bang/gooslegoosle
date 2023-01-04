@@ -56,6 +56,8 @@ public class ReservationEntity {
 	@Lob
 	private String request;
 	
+	private boolean isReviewd;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId")
 	private UserEntity user;

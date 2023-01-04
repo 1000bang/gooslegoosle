@@ -21,6 +21,7 @@ public class ReservationService {
 	public void saveReservation(ReservationEntity res, StoreEntity store, UserEntity user) {
 		res.setPhoneNumber(user.getPhoneNumber());
 		res.setUser(user);
+		res.setReviewd(false);
 		res.setStore(store);
 		
 		reservationRepository.save(res);
