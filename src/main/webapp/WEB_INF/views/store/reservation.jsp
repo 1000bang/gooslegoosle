@@ -50,8 +50,9 @@
 		</div>
 
 		<div class="form-group">
-			<input type="text" class="form-control mr-1 " id="date" name="date"
-				placeholder="예약하실 날짜를 선택하세요 ">
+			<label class="form-label" for="reservationDate">예약 날짜</label>
+    <input class="form-control" id="date" pattern="\d{4}-\d{2}-\d{2}" placeholder="원하는 예약 날짜를 선택하세요"
+           required th:field="*{date}" type="text" value="">
 		</div>
 
 		<div class="form-group">
@@ -84,6 +85,15 @@
 
 
 <script>
+var today, date;
+today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+fp.setDate(today);
+date = $('#date').flatpickr({
+	format : "yyyy-mm-dd",
+	language: "english",
+	startDate : '-3d',
+	minDate: today
+});
 function reservation(){
 	let data = {		
 			request: $("#request").val(),

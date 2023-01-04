@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 
-
 <section class="py-5">
 	<div class="container mt-5">
 		<div class="d-flex justify-content-between m-2">
@@ -25,9 +24,8 @@
 			</div>
 
 		</div>
+		
 </section>
-
-
 
 <script src="/js/review.js"></script>
 <%@include file="../layout/footer.jsp"%>
