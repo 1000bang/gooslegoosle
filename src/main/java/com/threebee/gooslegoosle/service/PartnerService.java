@@ -69,7 +69,7 @@ public class PartnerService {
 	
 
 	@Transactional
-	public PartnerEntity findStoreByUserId(int id) {
+	public PartnerEntity findPartnerByUserId(int id) {
 		return iPartnerRepository.findByUserId(id);
 
 	}

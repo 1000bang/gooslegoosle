@@ -51,4 +51,9 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 	StoreEntity findByStoreName(String store);
 
 
+	
+	@Query(value = "SELECT * FROM storeEntity WHERE userId = ?1", nativeQuery = true)
+	StoreEntity findStoreByUserId(int id);
+
+
 }

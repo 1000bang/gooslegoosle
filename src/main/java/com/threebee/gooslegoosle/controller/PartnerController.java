@@ -19,9 +19,11 @@ import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.dto.StoreFileDTO;
 import com.threebee.gooslegoosle.entity.MenuEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
+import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.service.PartnerService;
+import com.threebee.gooslegoosle.service.ReservationService;
 import com.threebee.gooslegoosle.service.StoreService;
 import com.threebee.gooslegoosle.service.UserService;
 
@@ -42,9 +44,31 @@ public class PartnerController {
 		return "partner/main_partner";
 	}
 
+	
 	@GetMapping("/partner/application_partner")
 	public String fetchApplicationPartnerForm() {
 		return "partner/application_partner";
+	}
+	
+	
+	@GetMapping("/partner/updateStore/{id}")
+	public String fetchUpdate(Model model, @PathVariable int id) {
+		PartnerEntity partner = partnerService.findPartnerByUserId(id);
+		StoreEntity store = storeService.findByUserId(id);
+		model.addAttribute("store", store);
+		model.addAttribute("partner", partner);
+		return "store/store_update";
+	}
+	
+	@Autowired
+	ReservationService reservationService;
+	
+	@GetMapping("/partner/reservation/{id}")
+	public String fetchRes(@PathVariable int id, Model model) {
+	StoreEntity store = storeService.findByUserId(id);
+	List<ReservationEntity> res = reservationService.findByStoreId(store.getId());
+	model.addAttribute("reservation", res);
+	return "store/store_res";
 	}
 	
 	@PostMapping("/partner/{id}")
@@ -63,7 +87,7 @@ public class PartnerController {
 	public String fetchAddStore(@PathVariable int id, Model model) {
 		
 		//TODO partner null 수정
-		PartnerEntity partner = partnerService.findStoreByUserId(id);
+		PartnerEntity partner = partnerService.findPartnerByUserId(id);
 		model.addAttribute("partner", partner);
 		return "partner/add_store";
 	}

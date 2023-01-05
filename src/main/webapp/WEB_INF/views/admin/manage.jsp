@@ -43,9 +43,11 @@
 						<p><strong>주소 :</strong> ${request.address}</p>
 						<p><strong>PN :</strong> ${request.phoneNumber}</p>
 						<c:if test="${request.status eq 'await'}">
+							<div class="justify-content-right">
 							<a class="btn btn-success mr-1"
 								href="/admin/manage/approve/${request.id}">승인</a>
 							<a class="btn btn-danger" href="/admin/manage/deny/${request.id}">거절</a>
+							</div>
 						</c:if>
 					</div>
 				</div>
