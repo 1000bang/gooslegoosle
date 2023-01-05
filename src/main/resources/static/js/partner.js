@@ -17,7 +17,47 @@ let index = {
 		$("#add-store-menu-btn").bind("click", () => {
 			this.addStoreMenu();
 		});
+		$("#store--update").bind("click", () => {
+			this.storeUpdate();
+		});
 
+
+	},
+
+	storeUpdate : function(){
+		var id = $("#partnerId").val();
+		
+		var data = {	
+			storeName: $("#storeName").val(),
+			mainNumber: $("#mainNumber").val(),
+			address : $("#address").val(),
+			detailAddress : $("#detailAddress").val(),
+			category: $("#category_select").val(),
+			openTime: $("#openTime").val(),
+			closeTime: $("#closeTime").val(),
+			breakTime: $("#breakTime").val(),
+			
+		};
+		$.ajax({
+			type: "POST",
+			url: `/store/update/${id}`,
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(data, textStatus, xhr) {
+			if (data.httpStatus == "OK") {
+				alert("수정 완료");
+				location.reload();
+			}
+
+		}).fail(function(error) {
+			console.log(error);
+			alert("수정실패" + error);
+		});
+		
+		
+		
+		
 	},
 
 	addPartner: function() {
@@ -114,7 +154,7 @@ let index = {
 
 	},
 
-	addMenu : function(){
+	addMenu: function() {
 		let id = $("#id").val();
 
 		let data = {
@@ -142,22 +182,48 @@ let index = {
 			alert("메뉴 등록 실패" + error.responseJSON.message);
 		});
 
-		
+
 	},
 
-
-	menuDelete : function(id){
+	menuDelete: function(menuId) {
 		$.ajax({
-			type:'DELETE',
-			url: `/menu/delete/${id}`,
-		}).done(function(data, textStatus, xhr){
-			if(data.httpStatus == 'OK'){
-				alert("삭제 되었습니다.")
+			type: "DELETE",
+			url: `/menu/delete/${menuId}`,
+			dataType: "json"
+		}).done(function(resData) {
+			if (resData.httpStatus == "OK") {
+				alert("삭제 완료");			
+				location.reload();
 			}
-		}).fail(function(error){
-			console.log("삭제 실패")
+		}).fail(function(error) {
+			console.log(error)
+			alert("삭제 실패하였습니다. ");
 		});
-	}
+
+	},
+	
+		menuUpdate: function(menuId) {
+		let menuData = {
+			menuName: $("#menuName").val(),
+			menuPrice: $("#menuPrice").val(),
+		}
+		$.ajax({
+			type: "put",
+			url: `/menu/update/${menuId}`,
+			data: JSON.stringify(menuData),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(resData) {
+			if (resData.httpStatus == "OK") {
+				alert("수정 완료 되었습니다. ");
+				
+			}
+		}).fail(function(error) {
+			alert("수정 실패하였습니다. ");
+		});
+	
+
+	},
 
 
 }
@@ -168,11 +234,10 @@ function addMenuData(menu) {
 				<div class="form-group card">
 			
 				<div class="d-flex justify-content-between align-items-center">
-					<div>&nbsp;•&nbsp;
+					<div> &nbsp;•&nbsp;
 					<a class="card-text m-3">${menu.menuName} </a> ——
 					<a class="card-text m-3">${menu.menuPrice}</a>원 
 					</div>
-					<button class="btn m-3" onclick="index.menuDelete(${menu.id})" style="height: 35">❌</button>
 				</div>
 				</div>
 `
@@ -183,6 +248,8 @@ function addMenuData(menu) {
 	$("#menuPrice").val("");
 
 }
+
+
 index.init();
 
 

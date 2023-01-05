@@ -91,6 +91,12 @@ public class StoreService {
 		
 		return storeRepository.findByStoreName(store);
 	}
+
+	@Transactional
+	public StoreEntity findByUserId(int id) {
+		
+		return storeRepository.findStoreByUserId(id);
+	}
 	
 	
 	

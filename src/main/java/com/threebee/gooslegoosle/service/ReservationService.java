@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,11 @@ public class ReservationService {
 
 	public ReservationEntity findid(int id) {
 		return reservationRepository.findByid(id);
+	}
+
+	public List<ReservationEntity> findByStoreId(int id) {
+		
+		return reservationRepository.findByStoreId(id);
 	}
 	
 	

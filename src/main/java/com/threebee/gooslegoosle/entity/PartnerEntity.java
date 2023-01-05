@@ -67,6 +67,7 @@ public class PartnerEntity {
 
 	@OneToMany(
 			cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = {"store, partner"})
 	private List<MenuEntity> menu;
 
 	@ColumnDefault("FALSE")

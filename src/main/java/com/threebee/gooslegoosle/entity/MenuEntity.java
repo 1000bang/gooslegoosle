@@ -36,7 +36,7 @@ public class MenuEntity {
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "storeId")
-	@JsonIgnoreProperties({"menu"})
+	@JsonIgnoreProperties(value = {"menu"})
 	private StoreEntity store;
 
 	
