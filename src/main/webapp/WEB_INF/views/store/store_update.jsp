@@ -14,19 +14,20 @@
 
 	<form action="">
 
+		<input hidden="true" id="partnerId" value="${partner.id}">
 		<div class="form-group">
-			<label for="username">가게이름 :</label> <input type="text"
-				class="form-control" id="username" value="${partner.storeName}"
-				>
+			<label for="storeName">가게이름 :</label> <input type="text"
+				class="form-control" id="storeName" value="${partner.storeName}">
 		</div>
 
 		<div class="form-group">
-			<label for="username">대표 번호 :</label> <input type="text"
-				class="form-control" id="username" value="${partner.mainNumber}"
-				>
+			<label for="mainNumber">대표 번호 :</label> <input type="text"
+				class="form-control" id="mainNumber" value="${partner.mainNumber}">
 		</div>
 		<div class="form-group">
+		<label for="address">주소 :</label>
 			<div class="d-flex mb-1">
+			
 				<input type="text" id="postcode" placeholder="우편번호"
 					class="form-control mr-1" value=""> <input type="button"
 					style="width: 15vh; color: white; background-color: #63BFBC;"
@@ -41,10 +42,40 @@
 				class="form-control mb-4" type="text" id="detailAddress"
 				placeholder="상세주소" value="${partner.detailAddress}">
 		</div>
+
+		<div class="form-group">
+			<label for="username">카테고리 :</label> <select class="form-control"
+				id="category_select" name="category">
+				<option value="KOREAN" id="01">한식</option>
+				<option value="JAPANESE" id="02">일식</option>
+				<option value="CHINESE" id="03">중식</option>
+				<option value="WESTERN" id="04">양식</option>
+				<option value="">카페</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="openTime">오픈 시간 :</label> <input type="text"
+				class="form-control" id="openTime" value="${store.openTime}">
+		</div>
+
+		<div class="form-group">
+			<label for="closeTime">마감 시간 :</label> <input type="text"
+				class="form-control" id="closeTime" value="${store.closeTime}">
+		</div>
+
+		<div class="form-group">
+			<label for="breakTime">쉬는 시간 :</label> <input type="text"
+				class="form-control" id="breakTime" value="${store.breakTime}">
+		</div>
+
+
 		<br />
+
+
 		<div class="input-group justify-content-center">
 
-			<button type="button" class="btn"
+			<button type="button" class="btn" id="store--update"
 				style="width: 15vh; color: white; background-color: #63BFBC;">수정
 			</button>
 		</div>
@@ -56,22 +87,27 @@
 		<c:forEach var="item" items="${store.menu}">
 			<div class="form-group">
 				<label for="phoneNumber">메뉴이름 </label> <input type="text"
-					class="form-control" id="phoneNumber" value="${item.menuName}">
+					class="form-control" id="menuName" value="${item.menuName}">
 			</div>
 
 			<div class="form-group">
 				<label for="phoneNumber">메뉴가격</label> <input type="text"
-					class="form-control" id="phoneNumber" value="${item.menuPrice}">
+					class="form-control" id="menuPrice" value="${item.menuPrice}">
+			</div>
+			<div class="input-group justify-content-center">
+
+				<button type="button" class="btn m-2"
+					onclick="index.menuUpdate(${item.id})"
+					style="width: 15vh; color: white; background-color: #63BFBC;">수정
+				</button>
+				<button type="button" class="btn m-2"
+					onclick="index.menuDelete(${item.id})"
+					style="width: 15vh; color: white; background-color: #63BFBC;">삭제
+				</button>
 			</div>
 			<hr />
 		</c:forEach>
 		<br />
-		<div class="input-group justify-content-center">
-
-			<button type="button" class="btn"
-				style="width: 15vh; color: white; background-color: #63BFBC;">수정
-			</button>
-		</div>
 	</form>
 </div>
 <br />
@@ -79,6 +115,7 @@
 <br />
 
 
+<script type="text/javascript" src="/js/partner.js"></script>
 
 
 <%@ include file="../layout/footer.jsp"%>

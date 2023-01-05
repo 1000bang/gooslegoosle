@@ -17,7 +17,47 @@ let index = {
 		$("#add-store-menu-btn").bind("click", () => {
 			this.addStoreMenu();
 		});
+		$("#store--update").bind("click", () => {
+			this.storeUpdate();
+		});
 
+
+	},
+
+	storeUpdate : function(){
+		var id = $("#partnerId").val();
+		
+		var data = {	
+			storeName: $("#storeName").val(),
+			mainNumber: $("#mainNumber").val(),
+			address : $("#address").val(),
+			detailAddress : $("#detailAddress").val(),
+			category: $("#category_select").val(),
+			openTime: $("#openTime").val(),
+			closeTime: $("#closeTime").val(),
+			breakTime: $("#breakTime").val(),
+			
+		};
+		$.ajax({
+			type: "POST",
+			url: `/store/update/${id}`,
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(data, textStatus, xhr) {
+			if (data.httpStatus == "OK") {
+				alert("수정 완료");
+				location.reload();
+			}
+
+		}).fail(function(error) {
+			console.log(error);
+			alert("수정실패" + error);
+		});
+		
+		
+		
+		
 	},
 
 	addPartner: function() {
@@ -145,7 +185,7 @@ let index = {
 
 	},
 
-	menuDelete: function(menuId, ths) {
+	menuDelete: function(menuId) {
 		$.ajax({
 			type: "DELETE",
 			url: `/menu/delete/${menuId}`,
@@ -153,14 +193,37 @@ let index = {
 		}).done(function(resData) {
 			if (resData.httpStatus == "OK") {
 				alert("삭제 완료");			
-							
+				location.reload();
 			}
 		}).fail(function(error) {
 			console.log(error)
 			alert("삭제 실패하였습니다. ");
 		});
 
-	}
+	},
+	
+		menuUpdate: function(menuId) {
+		let menuData = {
+			menuName: $("#menuName").val(),
+			menuPrice: $("#menuPrice").val(),
+		}
+		$.ajax({
+			type: "put",
+			url: `/menu/update/${menuId}`,
+			data: JSON.stringify(menuData),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(resData) {
+			if (resData.httpStatus == "OK") {
+				alert("수정 완료 되었습니다. ");
+				
+			}
+		}).fail(function(error) {
+			alert("수정 실패하였습니다. ");
+		});
+	
+
+	},
 
 
 }
@@ -185,6 +248,8 @@ function addMenuData(menu) {
 	$("#menuPrice").val("");
 
 }
+
+
 index.init();
 
 

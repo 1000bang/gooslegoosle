@@ -56,4 +56,8 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 	StoreEntity findStoreByUserId(int id);
 
 
+	@Query(value = "SELECT * FROM storeEntity WHERE partner_id = ?1", nativeQuery = true)
+	StoreEntity findStoreByPartnerId(int id);
+
+
 }

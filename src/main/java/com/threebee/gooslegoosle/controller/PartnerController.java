@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.threebee.gooslegoosle.dto.PartnerAndStoreDTO;
 import com.threebee.gooslegoosle.dto.PartnerFileDTO;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.dto.StoreFileDTO;
@@ -126,28 +128,14 @@ public class PartnerController {
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 	
-/* 필요없는 부분같음 나중에 지울 예정  
-//	@GetMapping("/partner/add_partner/{id}")
-//	@ResponseBody
-//	public String fetchAddPartner(@PathVariable int id, Model model) {
-//		PartnerEntity store = partnerService.findStoreByUserId(id);
-//		model.addAttribute("store", store);
-//
-//		return "10";
-//	}
-
-//	@GetMapping("/partner/addMenu/{id}")
-//	@ResponseBody
-//	public ResponseDto<Integer> fetchAddMenu(@PathVariable int id, Model model) {
-//		StoreEntity store = storeService.findStoreByStoreId(id);
-//		List<MenuEntity> menus = partnerService.findMenuByStoreId(id);
-//		
-//		model.addAttribute("store", store);
-//		model.addAttribute("menus", menus);
-//		return new ResponseDto<Integer>(HttpStatus.OK, 1);
-//	}
-//	
-*/	
+	@PostMapping("/store/update/{id}")
+	@ResponseBody
+	public ResponseDto<Integer> fetchUpdateSnP(@RequestBody PartnerAndStoreDTO dto, @PathVariable int id) {
+		System.out.println(dto);
+		partnerService.updateAll(id, dto);
+		
+		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+	}
 	
 	
 	// 가게수정시 사할 예정  
@@ -158,5 +146,12 @@ public class PartnerController {
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 
+	
+	@PutMapping("/menu/update/{id}")
+	@ResponseBody
+	public ResponseDto<Integer> fetchUpdateMenu(@PathVariable int id, @RequestBody MenuEntity menu) {
+		partnerService.updateMenu(id, menu);
+		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+	}
 
 }

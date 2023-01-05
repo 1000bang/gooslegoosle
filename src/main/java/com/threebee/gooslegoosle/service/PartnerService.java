@@ -18,6 +18,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.threebee.gooslegoosle.dto.PartnerAndStoreDTO;
 import com.threebee.gooslegoosle.dto.PartnerFileDTO;
 import com.threebee.gooslegoosle.dto.StoreFileDTO;
 import com.threebee.gooslegoosle.entity.ImageEntity;
@@ -149,6 +150,35 @@ public class PartnerService {
 	public List<MenuEntity> findMenuByStoreId(int id) {
 		
 		return iMenuRepository.findByStoreId(id);
+	}
+
+
+
+	@Transactional
+	public void updateMenu(int id, MenuEntity menu) {
+		MenuEntity menus = iMenuRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("해당 메뉴가 없습니다.");
+		});
+		
+		menus.setMenuName(menu.getMenuName());
+		menus.setMenuPrice(menu.getMenuPrice());
+		
+	}
+
+
+	@Transactional
+	public void updateAll(int id, PartnerAndStoreDTO dto) {
+		PartnerEntity partner = findPartnerByPartnerId(id);
+		partner.setAddress(dto.getAddress());
+		partner.setDetailAddress(dto.getDetailAddress());
+		partner.setMainNumber(dto.getMainNumber());
+		partner.setStoreName(dto.getStoreName());
+		
+		StoreEntity store = iStoreRepository.findStoreByPartnerId(id);
+		store.setBreakTime(dto.getBreakTime());
+		store.setCloseTime(dto.getCloseTime());
+		store.setOpenTime(dto.getOpenTime());
+		store.setCategory(dto.getCategory());
 	}
 
 }
