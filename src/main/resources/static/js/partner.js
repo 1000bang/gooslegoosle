@@ -114,7 +114,7 @@ let index = {
 
 	},
 
-	addMenu : function(){
+	addMenu: function() {
 		let id = $("#id").val();
 
 		let data = {
@@ -142,21 +142,24 @@ let index = {
 			alert("메뉴 등록 실패" + error.responseJSON.message);
 		});
 
-		
+
 	},
 
-
-	menuDelete : function(id){
+	menuDelete: function(menuId, ths) {
 		$.ajax({
-			type:'DELETE',
-			url: `/menu/delete/${id}`,
-		}).done(function(data, textStatus, xhr){
-			if(data.httpStatus == 'OK'){
-				alert("삭제 되었습니다.")
+			type: "DELETE",
+			url: `/menu/delete/${menuId}`,
+			dataType: "json"
+		}).done(function(resData) {
+			if (resData.httpStatus == "OK") {
+				alert("삭제 완료");			
+							
 			}
-		}).fail(function(error){
-			console.log("삭제 실패")
+		}).fail(function(error) {
+			console.log(error)
+			alert("삭제 실패하였습니다. ");
 		});
+
 	}
 
 
@@ -168,11 +171,10 @@ function addMenuData(menu) {
 				<div class="form-group card">
 			
 				<div class="d-flex justify-content-between align-items-center">
-					<div>&nbsp;•&nbsp;
+					<div> &nbsp;•&nbsp;
 					<a class="card-text m-3">${menu.menuName} </a> ——
 					<a class="card-text m-3">${menu.menuPrice}</a>원 
 					</div>
-					<button class="btn m-3" onclick="index.menuDelete(${menu.id})" style="height: 35">❌</button>
 				</div>
 				</div>
 `

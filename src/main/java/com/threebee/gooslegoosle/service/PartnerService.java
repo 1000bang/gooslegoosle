@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -119,14 +120,35 @@ public class PartnerService {
 	
 	
 	@Transactional
-	public PartnerEntity findStoreByStoreId(int id) {
-		return iPartnerRepository.findByStoreId(id);
+	public PartnerEntity findPartnerByPartnerId(int id) {
+		return iPartnerRepository.findByPartnerId(id);
 	}
 
+	@Autowired
+	IStoreRepository iStoreRepository;
+	
 	@Transactional
 	public void setUpload(int id) {
-		PartnerEntity store = findStoreByStoreId(id);
-		store.setUpload(true);
+		StoreEntity store =iStoreRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("해당 가게를 찾을 수 없습니다. ");
+		});
+		
+		PartnerEntity partner = findPartnerByPartnerId(store.getPartner().getId());
+		partner.setUpload(true);
+	}
+
+
+	@Transactional
+	@Modifying
+	public void deleteMenu(int id) {
+		iMenuRepository.deleteByMenuId(id);
+	}
+
+
+
+	public List<MenuEntity> findMenuByStoreId(int id) {
+		
+		return iMenuRepository.findByStoreId(id);
 	}
 
 }
