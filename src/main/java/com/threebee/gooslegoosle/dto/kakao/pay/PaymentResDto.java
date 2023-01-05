@@ -18,7 +18,6 @@ import lombok.ToString;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
 "tid",
-"tms_result",
 "next_redirect_app_url",
 "next_redirect_mobile_url",
 "next_redirect_pc_url",
@@ -34,8 +33,6 @@ public class PaymentResDto {
 
 @JsonProperty("tid")
 public String tid;
-@JsonProperty("tms_result")
-public Boolean tmsResult;
 @JsonProperty("next_redirect_app_url")
 public String nextRedirectAppUrl;
 @JsonProperty("next_redirect_mobile_url")

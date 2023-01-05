@@ -12,7 +12,7 @@
 		<div hidden="true" id=userid>${principal.user.id}</div>
 		<input hidden="true" id=storeId type="text" value="${storeDetail.id}" />
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Enter usernmae"
+			<input type="text" class="form-control" placeholder="Enter usernmae" id="username"
 				value="${principal.user.username}" readonly="readonly">
 
 		</div>
@@ -26,7 +26,7 @@
 		<h2>예약 정보</h2>
 
 		<div class="form-group">
-			<input type="text" class="form-control mr-1 "
+			<label>가게명 </label><input type="text" class="form-control mr-1 " id="storeName"
 				value="${reservationDetail.store.partner.storeName}" readonly="readonly">
 		</div>
 
@@ -37,30 +37,30 @@
 
 		<div class="form-group">
 
-			<input type="text" class="form-control" placeholder=""
-				value="인원수 : ${reservationDetail.headCount}" readonly="readonly">
+			<label>인원수 </label><input type="text" class="form-control" placeholder="" id="headCount"
+				value="${reservationDetail.headCount}" readonly="readonly">
+		</div>
+
+		<div class="form-group">
+			<label>예약 날짜 </label><input type="text" class="form-control" placeholder="" id="date"
+				value="${reservationDetail.date}" readonly="readonly">
+		</div>
+
+		<div class="form-group">
+			<label>예약 시간 </label><input type="text" class="form-control" placeholder="" id="time"
+				value="${reservationDetail.time}" readonly="readonly">
+
 		</div>
 
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder=""
-				value="예약 날짜 : ${reservationDetail.date}" readonly="readonly">
-		</div>
-
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder=""
-				value="예약 시간 : ${reservationDetail.time}" readonly="readonly">
-
-		</div>
-
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder=""
-				value="예약 시간 : ${reservationDetail.time}" readonly="readonly">
+				value="?? : ???" readonly="readonly">
 		</div>
 		<br /> <br />
 	</form>
 	<div class="input-group justify-content-center">
 <button id="back" class="btn" onclick="history.back();" style="background-color: #63BFBC; color: white; border-radius: 50px; width: 121px; height: 50px; margin-top: 8px; font-weight: 600">돌아가기</button>
-		<button type="button" class="btn" onclick="reservation()"
+		<button type="button" class="btn" id="kakao-Pay"
 			style="width: 15vh;"><img alt="" src="/images/kakao-pay.png">
 		</button>
 	</div>
@@ -68,45 +68,6 @@
 	<br /> <br>
 </div>
 
-<script>
-	function reservation() {
-		let data = {
-			request : $("#request").val(),
-			date : $("#date").val(),
-			time : $("#time").val(),
-			headCount : $("#headCount").val(),
-		};
-
-		let store = $("#storeId").val();
-
-		console.log(store);
-		console.log(data);
-
-		$.ajax({
-			type : "POST",
-			url : "/store/reservation/" + store + "/save",
-			data : JSON.stringify(data),
-			contentType : "application/json; charset = utf-8",
-			dataType : "json"
-
-		}).done(function(data, textStatus, xhr) {
-			console.log(data);
-			console.log(textStatus);
-			console.log(xhr);
-			if (data.httpStatus == "OK") {
-				alert("예약 완료 ");
-			}
-			location.href = "/";
-		}).fail(function(error) {
-			console.log(error);
-			alert("예약 실패  " + error.responseJSON.error)
-		});
-
-	}
-</script>
-
-
-
-
+<script type="text/javascript" src="/js/reservation.js"></script>
 <%@ include file="../layout/footer.jsp"%>
 

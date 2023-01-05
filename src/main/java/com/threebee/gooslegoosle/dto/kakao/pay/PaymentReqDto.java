@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PaymentReqDto {
  
+	private String storeName;
 	private String username;
-	private String count;
-	private String amount;
-	private String itemname;
-	private String postcode;
-	private String roadAddress;
-	private String detailAddress;
+	private String headCount;
+	private String date;
+	private String time;
+	private String deposit;
 }
