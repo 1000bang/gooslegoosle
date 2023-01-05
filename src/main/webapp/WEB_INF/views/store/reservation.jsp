@@ -16,10 +16,10 @@
 				value="${principal.user.username}" readonly="readonly">
 
 		</div>
-		
+
 		<div id="popup">
-			<img alt="" src="/images/popup.jpg">
-			<a href="#" class="close-btn">닫기</a>
+			<img alt="" src="/images/popup.jpg"> <a href="#"
+				class="close-btn">닫기</a>
 		</div>
 
 		<div class="form-group">
@@ -81,8 +81,8 @@
 	<div class="input-group justify-content-center">
 
 		<button type="button" class="btn" onclick="reservation()"
-			style="width: 15vh; color: white; background-color: #63BFBC;">다음 단계
-		</button>
+			style="width: 15vh; color: white; background-color: #63BFBC;">다음
+			단계</button>
 	</div>
 
 	<br /> <br>
@@ -90,28 +90,28 @@
 
 
 <script type="text/javascript">
+	$(document).ready(function() {
+		$('#popup').show();
 
-$(document).ready(function (){
-	$('#popup').show();
-	
-	$('.close-btn').click(function(){
-		$('#popup').hide();
+		$('.close-btn').click(function() {
+			$('#popup').hide();
+		});
 	});
-});
 
-var fp = flatpickr(document.getElementById("date"), {
-      'monthSelectorType' : 'static',
-      "locale": "ko" 
-   });
-var today, date;
-today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-fp.setDate(today);
-date = $('#date').flatpickr({
-   format : "yyyy-mm-dd",
-   language: "english",
-   startDate : '-3d',
-   minDate: today
-});
+	var fp = flatpickr(document.getElementById("date"), {
+		'monthSelectorType' : 'static',
+		"locale" : "ko"
+	});
+	var today, date;
+	today = new Date(new Date().getFullYear(), new Date().getMonth(),
+			new Date().getDate());
+	fp.setDate(today);
+	date = $('#date').flatpickr({
+		format : "yyyy-mm-dd",
+		language : "english",
+		startDate : '-3d',
+		minDate : today
+	});
 </script>
 <script>
 	function reservation() {
@@ -134,15 +134,17 @@ date = $('#date').flatpickr({
 			contentType : "application/json; charset = utf-8",
 			dataType : "json"
 
-		}).done(function(data, textStatus, xhr) {
-			console.log(data);
-			console.log(textStatus);
-			console.log(xhr);
-			if (data.httpStatus == "OK") {
-				alert("예약 완료 ");
-			}
-			location.href = "/store/reservation/" + store + "/reservation_next";
-		}).fail(function(error) {
+		}).done(
+				function(data, textStatus, xhr) {
+					console.log(data);
+					console.log(textStatus);
+					console.log(xhr);
+					if (data.httpStatus == "OK") {
+						location.href = "/store/reservation/" + store
+								+ "/reservation_next";
+
+					}
+				}).fail(function(error) {
 			console.log(error);
 			alert("예약 실패  " + error.responseJSON.error)
 		});

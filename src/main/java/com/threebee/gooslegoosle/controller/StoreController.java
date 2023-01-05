@@ -1,26 +1,33 @@
 package com.threebee.gooslegoosle.controller;
 
-import org.springframework.data.domain.Pageable;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import com.threebee.gooslegoosle.auth.PrincipalDetail;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.dto.StoreFileDTO;
-import com.threebee.gooslegoosle.entity.MenuEntity;
+import com.threebee.gooslegoosle.dto.kakao.pay.PaymentReqDto;
+import com.threebee.gooslegoosle.dto.kakao.pay.PaymentResDto;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
@@ -41,6 +48,10 @@ public class StoreController {
 	
 	@Autowired
 	private ReviewService reviewService;
+	
+	private String tid;
+	
+	private PaymentReqDto paymentReqDto;
 	
 	@GetMapping("/store/{id}")
 	public String fetchIndex(Model model, @PathVariable int id, 
@@ -69,6 +80,8 @@ public class StoreController {
 	
 	private ReservationEntity resData;
 	
+	private PaymentReqDto reqDto;
+	
 	
 	@PostMapping("/store/reservation/{id}/save")
 	@ResponseBody
@@ -89,29 +102,75 @@ public class StoreController {
 
 		return "/store/reservation_next";
 	}
+	
+	@GetMapping("/store/reservation/pay/fail")
+	public String payFail() {
+		return "/store/reservation_pay_fail";
+	}
+	
+	@PostMapping("/pay/ready")
+	@ResponseBody
+	public ResponseDto<PaymentResDto> readyForPay(@RequestBody PaymentReqDto reqData){
+		RestTemplate rt = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+		
+		headers.add("Authorization", "KakaoAK 11f4787a3e20f1290090dbe6f4969397");
+		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("cid", "TC0ONETIME");
+		params.add("partner_order_id", "1212121212"); // <-- 주문 번호가 없음.ㅠ
+		params.add("partner_user_id", reqData.getUsername());
+		params.add("item_name", reqData.getStoreName());
+		params.add("quantity", "1");
+		params.add("total_amount", "20000");
+		params.add("tax_free_amount", "0");
+		params.add("approval_url", "http://localhost:9090/pay/success");
+		params.add("cancel_url", "http://localhost:9090/store/reservation/pay/fail");
+		params.add("fail_url", "http://localhost:9090/store/reservation/pay/fail");
+		
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + params);
+		HttpEntity<MultiValueMap<String, String>> reqPayment = new HttpEntity<>(params,headers);
+		
+		// 헤더를 변조해서 넣는 코드
+		ResponseEntity<PaymentResDto> response = rt.exchange("https://kapi.kakao.com/v1/payment/ready", HttpMethod.POST,
+				reqPayment, PaymentResDto.class);
+		tid = response.getBody().tid;
+		paymentReqDto = reqData;
+		System.out.println(response.getBody());
+		
+		return new ResponseDto<PaymentResDto>(HttpStatus.OK, response.getBody());
+	}
 
 	
 	//////////////////////////SUCCESS APPROVAL/////////////////////////////////
 	@GetMapping("/pay/success")
-	public String payCompleted(@RequestParam("pg_token") String pgToken, Model model) {
-		System.out.println("성공???????");
+	public String payCompleted(@RequestParam("pg_token") String pgToken, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+		RestTemplate rt = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
 		
-		// 카카오 결재 요청하기
-//		ApproveRes approve = paymentService.payApprove(tid, pgToken, dtoData);	
-//		
-//		ApproveRes payment = ApproveRes.builder()
-//				.partnerUserId(approve.getPartnerUserId())
-//				.quantity(approve.getQuantity())
-//				.amount(approve.getAmount())
-//				.itemName(approve.getItemName())
-//				.approvedAt(approve.getApprovedAt())
-//				.amount(approve.getAmount())
-//				.paymentMethodType(approve.getPaymentMethodType())
-//				.build();
+		headers.add("Authorization", "KakaoAK 11f4787a3e20f1290090dbe6f4969397");
+		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("cid", "TC0ONETIME");
+		params.add("tid", tid);
+		params.add("partner_order_id", "1212121212"); // <-- 주문 번호가 없음.ㅠ
+		params.add("partner_user_id", paymentReqDto.getUsername());
+		params.add("pg_token", pgToken);
+		
+		HttpEntity<MultiValueMap<String, String>> reqPayment = new HttpEntity<>(params,headers);
+		
+		// 헤더를 변조해서 넣는 코드
+		ResponseEntity<PaymentResDto> response = rt.exchange("https://kapi.kakao.com/v1/payment/approve", HttpMethod.POST,
+				reqPayment, PaymentResDto.class);
+//		tid = response.getBody().tid;
+
+		System.out.println(response.getBody());                                                                                                                                                                           
 				
 	
-		//reservationService.saveReservation(resData detail.getUser()); 
-		return "item/success";
+		reservationService.saveReservation(resData, principalDetail.getUser()); 
+		return "/store/reservation_pay_success";
 	}
 	
 }
