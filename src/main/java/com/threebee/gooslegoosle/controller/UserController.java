@@ -82,8 +82,6 @@ public class UserController {
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		ReservationEntity res = reservationService.findById(id);
-		
-		
 		headers.add("Authorization", "KakaoAK 11f4787a3e20f1290090dbe6f4969397");
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 		
@@ -98,7 +96,7 @@ public class UserController {
 		// 헤더를 변조해서 넣는 코드
 		ResponseEntity<String> response = rt.exchange("https://kapi.kakao.com/v1/payment/cancel", HttpMethod.POST,
 				reqCancle, String.class);
-		res.setApprove("취소 완료");
+		reservationService.setCancle(res.getId());
 		List<ReservationEntity> reservation = reservationService.findByUserid(detail.getUser().getId());
 		model.addAttribute("reservation", reservation);
 		return "user/reservation";

@@ -25,7 +25,7 @@ public class ReservationService {
 		res.setUser(user);
 		res.setReviewd(false);
 		res.setTid(tid);
-		
+		res.setApprove("Wait");
 		reservationRepository.save(res);
 	}
 
@@ -63,7 +63,6 @@ public class ReservationService {
 		ReservationEntity res = reservationRepository.findById(ids).orElseThrow(()->{
 			return new IllegalArgumentException("해당 예약내역을 찾을 수 없습니다. ");
 		});			
-		System.out.println(res);
 		res.setApprove("Deny");
 	}
 
@@ -71,6 +70,14 @@ public class ReservationService {
 		return reservationRepository.findById(id).orElseThrow(()->{
 			return new IllegalArgumentException("해당 예약내역을 찾을 수 없습니다. ");
 		});			
+	}
+
+	@Transactional
+	public void setCancle(int id) {
+		ReservationEntity res = reservationRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("해당 예약내역을 찾을 수 없습니다. ");
+		});			
+		res.setApprove("취소 완료");
 	}
 	
 }
