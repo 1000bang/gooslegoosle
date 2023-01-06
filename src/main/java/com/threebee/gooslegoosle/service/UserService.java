@@ -34,6 +34,7 @@ public class UserService {
 		System.out.println(user);
 		String rawPassword = user.getPassword();
 		String bcPassword = bcencoder.encode(rawPassword);
+		user.setEnable(true);
 		user.setPassword(bcPassword);
 		user.setRole(UserRole.USER);
 		iUserRepository.save(user);
