@@ -29,9 +29,6 @@ public class UserService {
 		});
 	}
 
-	
-	
-	
 	@Transactional
 	public int saveUser(UserEntity user) {
 		System.out.println(user);
@@ -50,8 +47,6 @@ public class UserService {
 		});
 
 	}
-	
-	
 
 	@Transactional
 	public void updateUser(UserEntity user) {
@@ -82,10 +77,10 @@ public class UserService {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});
 		userEntity.setRole(UserRole.ADMIN);
-		
+
 		return userEntity;
 	}
-	
+
 	@Transactional
 	public void setHost(int id) {
 		System.out.println("sethost");
@@ -96,24 +91,17 @@ public class UserService {
 		System.out.println("sethost끝 ");
 	}
 
-
-
-
 	public UserEntity findId(int id) {
 		UserEntity user = iUserRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
-		});;
+		});
+		;
 		return user;
 	}
-
-
-
 
 	public List<UserEntity> findAll() {
 		return iUserRepository.findAll();
 	}
-
-
 
 	@Transactional
 	public void setWarningUser(int id) {
@@ -121,11 +109,16 @@ public class UserService {
 		user.setWarning(user.getWarning() + 1);
 	}
 
-
-
-
-	public void deleteUser(int id) {
-		iUserRepository.deleteById(id);
+	@Transactional
+	public void stopUser(int id) {
+		UserEntity user = findId(id);
+		user.setEnable(false);
+	}
+	
+	@Transactional
+	public void unStopUser(int id) {
+		UserEntity user = findId(id);
+		user.setEnable(true);
 	}
 
 }

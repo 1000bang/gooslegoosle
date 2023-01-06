@@ -72,11 +72,19 @@ public class AdminController {
 		return "admin/user_list";
 	}
 
-	@GetMapping("/admin/delete/{id}")
-	public String fetchDeleteUser(@PathVariable int id, Model model) {
-		userService.deleteUser(id);
+	@GetMapping("/admin/stop/{id}")
+	public String fetchStopUser(@PathVariable int id, Model model) {
+		userService.stopUser(id);
 		attribute(model);
 		
+		
+		return "admin/user_list";
+	}
+	
+	@GetMapping("/admin/unstop/{id}")
+	public String fetchUnStopUser(@PathVariable int id, Model model) {
+		userService.unStopUser(id);
+		attribute(model);	
 		return "admin/user_list";
 	}
 	
