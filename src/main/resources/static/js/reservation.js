@@ -56,12 +56,41 @@ let index = {
 		}).done(function(data, textStatus, xhr) {
 			if (data.httpStatus == 'OK') {
 				alert("승인 성공")
+				location.reload();
 			}
 		}).fail(function(error) {
 			alert("승인 실패  " + error.responseJSON.error)
 		});
 	},
 
+
+	deny: function() {
+		var resId = [];
+		$("input[name=resId]:checked").each(function() {
+			var chk = $(this).val();
+			resId.push(chk);
+		})
+
+		var data = {
+			 
+			id : resId      
+		};
+
+		$.ajax({
+			type: 'post',
+			url: '/reservation/deny',
+			data: JSON.stringify(data),
+			contentType: 'application/json; charset=utf-8',
+			dataType: 'json'
+		}).done(function(data, textStatus, xhr) {
+			if (data.httpStatus == 'OK') {
+				alert("거절 성공")
+				location.reload();
+			}
+		}).fail(function(error) {
+			alert("거절 실패  " + error.responseJSON.error)
+		});
+	},
 
 }
 

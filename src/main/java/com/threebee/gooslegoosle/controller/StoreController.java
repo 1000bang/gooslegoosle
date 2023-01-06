@@ -163,13 +163,15 @@ public class StoreController {
 		ResponseEntity<PaymentResDto> response = rt.exchange("https://kapi.kakao.com/v1/payment/approve", HttpMethod.POST,
 				reqPayment, PaymentResDto.class);
 //		tid = response.getBody().tid;
-
-		System.out.println(">>><><>><><<><" +response.getBody());                                                                                                                                                                           
+                                                                                                                                                                         
 				
 	
-		reservationService.saveReservation(resData, principalDetail.getUser()); 
+
+		reservationService.saveReservation(resData, principalDetail.getUser(), tid); 
+		
 		model.addAttribute("reservationDetail", resData);
 		model.addAttribute("response", response);
+
 		return "/store/reservation_pay_success";
 	}
 	

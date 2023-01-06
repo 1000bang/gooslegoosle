@@ -50,20 +50,22 @@ public class MagazineController {
 		return "/magazine/magazine_update";
 	}
 	
-
-
 	@PostMapping("/magazine/save")
-	public String fetchSave(MagazineFileDTO file, 
+	public String fetchSave(MagazineFileDTO file, Model model,
 			@AuthenticationPrincipal PrincipalDetail detail) {
-		System.out.println(detail);
-		System.out.println("file >>>>>>>"+ file.getFile().getOriginalFilename());
 		magazineService.writeMagazine(file, detail.getUser());
+		List<MagazineEntity> magazine = magazineService.findAllMagazine();
+		model.addAttribute("magazine", magazine);
+		
 		return "/magazine/magazine_list";
 	}
 	
 	@GetMapping("/api/magazine/delete/{id}")
-	public String delete(@PathVariable int id){
+	public String delete(@PathVariable int id, Model model){
 		magazineService.deleteMagazine(id);
+		List<MagazineEntity> magazine = magazineService.findAllMagazine();
+		model.addAttribute("magazine", magazine);
+		
 		return "/magazine/magazine_list";
 	}
 	

@@ -28,16 +28,7 @@ public class MagazineApiController {
 
 	@Autowired
 	MagazineService magazineService;
-	
-	
-	@PostMapping("/api/magazine")
-	public ResponseDto<Integer> fetchSave(MagazineFileDTO file, 
-			@AuthenticationPrincipal PrincipalDetail detail) {
-		System.out.println(detail);
-		System.out.println("file >>>>>>>"+ file.getFile().getOriginalFilename());
-		magazineService.writeMagazine(file, detail.getUser());
-		return new ResponseDto<Integer>(HttpStatus.OK, 1);
-	}
+
 	
 	@PutMapping("/api/magazine/{id}")
 	public ResponseDto<Integer>update(@PathVariable int id, @RequestBody MagazineEntity magazine){
