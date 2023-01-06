@@ -20,11 +20,11 @@ public class ReservationService {
 	IReservationRepository reservationRepository;
 
 	@Transactional
-	public void saveReservation(ReservationEntity res, UserEntity user) {
+	public void saveReservation(ReservationEntity res, UserEntity user, String tid) {
 		res.setPhoneNumber(user.getPhoneNumber());
 		res.setUser(user);
 		res.setReviewd(false);
-
+		res.setTid(tid);
 		
 		reservationRepository.save(res);
 	}
@@ -39,8 +39,8 @@ public class ReservationService {
 	}
 	
 
-	public ReservationEntity findByUserid(int id) {
-		return reservationRepository.findByUserid(id);
+	public List<ReservationEntity> findByUserid(int id) {
+		return reservationRepository.findByUserId(id);
 	}
 
 	public List<ReservationEntity> findByStoreId(int id) {
@@ -52,7 +52,7 @@ public class ReservationService {
 	public void setApprove(String id) {
 		int ids = Integer.parseInt(id);
 		ReservationEntity res = reservationRepository.findById(ids).orElseThrow(()->{
-			return new IllegalArgumentException();
+			return new IllegalArgumentException("해당 예약내역을 찾을 수 없습니다. ");
 		});		
 		res.setApprove("Approve");
 	}
@@ -61,10 +61,16 @@ public class ReservationService {
 	public void setDeny(String id) {
 		int ids = Integer.parseInt(id);
 		ReservationEntity res = reservationRepository.findById(ids).orElseThrow(()->{
-			return new IllegalArgumentException();
+			return new IllegalArgumentException("해당 예약내역을 찾을 수 없습니다. ");
 		});			
 		System.out.println(res);
 		res.setApprove("Deny");
+	}
+
+	public ReservationEntity findById(int id) {
+		return reservationRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("해당 예약내역을 찾을 수 없습니다. ");
+		});			
 	}
 	
 }

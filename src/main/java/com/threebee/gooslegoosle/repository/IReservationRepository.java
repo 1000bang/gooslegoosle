@@ -21,4 +21,9 @@ public interface IReservationRepository extends JpaRepository<ReservationEntity,
 			+ " WHERE userId = ?1 ORDER BY id DESC LIMIT 1 ", nativeQuery = true)
 	public ReservationEntity findByUserid(int id);
 
+	@Query(value = "SELECT"
+			+ " * FROM reservationentity"
+			+ " WHERE userId = ?1", nativeQuery = true)
+	List<ReservationEntity> findByUserId(int id);
+
 }

@@ -63,6 +63,7 @@ public class ReservationEntity {
 	@ColumnDefault(" 'wait' ")
 	private String approve;
 	
+	private String tid;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId")

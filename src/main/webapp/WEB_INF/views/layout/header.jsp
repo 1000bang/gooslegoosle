@@ -99,6 +99,7 @@
 										<ul id="nave--moreview--item" style="padding-top: 0">
                                     		<li><a class="dropdown-item" href="/user/update">Profile</a></li>
                                     		<li><a class="dropdown-item" href="/myReview">My Review</a></li>
+                                    		<li><a class="dropdown-item" href="/myReservation">My Reservation</a></li>
                             				<li><a class="dropdown-item" href="/logout">LogOut</a></li>
                                 		</ul> 
 									</li>

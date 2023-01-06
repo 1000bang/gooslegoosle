@@ -169,7 +169,7 @@ public class StoreController {
 		System.out.println(response.getBody());                                                                                                                                                                           
 				
 	
-		reservationService.saveReservation(resData, principalDetail.getUser()); 
+		reservationService.saveReservation(resData, principalDetail.getUser(), tid); 
 		return "/store/reservation_pay_success";
 	}
 	
