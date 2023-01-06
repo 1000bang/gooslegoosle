@@ -129,7 +129,6 @@ public class StoreController {
 		params.add("cancel_url", "http://localhost:9090/store/reservation/pay/fail");
 		params.add("fail_url", "http://localhost:9090/store/reservation/pay/fail");
 		
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + params);
 		HttpEntity<MultiValueMap<String, String>> reqPayment = new HttpEntity<>(params,headers);
 		
 		// 헤더를 변조해서 넣는 코드
@@ -137,7 +136,6 @@ public class StoreController {
 				reqPayment, PaymentResDto.class);
 		tid = response.getBody().tid;
 		paymentReqDto = reqData;
-		System.out.println(response.getBody());
 		
 		return new ResponseDto<PaymentResDto>(HttpStatus.OK, response.getBody());
 	}
@@ -166,10 +164,12 @@ public class StoreController {
 				reqPayment, PaymentResDto.class);
 //		tid = response.getBody().tid;
 
-		System.out.println(response.getBody());                                                                                                                                                                           
+		System.out.println(">>><><>><><<><" +response.getBody());                                                                                                                                                                           
 				
 	
 		reservationService.saveReservation(resData, principalDetail.getUser()); 
+		model.addAttribute("reservationDetail", resData);
+		model.addAttribute("response", response);
 		return "/store/reservation_pay_success";
 	}
 	

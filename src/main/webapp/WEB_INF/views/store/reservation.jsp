@@ -120,6 +120,7 @@
 			date : $("#date").val(),
 			time : $("#time").val(),
 			headCount : $("#headCount").val(),
+			request : $("#request").val()
 		};
 
 		let store = $("#storeId").val();

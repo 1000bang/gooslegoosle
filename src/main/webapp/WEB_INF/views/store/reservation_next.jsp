@@ -53,8 +53,8 @@
 		</div>
 
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder=""
-				value="?? : ???" readonly="readonly">
+			<label> 요청 사항 </label><input type="text" class="form-control" placeholder="" id="request"
+				value="${reservationDetail.request}" readonly="readonly">
 		</div>
 		<br /> <br />
 	</form>

@@ -3,7 +3,8 @@
 <%@include file="../layout/header.jsp"%>
 
 <section class="py-5">
-	<div class="container mt-5">
+	<h2 style="text-align: center;">나의 리뷰</h2>
+	<div class="container mt-5" style="border-top: 3px solid #000">
 		<div class="d-flex justify-content-between m-2">
 			<div class="Row" style="min-height: 1000px;flex-wrap: wrap;">
 				<c:forEach var="review" items="${reviews.getContent()}">

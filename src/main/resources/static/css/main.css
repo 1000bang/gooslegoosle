@@ -295,4 +295,11 @@ a{
 #endSNS a img{
 	width: 30px;
 }
+#endSNS a{
+	margin-left: 5px;
+	
+}
+#endSNS > div p{
+	margin-right: 5px;
+}
 	
