@@ -53,9 +53,10 @@ public class UserController {
 	StoreService storeService;
 	
 	
-	@GetMapping({ "", "/", "index" })
-	public String fetchIndex(Model model, @PageableDefault(size = 6, sort = "id", direction = Direction.DESC) Pageable pageable) {
-		Page<StoreEntity> store = storeService.findApprove(pageable);
+	@GetMapping({ "", "/", "index", "search"})
+	public String fetchIndex(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		String searchWords = searchWord == null ? "": searchWord;
+		Page<StoreEntity> store = storeService.findApprove(searchWords, pageable);
 
 		model.addAttribute("store",store);
 		return "index";

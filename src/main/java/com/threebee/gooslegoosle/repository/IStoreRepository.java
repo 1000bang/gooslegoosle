@@ -60,4 +60,17 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 	StoreEntity findStoreByPartnerId(int id);
 
 
+	@Query(value = "SELECT "
+			+ "    * "
+			+ "FROM "
+			+ "    storeEntity AS s "
+			+ "        JOIN "
+			+ "    PartnerEntity AS p ON s.partner_id = p.id "
+			+ "WHERE "
+			+ "    p.storeName like ?1% OR s.category like ?1%", 
+			countQuery = "SELECT COUNT(*) FROM storeEntity",
+			nativeQuery = true)
+	Page<StoreEntity> findBySearchWord(String q, Pageable pageable);
+
+
 }

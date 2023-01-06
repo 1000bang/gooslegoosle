@@ -61,10 +61,12 @@
 				<a href="/"><img src="/images/logo2.png" alt=""></a>
 			</div>
 			<div class="searchBox">
-				<button class="searchButton">
+			<form action="/search">
+				<button type="submit" class="searchButton">
 					<img src="/images/search.png" alt="">
 				</button>
-				<input type="text" placeholder="음식 또는 식당명 입력">
+				<input type="text" placeholder="음식 또는 식당명 입력" name="searchWord">
+			</form>
 			</div>
 			<nav id="nav">
 				<ul>
@@ -111,3 +113,4 @@
 				</ul>
 			</nav>
 		</header>
+		

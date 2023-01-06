@@ -156,9 +156,6 @@
 		<div class="main-Content">
 			<ul class="food-slice">
 				<c:forEach var="storeInfo" items="${store.content}">
-
-
-
 					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
 					<c:if test="${storeInfo.category eq 'KOREAN'}">
 						<li><c:choose>
@@ -173,9 +170,79 @@
 							</c:choose></li>
 					</c:if>
 				</c:forEach>
-
-
-
+			</ul>
+		</div>
+	</div>
+		<div class="c-container">
+		<div class="title">
+			<h2>#양식</h2>
+		</div>
+		<div class="main-Content">
+			<ul class="food-slice">
+				<c:forEach var="storeInfo" items="${store.content}">
+					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
+					<c:if test="${storeInfo.category eq 'WESTERN'}">
+						<li><c:choose>
+								<c:when test="${storeInfo.image[0] eq null}"></c:when>
+								<c:otherwise>
+									<a href="/store/${storeInfo.id}"> <img
+										src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+										alt="">
+									</a>
+									<p>${storeInfo.partner.storeName}</p>
+								</c:otherwise>
+							</c:choose></li>
+					</c:if>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+		<div class="c-container">
+		<div class="title">
+			<h2>#일식</h2>
+		</div>
+		<div class="main-Content">
+			<ul class="food-slice">
+				<c:forEach var="storeInfo" items="${store.content}">
+					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
+					<c:if test="${storeInfo.category eq 'JAPANESE'}">
+						<li><c:choose>
+								<c:when test="${storeInfo.image[0] eq null}"></c:when>
+								<c:otherwise>
+									<a href="/store/${storeInfo.id}"> <img
+										src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+										alt="">
+									</a>
+									<p>${storeInfo.partner.storeName}</p>
+								</c:otherwise>
+							</c:choose></li>
+					</c:if>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+		<div class="c-container">
+		<div class="title">
+			<h2>#중식</h2>
+		</div>
+		<div class="main-Content">
+			<ul class="food-slice">
+				<c:forEach var="storeInfo" items="${store.content}">
+					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
+				
+					<c:if test="${storeInfo.category eq 'CHINESE'}">
+						<li><c:choose>
+								<c:when test="${storeInfo.image[0] eq null}"></c:when>
+								<c:otherwise>
+									<a href="/store/${storeInfo.id}"> <img
+										src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+										alt="">
+									</a>
+									<p>${storeInfo.partner.storeName}</p>
+								</c:otherwise>
+							</c:choose></li>
+					</c:if>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>

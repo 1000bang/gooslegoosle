@@ -43,9 +43,9 @@ public class StoreService {
 		});
 	}
 
-	public Page<StoreEntity> findApprove(Pageable pageable) {
+	public Page<StoreEntity> findApprove(String q, Pageable pageable) {
 		
-		return storeRepository.findAll(pageable);
+		return storeRepository.findBySearchWord(q, pageable);
 	}
 	
 	@Transactional
