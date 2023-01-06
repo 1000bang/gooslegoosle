@@ -25,6 +25,7 @@
 					<th>인원수</th>
 					<th>날짜</th>
 					<th>요청사항</th>
+					<th>상태</th>
 
 				</tr>
 			</thead>
@@ -32,13 +33,14 @@
 			<c:forEach var="num" items="${reservation}">
 				<tbody>
 					<tr>
-						<td><input type="checkbox" name="color" value="blue"></td>
+						<td><input type="checkbox" name="resId" value="${num.id}"></td>
 						<td>${num.id}</td>
 						<td>${num.user.username}</td>
 						<td>${num.phoneNumber}</td>
 						<td>${num.headCount}</td>
 						<td>${num.date}</td>
 						<td>${num.request}</td>
+						<td>${num.approve}</td>
 					</tr>
 				</tbody>
 			</c:forEach>
@@ -46,8 +48,12 @@
 
 		<hr />
 		
-			<a type="button" class="btn" href="#"
+			<a type="button" class="btn m-2" onclick="index.approve()"
 				style="float: right; color: white; background-color: #63BFBC;"> 승인
+			</a>
+			
+			<a type="button" class="btn m-2" onclick="index.deny()"
+				style="float: right; color: white; background-color: #63BFBC;"> 거절
 			</a>
 		
 	</div>
@@ -60,6 +66,6 @@
 <br />
 
 
-
+<script type="text/javascript" src="/js/reservation.js"></script>
 <%@ include file="../layout/footer.jsp"%>
 

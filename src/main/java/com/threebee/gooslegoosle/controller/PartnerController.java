@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.threebee.gooslegoosle.dto.PartnerAndStoreDTO;
@@ -152,6 +153,12 @@ public class PartnerController {
 	public ResponseDto<Integer> fetchUpdateMenu(@PathVariable int id, @RequestBody MenuEntity menu) {
 		partnerService.updateMenu(id, menu);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+	}
+	
+	@PostMapping("reservation/approve")
+	public void fetchApproveRes(@RequestBody String resId) {
+		System.out.println("?>>>>>" + resId.);
+		
 	}
 
 }

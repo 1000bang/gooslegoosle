@@ -32,7 +32,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@ToString
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -77,7 +76,7 @@ public class UserEntity {
 	private int warning;
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties({ "user"})
+	@JsonIgnoreProperties(value = {"user"})
 	private List<ReservationEntity> reservation;
 
 	@Enumerated(EnumType.STRING)
@@ -88,6 +87,11 @@ public class UserEntity {
 
 	@CreationTimestamp
 	private Timestamp createdDate;
+
+	@Override
+	public String toString() {
+		return "UserEntity []";
+	}
 	
 
 

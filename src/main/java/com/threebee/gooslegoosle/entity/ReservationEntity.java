@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,7 +27,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@ToString
+//@ToString
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -58,13 +60,21 @@ public class ReservationEntity {
 	
 	private boolean isReviewd;
 	
+	@ColumnDefault(" 'wait' ")
+	private String approve;
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId")
+	@JsonIgnoreProperties(value = {"role", "loginType"})
 	private UserEntity user;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "storeId")
 	private StoreEntity store;
 	
-
+	@Override
+	public String toString() {
+		return "ReservationEntity []";
+	}
 }
