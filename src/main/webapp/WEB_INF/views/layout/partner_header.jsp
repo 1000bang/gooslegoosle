@@ -42,7 +42,7 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="/">구슬구슬</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">광고상품</a></li>
+						<li class="nav-item"><a class="nav-link" href="/ad">광고상품</a></li>
 						<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
 
 						<c:choose>
@@ -57,9 +57,9 @@
 									<li class="nav-item"><a class="nav-link"
 										href="/partner/addstore/${principal.user.id}">가게 등록</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="/partner/add_store/${principal.user.id}">가게 수정</a></li>
+										href="/partner/updateStore/${principal.user.id}">가게 수정</a></li>
 									<li class="nav-item"><a class="nav-link"
-										href="/partner/add_store/${principal.user.id}">예약관리</a></li>
+										href="/partner/reservation/${principal.user.id}">예약관리</a></li>
 
 								</c:if>
 								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃
