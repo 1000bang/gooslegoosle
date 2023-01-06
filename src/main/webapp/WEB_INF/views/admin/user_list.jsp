@@ -28,8 +28,16 @@
 				<td>${users.warning}</td>
 				
 				<td>
-				<a type="button" class="btn-sm btn-warning" href="/admin/warning/${users.id}"> 경고 </a>
-				<a type="button" class="btn-sm btn-danger" href="/admin/delete/${users.id}">삭제 </a>
+				<a type="button" class="btn-sm btn-warning" style="color: white" href="/admin/warning/${users.id}"> 경고 </a>
+				<c:choose>
+					<c:when test="${users.enable eq true}">
+						<a type="button" class="btn-sm btn-danger" style="color: white" href="/admin/stop/${users.id}">이용중지 </a>				
+					</c:when>
+					<c:when test="${users.enable eq false}">
+						<a type="button" class="btn-sm" style="color: white; background-color: #63BFBC" href="/admin/unstop/${users.id}">정지해제 </a>				
+					</c:when>
+				</c:choose>
+
 				</td>
 				
 			</tr>

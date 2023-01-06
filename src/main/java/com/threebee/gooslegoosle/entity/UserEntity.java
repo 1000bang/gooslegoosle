@@ -64,6 +64,9 @@ public class UserEntity {
 	@NotNull
 	@Email
 	private String email;
+	
+	@ColumnDefault("True")
+	private boolean isEnable;
 
 	private String address;
 
