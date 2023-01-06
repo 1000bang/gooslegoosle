@@ -39,15 +39,32 @@ public class ReservationService {
 	}
 	
 
-	public ReservationEntity findid(int id) {
-		return reservationRepository.findByid(id);
+	public ReservationEntity findByUserid(int id) {
+		return reservationRepository.findByUserid(id);
 	}
 
 	public List<ReservationEntity> findByStoreId(int id) {
 		
 		return reservationRepository.findByStoreId(id);
 	}
+
+	@Transactional
+	public void setApprove(String id) {
+		int ids = Integer.parseInt(id);
+		ReservationEntity res = reservationRepository.findById(ids).orElseThrow(()->{
+			return new IllegalArgumentException();
+		});		
+		res.setApprove("Approve");
+	}
 	
-	
+	@Transactional
+	public void setDeny(String id) {
+		int ids = Integer.parseInt(id);
+		ReservationEntity res = reservationRepository.findById(ids).orElseThrow(()->{
+			return new IllegalArgumentException();
+		});			
+		System.out.println(res);
+		res.setApprove("Deny");
+	}
 	
 }
