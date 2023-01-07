@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.threebee.gooslegoosle.entity.StoreEntity;
 
@@ -59,18 +60,57 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 	@Query(value = "SELECT * FROM storeEntity WHERE partner_id = ?1", nativeQuery = true)
 	StoreEntity findStoreByPartnerId(int id);
 
-
 	@Query(value = "SELECT "
-			+ "    * "
+			+ "    s.* "
 			+ "FROM "
 			+ "    storeEntity AS s "
 			+ "        JOIN "
 			+ "    PartnerEntity AS p ON s.partner_id = p.id "
 			+ "WHERE "
-			+ "    p.storeName like ?1% OR s.category like ?1%", 
+			+ " s.category = 'KOREAN' AND "
+			+ "    p.storeName like %:item%", 
 			countQuery = "SELECT COUNT(*) FROM storeEntity",
 			nativeQuery = true)
-	Page<StoreEntity> findBySearchWord(String q, Pageable pageable);
+	Page<StoreEntity> findKoreaBySearchWord(@Param("item")String q, Pageable pageable);
+	
+	@Query(value = "SELECT "
+			+ "    s.* "
+			+ "FROM "
+			+ "    storeEntity AS s "
+			+ "        JOIN "
+			+ "    PartnerEntity AS p ON s.partner_id = p.id "
+			+ "WHERE "
+			+ " s.category = 'CHINESE' AND "
+			+ "    p.storeName like %:item% ", 
+			countQuery = "SELECT COUNT(*) FROM storeEntity",
+			nativeQuery = true)
+	Page<StoreEntity> findChinaBySearchWord(@Param("item")String q, Pageable pageable);
+	
+	@Query(value = "SELECT "
+			+ "    s.* "
+			+ "FROM "
+			+ "    storeEntity AS s "
+			+ "        JOIN "
+			+ "    PartnerEntity AS p ON s.partner_id = p.id "
+			+ "WHERE "
+			+ " s.category = 'JAPANESE' AND "
+			+ "    p.storeName like %:item%", 
+			countQuery = "SELECT COUNT(*) FROM storeEntity",
+			nativeQuery = true)
+	Page<StoreEntity> findJapanBySearchWord(@Param("item")String q, Pageable pageable);
+	
+	@Query(value = "SELECT "
+			+ "    s.* "
+			+ "FROM "
+			+ "    storeEntity AS s "
+			+ "        JOIN "
+			+ "    PartnerEntity AS p ON s.partner_id = p.id "
+			+ "WHERE "
+			+ " s.category = 'WESTERN' AND "
+			+ "    p.storeName like %:item%", 
+			countQuery = "SELECT COUNT(*) FROM storeEntity",
+			nativeQuery = true)
+	Page<StoreEntity> findWestBySearchWord(@Param("item")String q, Pageable pageable);
 
 
 }

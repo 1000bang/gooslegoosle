@@ -23,27 +23,35 @@
 </c:choose>
 <article id="m-content1">
 	<section id="image">
-			<!-- Slider main container -->
-			<div class="swiper">
-				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper">
-					<!-- Slides -->
-					<div class="swiper-slide"><img src="../images/k-food.jpg" alt=""></div>
-					<div class="swiper-slide"><img src="../images/j-food.jpg" alt=""></div>
-					<div class="swiper-slide"><img src="../images/c-food.jpg" alt=""></div>
-					<div class="swiper-slide"><img src="../images/w-food.jpg" alt=""></div>
-					...
+		<!-- Slider main container -->
+		<div class="swiper">
+			<!-- Additional required wrapper -->
+			<div class="swiper-wrapper">
+				<!-- Slides -->
+				<div class="swiper-slide">
+					<img src="../images/k-food.jpg" alt="">
 				</div>
-				<!-- If we need pagination -->
-				<div class="swiper-pagination"></div>
-
-				<!-- If we need navigation buttons -->
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
-
-				<!-- If we need scrollbar -->
-				<div class="swiper-scrollbar"></div>
+				<div class="swiper-slide">
+					<img src="../images/j-food.jpg" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="../images/c-food.jpg" alt="">
+				</div>
+				<div class="swiper-slide">
+					<img src="../images/w-food.jpg" alt="">
+				</div>
+				...
 			</div>
+			<!-- If we need pagination -->
+			<div class="swiper-pagination"></div>
+
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+
+			<!-- If we need scrollbar -->
+			<div class="swiper-scrollbar"></div>
+		</div>
 
 
 	</section>
@@ -155,10 +163,12 @@
 		</div>
 		<div class="main-Content">
 			<ul class="food-slice">
-				<c:forEach var="storeInfo" items="${store.content}">
+
+				<c:forEach var="storeInfo" items="${koreanStore.content}">
 					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
-					<c:if test="${storeInfo.category eq 'KOREAN'}">
+					<c:if test="${storeInfo.partner.upload eq true}">
 						<li><c:choose>
+
 								<c:when test="${storeInfo.image[0] eq null}"></c:when>
 								<c:otherwise>
 									<a href="/store/${storeInfo.id}"> <img
@@ -173,15 +183,14 @@
 			</ul>
 		</div>
 	</div>
-		<div class="c-container">
+	<div class="c-container">
 		<div class="title">
 			<h2>#양식</h2>
 		</div>
 		<div class="main-Content">
 			<ul class="food-slice">
-				<c:forEach var="storeInfo" items="${store.content}">
-					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
-					<c:if test="${storeInfo.category eq 'WESTERN'}">
+				<c:forEach var="storeInfo" items="${westernStore.content}">
+					<c:if test="${storeInfo.partner.upload eq true}">
 						<li><c:choose>
 								<c:when test="${storeInfo.image[0] eq null}"></c:when>
 								<c:otherwise>
@@ -197,15 +206,15 @@
 			</ul>
 		</div>
 	</div>
-		<div class="c-container">
+	<div class="c-container">
 		<div class="title">
 			<h2>#일식</h2>
 		</div>
 		<div class="main-Content">
 			<ul class="food-slice">
-				<c:forEach var="storeInfo" items="${store.content}">
+				<c:forEach var="storeInfo" items="${japanessStore.content}">
 					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
-					<c:if test="${storeInfo.category eq 'JAPANESE'}">
+					<c:if test="${storeInfo.partner.upload eq true}">
 						<li><c:choose>
 								<c:when test="${storeInfo.image[0] eq null}"></c:when>
 								<c:otherwise>
@@ -221,16 +230,16 @@
 			</ul>
 		</div>
 	</div>
-		<div class="c-container">
+	<div class="c-container">
 		<div class="title">
 			<h2>#중식</h2>
 		</div>
 		<div class="main-Content">
 			<ul class="food-slice">
-				<c:forEach var="storeInfo" items="${store.content}">
+				<c:forEach var="storeInfo" items="${chineseStore.content}">
 					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
-				
-					<c:if test="${storeInfo.category eq 'CHINESE'}">
+
+					<c:if test="${storeInfo.partner.upload eq true}">
 						<li><c:choose>
 								<c:when test="${storeInfo.image[0] eq null}"></c:when>
 								<c:otherwise>
@@ -250,28 +259,27 @@
 <br />
 <br />
 <script type="text/javascript">
-$(".loginInfo").fadeOut(5000);
-const swiper = new Swiper('.swiper', {
-	  // Optional parameters
-	  direction: 'horizontal',
-	  loop: true,
+	$(".loginInfo").fadeOut(5000);
+	const swiper = new Swiper('.swiper', {
+		// Optional parameters
+		direction : 'horizontal',
+		loop : true,
 
-	  // If we need pagination
-	  pagination: {
-	    el: '.swiper-pagination',
-	  },
+		// If we need pagination
+		pagination : {
+			el : '.swiper-pagination',
+		},
 
-	  // Navigation arrows
-	  navigation: {
-	    nextEl: '.swiper-button-next',
-	    prevEl: '.swiper-button-prev',
-	  },
+		// Navigation arrows
+		navigation : {
+			nextEl : '.swiper-button-next',
+			prevEl : '.swiper-button-prev',
+		},
 
-	  // And if we need scrollbar
-	  scrollbar: {
-	    el: '.swiper-scrollbar',
-	  },
+		// And if we need scrollbar
+		scrollbar : {
+			el : '.swiper-scrollbar',
+		},
 	});
 </script>
 <%@ include file="layout/footer.jsp"%>
- 
