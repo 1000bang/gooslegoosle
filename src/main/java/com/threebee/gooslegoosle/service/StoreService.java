@@ -52,7 +52,7 @@ public class StoreService {
 	}
 	public List<StoreEntity> findAll(String q, Pageable pageable) {
 		
-		List<StoreEntity> store = storeRepository.findAll();
+		List<StoreEntity> store = storeRepository.findAllStore(q);
 		
 		return store;
 	}

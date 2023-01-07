@@ -216,8 +216,8 @@
 .swiper-button-next, .swiper-button-prev {
 	position: absolute;
 	top: 30%;
-	width: 100px;
-	height: 100px;
+	width: 105px;
+	height: 105px;
 	margin-top: calc(0px - ( var(- -swiper-navigation-size)/2));
 	z-index: 10;
 	cursor: pointer;
@@ -264,7 +264,8 @@
 	text-transform: none !important;
 	letter-spacing: 0;
 	font-variant: initial;
-	line-height: 1
+	line-height: 1;
+	display: none;
 }
 
 .swiper-button-prev, .swiper-rtl .swiper-button-next {

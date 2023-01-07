@@ -113,7 +113,17 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 	Page<StoreEntity> findWestBySearchWord(@Param("item")String q, Pageable pageable);
 
 
-	List<StoreEntity> findAll();
+	@Query(value = "SELECT "
+			+ "    s.* "
+			+ "FROM "
+			+ "    storeEntity AS s "
+			+ "        JOIN "
+			+ "    PartnerEntity AS p ON s.partner_id = p.id "
+			+ "WHERE "
+			+ "    p.storeName like %:item%", 
+			countQuery = "SELECT COUNT(*) FROM storeEntity",
+			nativeQuery = true)
+	List<StoreEntity> findAllStore(@Param("item")String q);
 
 
 }
