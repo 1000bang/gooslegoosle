@@ -118,7 +118,6 @@ public class PartnerController {
 	public ResponseDto<Integer> fetchSaveMenuDone(@RequestBody MenuEntity menu, @PathVariable int id) {
 		StoreEntity store = storeService.findStoreByStoreId(id);
 		partnerService.setUpload(id);
-		System.out.println(menu);
 		if (menu.getMenuName() == null || menu.getMenuName().equals("")) {
 		} else {
 			partnerService.saveMenu(menu, store);

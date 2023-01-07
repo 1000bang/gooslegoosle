@@ -56,9 +56,16 @@ public class UserController {
 	@GetMapping({ "", "/", "index", "search"})
 	public String fetchIndex(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchWords = searchWord == null ? "": searchWord;
-		Page<StoreEntity> store = storeService.findApprove(searchWords, pageable);
-
-		model.addAttribute("store",store);
+		
+		Page<StoreEntity> koreanStore = storeService.findKorean(searchWords, pageable);
+		Page<StoreEntity> japanessStore = storeService.findJapaness(searchWords, pageable);
+		Page<StoreEntity> chineseStore = storeService.findChinese(searchWords, pageable);
+		Page<StoreEntity> westernStore = storeService.findWestern(searchWords, pageable);
+		
+		model.addAttribute("koreanStore",koreanStore);
+		model.addAttribute("japanessStore",japanessStore);
+		model.addAttribute("chineseStore",chineseStore);
+		model.addAttribute("westernStore",westernStore);
 		return "index";
 	}
 
@@ -125,7 +132,7 @@ public class UserController {
 	@GetMapping("/auth/callback")
 	public String fetchLoginBySocial(@RequestParam String code, @RequestParam String state,
 			@RequestParam(required = false) String scope) {
-
+		//TODO
 		KakaoLogin kakao = new KakaoLogin();
 		GoogleLogin google = new GoogleLogin(scope);
 		NaverLogin naver = new NaverLogin(state);
@@ -141,7 +148,7 @@ public class UserController {
 			socialLogin.setISocialLogin(naver);
 			userData = socialLogin.login(code);
 		}
-
+		
 		findAndLoginUser(userData);
 
 		return "redirect:/";

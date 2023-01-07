@@ -43,9 +43,33 @@ public class StoreService {
 		});
 	}
 
-	public Page<StoreEntity> findApprove(String q, Pageable pageable) {
+	@Transactional
+	public Page<StoreEntity> findKorean(String q, Pageable pageable) {
 		
-		return storeRepository.findBySearchWord(q, pageable);
+		Page<StoreEntity> korea = storeRepository.findKoreaBySearchWord(q, pageable);
+		
+		return korea;
+	}
+	@Transactional
+	public Page<StoreEntity> findChinese(String q, Pageable pageable) {
+		
+		Page<StoreEntity> china = storeRepository.findChinaBySearchWord(q, pageable);
+		
+		return china;
+	}
+	@Transactional
+	public Page<StoreEntity> findJapaness(String q, Pageable pageable) {
+		
+		Page<StoreEntity> japan = storeRepository.findJapanBySearchWord(q, pageable);
+		
+		return japan;
+	}
+	@Transactional
+	public Page<StoreEntity> findWestern(String q, Pageable pageable) {
+		
+		Page<StoreEntity> west = storeRepository.findWestBySearchWord(q, pageable);
+		
+		return west;
 	}
 	
 	@Transactional
