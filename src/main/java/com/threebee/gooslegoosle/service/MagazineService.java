@@ -11,6 +11,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.threebee.gooslegoosle.dto.MagazineFileDTO;
@@ -62,8 +64,8 @@ public class MagazineService {
 		return 1;
 	}
 
-	public  List<MagazineEntity> findAllMagazine() {
-		 List<MagazineEntity> magazines = magazineRepository.findAll();
+	public  Page<MagazineEntity> findAllMagazine(Pageable pageable) {
+		 Page<MagazineEntity> magazines = magazineRepository.findAll(pageable);
 		return magazines;
 	}
 

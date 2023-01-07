@@ -74,7 +74,7 @@
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
 						</div>
 					</c:forEach>
 				
@@ -100,7 +100,7 @@
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
 						</div>
 					</c:forEach>
 				
@@ -126,7 +126,7 @@
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+							<p>${storeInfo.partner.storeName}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 						</div>
 					</c:forEach>
 				
@@ -153,7 +153,7 @@
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+							<p>${storeInfo.partner.storeName} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
 						</div>
 					</c:forEach>
 				
@@ -180,7 +180,7 @@
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+							<p>${storeInfo.partner.storeName} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
 						</div>
 					</c:forEach>
 				
