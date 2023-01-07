@@ -52,16 +52,22 @@ public class UserController {
 	@Autowired
 	StoreService storeService;
 	
+	@GetMapping("test")
+	public String test() {
+		return "user/test";
+	}
 	
 	@GetMapping({ "", "/", "index", "search"})
-	public String fetchIndex(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable) {
+	public String fetchIndex(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchWords = searchWord == null ? "": searchWord;
 		
+		List<StoreEntity> store = storeService.findAll(searchWords, pageable);
 		Page<StoreEntity> koreanStore = storeService.findKorean(searchWords, pageable);
 		Page<StoreEntity> japanessStore = storeService.findJapaness(searchWords, pageable);
 		Page<StoreEntity> chineseStore = storeService.findChinese(searchWords, pageable);
 		Page<StoreEntity> westernStore = storeService.findWestern(searchWords, pageable);
 		
+		model.addAttribute("store",store);
 		model.addAttribute("koreanStore",koreanStore);
 		model.addAttribute("japanessStore",japanessStore);
 		model.addAttribute("chineseStore",chineseStore);

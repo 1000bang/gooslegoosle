@@ -113,4 +113,7 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 	Page<StoreEntity> findWestBySearchWord(@Param("item")String q, Pageable pageable);
 
 
+	List<StoreEntity> findAll();
+
+
 }

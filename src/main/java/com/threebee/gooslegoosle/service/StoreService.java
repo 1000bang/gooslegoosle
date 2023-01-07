@@ -50,6 +50,12 @@ public class StoreService {
 		
 		return korea;
 	}
+	public List<StoreEntity> findAll(String q, Pageable pageable) {
+		
+		List<StoreEntity> store = storeRepository.findAll();
+		
+		return store;
+	}
 	@Transactional
 	public Page<StoreEntity> findChinese(String q, Pageable pageable) {
 		

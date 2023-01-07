@@ -59,12 +59,147 @@
 </article>
 <!-- content2 -->
 <article id="m-content2">
+
+	<div class="k-container">
+		<div class="title">
+			<h2>#전체</h2>
+		</div>
+		<div class="main-Content">
+			<div class="swiper mySwiper" style="height: 300px">
+
+				<div class="swiper-wrapper" id="food-slice" style="height:100px">
+					<c:forEach var="storeInfo" items="${store}">
+						<div class="swiper-slide" style="height: 50px">
+							<a href="/store/${storeInfo.id}"> <img
+								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+								alt="">
+							</a>
+							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+						</div>
+					</c:forEach>
+				
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+
+		<div class="k-container">
+		<div class="title">
+			<h2>#한식</h2>
+		</div>
+		<div class="main-Content">
+			<div class="swiper mySwiper" style="height: 300px">
+
+				<div class="swiper-wrapper" id="food-slice" >
+					<c:forEach var="storeInfo" items="${koreanStore.content}">
+						<div class="swiper-slide">
+							<a href="/store/${storeInfo.id}"> <img
+								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+								alt="">
+							</a>
+							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+						</div>
+					</c:forEach>
+				
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="k-container">
+		<div class="title">
+			<h2>#일식</h2>
+		</div>
+		<div class="main-Content">
+			<div class="swiper mySwiper" style="height: 300px">
+
+				<div class="swiper-wrapper" id="food-slice" style="height:100px">
+					<c:forEach var="storeInfo" items="${japanessStore.content}">
+						<div class="swiper-slide" style="height: 50px">
+							<a href="/store/${storeInfo.id}"> <img 
+								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+								alt="">
+							</a>
+							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+						</div>
+					</c:forEach>
+				
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="k-container">
+		<div class="title">
+			<h2>#양식</h2>
+		</div>
+		<div class="main-Content">
+			<div class="swiper mySwiper" style="height: 300px">
+
+				<div class="swiper-wrapper" id="food-slice" style="height:100px">
+					<c:forEach var="storeInfo" items="${chineseStore.content}">
+						<div class="swiper-slide" style="height: 50px">
+							<a href="/store/${storeInfo.id}"> <img
+								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+								alt="">
+							</a>
+							<p>${storeInfo.partner.storeName} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+						</div>
+					</c:forEach>
+				
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="k-container">
+		<div class="title">
+			<h2>#중식</h2>
+		</div>
+		<div class="main-Content">
+			<div class="swiper mySwiper" style="height: 300px">
+
+				<div class="swiper-wrapper" id="food-slice" style="height:100px;">
+					<c:forEach var="storeInfo" items="${westernStore.content}">
+						<div class="swiper-slide" style="height: 50px">
+							<a href="/store/${storeInfo.id}"> <img 
+								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+								alt="">
+							</a>
+							<p>${storeInfo.partner.storeName} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+						</div>
+					</c:forEach>
+				
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+
+
+
 	<div class="k-container">
 		<div class="title">
 			<h2>#한식</h2>
 		</div>
 		<div class="main-Content">
-			<ul class="food-slice">
+			<ul id="food-slice">
 				<li><a href="#"><img src="../images/k-food/1.jpg" alt=""></a>
 					<p>애성회관 한우곰탕</p></li>
 				<li><a href="#"><img src="../images/k-food/2.jpg" alt=""></a>
@@ -75,12 +210,6 @@
 					<p>우래옥 본점</p></li>
 				<li><a href="#"><img src="../images/k-food/5.jpg" alt=""></a>
 					<p>정돈</p></li>
-				<!-- <li>
-                            <a href="#"><img src="./img/k-food/6.jpg" alt=""></a>
-                            <p>할머니의 레시피</p>
-                        </li> -->
-
-
 			</ul>
 		</div>
 	</div>
@@ -90,7 +219,7 @@
 			<h2>#양식</h2>
 		</div>
 		<div class="main-Content">
-			<ul class="food-slice">
+			<ul id="food-slice">
 				<li><a href="#"><img src="../images/w-food/w-1.jpg" alt=""></a>
 					<p>비엘티스테이크</p></li>
 				<li><a href="#"><img src="../images/w-food/w-2.jpg" alt=""></a>
@@ -101,11 +230,6 @@
 					<p>붓처스컷 삼성점</p></li>
 				<li><a href="#"><img src="../images/w-food/w-5.jpg" alt=""></a>
 					<p>울프강 스테이크하우스</p></li>
-				<!-- <li>
-                            <a href="#"><img src="./img/w-food/w-6.jpg" alt=""></a>
-                            <p>파씨오네</p>
-                        </li> -->
-
 			</ul>
 		</div>
 	</div>
@@ -114,7 +238,7 @@
 			<h2>#일식</h2>
 		</div>
 		<div class="main-Content">
-			<ul class="food-slice">
+			<ul id="food-slice">
 				<li><a href="#"><img src="../images/j-food/j-1.jpg" alt=""></a>
 					<p>오레노라멘</p></li>
 				<li><a href="#"><img src="../images/j-food/j-2.jpg" alt=""></a>
@@ -125,11 +249,6 @@
 					<p>사당광안리</p></li>
 				<li><a href="#"><img src="../images/j-food/j-5.jpg" alt=""></a>
 					<p>진가와</p></li>
-				<!-- <li>
-                            <a href="#"><img src="./img/j-food/j-6.jpg" alt=""></a>
-                            <p>냠냠 물고기</p>
-                        </li> -->
-
 			</ul>
 		</div>
 	</div>
@@ -138,7 +257,7 @@
 			<h2>#중식</h2>
 		</div>
 		<div class="main-Content">
-			<ul class="food-slice">
+			<ul id="food-slice">
 				<li><a href="#"><img src="../images/c-food/j-1.jpg" alt=""></a>
 					<p>란주칼면</p></li>
 				<li><a href="#"><img src="../images/c-food/j-2.jpg" alt=""></a>
@@ -149,115 +268,16 @@
 					<p>오향가</p></li>
 				<li><a href="#"><img src="../images/c-food/j-5.jpg" alt=""></a>
 					<p>안동장</p></li>
-				<!-- <li>
-                            <a href="#"><img src="./img/c-food/j-6.jpg" alt=""></a>
-                            <p>대관원</p>
-                        </li> -->
+			</ul>
+		</div>
+	</div>
 
-			</ul>
-		</div>
-	</div>
-	<div class="c-container">
-		<div class="title">
-			<h2>#한식</h2>
-		</div>
-		<div class="main-Content">
-			<ul class="food-slice">
-
-				<c:forEach var="storeInfo" items="${koreanStore.content}">
-					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
-					<c:if test="${storeInfo.partner.upload eq true}">
-						<li><c:choose>
-
-								<c:when test="${storeInfo.image[0] eq null}"></c:when>
-								<c:otherwise>
-									<a href="/store/${storeInfo.id}"> <img
-										src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
-										alt="">
-									</a>
-									<p>${storeInfo.partner.storeName}</p>
-								</c:otherwise>
-							</c:choose></li>
-					</c:if>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>
-	<div class="c-container">
-		<div class="title">
-			<h2>#양식</h2>
-		</div>
-		<div class="main-Content">
-			<ul class="food-slice">
-				<c:forEach var="storeInfo" items="${westernStore.content}">
-					<c:if test="${storeInfo.partner.upload eq true}">
-						<li><c:choose>
-								<c:when test="${storeInfo.image[0] eq null}"></c:when>
-								<c:otherwise>
-									<a href="/store/${storeInfo.id}"> <img
-										src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
-										alt="">
-									</a>
-									<p>${storeInfo.partner.storeName}</p>
-								</c:otherwise>
-							</c:choose></li>
-					</c:if>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>
-	<div class="c-container">
-		<div class="title">
-			<h2>#일식</h2>
-		</div>
-		<div class="main-Content">
-			<ul class="food-slice">
-				<c:forEach var="storeInfo" items="${japanessStore.content}">
-					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
-					<c:if test="${storeInfo.partner.upload eq true}">
-						<li><c:choose>
-								<c:when test="${storeInfo.image[0] eq null}"></c:when>
-								<c:otherwise>
-									<a href="/store/${storeInfo.id}"> <img
-										src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
-										alt="">
-									</a>
-									<p>${storeInfo.partner.storeName}</p>
-								</c:otherwise>
-							</c:choose></li>
-					</c:if>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>
-	<div class="c-container">
-		<div class="title">
-			<h2>#중식</h2>
-		</div>
-		<div class="main-Content">
-			<ul class="food-slice">
-				<c:forEach var="storeInfo" items="${chineseStore.content}">
-					<%-- <c:if test="${storeInfo.upload eq true && storeInfo.category eq 'KOREAN'}"> --%>
-
-					<c:if test="${storeInfo.partner.upload eq true}">
-						<li><c:choose>
-								<c:when test="${storeInfo.image[0] eq null}"></c:when>
-								<c:otherwise>
-									<a href="/store/${storeInfo.id}"> <img
-										src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
-										alt="">
-									</a>
-									<p>${storeInfo.partner.storeName}</p>
-								</c:otherwise>
-							</c:choose></li>
-					</c:if>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>
 </article>
 <br />
 <br />
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
 <script type="text/javascript">
 	$(".loginInfo").fadeOut(5000);
 	const swiper = new Swiper('.swiper', {
@@ -279,6 +299,22 @@
 		// And if we need scrollbar
 		scrollbar : {
 			el : '.swiper-scrollbar',
+		},
+	});
+
+	var swipers = new Swiper(".mySwiper", {
+		slidesPerView : 4,
+		spaceBetween : 20,
+		slidesPerGroup : 4,
+		loop : true,
+		loopFillGroupWithBlank : true,
+		pagination : {
+			el : ".swiper-pagination",
+			clickable : true,
+		},
+		navigation : {
+			nextEl : ".swiper-button-next",
+			prevEl : ".swiper-button-prev",
 		},
 	});
 </script>
