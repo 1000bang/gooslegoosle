@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,23 @@ public class AdminController {
 
 	@GetMapping("/admin/manage")
 	public String fetchAwaitingList(Model model,
-			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 4, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
-		Page<PartnerEntity> store = partnerService.getApplyList(pageable);
+		Page<PartnerEntity> partner = partnerService.getApplyList(pageable);
+		int nowPage = partner.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, partner.getTotalPages());
+		int end = partner.getTotalPages() - 1;
 
-		model.addAttribute("store", store);
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i < endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
+		model.addAttribute("store", partner);
 		return "admin/manage";
 	}
 	
@@ -58,41 +71,49 @@ public class AdminController {
 	}
 	
 	@GetMapping("/admin/user")
-	public String fetchUser(Model model) {
-		//@Todo paging 처리 
-		attribute(model);
+	public String fetchUser(Model model	,@PageableDefault(size = 4, sort = "id", direction = Direction.DESC) Pageable pageable) {
+
+		Page<UserEntity> user = userService.findAll(pageable);
+		int nowPage = user.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, user.getTotalPages());
+		int end = user.getTotalPages() - 1;
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
+		model.addAttribute("user", user);
+	
 		return "admin/user_list";
 	}
 	
 	@GetMapping("/admin/warning/{id}")
 	public String fetchWarningUser(@PathVariable int id, Model model) {
 		userService.setWarningUser(id);
-		attribute(model);
 		
-		return "admin/user_list";
+		return "redirect:/admin/user";
 	}
 
 	@GetMapping("/admin/stop/{id}")
 	public String fetchStopUser(@PathVariable int id, Model model) {
 		userService.stopUser(id);
-		attribute(model);
-		
-		
-		return "admin/user_list";
+
+		return "redirect:/admin/user";
 	}
 	
 	@GetMapping("/admin/unstop/{id}")
 	public String fetchUnStopUser(@PathVariable int id, Model model) {
 		userService.unStopUser(id);
-		attribute(model);	
-		return "admin/user_list";
+			
+		return "redirect:/admin/user";
 	}
 	
-	//@Todo paging 처리필
-	public void attribute(Model model){
-		List<UserEntity> user = userService.findAll();
-		model.addAttribute("user", user);
-	}
+	
 
 
 }
