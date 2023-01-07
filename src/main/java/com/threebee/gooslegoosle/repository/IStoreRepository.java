@@ -68,7 +68,7 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 			+ "    PartnerEntity AS p ON s.partner_id = p.id "
 			+ "WHERE "
 			+ " s.category = 'KOREAN' AND "
-			+ "    p.storeName like :item%", 
+			+ "    p.storeName like %:item%", 
 			countQuery = "SELECT COUNT(*) FROM storeEntity",
 			nativeQuery = true)
 	Page<StoreEntity> findKoreaBySearchWord(@Param("item")String q, Pageable pageable);
@@ -81,7 +81,7 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 			+ "    PartnerEntity AS p ON s.partner_id = p.id "
 			+ "WHERE "
 			+ " s.category = 'CHINESE' AND "
-			+ "    p.storeName like :item% ", 
+			+ "    p.storeName like %:item% ", 
 			countQuery = "SELECT COUNT(*) FROM storeEntity",
 			nativeQuery = true)
 	Page<StoreEntity> findChinaBySearchWord(@Param("item")String q, Pageable pageable);
@@ -94,7 +94,7 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 			+ "    PartnerEntity AS p ON s.partner_id = p.id "
 			+ "WHERE "
 			+ " s.category = 'JAPANESE' AND "
-			+ "    p.storeName like :item%", 
+			+ "    p.storeName like %:item%", 
 			countQuery = "SELECT COUNT(*) FROM storeEntity",
 			nativeQuery = true)
 	Page<StoreEntity> findJapanBySearchWord(@Param("item")String q, Pageable pageable);
@@ -107,7 +107,7 @@ public interface IStoreRepository extends JpaRepository<StoreEntity, Integer>{
 			+ "    PartnerEntity AS p ON s.partner_id = p.id "
 			+ "WHERE "
 			+ " s.category = 'WESTERN' AND "
-			+ "    p.storeName like :item%", 
+			+ "    p.storeName like %:item%", 
 			countQuery = "SELECT COUNT(*) FROM storeEntity",
 			nativeQuery = true)
 	Page<StoreEntity> findWestBySearchWord(@Param("item")String q, Pageable pageable);
