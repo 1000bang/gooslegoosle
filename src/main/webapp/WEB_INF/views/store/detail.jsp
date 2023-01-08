@@ -17,7 +17,8 @@
 				<div class="card-body">
 					<div class="small text-muted"># ${storeDetail.category}</div>
 					<h1 class="card-title h1">${storeDetail.partner.storeName}</h1>
-
+					<br/>
+					<input type="button" class="btn btn-warning" onClick="sendLinkDefault();" value="카카오톡으로 공유하기 " style="color: white" />
 				</div>
 			</div>
 			<div class="card mb-4">
@@ -37,7 +38,7 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">영업시간</h3>
-					<hr/>
+					<hr />
 					<p class="card-text">영업시간 : ${storeDetail.openTime}시 ~
 						${storeDetail.closeTime}시</p>
 					<p class="card-text">브레이크타임 : ${storeDetail.breakTime}</p>
@@ -47,7 +48,7 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">메뉴</h3>
-					<hr/>
+					<hr />
 					<c:forEach var="menu" items="${storeDetail.menu}">
 						<div class="d-flex justify-content-around">
 							<p class="card-text">${menu.menuName}</p>
@@ -60,88 +61,105 @@
 			<div class="card mb-4">
 				<div class="card-body">
 					<h3 class="card-title h3">방문자 평가</h3>
-					<hr/>
-					
+					<hr />
+
 					<c:forEach var="reviews" items="${review.content}">
-					<div class="card m-4">
-					<div class="card-body">
-					<h6 class="card-title h6"><strong>작성자 :</strong>  ${reviews.user.username} </h6>
-					<c:choose>
-					<c:when test="${reviews.starScore eq 1}">
-					<p class="card-text"><strong>별점 :</strong>   ⭐ </p>
-					</c:when>
-					<c:when test="${reviews.starScore eq 2}">
-					<p class="card-text"><strong>별점 :</strong>  ⭐⭐ </p>
-					</c:when>
-					<c:when test="${reviews.starScore eq 3}">
-					<p class="card-text"><strong>별점 :</strong>  ⭐⭐⭐ </p>
-					</c:when>
-					<c:when test="${reviews.starScore eq 4}">
-					<p class="card-text"><strong>별점 :</strong>  ⭐⭐⭐⭐ </p>
-					</c:when>
-					<c:when test="${reviews.starScore eq 5}">
-					<p class="card-text"><strong>별점 :</strong>  ⭐⭐⭐⭐⭐ </p>
-					</c:when>
-					
-					
-					</c:choose>
-					<hr/>
-					<h5 class="card-title h5"> ${reviews.reviewTitle} </h5>
-					<p class="card-text"> ${reviews.reviewContent}  </p>
-					<p><img class="card-img"
-					src="http://localhost:9090/magazine/${reviews.thumbnail}"
-					alt="..."></p>
-					
-					<a type="button" class="btn"
-					style="color: white; background-color: #63BFBC; width : 15vh" href="#">
-					더보기</a>
-					</div>
-					
-					</div>
+						<div class="card m-4">
+							<div class="card-body">
+								<h6 class="card-title h6">
+									<strong>작성자 :</strong> ${reviews.user.username}
+								</h6>
+								<c:choose>
+									<c:when test="${reviews.starScore eq 1}">
+										<p class="card-text">
+											<strong>별점 :</strong> ⭐
+										</p>
+									</c:when>
+									<c:when test="${reviews.starScore eq 2}">
+										<p class="card-text">
+											<strong>별점 :</strong> ⭐⭐
+										</p>
+									</c:when>
+									<c:when test="${reviews.starScore eq 3}">
+										<p class="card-text">
+											<strong>별점 :</strong> ⭐⭐⭐
+										</p>
+									</c:when>
+									<c:when test="${reviews.starScore eq 4}">
+										<p class="card-text">
+											<strong>별점 :</strong> ⭐⭐⭐⭐
+										</p>
+									</c:when>
+									<c:when test="${reviews.starScore eq 5}">
+										<p class="card-text">
+											<strong>별점 :</strong> ⭐⭐⭐⭐⭐
+										</p>
+									</c:when>
+
+
+								</c:choose>
+								<hr />
+								<h5 class="card-title h5">${reviews.reviewTitle}</h5>
+								<p class="card-text">${reviews.reviewContent}</p>
+								<p>
+									<img class="card-img"
+										src="http://localhost:9090/magazine/${reviews.thumbnail}"
+										alt="...">
+								</p>
+
+								<a type="button" class="btn"
+									style="color: white; background-color: #63BFBC; width: 15vh"
+									href="#"> 더보기</a>
+							</div>
+
+						</div>
 					</c:forEach>
-					
-					<ul class="pagination justify-content-center" style="margin: 20px 0">
 
-		<c:set var="isDisabled" value="disabled">
-		</c:set>
-		<c:set var="isNotDisabled" value="">
-		</c:set>
-		<li class="page-item ${review.first ? isDisabled : isNotDisabled}">
-			<a class="page-link text-dark" href="?page=${startPage}">처음</a>
-		</li>
-		<li class="page-item ${review.first ? isDisabled : isNotDisabled}">
-			<a class="page-link text-dark" href="?page=${review.number - 1}">◀</a>
-		</li>
-		<c:forEach var="num" items="${pageNumbers}">
-			<c:choose>
-				<c:when test="${nowPage eq num}">
-					<li class="page-item active bg-dark"><a
-						class="page-link text-dark "
-						style="background-color: #63BFBC; border-color: #63BFBC;"
-						href="?page=${num - 1}">${num} </a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="page-item"><a class="page-link text-dark"
-						href="?page=${num - 1}">${num}</a></li>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
+					<ul class="pagination justify-content-center"
+						style="margin: 20px 0">
 
-		<li class="page-item ${review.last ? isDisabled : isNotDisabled}">
-			<a class="page-link text-dark" href="?page=${review.number + 1}">▶</a>
-		</li>
-		<li class="page-item ${review.last ? isDisabled : isNotDisabled}">
-			<a class="page-link text-dark" href="?page=${endPage}">끝 </a>
-		</li>
-	</ul>
-					
+						<c:set var="isDisabled" value="disabled">
+						</c:set>
+						<c:set var="isNotDisabled" value="">
+						</c:set>
+						<li class="page-item ${review.first ? isDisabled : isNotDisabled}">
+							<a class="page-link text-dark" href="?page=${startPage}">처음</a>
+						</li>
+						<li class="page-item ${review.first ? isDisabled : isNotDisabled}">
+							<a class="page-link text-dark" href="?page=${review.number - 1}">◀</a>
+						</li>
+						<c:forEach var="num" items="${pageNumbers}">
+							<c:choose>
+								<c:when test="${nowPage eq num}">
+									<li class="page-item active bg-dark"><a
+										class="page-link text-dark "
+										style="background-color: #63BFBC; border-color: #63BFBC;"
+										href="?page=${num - 1}">${num} </a></li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item"><a class="page-link text-dark"
+										href="?page=${num - 1}">${num}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+
+						<li class="page-item ${review.last ? isDisabled : isNotDisabled}">
+							<a class="page-link text-dark" href="?page=${review.number + 1}">▶</a>
+						</li>
+						<li class="page-item ${review.last ? isDisabled : isNotDisabled}">
+							<a class="page-link text-dark" href="?page=${endPage}">끝 </a>
+						</li>
+					</ul>
+
 				</div>
 			</div>
 		</div>
 		<!-- 오른쪽   -->
 		<div class="col-lg-4">
 			<div class="card mb-4">
-				<div class="card-header"><strong>가게 위치 보기</strong>  </div>
+				<div class="card-header">
+					<strong>가게 위치 보기</strong>
+				</div>
 				<div class="card-body">
 					<div id="map" style="width: 100%; height: 350px;"></div>
 					<p class="card-text">주소 : ${storeDetail.partner.address}
@@ -154,8 +172,8 @@
 			</div>
 			<div class="input-group justify-content-center">
 				<a type="button" class="btn"
-					style="color: white; background-color: #63BFBC; width : 37vh" href="/store/reservation/${storeDetail.id}">
-					예약하기</a>
+					style="color: white; background-color: #63BFBC; width: 37vh"
+					href="/store/reservation/${storeDetail.id}"> 예약하기</a>
 
 			</div>
 
@@ -217,8 +235,39 @@
 						}
 					});
 </script>
-
-
+<script type="text/JavaScript"
+	src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+	try {
+		function sendLinkDefault() {
+			Kakao.init('8c530edd51a40103966e7768c176ca6c')
+			Kakao.Link
+					.sendDefault({
+						objectType : 'feed',
+						content : {
+							title : '${storeDetail.partner.storeName}',
+							description : '#${storeDetail.category} ${storeDetail.partner.address} 동네 최고의 맛집으로 초대합니다.',
+							imageUrl : "https://ifh.cc/g/7ot6PA.png",
+							link : {
+								mobileWebUrl : 'https://developers.kakao.com',
+								webUrl : 'https://developers.kakao.com',
+							},
+						},
+						buttons : [ {
+							title : '웹으로 보기',
+							link : {
+								mobileWebUrl : 'https://developers.kakao.com',
+								webUrl : 'https://developers.kakao.com',
+							},
+						}, ],
+					})
+		}
+		;
+		window.kakaoDemoCallback && window.kakaoDemoCallback()
+	} catch (e) {
+		window.kakaoDemoException && window.kakaoDemoException(e)
+	}
+</script>
 
 
 
