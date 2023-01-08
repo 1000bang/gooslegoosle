@@ -8,7 +8,7 @@
 	<input type="hidden" id = "id" value="principal.user.id">
 	
 	<div class="form-group">
-		<label for="title" id="board-id" data-id = "${notice.id}">글 번호 : ${notice.id} </label> 
+		<label for="title" id="board-id" data-id = "${services.id}">글 번호 : ${services.id} </label> 
 	</div>
 	
 	
@@ -23,13 +23,13 @@
 	
 		<div class="form-group">
 			<label for="title">Title</label> <input type="text" name="title" id="title" 
-			class="form-control" value="${notice.title}">
+			class="form-control" value="${services.title}">
 
 		</div>
 		<div>
 			<label for="content">Content</label>
 			<textarea name="content" id="content" rows="5" class="form-control content">
-			${notice.content}
+			${services.content}
 	</textarea>
 		</div>
 
@@ -47,7 +47,7 @@
 	});
 </script>
 
-<script type="text/javascript" src="/js/notice.js">
+<script type="text/javascript" src="/js/service.js">
 
 </script>
 <%@ include file="../layout/footer.jsp"%>
