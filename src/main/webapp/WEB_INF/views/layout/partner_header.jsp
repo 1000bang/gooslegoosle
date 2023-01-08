@@ -60,6 +60,8 @@
 										href="/partner/updateStore/${principal.user.id}">가게 수정</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="/partner/reservation/${principal.user.id}">예약관리</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/partner/chart/${principal.user.id}">통계 </a></li>
 
 								</c:if>
 								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃

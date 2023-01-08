@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.dto.PartnerAndStoreDTO;
 import com.threebee.gooslegoosle.dto.PartnerFileDTO;
 import com.threebee.gooslegoosle.dto.ResApproveDto;
@@ -36,7 +37,6 @@ import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.ReservationService;
 import com.threebee.gooslegoosle.service.StoreService;
 import com.threebee.gooslegoosle.service.UserService;
-
 @Controller
 public class PartnerController {
 
@@ -59,6 +59,34 @@ public class PartnerController {
 		return "partner/application_partner";
 	}
 
+	@GetMapping("/partner/chart/{id}")
+	public String fetchChart(Model model, @PathVariable int id) {
+		StoreEntity store = storeService.findByUserId(id);
+		
+		//일별 통계 
+		List<ChartDto> res = reservationService.findByStoreIdWeek(store.getId());
+		List<List<?>> day = new ArrayList<>();
+		for (int i = 0; i < res.size(); i++) {
+			List<String> data2 = new ArrayList<>();
+			data2.add(res.get(i).getDate());
+			data2.add(res.get(i).getCount());
+			day.add(data2);
+		}
+		
+		//주별 통계 
+		List<ChartDto> res2 = reservationService.findByStoreIdMonth(store.getId());
+		List<List<?>> week = new ArrayList<>();
+		for (int i = 0; i < res2.size(); i++) {
+			List<String> data2 = new ArrayList<>();
+			data2.add(res2.get(i).getDate());
+			data2.add(res2.get(i).getCount());
+			week.add(data2);
+		}
+		model.addAttribute("day", day);
+		model.addAttribute("week", week);
+		return "store/chart";
+	}
+	
 	@GetMapping("/partner/updateStore/{id}")
 	public String fetchUpdate(Model model, @PathVariable int id) {
 		PartnerEntity partner = partnerService.findPartnerByUserId(id);

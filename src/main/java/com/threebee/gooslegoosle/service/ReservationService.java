@@ -5,10 +5,12 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
@@ -50,6 +52,15 @@ public class ReservationService {
 		return reservationRepository.findByStoreId(id, pagable);
 	}
 
+	public List<ChartDto> findByStoreIdWeek(int id) {
+		
+		return reservationRepository.findByStoreIdForChartWeek(id);
+	}
+	public List<ChartDto> findByStoreIdMonth(int id) {
+		
+		return reservationRepository.findByStoreIdForChartMonth(id);
+	}
+	
 	@Transactional
 	public void setApprove(String id) {
 		int ids = Integer.parseInt(id);
