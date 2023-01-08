@@ -44,46 +44,42 @@ public class ReviewController {
 
 		String searchTitle = search == null ? "" : search;
 		Page<ReviewEntity> reviews = reviewService.getReviewList(searchTitle.replace("//", ""), pageable);
-
-		int pageBlock = 2;
 		int nowPage = reviews.getPageable().getPageNumber() + 1;
-		int startPage = Math.max(nowPage - pageBlock, 1);
-		int endPage = Math.min(nowPage + pageBlock, reviews.getTotalPages());
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, reviews.getTotalPages());
+		int end = reviews.getTotalPages() - 1;
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
-		for (int i = startPage; i <= endPage; i++) {
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
-
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
 		model.addAttribute("pageNumbers", pageNumbers);
-		model.addAttribute("search", searchTitle);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
 		model.addAttribute("reviews", reviews);
 		return "review/review_page";
 	}
 	
 	@GetMapping("/myReview")
 	public String fetchShowMyReview(Model model,
-			@PageableDefault(size = 100, sort = "id", direction = Direction.ASC) Pageable pageable,
+			@PageableDefault(size = 5, sort = "id", direction = Direction.ASC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetail detail) {
 		Page<ReviewEntity> reviews = reviewService.myReviewList(detail.getUser().getId(), pageable);
 		
-		int pageBlock = 2;
 		int nowPage = reviews.getPageable().getPageNumber() + 1;
-		int startPage = Math.max(nowPage - pageBlock, 1);
-		int endPage = Math.min(nowPage + pageBlock, reviews.getTotalPages());
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, reviews.getTotalPages());
+		int end = reviews.getTotalPages() - 1;
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
-		for (int i = startPage; i <= endPage; i++) {
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
-		
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
 		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
 		model.addAttribute("reviews", reviews);
 		
 

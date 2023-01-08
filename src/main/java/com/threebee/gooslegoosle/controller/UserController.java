@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,8 +86,22 @@ public class UserController {
 	ReservationService reservationService;
 	
 	@GetMapping("/myReservation")
-	public String fetchMyRes(@AuthenticationPrincipal PrincipalDetail detail, Model model) {
-		List<ReservationEntity> res = reservationService.findByUserid(detail.getUser().getId());
+	public String fetchMyRes(@AuthenticationPrincipal PrincipalDetail detail, Model model
+			,@PageableDefault(size = 8, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		Page<ReservationEntity> res = reservationService.findByUserid(detail.getUser().getId(), pageable);
+		int nowPage = res.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, res.getTotalPages());
+		int end = res.getTotalPages() - 1;
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
 		model.addAttribute("reservation", res);
 		return "user/reservation";
 	}
@@ -111,9 +126,7 @@ public class UserController {
 		ResponseEntity<String> response = rt.exchange("https://kapi.kakao.com/v1/payment/cancel", HttpMethod.POST,
 				reqCancle, String.class);
 		reservationService.setCancle(res.getId());
-		List<ReservationEntity> reservation = reservationService.findByUserid(detail.getUser().getId());
-		model.addAttribute("reservation", reservation);
-		return "user/reservation";
+		return "redirect://myReservation";
 	}
 	
 	@GetMapping("/auth/login_form")

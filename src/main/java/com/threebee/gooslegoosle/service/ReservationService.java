@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.threebee.gooslegoosle.entity.ReservationEntity;
@@ -39,13 +41,13 @@ public class ReservationService {
 	}
 	
 
-	public List<ReservationEntity> findByUserid(int id) {
-		return reservationRepository.findByUserId(id);
+	public Page<ReservationEntity> findByUserid(int id, Pageable pageable) {
+		return reservationRepository.findByUserId(id, pageable);
 	}
 
-	public List<ReservationEntity> findByStoreId(int id) {
+	public Page<ReservationEntity> findByStoreId(int id, Pageable pagable) {
 		
-		return reservationRepository.findByStoreId(id);
+		return reservationRepository.findByStoreId(id, pagable);
 	}
 
 	@Transactional

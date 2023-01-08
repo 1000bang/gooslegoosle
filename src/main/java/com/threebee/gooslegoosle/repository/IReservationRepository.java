@@ -2,6 +2,8 @@ package com.threebee.gooslegoosle.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,7 +16,7 @@ public interface IReservationRepository extends JpaRepository<ReservationEntity,
 	@Query(value = "SELECT"
 			+ " * FROM reservationentity"
 			+ " WHERE storeId = ?1", nativeQuery = true)
-	List<ReservationEntity> findByStoreId(int id);
+	Page<ReservationEntity> findByStoreId(int id, Pageable pageable);
 
 	@Query(value = "SELECT"
 			+ " * FROM reservationentity"
@@ -24,6 +26,6 @@ public interface IReservationRepository extends JpaRepository<ReservationEntity,
 	@Query(value = "SELECT"
 			+ " * FROM reservationentity"
 			+ " WHERE userId = ?1", nativeQuery = true)
-	List<ReservationEntity> findByUserId(int id);
+	Page<ReservationEntity> findByUserId(int id, Pageable pageable);
 
 }
