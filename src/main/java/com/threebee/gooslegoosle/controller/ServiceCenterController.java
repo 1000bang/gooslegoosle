@@ -43,14 +43,14 @@ public class ServiceCenterController {
 		return "/service_center/service_center_save"; // 페이지 만들어야함
 	}
 
-	@GetMapping("/seviceCenter/update/{id}")
+	@GetMapping("/service_center/update/{id}")
 	public String fetchServiceUpdate(@PathVariable int id, Model model) {
 		ServiceCenterEntity service = serviceCenter.getServiceDetail(id);
 		model.addAttribute("services", service);
 		return "/service_center/service_center_update"; // 페이지 만들어야함
 	}	
 	
-	@GetMapping("/seviceCenter/delete/{id}")
+	@GetMapping("/service_center/delete/{id}")
 	public String fetchServicedelete(@PathVariable int id, Model model,
 			@PageableDefault(size = 6, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		
@@ -59,7 +59,7 @@ public class ServiceCenterController {
 		Page<ServiceCenterEntity> service = serviceCenter.getServiceList(pageable);
 		
 		model.addAttribute("services", service);
-		return "service_center/service_center_list";
+		return "service_center/service_center";
 	}
 
 }
