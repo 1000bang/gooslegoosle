@@ -57,7 +57,7 @@
 	<div id="wrap">
 		<header id="header" class="main_header">
 
-			<div id="logo">
+			<div id="logo" >
 				<a href="/"><img src="/images/logo2.png" alt=""></a>
 			</div>
 			<div class="searchBox">
