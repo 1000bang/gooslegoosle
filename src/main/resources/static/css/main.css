@@ -277,6 +277,17 @@ a {
 	margin: 0 auto;
 	position: relative;
 }
+/* card 안됨  */
+.card{
+	height: 20em;
+}
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
 
 #endLogo {
 	width: 150px;

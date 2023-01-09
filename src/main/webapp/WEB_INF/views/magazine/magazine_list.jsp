@@ -14,14 +14,14 @@
 	<c:forEach var="mag" items="${magazine.content}">
 		<div class="row" style="animation: reviewBox 3s;">
 			<div class="col-md-8 mb-5">
-				<div class="card h-100">
+				<div class="card">
 
 
 					<div class="card-body">
-						<h2 class="card-title">${mag.title}</h2>
-						<p class="card-text">${mag.content}</p>
+						<h2 class="card-title" style="color : #63BFBC ">${mag.title}</h2>
+						<p class="card-text" id="card-text">${mag.content}</p>
 						<div
-							style="width: 119px; height: 27px px; position: absolute; left: 83%; top: 8%;">
+							style="width: 119px; height: 27px; position: absolute; left: 83%; top: 8%;">
 							<a href="#!"><img class="card-img"
 								src="http://localhost:9090/magazine/${mag.thumbnail}" alt="..."></a>
 
@@ -30,7 +30,7 @@
 					<div class="card-footer">
 						<a class="btn btn-sm"
 							style="color: white; background-color: #63BFBC;"
-							href="/magazine/detail/${mag.id}">More Info</a>
+							href="/magazine/detail/${mag.id}">자세히 보기</a>
 					</div>
 				</div>
 			</div>
