@@ -103,8 +103,8 @@ a {
 
 #header input {
 	display: block;
-	max-width: 72.5%;
-	width: 100%;
+	max-width: 97%;
+	width: 600px;
 	height: 30px;
 	margin-left: 24px;
 	padding-bottom: 2px;
