@@ -29,7 +29,7 @@
 </div>	
 
 
-<script type="text/javascript" src="/js/notice.js">
+<script type="text/javascript" src="/js/service.js">
 	
 </script>
 <%@ include file="../layout/footer.jsp"%>

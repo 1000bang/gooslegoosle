@@ -48,16 +48,6 @@
 					</tr>
 					</tbody>
 				</c:when>
-				<c:otherwise>
-				<tbody>
-					<tr>
-						<td>${service.id}</td>
-						<td>비공개 글입니다.</td>
-						<td>비공개</td>
-						<td>****/**/**</td>
-					</tr>
-				</tbody>
-				</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			</c:otherwise>
