@@ -11,10 +11,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
+import com.threebee.gooslegoosle.dto.ChartMonthDTO;
+import com.threebee.gooslegoosle.dto.ChartSixMonthDTO;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.repository.IReservationRepository;
+import com.threebee.gooslegoosle.repository.ReservationRepository;
 
 @Service
 public class ReservationService {
@@ -23,6 +26,9 @@ public class ReservationService {
 	@Autowired
 	IReservationRepository reservationRepository;
 
+	@Autowired
+	ReservationRepository reservationRep;
+	
 	@Transactional
 	public void saveReservation(ReservationEntity res, UserEntity user, String tid) {
 		res.setPhoneNumber(user.getPhoneNumber());
@@ -56,10 +62,18 @@ public class ReservationService {
 		
 		return reservationRepository.findByStoreIdForChartWeek(id);
 	}
-	public List<ChartDto> findByStoreIdMonth(int id) {
+	public List<ChartMonthDTO> findByStoreIdMonth(int id) {
 		
-		return reservationRepository.findByStoreIdForChartMonth(id);
+		return reservationRep.getChartWeekly(id);
+	
 	}
+	
+	public List<ChartSixMonthDTO> findByStoreIdHalfYear(int id) {
+		
+		return reservationRep.getChartMonthly(id);
+	
+	}
+	
 	
 	@Transactional
 	public void setApprove(String id) {
