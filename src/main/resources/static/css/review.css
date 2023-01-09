@@ -6,6 +6,8 @@
 	align-items: center;
 	border: 3px solid #ccc;
 	border-radius: 8%;
+	margin: 25px 5% 0 0;
+	animation: reviewBox 3s;
 }
 #my-review-box{
 	display: grid;
@@ -30,7 +32,6 @@
 .Row {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
 	
 }
 .about_story{

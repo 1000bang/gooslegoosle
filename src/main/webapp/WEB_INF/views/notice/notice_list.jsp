@@ -9,9 +9,9 @@
 <br>
 
 <div class="container" style="min-height: 558px">
-<h1 class="h2"> 공지사항 </h1>
+<h1 class="h2" style="animation: dropLogo 3s;"> 공지사항 </h1>
 <br>
-	<table class="table table-hover">
+	<table class="table table-hover" style="animation: dropLogo 3s;">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -23,7 +23,7 @@
 		</thead>
 
 		<c:forEach var="num" items="${notice.content}">
-		<tbody >
+		<tbody style=" animation: noticeLetter 3s;">
 			<tr onclick="location.href = '/notice/'+ ${num.id}" >
 				<td>${num.id}</td>
 				<td>${num.title}</td>

@@ -63,7 +63,7 @@ public class ReviewController {
 	
 	@GetMapping("/myReview")
 	public String fetchShowMyReview(Model model,
-			@PageableDefault(size = 5, sort = "id", direction = Direction.ASC) Pageable pageable,
+			@PageableDefault(size = 6, sort = "id", direction = Direction.ASC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetail detail) {
 		Page<ReviewEntity> reviews = reviewService.myReviewList(detail.getUser().getId(), pageable);
 		

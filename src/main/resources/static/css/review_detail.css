@@ -11,11 +11,8 @@
 			width: 1000px;
 			height: 450px;
 			margin-bottom: 30px;
-			display: grid;
-			grid-template-columns: 250px 250px 250px 250px;
-			grid-template-rows: 150px 150px 150px;
-			background-color: aquamarine;
 		}
+
 		.items:nth-child(2n+1){
 			background-color: #bbb;
 		}

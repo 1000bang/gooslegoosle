@@ -39,14 +39,13 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-	<link
-  rel="stylesheet"
-  href="/css/swiper.css"
-/>
+<link rel="stylesheet" href="/css/swiper.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
 
@@ -56,18 +55,18 @@
 </head>
 <body>
 	<div id="wrap">
-		<header id="header">
+		<header id="header" class="main_header">
 
-			<div id="logo">
+			<div id="logo" >
 				<a href="/"><img src="/images/logo2.png" alt=""></a>
 			</div>
 			<div class="searchBox">
-			<form action="/search">
-				<button type="submit" class="searchButton">
-					<img src="/images/search.png" alt="">
-				</button>
-				<input type="text" placeholder="음식 또는 식당명 입력" name="searchWord">
-			</form>
+				<form action="/search">
+					<button type="submit" class="searchButton">
+						<img src="/images/search.png" alt="">
+					</button>
+					<input type="text" placeholder="음식 또는 식당명 입력" name="searchWord">
+				</form>
 			</div>
 			<nav id="nav">
 				<ul>
@@ -87,11 +86,13 @@
 									<li><a href="/reviews">Review</a></li>
 									<li id="more--view"><a href="#">Manage</a>
 										<ul id="nave--moreview--item" style="padding-top: 0">
-                                    		<li><a class="dropdown-item" href="/admin/manage">Store M</a></li>
-                                    		<li><a class="dropdown-item" href="/admin/user">User M</a></li>
-                                    		<li><a class="dropdown-item" href="/seviceCenter">Service Center</a></li>
-                                		</ul> 
-									</li>
+											<li><a class="dropdown-item" href="/admin/manage">Store
+													M</a></li>
+											<li><a class="dropdown-item" href="/admin/user">User
+													M</a></li>
+											<li><a class="dropdown-item" href="/seviceCenter">Service
+													Center</a></li>
+										</ul></li>
 									<!-- 회원 관리, 점주 관리 -->
 									<li><a href="/logout">LogOut</a></li>
 								</c:when>
@@ -101,13 +102,15 @@
 									<li><a href="/reviews">Review</a></li>
 									<li id="more--view"><a href="#">About Me</a>
 										<ul id="nave--moreview--item" style="padding-top: 0">
-                                    		<li><a class="dropdown-item" href="/user/update">Profile</a></li>
-                                    		<li><a class="dropdown-item" href="/myReview">My Review</a></li>
-                                    		<li><a class="dropdown-item" href="/myReservation">My Reservation</a></li>
-                                    		<li><a class="dropdown-item" href="/seviceCenter">Service Center</a></li>
-                            				<li><a class="dropdown-item" href="/logout">LogOut</a></li>
-                                		</ul> 
-									</li>
+											<li><a class="dropdown-item" href="/user/update">Profile</a></li>
+											<li><a class="dropdown-item" href="/myReview">My
+													Review</a></li>
+											<li><a class="dropdown-item" href="/myReservation">My
+													Reservation</a></li>
+											<li><a class="dropdown-item" href="/seviceCenter">Service
+													Center</a></li>
+											<li><a class="dropdown-item" href="/logout">LogOut</a></li>
+										</ul></li>
 									<li><a href="/auth/partner/main_partner">Partner?</a></li>
 								</c:otherwise>
 							</c:choose>
@@ -116,4 +119,3 @@
 				</ul>
 			</nav>
 		</header>
-		
