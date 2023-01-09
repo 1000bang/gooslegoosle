@@ -44,7 +44,7 @@ let index = {
 		}).done(function(data, textStatus, xhr){
 			if(data.httpStatus == 'OK'){
 				alert("리뷰가 삭제 되었습니다.")
-				location.href = "/reviews"
+				location.href = "/"
 			}
 		}).fail(function(error){
 			console.log("리뷰 삭제에 실패했습니다.")

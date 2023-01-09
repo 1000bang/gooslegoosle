@@ -20,6 +20,12 @@
 					<div class="card-body">
 						<h2 class="card-title">${mag.title}</h2>
 						<p class="card-text">${mag.content}</p>
+						<div
+							style="width: 119px; height: 27px px; position: absolute; left: 83%; top: 8%;">
+							<a href="#!"><img class="card-img"
+								src="http://localhost:9090/magazine/${mag.thumbnail}" alt="..."></a>
+
+						</div>
 					</div>
 					<div class="card-footer">
 						<a class="btn btn-sm"
@@ -27,11 +33,6 @@
 							href="/magazine/detail/${mag.id}">More Info</a>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-4 mb-5">
-				<a href="#!"><img class="card-img"
-					src="http://localhost:9090/magazine/${mag.thumbnail}" alt="..."></a>
-
 			</div>
 		</div>
 	</c:forEach>
@@ -42,7 +43,7 @@
 		</a>
 	</c:if>
 	<br />
-	
+
 	<!-- page  -->
 	<ul class="pagination justify-content-center" style="margin: 20px 0">
 

@@ -46,8 +46,8 @@
 			<div class="swiper-pagination"></div>
 
 			<!-- If we need navigation buttons -->
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev" style="top: 50%"></div>
+			<div class="swiper-button-next" style="top: 50%"></div>
 
 			<!-- If we need scrollbar -->
 			<div class="swiper-scrollbar"></div>
@@ -119,10 +119,10 @@
 		<div class="main-Content">
 			<div class="swiper mySwiper" style="height: 300px">
 
-				<div class="swiper-wrapper" id="food-slice" style="height:100px">
+				<div class="swiper-wrapper" id="food-slice" style="height:100px;">
 					<c:forEach var="storeInfo" items="${japanessStore.content}">
-						<div class="swiper-slide" style="height: 50px">
-							<a href="/store/${storeInfo.id}"> <img 
+						<div class="swiper-slide" style="height: 50px;">
+							<a href="/store/${storeInfo.id}"> <img
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
