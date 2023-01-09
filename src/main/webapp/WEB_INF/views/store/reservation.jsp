@@ -54,12 +54,15 @@
 		</div>
 
 		<div class="form-group">
-			<label class="form-label" for="date">예약 날짜</label> <input
+			<!-- <label class="form-label" for="date">예약 날짜</label> <input
 				class="form-control" id="date" pattern="\d{4}-\d{2}-\d{2}"
 				placeholder="원하는 예약 날짜를 선택하세요" required th:field="*{date}"
-				type="text" value="">
+				type="text" value=""> -->
+		
+		<label class="form-label" for="date">예약 날짜</label>
+		<input type="text" class="form-control mr-1 "
+				id="date1" value="2022-12-30">
 		</div>
-
 		<div class="form-group">
 			<select class="custom-select mb-1 form-control" id="time" name="time">
 				<option selected>예약하실 시간을 선택하세요</option>
@@ -117,7 +120,7 @@
 	function reservation() {
 		let data = {
 			request : $("#request").val(),
-			date : $("#date").val(),
+			date : $("#date1").val(),
 			time : $("#time").val(),
 			headCount : $("#headCount").val(),
 			request : $("#request").val()

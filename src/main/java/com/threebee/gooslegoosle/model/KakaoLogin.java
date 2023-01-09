@@ -58,6 +58,7 @@ public class KakaoLogin  implements ISocialLogin{
 				.username(account.kakaoAccount.profile.nickname + account.id)
 				.email(account.kakaoAccount.email)
 				.password(account.kakaoAccount.email)
+				.userNickname(account.kakaoAccount.profile.nickname)
 				.phoneNumber("000-0000-0000")
 				.role(UserRole.USER)
 				.loginType(LoginType.KAKAO)

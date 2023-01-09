@@ -43,13 +43,16 @@ public class UserEntity {
 	private int id;
 	
 	
-	private String userId;
-	
 	@Column(nullable = false, length = 100, unique = true)
 	@NotNull
 	@Size(min = 2)
 	private String username;
 
+	@Column(nullable = false, length = 100)
+	@NotNull
+	@Size(min = 2)
+	private String userNickname;
+	
 	@Column(nullable = false, length = 100)
 	@NotNull
 	@Size(min = 4, max = 100)

@@ -69,12 +69,7 @@ public class StoreEntity {
 	@OneToOne
 //	@JsonIgnoreProperties({"menu"})
 	private PartnerEntity partner;
-
-	
-	private String status;
-	
-	@ColumnDefault("FALSE")
-	private Boolean upload;
+ 
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")

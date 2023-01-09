@@ -213,7 +213,9 @@ a {
 	font-size: 1rem;
 	font-weight: bold;
 	letter-spacing: -0.05rem;
-	text-align: center;
+	/* justify-content : center;
+	text-align: center; */
+	margin-left: 25%;
 	margin-top: 10px;
 	color: rgb(32, 32, 32);
 	margin-top: 8px;
@@ -227,8 +229,8 @@ a {
 }
 
 #m-content2 #food-slice img {
-	width: 24vh;
-	height: 24vh;
+	width: 20vh;
+	height: 20vh;
 	border-radius: 9%;
 	object-fit: contain;
 }

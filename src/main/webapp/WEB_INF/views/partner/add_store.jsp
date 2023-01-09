@@ -10,7 +10,7 @@
 			<div class="form-group">
 				<label for="storeName">가게 상호명</label> <input type="text"
 					class="form-control" id="storeName" placeholder="가게 상호명을 입력해주세요."
-					name="storeName" required>
+					name="storeName" value="${partner.storeName}" required>
 				<div class="valid-feedback">완료 !</div>
 				<div class="invalid-feedback">필수 입력 사항입니다.</div>
 			</div>
