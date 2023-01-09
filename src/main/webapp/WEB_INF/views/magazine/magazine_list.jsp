@@ -12,7 +12,7 @@
 	<br />
 
 	<c:forEach var="mag" items="${magazine.content}">
-		<div class="row">
+		<div class="row" style="animation: reviewBox 3s;">
 			<div class="col-md-8 mb-5">
 				<div class="card h-100">
 

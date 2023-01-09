@@ -7,6 +7,7 @@
 	border: 3px solid #ccc;
 	border-radius: 8%;
 	margin: 25px 5% 0 0;
+	animation: reviewBox 3s;
 }
 #my-review-box{
 	display: grid;
