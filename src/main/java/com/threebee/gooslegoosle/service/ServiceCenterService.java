@@ -48,7 +48,7 @@ public class ServiceCenterService {
 	}
 
 	public void deleteServiceById(int id) {
-		serviceRepository.deleteById(id);
+		serviceRepository.deleteByIds(id);
 	}
 	
 	

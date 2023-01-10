@@ -42,7 +42,6 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="/">구슬구슬</a></li>
-						<li class="nav-item"><a class="nav-link" href="/ad">광고상품</a></li>
 						<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
 
 						<c:choose>

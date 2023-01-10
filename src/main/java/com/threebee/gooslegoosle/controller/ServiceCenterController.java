@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +26,19 @@ public class ServiceCenterController {
 			@PageableDefault(size = 6, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		
 		Page<ServiceCenterEntity> service = serviceCenter.getServiceList(pageable);
-	
+		int nowPage = service.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, service.getTotalPages());
+		int end = service.getTotalPages() - 1;
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
 		model.addAttribute("services", service);
 		return "service_center/service_center";
 	}	
@@ -56,10 +70,8 @@ public class ServiceCenterController {
 		
 		
 		serviceCenter.deleteServiceById(id);
-		Page<ServiceCenterEntity> service = serviceCenter.getServiceList(pageable);
 		
-		model.addAttribute("services", service);
-		return "service_center/service_center";
+		return "redirect:/service_center/service_center";
 	}
 
 }

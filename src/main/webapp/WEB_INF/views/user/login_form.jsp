@@ -12,7 +12,7 @@
 		<div class="form-group">
 			<label for="usernmae">이름 :</label> <input type="text"
 				class="form-control" placeholder="Enter usernmae" id="username"
-				name="username" value="홍길동">
+				name="username" value="hong123">
 
 		</div>
 		<div class="form-group">

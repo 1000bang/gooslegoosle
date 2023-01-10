@@ -11,7 +11,7 @@
 		
 		<div class="form-group">
 			<label for="title">username:</label> 
-			<input type="text" name="username" id="username" class="form-control" value="${principal.user.username}" readonly="readonly">
+			<input type="text" name="username" id="username" class="form-control" value="${principal.user.userNickname}" readonly="readonly">
 		</div>
 		<div class="form-group">
 			<label for="title">Title</label> <input type="text" name="reviewTitle" id="reviewTitle" class="form-control" value="${review.reviewTitle}" >

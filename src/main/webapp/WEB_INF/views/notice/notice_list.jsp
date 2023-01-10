@@ -11,7 +11,7 @@
 <div class="container" style="min-height: 558px">
 <h1 class="h2"> 공지사항 </h1>
 <br>
-	<table class="table table-hover">
+	<table class="table table-hover" >
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -27,7 +27,7 @@
 			<tr onclick="location.href = '/notice/'+ ${num.id}" >
 				<td>${num.id}</td>
 				<td>${num.title}</td>
-				<td>${num.userId.username}</td>
+				<td>${num.userId.userNickname}</td>
 				<td>${num.createDate}</td>
 			</tr>
 		</tbody>

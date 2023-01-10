@@ -17,7 +17,7 @@
 		<input type="hidden" id="board-id" value="${magazine.id}"> 글 번호 : <span> <i> ${magazine.id + 100} </i></span>
 	</div>
 	<div>
-		 작성자 : <span> <i> ${magazine.userId.username} </i></span>
+		 작성자 : <span> <i> ${magazine.userId.userNickname} </i></span>
 	</div>
 	<div>
 		작성일 : <span> <i> ${magazine.createDate} </i></span>

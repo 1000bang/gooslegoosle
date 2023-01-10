@@ -60,51 +60,13 @@
 			<div id="logo">
 				<a href="/"><img src="/images/logo2.png" alt=""></a>
 			</div>
-			<div class="searchBox">
-				<form action="/search">
-					<button type="submit" class="searchButton">
-						<img src="/images/search.png" alt="">
-					</button>
-					<input type="text" placeholder="음식 또는 식당명 입력" name="searchWord">
-				</form>
-			</div>
+
 			<nav id="nav">
 				<ul>
-					<c:choose>
-						<c:when test="${empty principal}">
-							<li><a href="/magazine">Magazine</a></li>
-							<li><a href="/notice">Notice</a></li>
-							<li><a href="/reviews">Review</a></li>
-							<li><a href="/auth/login_form">Login</a></li>
-							<li><a href="/auth/join_form">Join</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="/magazine">Magazine</a></li>
-							<li><a href="/notice">Notice</a></li>
-							<li><a href="/reviews">Review</a></li>
-							<li id="more--view"><a href="#">About Me</a>
-								<ul id="nave--moreview--item" style="padding-top: 0">
-									<li><a class="dropdown-item" href="/user/update">Profile</a></li>
-									<li><a class="dropdown-item" href="/myReview">My
-											Review</a></li>
-									<li><a class="dropdown-item" href="/myReservation">My
-											Reservation</a></li>
-									<li><a class="dropdown-item" href="/seviceCenter">Service
-											Center</a></li>
-									<li><a class="dropdown-item" href="/logout">LogOut</a></li>
-								</ul></li>
-							<c:choose>
-								<c:when test="${principal.user.role eq 'ADMIN'}">
-									<li id="more--view"><a href="/admin/manage">Manage</a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a href="/auth/partner/main_partner">Partner?</a></li>
-								</c:otherwise>
-							</c:choose>
-
-
-						</c:otherwise>
-					</c:choose>
+					<li><a href="/admin/manage">Store M</a></li>
+					<li><a href="/admin/user">User M</a></li>
+					<li><a href="/seviceCenter">Service Center</a></li>
+					<li><a  href="/logout">LogOut</a></li>
 				</ul>
 			</nav>
 		</header>
