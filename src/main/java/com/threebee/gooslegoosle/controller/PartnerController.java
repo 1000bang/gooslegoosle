@@ -142,8 +142,12 @@ public class PartnerController {
 
 	@PostMapping("/partner/add_store/{id}")
 	public String fetchSaveStore(StoreFileDTO store, @PathVariable int id, Model model) {
-
+		
 		PartnerEntity partner = partnerService.findPartnerById(id);
+		if(storeService.findByUserId(partner.getUser().getId()) != null) {
+			System.out.println(">>>>>>>>>here");
+			return "partner/fail_store";
+		};
 		StoreEntity stores = storeService.saveStore(store, partner);
 		List<MenuEntity> menus = partnerService.findMenuByStoreId(stores.getId());
 		model.addAttribute("menus", menus);

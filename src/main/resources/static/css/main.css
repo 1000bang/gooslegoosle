@@ -254,8 +254,8 @@ a {
 }
 
 #m-content2 #food-slice img {
-	width: 20vh;
-	height: 20vh;
+	width: 10em;
+	height: 10em;
 	border-radius: 9%;
 	object-fit: contain;
 }

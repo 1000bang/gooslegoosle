@@ -53,6 +53,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:if test="${principal.user.role eq 'HOST'}">
+									
 									<li class="nav-item"><a class="nav-link"
 										href="/partner/addstore/${principal.user.id}">가게 등록</a></li>
 									<li class="nav-item"><a class="nav-link"
