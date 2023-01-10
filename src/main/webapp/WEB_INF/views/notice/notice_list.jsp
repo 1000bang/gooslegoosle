@@ -27,7 +27,7 @@
 			<tr onclick="location.href = '/notice/'+ ${num.id}" >
 				<td>${num.id}</td>
 				<td>${num.title}</td>
-				<td>${num.userId.username}</td>
+				<td>${num.userId.userNickname}</td>
 				<td>${num.createDate}</td>
 			</tr>
 		</tbody>

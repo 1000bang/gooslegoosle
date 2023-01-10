@@ -17,7 +17,7 @@
 			
 			<label for="username">Username</label> 
 			<input type="text" name="username" id="username" 
-			class="form-control" value="${principal.user.username}" readonly="readonly">
+			class="form-control" value="${principal.user.userNickname}" readonly="readonly">
 
 		</div>
 	

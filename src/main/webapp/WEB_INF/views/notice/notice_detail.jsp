@@ -17,7 +17,7 @@
 		<input type="hidden" id="board-id" value="${notice.id}"> 글 번호 : <span> <i> ${notice.id + 100} </i></span>
 	</div>
 	<div>
-		글 작성자 : <span> <i> ${notice.userId.username} </i></span>
+		글 작성자 : <span> <i> ${notice.userId.userNickname} </i></span>
 	</div>
 	<br /> <br /> <br />
 	<div class="">

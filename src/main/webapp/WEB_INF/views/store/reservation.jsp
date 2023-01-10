@@ -13,7 +13,7 @@
 		<input hidden="true" id=storeId type="text" value="${storeDetail.id}" />
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Enter usernmae"
-				value="${principal.user.username}" readonly="readonly">
+				value="${principal.user.userNickname}" readonly="readonly">
 
 		</div>
 

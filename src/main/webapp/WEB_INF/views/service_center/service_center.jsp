@@ -28,7 +28,7 @@
 					<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
 						<td>${service.id}</td>
 						<td>${service.title}</td>
-						<td>${service.userId.username}</td>
+						<td>${service.userId.userNickname}</td>
 						<td>${service.createDate}</td>
 					</tr>
 				</tbody>
@@ -43,7 +43,7 @@
 					<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
 						<td>${service.id}</td>
 						<td>${service.title}</td>
-						<td>${service.userId.username}</td>
+						<td>${service.userId.userNickname}</td>
 						<td>${service.createDate}</td>
 					</tr>
 					</tbody>
@@ -59,6 +59,42 @@
 	<a type="button" class="btn" href="/seviceCenter/board"
 		style="float: right; color: white; background-color: #63BFBC;">글쓰기
 	</a>
+
+<br/>
+<ul class="pagination justify-content-center" style="margin: 20px 0">
+
+		<c:set var="isDisabled" value="disabled">
+		</c:set>
+		<c:set var="isNotDisabled" value="">
+		</c:set>
+		<li class="page-item ${notice.first ? isDisabled : isNotDisabled}">
+			<a class="page-link text-dark" href="?page=${startPage}">처음</a>
+		</li>
+		<li class="page-item ${notice.first ? isDisabled : isNotDisabled}">
+			<a class="page-link text-dark" href="?page=${notice.number - 1}">◀</a>
+		</li>
+		<c:forEach var="num" items="${pageNumbers}">
+			<c:choose>
+				<c:when test="${nowPage eq num}">
+					<li class="page-item active bg-dark"><a
+						class="page-link text-dark "
+						style="background-color: #63BFBC; border-color: #63BFBC;"
+						href="?page=${num - 1}">${num} </a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link text-dark"
+						href="?page=${num - 1}">${num}</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<li class="page-item ${notice.last ? isDisabled : isNotDisabled}">
+			<a class="page-link text-dark" href="?page=${notice.number + 1}">▶</a>
+		</li>
+		<li class="page-item ${notice.last ? isDisabled : isNotDisabled}">
+			<a class="page-link text-dark" href="?page=${endPage}">끝 </a>
+		</li>
+	</ul>
 
 </div>
 <br />
