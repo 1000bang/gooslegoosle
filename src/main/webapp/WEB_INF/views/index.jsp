@@ -7,17 +7,17 @@
 	</c:when>
 	<c:when test="${principal.user.role eq 'USER'}">
 		<div class="loginInfo">
-			<strong>${principal.username}</strong>&nbsp; 님 환영합니다 !
+			<strong>${principal.user.userNickname}</strong>&nbsp; 님 환영합니다 !
 		</div>
 	</c:when>
 	<c:when test="${principal.user.role eq 'HOST'}">
 		<div class="loginInfo">
-			<strong>${principal.username}</strong>&nbsp; 님(HOST) 환영합니다 !
+			<strong>${principal.user.userNickname}</strong>&nbsp; 님(HOST) 환영합니다 !
 		</div>
 	</c:when>
 	<c:when test="${principal.user.role eq 'ADMIN'}">
 		<div class="loginInfo">
-			<strong>${principal.username}</strong>&nbsp; 님(관리자) 환영합니다 !
+			<strong>${principal.user.userNickname}</strong>&nbsp; 님(관리자) 환영합니다 !
 		</div>
 	</c:when>
 </c:choose>
@@ -303,9 +303,9 @@
 	});
 
 	var swipers = new Swiper(".mySwiper", {
-		slidesPerView : 4,
+		slidesPerView : 5,
 		spaceBetween : 20,
-		slidesPerGroup : 4,
+		slidesPerGroup : 5,
 		loop : true,
 		loopFillGroupWithBlank : true,
 		pagination : {
