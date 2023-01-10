@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.entity;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -62,4 +65,7 @@ public class ReviewEntity {
 	@JsonIgnoreProperties({ "review"})
 	private List<ReviewReplyEntity> reviewReplys;
 
+	@CreationTimestamp
+	private Timestamp createTime;
+	
 }

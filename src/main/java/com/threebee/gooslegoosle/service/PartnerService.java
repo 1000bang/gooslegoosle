@@ -18,6 +18,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.dto.PartnerAndStoreDTO;
 import com.threebee.gooslegoosle.dto.PartnerFileDTO;
 import com.threebee.gooslegoosle.dto.StoreFileDTO;
@@ -179,6 +180,13 @@ public class PartnerService {
 		store.setCloseTime(dto.getCloseTime());
 		store.setOpenTime(dto.getOpenTime());
 		store.setCategory(dto.getCategory());
+	}
+
+
+
+	public List<ChartDto> lastTwoWeeksPartner() {
+		
+		return iPartnerRepository.findTwoWeeks();
 	}
 
 }

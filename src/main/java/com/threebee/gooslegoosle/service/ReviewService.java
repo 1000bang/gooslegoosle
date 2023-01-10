@@ -3,6 +3,7 @@ package com.threebee.gooslegoosle.service;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.dto.ReviewFileDto;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
@@ -138,6 +140,12 @@ public class ReviewService {
 	public Page<ReviewEntity> getStoreReviewList(int id, Pageable pageable) {
 	
 		return iReviewRepository.findAllStoreReview(id, pageable);
+	}
+
+
+	public  List<ChartDto>  lastTwoWeeksReview() {
+		return iReviewRepository.findLastTwoWeeks();
+		
 	}
 
 

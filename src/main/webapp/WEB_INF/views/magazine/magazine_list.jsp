@@ -23,18 +23,20 @@
 						<p class="card-text" id="card-text">구슬구슬 리뷰어들이 직접 방문하고 솔직하게
 							평가한 전국의 숨은 맛집! 이번주도 좋은 평가를 받은 식당들 중에서 엄선하여 소개해 드립니다. 구슬구슬은 식당 후기에
 							대하여 스폰 및 광고를 전혀받고 있지 않으니, 믿고 보셔도 됩니다.</p>
-						<div
-							style="width: 119px; height: 27px; position: absolute; left: 83%; top: 8%;">
-							<a href="#!"><img class="card-img"
-								src="http://localhost:9090/magazine/${mag.thumbnail}" alt="..."></a>
-
-						</div>
+				
 					</div>
 
 				</div>
 
 			</div>
+				<div class="col-md-4 mb-5">
+						<div
+							style="width: 180px; height: 160px;">
+							<a href="#!"><img class="card-img" style="width: 100%; height: 100%"
+								src="http://localhost:9090/magazine/${mag.thumbnail}" alt="..."></a>
 
+						</div>
+				</div>
 		</div>
 
 	</c:forEach>
