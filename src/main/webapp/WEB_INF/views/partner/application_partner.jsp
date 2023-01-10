@@ -27,7 +27,7 @@
 					<div class="form-group">
 						<label for="username">이름</label> <input type="text"
 							class="form-control" id="username" placeholder="이름을 입력해주세요."
-							value="${principal.user.username}" name="username" required>
+							value="${principal.user.userNickname}" name="username" required>
 						<div class="valid-feedback">완료 !</div>
 						<div class="invalid-feedback">필수 입력 사항입니다.</div>
 					</div>

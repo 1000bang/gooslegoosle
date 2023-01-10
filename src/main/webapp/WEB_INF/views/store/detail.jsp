@@ -67,7 +67,7 @@
 						<div class="card m-4">
 							<div class="card-body">
 								<h6 class="card-title h6">
-									<strong>작성자 :</strong> ${reviews.user.username}
+									<strong>작성자 :</strong> ${reviews.user.userNickname}
 								</h6>
 								<c:choose>
 									<c:when test="${reviews.starScore eq 1}">
