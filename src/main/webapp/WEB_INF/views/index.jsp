@@ -67,22 +67,16 @@
 		<div class="main-Content">
 			<div class="swiper mySwiper" style="height: 300px">
 
-<<<<<<< HEAD
 				<div class="swiper-wrapper" id="food-slice" style="height:100px">
-					<%-- <c:forEach var="storeInfo" items="${store}"> --%>
-						<div class="swiper-slide" style="height: 50px">
-=======
-				<div class="swiper-wrapper" id="food-slice">
 					<c:forEach var="storeInfo" items="${store}">
-						<div class="swiper-slide">
->>>>>>> developer
+						<div class="swiper-slide" style="height: 50px">
 							<a href="/store/${storeInfo.id}"> <img
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
 							<p>${storeInfo.partner.storeName}</p>
 						</div>
-				<%-- 	</c:forEach> --%>
+				</c:forEach>
 				
 				</div>
 				<div class="swiper-button-next"></div>
@@ -309,8 +303,8 @@
 	});
 
 	var swipers = new Swiper(".mySwiper", {
-		slidesPerView : 4,
-		spaceBetween : 20,
+		slidesPerView : 5,
+		spaceBetween : 5,
 		slidesPerGroup : 4,
 		loop : true,
 		loopFillGroupWithBlank : true,
