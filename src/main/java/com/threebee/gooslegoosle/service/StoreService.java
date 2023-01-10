@@ -84,6 +84,8 @@ public class StoreService {
 		StoreEntity storeFinal = store.toEntity(partner);
 		StoreEntity stores = storeRepository.save(storeFinal);
 		
+		
+		
 		for (MultipartFile temp : store.getStorePics()) {
 			
 			String fileName = uuid+"_"+temp.getOriginalFilename();
