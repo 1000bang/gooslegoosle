@@ -17,9 +17,12 @@
 				<div class="card">
 
 
-					<div class="card-body">
-						<h2 class="card-title" style="color : #63BFBC ">${mag.title}</h2>
-						<p class="card-text" id="card-text">${mag.content}</p>
+					<div class="card-body"
+						onclick="location.href = '/magazine/detail/${mag.id}'">
+						<h2 class="card-title" style="color: #63BFBC">${mag.title}</h2>
+						<p class="card-text" id="card-text">구슬구슬 리뷰어들이 직접 방문하고 솔직하게
+							평가한 전국의 숨은 맛집! 이번주도 좋은 평가를 받은 식당들 중에서 엄선하여 소개해 드립니다. 구슬구슬은 식당 후기에
+							대하여 스폰 및 광고를 전혀받고 있지 않으니, 믿고 보셔도 됩니다.</p>
 						<div
 							style="width: 119px; height: 27px; position: absolute; left: 83%; top: 8%;">
 							<a href="#!"><img class="card-img"
@@ -27,14 +30,13 @@
 
 						</div>
 					</div>
-					<div class="card-footer">
-						<a class="btn btn-sm"
-							style="color: white; background-color: #63BFBC;"
-							href="/magazine/detail/${mag.id}">자세히 보기</a>
-					</div>
+
 				</div>
+
 			</div>
+
 		</div>
+
 	</c:forEach>
 	<hr />
 	<c:if test="${principal.user.role eq 'ADMIN'}">

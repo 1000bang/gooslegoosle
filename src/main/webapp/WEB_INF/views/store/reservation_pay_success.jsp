@@ -16,7 +16,7 @@
 			<div class="form-group">
 			<label style="font-size: 19px; font-weight: 700;">사용자명 </label>
 				<input type="text" class="form-control" placeholder="Enter usernmae"
-					id="username" value="${principal.user.username}"
+					id="username" value="${principal.user.userNickname}"
 					readonly="readonly">
 
 			</div>

@@ -30,7 +30,7 @@
 		<div class="review-content">${reviews.getReviewContent()}</div>
 		<div class="rate">
 			<p>★★★★★</p>
-			<p>작성자 : <span>${reviews.getUser().getUsername()}</span></p>
+			<p>작성자 : <span>${reviews.getUser().getUserNickname()}</span></p>
 		</div>
 		<div class="card">
 
@@ -51,7 +51,7 @@
 					<div class="replyTextTitle">댓글()</div>
 					<div class="replyTextContent">${reply.replyContent}</div>
 					<div class="d-flex">
-						<div class="replyText">작성자 :&nbsp;${reply.user.username}&nbsp;&nbsp;&nbsp;</div>
+						<div class="replyText">작성자 :&nbsp;${reply.user.userNickname}&nbsp;&nbsp;&nbsp;</div>
 						<c:if test="${reply.user.id eq principal.user.id}">
 						<button class="btn btn-danger" onclick="index.replyDelete(${reviews.id}, ${reply.getId()});">삭제</button>
 						</c:if>

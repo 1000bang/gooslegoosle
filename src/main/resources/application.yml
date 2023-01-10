@@ -37,5 +37,6 @@ spring:
       
 file:
 
- # path: '/Users/1000bang/workspace/soulfood/gooslegoosle/images/'
-  path: C:\androidworkspace\gooslegoosle\images\
+#  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
+#  path: C:\androidworkspace\gooslegoosle\magazine\
+  path: C:\ii\gooslegoosle\magazine\
