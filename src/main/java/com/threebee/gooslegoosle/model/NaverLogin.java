@@ -77,6 +77,7 @@ public class NaverLogin implements ISocialLogin{
 		UserEntity naverUser = UserEntity.builder()
 				.username(account.response.name + account.response.id)
 				.email(account.response.email)
+				.userNickname(account.response.name)
 				.password(account.response.id)
 				.phoneNumber("000-0000-0000")
 				.role(UserRole.USER)

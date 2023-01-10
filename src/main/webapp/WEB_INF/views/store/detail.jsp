@@ -26,7 +26,7 @@
 
 					<p class="card-text">주소 : ${storeDetail.partner.address}
 						${storeDetail.partner.detailAddress}</p>
-					<p class="card-text">대표번호 : ${storeDetail.partner.phoneNumber}</p>
+					<p class="card-text">대표번호 : ${storeDetail.partner.mainNumber}</p>
 
 					<c:forEach var="menu" items="${storeDetail.menu}">
 						<p class="card-text">#${menu.menuName}</p>

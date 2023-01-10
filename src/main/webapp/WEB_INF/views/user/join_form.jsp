@@ -8,7 +8,12 @@
 <div class="container" style="min-height: 630px">
 	<form action="">
 		<div class="form-group"><input type="text"
-				class="form-control" placeholder="Enter usernmae" id="username"
+				class="form-control" placeholder="Enter userId" id="username"
+				value="홍길동">
+
+		</div>
+		<div class="form-group"><input type="text"
+				class="form-control" placeholder="Enter userName" id="userNickname"
 				value="홍길동">
 
 		</div>
@@ -20,7 +25,7 @@
 		<div class="form-group d-flex">
 			 <input type="text"
 				class="form-control mr-1 " placeholder="Enter phoneNumber"
-				id="phoneNumber" value="010-9411-0807">
+				id="phoneNumber" value="010-1234-1234">
 				<input type="button" style="width: 10vh; color: white; background-color: #63BFBC;"
 					onclick="" class="form-control mr-1 btn"
 					value="sms전송">

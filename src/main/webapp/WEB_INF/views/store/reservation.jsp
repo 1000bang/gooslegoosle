@@ -58,8 +58,9 @@
 				class="form-control" id="date" pattern="\d{4}-\d{2}-\d{2}"
 				placeholder="원하는 예약 날짜를 선택하세요" required th:field="*{date}"
 				type="text" value="">
+		
+		
 		</div>
-
 		<div class="form-group">
 			<select class="custom-select mb-1 form-control" id="time" name="time">
 				<option selected>예약하실 시간을 선택하세요</option>
@@ -110,7 +111,7 @@
 		format : "yyyy-mm-dd",
 		language : "english",
 		startDate : '-3d',
-		minDate : today
+		/* minDate : today */
 	});
 </script>
 <script>

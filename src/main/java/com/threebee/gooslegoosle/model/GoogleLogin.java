@@ -66,6 +66,7 @@ public class GoogleLogin implements ISocialLogin{
 		GoogleProfileDto account = googleDataResponse.getBody();
 		UserEntity googleUser = UserEntity.builder()
 				.username(account.name + account.id)
+				.userNickname(account.name)
 				.email(account.email)
 				.password(account.email)
 				.phoneNumber("000-0000-0000")

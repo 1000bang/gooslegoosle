@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.entity;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -40,7 +41,7 @@ public class ReservationEntity {
 
 	@NotNull
 	@Column(nullable = false)
-	private String date;
+	private Date date;
 	
 	@NotNull
 	@Column(nullable = false)

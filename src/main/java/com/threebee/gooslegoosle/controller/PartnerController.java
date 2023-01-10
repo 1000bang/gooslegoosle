@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
+import com.threebee.gooslegoosle.dto.ChartMonthDTO;
+import com.threebee.gooslegoosle.dto.ChartSixMonthDTO;
 import com.threebee.gooslegoosle.dto.PartnerAndStoreDTO;
 import com.threebee.gooslegoosle.dto.PartnerFileDTO;
 import com.threebee.gooslegoosle.dto.ResApproveDto;
@@ -74,16 +76,14 @@ public class PartnerController {
 		}
 		
 		//주별 통계 
-		List<ChartDto> res2 = reservationService.findByStoreIdMonth(store.getId());
-		List<List<?>> week = new ArrayList<>();
-		for (int i = 0; i < res2.size(); i++) {
-			List<String> data2 = new ArrayList<>();
-			data2.add(res2.get(i).getDate());
-			data2.add(res2.get(i).getCount());
-			week.add(data2);
-		}
+		List<ChartMonthDTO> week = reservationService.findByStoreIdMonth(store.getId());
+
+		List<ChartSixMonthDTO> month = reservationService.findByStoreIdHalfYear(store.getId());
+		System.out.println(">>>>>>>" +day);
+		System.out.println(">>>>>>>" +week);
 		model.addAttribute("day", day);
 		model.addAttribute("week", week);
+		model.addAttribute("month", month);
 		return "store/chart";
 	}
 	

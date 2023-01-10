@@ -67,14 +67,20 @@
 		<div class="main-Content">
 			<div class="swiper mySwiper" style="height: 300px">
 
+<<<<<<< HEAD
 				<div class="swiper-wrapper" id="food-slice" style="height:100px">
 					<%-- <c:forEach var="storeInfo" items="${store}"> --%>
 						<div class="swiper-slide" style="height: 50px">
+=======
+				<div class="swiper-wrapper" id="food-slice">
+					<c:forEach var="storeInfo" items="${store}">
+						<div class="swiper-slide">
+>>>>>>> developer
 							<a href="/store/${storeInfo.id}"> <img
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
+							<p>${storeInfo.partner.storeName}</p>
 						</div>
 				<%-- 	</c:forEach> --%>
 				
@@ -100,7 +106,7 @@
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
+							<p>${storeInfo.partner.storeName}</p>
 						</div>
 					</c:forEach>
 				
@@ -126,34 +132,7 @@
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-						</div>
-					</c:forEach>
-				
-				</div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-pagination"></div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="k-container">
-		<div class="title">
-			<h2>#양식</h2>
-		</div>
-		<div class="main-Content">
-			<div class="swiper mySwiper" style="height: 300px">
-
-				<div class="swiper-wrapper" id="food-slice" style="height:100px">
-					<c:forEach var="storeInfo" items="${chineseStore.content}">
-						<div class="swiper-slide" style="height: 50px">
-							<a href="/store/${storeInfo.id}"> <img
-								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
-								alt="">
-							</a>
-							<p>${storeInfo.partner.storeName} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+							<p>${storeInfo.partner.storeName}</p>
 						</div>
 					</c:forEach>
 				
@@ -173,6 +152,33 @@
 		<div class="main-Content">
 			<div class="swiper mySwiper" style="height: 300px">
 
+				<div class="swiper-wrapper" id="food-slice" style="height:100px">
+					<c:forEach var="storeInfo" items="${chineseStore.content}">
+						<div class="swiper-slide" style="height: 50px">
+							<a href="/store/${storeInfo.id}"> <img
+								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
+								alt="">
+							</a>
+							<p>${storeInfo.partner.storeName}</p>
+						</div>
+					</c:forEach>
+				
+				</div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="k-container">
+		<div class="title">
+			<h2>#양식</h2>
+		</div>
+		<div class="main-Content">
+			<div class="swiper mySwiper" style="height: 300px">
+
 				<div class="swiper-wrapper" id="food-slice" style="height:100px;">
 					<c:forEach var="storeInfo" items="${westernStore.content}">
 						<div class="swiper-slide" style="height: 50px">
@@ -180,7 +186,7 @@
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
 							</a>
-							<p>${storeInfo.partner.storeName} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</p>
+							<p>${storeInfo.partner.storeName}</p>
 						</div>
 					</c:forEach>
 				

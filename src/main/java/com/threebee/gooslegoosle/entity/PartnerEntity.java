@@ -47,8 +47,6 @@ public class PartnerEntity {
 	private String address;
 //	
 	private String mainNumber;
-
-	private String postcode;
 	
 	private String detailAddress;
 //	
@@ -64,11 +62,6 @@ public class PartnerEntity {
 	@ManyToOne(fetch = FetchType.EAGER )
 	@JoinColumn(name = "userId")
 	private UserEntity user;
-
-	@OneToMany(
-			cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties(value = {"store, partner"})
-	private List<MenuEntity> menu;
 
 	@ColumnDefault("FALSE")
     private Boolean upload;
