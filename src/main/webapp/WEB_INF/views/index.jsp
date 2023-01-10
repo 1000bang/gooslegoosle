@@ -227,13 +227,10 @@
 
 	var swipers = new Swiper(".mySwiper", {
 		slidesPerView : 5,
-<<<<<<< HEAD
 		spaceBetween : 5,
 		slidesPerGroup : 4,
-=======
 		spaceBetween : 20,
 		slidesPerGroup : 5,
->>>>>>> developer
 		loop : true,
 		loopFillGroupWithBlank : true,
 		pagination : {

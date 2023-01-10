@@ -50,12 +50,33 @@
 
 .content_text{
 	width: 250px;
-	height: 40px;
-	margin-top: 20px;
+	height: 100px;
 	margin-bottom: 20px;
-	text-align: left;
-	white-space: nowrap;
-	text-overflow : ellipsis;
+}
+.content_text p{
+	width: 100%;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+}
+.content_text p p{
+	width: 100%;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+}
+.content_text p p p{
+	width: 100%;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+}
+
+.content_text div div{
+	display: none;
 }
 
 .username{

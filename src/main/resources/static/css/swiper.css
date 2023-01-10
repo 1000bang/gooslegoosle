@@ -219,7 +219,7 @@
 	width: 55px;
 	height: 55px;
 	margin-top: calc(0px - ( var(- -swiper-navigation-size)/2));
-	z-index: 10;
+	z-index: 9999;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -228,13 +228,13 @@
 }
 
 .swiper-button-next {
-  background: url(/images/right-arrow.png) no-repeat;
+  background: url(/images/slidebtn.png) no-repeat;
   background-size: 50% auto;
   background-position: center;
 }
 
 .swiper-button-prev {
-  background: url(/images/left-arrow.png) no-repeat;
+  background: url(/images/slidebtn2.png) no-repeat;
   background-size: 50% auto;
   background-position: center;
 }
@@ -269,7 +269,7 @@
 }
 
 .swiper-button-prev, .swiper-rtl .swiper-button-next {
-	left: 10px;
+	left: -12px;
 	right: auto
 }
 
@@ -278,7 +278,7 @@
 }
 
 .swiper-button-next, .swiper-rtl .swiper-button-prev {
-	right: 10px;
+	right: -12px;
 	left: auto
 }
 
