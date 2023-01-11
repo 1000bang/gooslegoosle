@@ -9,69 +9,64 @@
 <br>
 
 <div class="container" style="min-height: 558px">
-	<h1 class="h2">고객센터</h1>
+	<h1 class="h2">메세지 보관함</h1>
 	<br>
 	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
+				<th>내용</th>
+				<th>받는 사람</th>
 				<th>날짜</th>
 
 			</tr>
 		</thead>
 		<c:choose>
 			<c:when test="${principal.user.role eq 'ADMIN'}">
-				<c:forEach var="service" items="${services.content}">
-				<tbody>
-					<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
-						<td>${service.id}</td>
-						<td>${service.title}</td>
-						<td>${service.userId.userNickname}</td>
-						<td>${service.createDate}</td>
-					</tr>
-				</tbody>
-			</c:forEach>
-			</c:when>
-		
-			<c:otherwise>
-				<c:forEach var="service" items="${services.content}">
-				<c:choose>
-				<c:when test="${principal.user.id == service.userId.id}">
+				<c:forEach var="num" items="${message.content}">
 					<tbody>
-					<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
-						<td>${service.id}</td>
-						<td>${service.title}</td>
-						<td>${service.userId.userNickname}</td>
-						<td>${service.createDate}</td>
-					</tr>
+						<tr onclick="#">
+							<td>${num.id}</td>
+							<td>${num.comment}</td>
+							<td>${num.user.userNickname}</td>
+							<td>${num.createTime}</td>					
+						</tr>
 					</tbody>
-				</c:when>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+					<c:forEach var="num" items="${message.content}">
+				<c:choose>
+					<c:when test="${principal.user.id == num.user.id}">
+						<tbody>
+						<tr onclick="window.open('/my_message/'+ ${num.id}, '네이버팝업', 'width=700px,height=600px,scrollbars=yes')">
+							<td>${num.id}</td>
+							<td>${num.comment}</td>
+							<td>${num.user.userNickname}</td>
+							<td>${num.createTime}</td>
+						</tr>
+					</tbody>
+					</c:when>
 				</c:choose>
-			</c:forEach>
+					
+				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</table>
 
 	<hr />
-
-	<a type="button" class="btn" href="/seviceCenter/board"
-		style="float: right; color: white; background-color: #63BFBC;">글쓰기
-	</a>
-
-<br/>
-<ul class="pagination justify-content-center" style="margin: 20px 0">
+	<br />
+	<ul class="pagination justify-content-center" style="margin: 20px 0">
 
 		<c:set var="isDisabled" value="disabled">
 		</c:set>
 		<c:set var="isNotDisabled" value="">
 		</c:set>
-		<li class="page-item ${service.first ? isDisabled : isNotDisabled}">
+		<li class="page-item ${message.first ? isDisabled : isNotDisabled}">
 			<a class="page-link text-dark" href="?page=${startPage}">처음</a>
 		</li>
-		<li class="page-item ${notice.first ? isDisabled : isNotDisabled}">
-			<a class="page-link text-dark" href="?page=${service.number - 1}">◀</a>
+		<li class="page-item ${message.first ? isDisabled : isNotDisabled}">
+			<a class="page-link text-dark" href="?page=${message.number - 1}">◀</a>
 		</li>
 		<c:forEach var="num" items="${pageNumbers}">
 			<c:choose>
@@ -88,18 +83,17 @@
 			</c:choose>
 		</c:forEach>
 
-		<li class="page-item ${service.last ? isDisabled : isNotDisabled}">
+		<li class="page-item ${message.last ? isDisabled : isNotDisabled}">
 			<a class="page-link text-dark" href="?page=${notice.number + 1}">▶</a>
 		</li>
-		<li class="page-item ${service.last ? isDisabled : isNotDisabled}">
+		<li class="page-item ${message.last ? isDisabled : isNotDisabled}">
 			<a class="page-link text-dark" href="?page=${endPage}">끝 </a>
 		</li>
 	</ul>
 
+	<br /> <br /> <br />
 </div>
-<br />
-<br />
-<br />
+
 
 
 <%@ include file="../layout/footer.jsp"%>
