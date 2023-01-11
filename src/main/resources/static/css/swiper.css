@@ -269,8 +269,8 @@
 }
 
 .swiper-button-prev, .swiper-rtl .swiper-button-next {
-	left: -12px;
-	right: auto
+	left: -56px;
+	top: 71px;
 }
 
 .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
@@ -278,8 +278,8 @@
 }
 
 .swiper-button-next, .swiper-rtl .swiper-button-prev {
-	right: -12px;
-	left: auto
+	right: -56px;
+    top: 71px;
 }
 
 .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
