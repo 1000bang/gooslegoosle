@@ -101,15 +101,12 @@
 								<hr />
 								<h5 class="card-title h5">${reviews.reviewTitle}</h5>
 								<p class="card-text">${reviews.reviewContent}</p>
-								<p>
-									<img class="card-img"
-										src="http://localhost:9090/magazine/${reviews.thumbnail}"
-										alt="...">
-								</p>
-
-								<a type="button" class="btn"
+							
+								<div class="d-flex flex-row">
+								<p><a type="button" class="btn"
 									style="color: white; background-color: #63BFBC; width: 15vh"
-									href="#"> 더보기</a>
+									href="/review/${reviews.id}"> 더보기</a></p>
+								</div>
 							</div>
 
 						</div>

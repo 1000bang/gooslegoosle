@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
+import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.UserRole;
+import com.threebee.gooslegoosle.repository.IMessageRepository;
 import com.threebee.gooslegoosle.repository.IUserRepository;
 
 @Service
@@ -84,6 +86,9 @@ public class UserService {
 		return userEntity;
 	}
 
+	@Autowired
+	IMessageRepository messageRepository;
+
 	@Transactional
 	public void setHost(int id) {
 		System.out.println("sethost");
@@ -91,7 +96,12 @@ public class UserService {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});
 		userEntity.setRole(UserRole.HOST);
-		System.out.println("sethost끝 ");
+
+		MessageEntity msg = MessageEntity.builder()
+				.user(userEntity)
+				.comment("안녕하세요 " + userEntity.getUserNickname()+"님 \n 지원하신 파트너 신청에 성공하였습니다.\n \t\t - 구슬구슬 팀")
+				.build();
+		messageRepository.save(msg);
 	}
 
 	public UserEntity findId(int id) {
@@ -110,6 +120,12 @@ public class UserService {
 	public void setWarningUser(int id) {
 		UserEntity user = findId(id);
 		user.setWarning(user.getWarning() + 1);
+		
+		MessageEntity msg = MessageEntity.builder()
+				.user(user)
+				.comment("안녕하세요 " + user.getUserNickname()+"님 \n 사용자의 신고로 인해 경고조치 "+ user.getWarning() +"회 적용되었습니다. \n \t\t - 구슬구슬 팀")
+				.build();
+		messageRepository.save(msg);
 	}
 
 	@Transactional
@@ -117,14 +133,14 @@ public class UserService {
 		UserEntity user = findId(id);
 		user.setEnable(false);
 	}
-	
+
 	@Transactional
 	public void unStopUser(int id) {
 		UserEntity user = findId(id);
 		user.setEnable(true);
 	}
 
-	public  List<ChartDto>  lastTwoWeeksUser() {
+	public List<ChartDto> lastTwoWeeksUser() {
 		return iUserRepository.findLastTwoWeeks();
 	}
 
