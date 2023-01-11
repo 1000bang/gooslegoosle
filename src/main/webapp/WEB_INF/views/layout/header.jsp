@@ -79,12 +79,20 @@
 							<li><a href="/auth/join_form">Join</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="bell">
-								<div class="bellBox">
-									<a href="/my_message"><img src="/images/bell.png" alt=""></a>
-									<p style="width: 50%; height: 50%;">1</p>
-								</div>
-							</li>
+							<c:choose>
+								<c:when test="${principal.user.role eq 'ADMIN'}">
+									
+								</c:when>
+								<c:otherwise>
+									<li class="bell">
+										<div class="bellBox">
+											<a href="/my_message"><img src="/images/bell.png" alt=""></a>
+											<p style="width: 50%; height: 50%;">1</p>
+										</div>
+									</li>
+								</c:otherwise>
+							</c:choose>
+
 							<li><a href="/magazine">Magazine</a></li>
 							<li><a href="/notice">Notice</a></li>
 							<li><a href="/reviews">Review</a></li>
@@ -101,10 +109,12 @@
 								</ul></li>
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">
-									<li id="more--view"><a href="/admin/manage" style="color: #0067a3">Manage</a></li>
+									<li id="more--view"><a href="/admin/manage"
+										style="color: #0067a3">Manage</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="/auth/partner/main_partner" style="color: #0067a3">Partner?</a></li>
+									<li><a href="/auth/partner/main_partner"
+										style="color: #0067a3">Partner?</a></li>
 								</c:otherwise>
 							</c:choose>
 

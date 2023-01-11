@@ -64,7 +64,14 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="/admin/manage">Store M</a></li>
-					<li><a href="/admin/user">User M</a></li>
+					<li id="more--view"><a href="/admin/manage">User M</a>
+						<ul id="nave--moreview--item" style="padding-top: 0">
+							<li><a class="dropdown-item" href="/admin/user">Management</a></li></li>
+							<li><a class="dropdown-item" href="/my_message">Message</a></li>
+						</ul>
+					
+					
+					
 					<li><a href="/seviceCenter">Service</a></li>
 					<li><a href="/admin/statics" style="color: #0067a3">Statics</a></li>
 					<li><a href="/logout">LogOut</a></li>

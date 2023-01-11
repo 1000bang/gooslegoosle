@@ -67,11 +67,11 @@
 		</c:set>
 		<c:set var="isNotDisabled" value="">
 		</c:set>
-		<li class="page-item ${notice.first ? isDisabled : isNotDisabled}">
+		<li class="page-item ${service.first ? isDisabled : isNotDisabled}">
 			<a class="page-link text-dark" href="?page=${startPage}">처음</a>
 		</li>
 		<li class="page-item ${notice.first ? isDisabled : isNotDisabled}">
-			<a class="page-link text-dark" href="?page=${notice.number - 1}">◀</a>
+			<a class="page-link text-dark" href="?page=${service.number - 1}">◀</a>
 		</li>
 		<c:forEach var="num" items="${pageNumbers}">
 			<c:choose>
@@ -88,10 +88,10 @@
 			</c:choose>
 		</c:forEach>
 
-		<li class="page-item ${notice.last ? isDisabled : isNotDisabled}">
+		<li class="page-item ${service.last ? isDisabled : isNotDisabled}">
 			<a class="page-link text-dark" href="?page=${notice.number + 1}">▶</a>
 		</li>
-		<li class="page-item ${notice.last ? isDisabled : isNotDisabled}">
+		<li class="page-item ${service.last ? isDisabled : isNotDisabled}">
 			<a class="page-link text-dark" href="?page=${endPage}">끝 </a>
 		</li>
 	</ul>
