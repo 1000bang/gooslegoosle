@@ -42,8 +42,8 @@
 					<img src="../images/w-food.jpg" alt="">
 				</div>
 			</div>
-			<div class="swiper-button-next swiper-button-next0"></div>
-			<div class="swiper-button-prev swiper-button-prev0"></div>
+			<div class="swiper-button-next swiper-button-next0" style="position: absolute; right: 0%; top: 50%;"></div>
+			<div class="swiper-button-prev swiper-button-prev0" style="position: absolute; left: 0%; top: 50%;"></div>
 		</div>
 
 
