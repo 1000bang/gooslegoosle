@@ -72,7 +72,7 @@
 			class="btn align-self-end" style="width:15vh; color: white; background-color: #63BFBC;">signUp</button>
 	</div>
 
-	<br>
+	<br><br><br>
 </div>
 <script type="text/javascript" src="/js/user.js"></script>
 <script

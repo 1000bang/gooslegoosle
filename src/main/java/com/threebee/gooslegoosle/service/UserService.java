@@ -34,7 +34,6 @@ public class UserService {
 
 	@Transactional
 	public int saveUser(UserEntity user) {
-		System.out.println(user);
 		String rawPassword = user.getPassword();
 		String bcPassword = bcencoder.encode(rawPassword);
 		user.setEnable(true);

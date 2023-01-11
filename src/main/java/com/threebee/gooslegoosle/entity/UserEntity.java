@@ -44,8 +44,8 @@ public class UserEntity {
 	
 	
 	@Column(nullable = false, length = 100, unique = true)
-	@NotNull
-	@Size(min = 2)
+	@NotNull(message = "ID는 필수값입니다.")
+	@Size(min = 2, message = "ID가 너무 짧습니다. ")
 	private String username;
 
 	@Column(nullable = false, length = 100)
