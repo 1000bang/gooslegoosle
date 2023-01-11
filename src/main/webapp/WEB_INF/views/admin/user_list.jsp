@@ -17,7 +17,7 @@
 				<th>가입 날짜</th>
 				<th>경고 횟수</th>
 				<th>이용 제한</th>
-				<th>쪽지 </th>
+				<th>쪽지</th>
 			</tr>
 		</thead>
 
@@ -42,14 +42,17 @@
 									href="/admin/unstop/${users.id}">정지해제 </a>
 							</c:when>
 						</c:choose></td>
-<td><a type="button" class="btn-sm"
-						style="color: white; background-color: #63BFBC" onclick="window.open('/admin/message/${users.id}', '네이버팝업', 'width=700px,height=600px,scrollbars=yes')"> 쪽지보내기 </a> </td>
+					<td><a type="button" class="btn-sm"
+						style="color: white; background-color: #63BFBC"
+						onclick="window.open('/admin/message/${users.id}', '쪽지보내기', 'width=700px,height=600px,scrollbars=yes')">
+							쪽지보내기 </a></td>
 				</tr>
 			</tbody>
 		</c:forEach>
 	</table>
-	
-		<br/><br/>
+
+	<br />
+	<br />
 	<ul class="pagination justify-content-center" style="margin: 20px 0">
 
 		<c:set var="isDisabled" value="disabled">

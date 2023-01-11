@@ -68,6 +68,7 @@ public class AdminController {
 	
 	@GetMapping("/admin/message/{id}")
 	public String fetchMessage(@PathVariable int id, Model model) {
+		System.out.println("id>>>>>>>." +id);
 		UserEntity user = userService.findId(id);
 		model.addAttribute("user",user);
 		return "admin/message";
