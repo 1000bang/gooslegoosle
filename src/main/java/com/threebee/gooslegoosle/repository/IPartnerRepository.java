@@ -39,7 +39,8 @@ public interface IPartnerRepository extends JpaRepository<PartnerEntity, Integer
 	@Query(value = "SELECT COUNT(*) AS count,  DATE_FORMAT(createTime, '%c/%e') AS date "
 			+ "FROM gooslegoosle.PartnerEntity "
 			+ "WHERE createTime BETWEEN DATE_ADD(NOW(), INTERVAL -2 WEEK ) AND NOW() "
-			+ "GROUP BY date",
+			+ "GROUP BY date "
+			+ "ORDER BY date",
 			nativeQuery = true)
 	public  List<ChartDto>  findTwoWeeks();
 	

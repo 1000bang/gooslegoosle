@@ -31,7 +31,8 @@ public interface IReviewRepository extends JpaRepository<ReviewEntity, Integer> 
 	@Query(value = "SELECT COUNT(*) AS count,  DATE_FORMAT(createTime, '%c/%e') AS date "
 			+ "FROM gooslegoosle.reviewEntity "
 			+ "WHERE createTime BETWEEN DATE_ADD(NOW(), INTERVAL -2 WEEK ) AND NOW() "
-			+ "GROUP BY date"
+			+ "GROUP BY date "
+			+ "ORDER BY date"
 			, nativeQuery = true)
 	 List<ChartDto>  findLastTwoWeeks();
 	
