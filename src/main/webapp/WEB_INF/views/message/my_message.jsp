@@ -18,6 +18,7 @@
 				<th>내용</th>
 				<th>받는 사람</th>
 				<th>날짜</th>
+				<th>상태</th>
 
 			</tr>
 		</thead>
@@ -29,7 +30,8 @@
 							<td>${num.id}</td>
 							<td>${num.comment}</td>
 							<td>${num.user.userNickname}</td>
-							<td>${num.createTime}</td>					
+							<td>${num.createTime}</td>	
+										
 						</tr>
 					</tbody>
 				</c:forEach>
@@ -44,6 +46,14 @@
 							<td>${num.comment}</td>
 							<td>${num.user.userNickname}</td>
 							<td>${num.createTime}</td>
+							<c:choose>
+							<c:when test="${num.read eq true}">
+							<td>읽음</td>	
+							</c:when>
+							<c:when test="${num.read eq false}">
+							<td>안읽음</td>	
+							</c:when>
+							</c:choose>	
 						</tr>
 					</tbody>
 					</c:when>

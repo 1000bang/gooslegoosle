@@ -3,6 +3,8 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
@@ -81,13 +83,22 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">
-									
+
 								</c:when>
 								<c:otherwise>
 									<li class="bell">
 										<div class="bellBox">
 											<a href="/my_message"><img src="/images/bell.png" alt=""></a>
-											<p style="width: 50%; height: 50%;">1</p>
+											<c:forEach var="item" items="${principal.user.message}">
+												<c:if test="${item.read eq false}">
+													<c:set var="i" value="${i + 1}" />
+													<input hidden="false" value="${i}" id="mes">
+												</c:if>
+											</c:forEach>
+											
+											<c:if test="${i ge 0}">
+											<p id="temp" style="width: 50%; height: 50%;">${i}</p>
+										</c:if>
 										</div>
 									</li>
 								</c:otherwise>
@@ -124,3 +135,15 @@
 				</ul>
 			</nav>
 		</header>
+
+		<script>
+			$(document).ready(function() {
+				console.log(${i});
+				if ($("#mes") == 0) {
+					console.log("123123");
+					$("#temp").css({
+						display : none
+					})
+				}
+			});
+		</script>

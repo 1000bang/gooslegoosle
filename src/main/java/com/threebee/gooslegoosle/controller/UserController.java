@@ -31,6 +31,7 @@ import org.springframework.web.client.RestTemplate;
 import com.threebee.gooslegoosle.auth.PrincipalDetail;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.dto.kakao.pay.PaymentResDto;
+import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
@@ -61,6 +62,8 @@ public class UserController {
 	@GetMapping({ "", "/", "index", "search"})
 	public String fetchIndex(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchWords = searchWord == null ? "": searchWord;
+		
+	
 		
 		List<StoreEntity> store = storeService.findAll(searchWords, pageable);
 		Page<StoreEntity> koreanStore = storeService.findKorean(searchWords, pageable);
