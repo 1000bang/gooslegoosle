@@ -79,6 +79,12 @@
 							<li><a href="/auth/join_form">Join</a></li>
 						</c:when>
 						<c:otherwise>
+							<li class="bell">
+								<div class="bellBox">
+									<a href="/my_message"><img src="/images/bell.png" alt=""></a>
+									<p style="width: 50%; height: 50%;">1</p>
+								</div>
+							</li>
 							<li><a href="/magazine">Magazine</a></li>
 							<li><a href="/notice">Notice</a></li>
 							<li><a href="/reviews">Review</a></li>

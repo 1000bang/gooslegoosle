@@ -145,12 +145,12 @@ body .lead {
   animation: bounce .3s ease infinite alternate;
   font-family: 'Titan One', cursive;
   color: #ccc;
-  text-shadow: 0 1px 0 #fff,
+/*   text-shadow: 0 1px 0 #fff,
                0 2px 0 #fff,
                0 3px 0 #fff,
                0 5px 0 #fff,
                0 6px 0 #fff,
-               0 7px 0 #fff,
+               0 7px 0 #fff, */
               
 }
 
@@ -173,13 +173,13 @@ body .lead {
 @keyframes bounce {
   100% {
     top: -5px;
-    text-shadow: 0 1px 0 #fff,
+/*     text-shadow: 0 1px 0 #fff,
                  0 2px 0 #fff,
                  0 3px 0 #fff,
                  0 4px 0 #fff,
                  0 5px 0 #fff,
                  0 6px 0 #fff,
-                 0 5px 5px rgba(0, 0, 0, .2);
+                 0 5px 5px rgba(0, 0, 0, .2); */
           
   }
 }
