@@ -24,9 +24,10 @@
 <article id="m-content1">
 	<section id="image">
 		<!-- Slider main container -->
-		<div class="swiper">
-			<!-- Additional required wrapper -->
-			<div class="swiper-wrapper">
+
+		<div class="swiper myswiper0" >
+			<div class="swiper-wrapper" >
+				<!-- Additional required wrapper -->
 				<!-- Slides -->
 				<div class="swiper-slide">
 					<img src="../images/k-food.jpg" alt="">
@@ -40,17 +41,9 @@
 				<div class="swiper-slide">
 					<img src="../images/w-food.jpg" alt="">
 				</div>
-				...
 			</div>
-			<!-- If we need pagination -->
-			<div class="swiper-pagination"></div>
-
-			<!-- If we need navigation buttons -->
-			<div class="swiper-button-prev" style="top: 50%"></div>
-			<div class="swiper-button-next" style="top: 50%"></div>
-
-			<!-- If we need scrollbar -->
-			<div class="swiper-scrollbar"></div>
+			<div class="swiper-button-next swiper-button-next0" style="position: absolute; right: 0%; top: 50%;"></div>
+			<div class="swiper-button-prev swiper-button-prev0" style="position: absolute; left: 0%; top: 50%;"></div>
 		</div>
 
 
@@ -65,11 +58,11 @@
 			<h2>#전체</h2>
 		</div>
 		<div class="main-Content">
-			<div class="swiper mySwiper" style="height: 300px">
+			<div class="swiper mySwiper myswiper1" style="height: 300px">
 
-				<div class="swiper-wrapper" id="food-slice">
+				<div class="swiper-wrapper" id="food-slice" style="height: 100px">
 					<c:forEach var="storeInfo" items="${store}">
-						<div class="swiper-slide">
+						<div class="swiper-slide" style="height: 50px">
 							<a href="/store/${storeInfo.id}"> <img
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">
@@ -77,12 +70,10 @@
 							<p>${storeInfo.partner.storeName}</p>
 						</div>
 					</c:forEach>
-
 				</div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-pagination"></div>
 			</div>
+			<div class="swiper-button-next swiper-button-next1"></div>
+			<div class="swiper-button-prev swiper-button-prev1"></div>
 		</div>
 	</div>
 
@@ -91,7 +82,7 @@
 			<h2>#한식</h2>
 		</div>
 		<div class="main-Content">
-			<div class="swiper mySwiper" style="height: 300px">
+			<div class="swiper mySwiper myswiper2" style="height: 300px">
 
 				<div class="swiper-wrapper" id="food-slice">
 					<c:forEach var="storeInfo" items="${koreanStore.content}">
@@ -106,10 +97,10 @@
 					</c:forEach>
 
 				</div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-pagination"></div>
 			</div>
+			<div class="swiper-button-next swiper-button-next2"></div>
+			<div class="swiper-button-prev swiper-button-prev2"></div>
+			<div class="swiper-pagination"></div>
 		</div>
 	</div>
 
@@ -118,7 +109,7 @@
 			<h2>#일식</h2>
 		</div>
 		<div class="main-Content">
-			<div class="swiper mySwiper" style="height: 300px">
+			<div class="swiper mySwiper myswiper3" style="height: 300px">
 
 				<div class="swiper-wrapper" id="food-slice" style="height: 100px;">
 					<c:forEach var="storeInfo" items="${japanessStore.content}">
@@ -132,10 +123,10 @@
 					</c:forEach>
 
 				</div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-pagination"></div>
 			</div>
+			<div class="swiper-button-next swiper-button-next3"></div>
+			<div class="swiper-button-prev swiper-button-prev3"></div>
+			<div class="swiper-pagination"></div>
 		</div>
 	</div>
 
@@ -145,7 +136,7 @@
 			<h2>#중식</h2>
 		</div>
 		<div class="main-Content">
-			<div class="swiper mySwiper" style="height: 300px">
+			<div class="swiper mySwiper myswiper4" style="height: 300px">
 
 				<div class="swiper-wrapper" id="food-slice" style="height: 100px">
 					<c:forEach var="storeInfo" items="${chineseStore.content}">
@@ -159,10 +150,10 @@
 					</c:forEach>
 
 				</div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-pagination"></div>
 			</div>
+			<div class="swiper-button-next swiper-button-next4"></div>
+			<div class="swiper-button-prev swiper-button-prev4"></div>
+			<div class="swiper-pagination"></div>
 		</div>
 	</div>
 
@@ -172,9 +163,10 @@
 			<h2>#양식</h2>
 		</div>
 		<div class="main-Content">
-			<div class="swiper mySwiper" style="height: 300px">
+			<div class="swiper mySwiper myswiper5" style="height: 300px">
 
-				<div class="swiper-wrapper" id="food-slice" style="height: 100px;">
+				<div class="swiper-wrapper myswiper" id="food-slice"
+					style="height: 100px;">
 					<c:forEach var="storeInfo" items="${westernStore.content}">
 						<div class="swiper-slide" style="height: 50px">
 							<a href="/store/${storeInfo.id}"> <img
@@ -186,10 +178,10 @@
 					</c:forEach>
 
 				</div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-pagination"></div>
 			</div>
+			<div class="swiper-button-next swiper-button-next5"></div>
+			<div class="swiper-button-prev swiper-button-prev5"></div>
+			<div class="swiper-pagination"></div>
 		</div>
 	</div>
 
@@ -205,42 +197,91 @@
 
 <script type="text/javascript">
 	$(".loginInfo").fadeOut(5000);
-	const swiper = new Swiper('.swiper', {
+	const swiper0 = new Swiper('.myswiper0', {
+		direction : 'horizontal',
+		loop : true,
+		navigation : {
+			nextEl : '.myswiper0 .swiper-button-next0',
+			prevEl : '.myswiper0 .swiper-button-prev0',
+		},
+
+	});
+	const swiper1 = new Swiper('.myswiper1', {
 		// Optional parameters
 		direction : 'horizontal',
 		loop : true,
 
-		// If we need pagination
-		pagination : {
-			el : '.swiper-pagination',
+		// Navigation arrows
+		navigation : {
+			nextEl : '.myswiper1 ~ .swiper-button-next1',
+			prevEl : '.myswiper1 ~ .swiper-button-prev1',
 		},
+
+	});
+	const swiper2 = new Swiper('.myswiper2', {
+		// Optional parameters
+		direction : 'horizontal',
+		loop : true,
 
 		// Navigation arrows
 		navigation : {
-			nextEl : '.swiper-button-next',
-			prevEl : '.swiper-button-prev',
+			nextEl : '.myswiper2 ~ .swiper-button-next2',
+			prevEl : '.myswiper2 ~ .swiper-button-prev2',
 		},
 
-		// And if we need scrollbar
-		scrollbar : {
-			el : '.swiper-scrollbar',
+	});
+	const swiper3 = new Swiper('.myswiper3', {
+		// Optional parameters
+		direction : 'horizontal',
+		loop : true,
+
+		// Navigation arrows
+		navigation : {
+			nextEl : '.myswiper3 ~ .swiper-button-next3',
+			prevEl : '.myswiper3 ~ .swiper-button-prev3',
 		},
+
+	});
+	const swiper4 = new Swiper('.myswiper4', {
+		// Optional parameters
+		direction : 'horizontal',
+		loop : true,
+
+		// Navigation arrows
+		navigation : {
+			nextEl : '.myswiper4 ~ .swiper-button-next4',
+			prevEl : '.myswiper4 ~ .swiper-button-prev4',
+		},
+
+	});
+	const swiper5 = new Swiper('.myswiper5', {
+		// Optional parameters
+		direction : 'horizontal',
+		loop : true,
+
+		// Navigation arrows
+		navigation : {
+			nextEl : '.myswiper5 ~ .swiper-button-next5',
+			prevEl : '.myswiper5 ~ .swiper-button-prev5',
+		},
+
 	});
 
 	var swipers = new Swiper(".mySwiper", {
 		slidesPerView : 5,
+		spaceBetween : 5,
+		slidesPerGroup : 4,
 		spaceBetween : 20,
 		slidesPerGroup : 5,
 		loop : true,
 		loopFillGroupWithBlank : true,
-		pagination : {
-			el : ".swiper-pagination",
-			clickable : true,
-		},
-		navigation : {
-			nextEl : ".swiper-button-next",
-			prevEl : ".swiper-button-prev",
-		},
+	});
+	var swipers1 = new Swiper(".mySwiper0", {
+		slidesPerView : 1,
+		spaceBetween : 1,
+		slidesPerGroup : 1,
+		loop : true,
+		loopFillGroupWithBlank : true,
 	});
 </script>
 <%@ include file="layout/footer.jsp"%>

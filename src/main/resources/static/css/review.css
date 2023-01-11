@@ -1,74 +1,185 @@
 .my_container {
-	width: 300px;
-	height: 400px;
+	width: 328px;
+	height: 486px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	border: 3px solid #ccc;
-	border-radius: 8%;
-	margin: 25px 5% 0 0;
+	border-radius: 30px;
+	margin: 25px 3% 0 0;
 	animation: reviewBox 3s;
+	background-color: #fff;
 }
-#my-review-box{
+
+.bg-dark {
+	background-image: url("/images/bg.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.my_container:last-child {
+	margin-right: 0;
+}
+#container-top{
+	max-width: inherit;
+}
+#my-review-box {
 	display: grid;
 	grid-template-columns: 150px 150px 150px;
 	grid-template-rows: 150px 150px 150px 150px 150px 150px 150px 150px;
 }
 
-.review_picture {
-	width: 280px;
-	height: 180px;
-	margin: 10px;
-	border-radius: 8%;
-	
+body .display-4 {
+	font-size: 7.5rem;
+	font-weight: bold;
+	line-height: 1.2;
 }
-.review_picture img{
+body .text-center{
+	background: #0000006b;
+	padding: 100px;
+}
+
+body .lead {
+	color: #ccc;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.review_picture {
+	width: 281px;
+	height: 180px;
+	margin: 19px;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.review_picture img {
 	width: 100%;
 	height: 100%;
-	border-radius: 8%;
 	object-fit: cover;
 }
 
 .Row {
 	display: flex;
 	flex-direction: row;
-	
 }
-.about_story{
+
+.about_story {
 	width: 300px;
 	height: 150px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	
 }
-.about_story h2{
-	margin-top: 28px;
+
+.about_story h2 {
+	margin: 28px 20px 10px;
 	font-size: 24px;
 	font-weight: 900;
-}
-
-.content_text{
-	width: 250px;
-	height: 40px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	text-align: left;
+	text-overflow: ellipsis;
 	white-space: nowrap;
-	text-overflow : ellipsis;
+	overflow: hidden;
 }
 
-.username{
+
+
+.content_text p{
+	width: 100%;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+   -webkit-line-clamp: 2;
+   -webkit-box-orient: vertical;
+}
+
+
+
+.content_text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	height: 73px;
+	line-height: 1.9;
+	margin: 20px 20px 35px;
+	-webkit-line-clamp: 4;
+	display: block;
+	white-space: nowrap;
+	-webkit-line-clamp: 4;
+}
+
+.content_text p {
+	font-size: 14px !important;
+	margin-bottom: 0 !important;
+	font-weight: 400 !important;
+	font-family: "Noto Sans KR", "Malgun Gothic", sans-serif ! important;
+}
+
+.content_text div div {
+	display: none;
+}
+
+.username {
 	flex-direction: row-reverse;
 }
+
 .rate {
 	display: flex;
 	justify-content: space-between;
 }
-.rate p{
+
+.rate p {
 	font-size: 14px;
 }
-.rate span{
+
+.rate span {
 	font-size: 16px;
 	font-weight: 600
+}
+
+.about_story .btn:not(:disabled):not(.disabled) {
+	margin: auto;
+	display: block;
+	width: 102px;
+}
+
+.lead span {
+  position: relative;
+  top: 20px;
+  display: inline-block;
+  animation: bounce .3s ease infinite alternate;
+  font-family: 'Titan One', cursive;
+  color: #ccc;
+  text-shadow: 0 1px 0 #fff,
+               0 2px 0 #fff,
+               0 3px 0 #fff,
+               0 5px 0 #fff,
+               0 6px 0 #fff,
+               0 7px 0 #fff,
+              
+}
+
+.lead span:nth-child(2) { animation-delay: .1s; }
+.lead span:nth-child(3) { animation-delay: .2s; }
+.lead span:nth-child(4) { animation-delay: .3s; }
+.lead span:nth-child(5) { animation-delay: .4s; }
+.lead span:nth-child(6) { animation-delay: .5s; }
+.lead span:nth-child(7) { animation-delay: .6s; }
+.lead span:nth-child(8) { animation-delay: .7s; }
+.lead span:nth-child(9) { animation-delay: .8s; }
+.lead span:nth-child(10) { animation-delay: .9s; }
+.lead span:nth-child(11) { animation-delay: .10s; }
+.lead span:nth-child(12) { animation-delay: .1s; }
+.lead span:nth-child(13) { animation-delay: .2s; }
+.lead span:nth-child(14) { animation-delay: .3s; }
+.lead span:nth-child(15) { animation-delay: .4s; }
+
+
+@keyframes bounce {
+  100% {
+    top: -5px;
+    text-shadow: 0 1px 0 #fff,
+                 0 2px 0 #fff,
+                 0 3px 0 #fff,
+                 0 4px 0 #fff,
+                 0 5px 0 #fff,
+                 0 6px 0 #fff,
+                 0 5px 5px rgba(0, 0, 0, .2);
+          
+  }
 }
