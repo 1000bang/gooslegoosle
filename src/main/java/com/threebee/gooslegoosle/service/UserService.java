@@ -112,8 +112,8 @@ public class UserService {
 		return user;
 	}
 
-	public Page<UserEntity> findAll(Pageable pageable) {
-		return iUserRepository.findAll(pageable);
+	public Page<UserEntity> findAll(String q, Pageable pageable) {
+		return iUserRepository.findAll(q, pageable);
 	}
 
 	@Transactional

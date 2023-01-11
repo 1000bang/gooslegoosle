@@ -5,8 +5,11 @@ import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.entity.UserEntity;
@@ -28,6 +31,10 @@ public interface IUserRepository extends JpaRepository<UserEntity, Integer>{
 			+ "ORDER BY date"
 			, nativeQuery = true)
 	 List<ChartDto>  findLastTwoWeeks();
+
+
+	@Query(value = "SELECT * FROM userentity WHERE username LIKE %:item% OR userNickname LIKE %:item%", nativeQuery = true)
+	Page<UserEntity> findAll(@Param("item")String q, Pageable pageable);
 	
 
 	

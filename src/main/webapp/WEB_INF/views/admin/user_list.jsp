@@ -8,6 +8,15 @@
 <div class="container" style="min-height: 630px">
 	<h1 class="h2">회원관리</h1>
 	<br>
+	<div class="d-flex justify-content-end m-2">
+		<form action="/admin/user/search" method="get" class="form-inline">
+			<input class="form-control mr-2" type="text"
+				placeholder="회원명을 입력하세요 " name="q">
+			<!-- &nbsp;&nbsp; -->
+			<button type="submit" class="btn" style="color: white; background-color: #63BFBC">검색</button>
+		</form>
+	</div>
+	<br>
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -51,8 +60,7 @@
 		</c:forEach>
 	</table>
 
-	<br />
-	<br />
+	<br /> <br />
 	<ul class="pagination justify-content-center" style="margin: 20px 0">
 
 		<c:set var="isDisabled" value="disabled">

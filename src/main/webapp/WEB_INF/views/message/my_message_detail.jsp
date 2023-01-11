@@ -17,7 +17,7 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<title>쪽지보내기</title>
+<title>쪽지확인</title>
 </head>
 <body>
 	<br>

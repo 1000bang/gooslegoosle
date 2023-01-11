@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
@@ -98,10 +99,12 @@ public class AdminController {
 		return "redirect:/admin/manage";
 	}
 	
-	@GetMapping("/admin/user")
-	public String fetchUser(Model model	,@PageableDefault(size = 4, sort = "id", direction = Direction.DESC) Pageable pageable) {
+	@GetMapping({"/admin/user", "/admin/user/search"})
+	public String fetchUser(Model model,@RequestParam(required = false) String q, @PageableDefault(size = 4, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
-		Page<UserEntity> user = userService.findAll(pageable);
+		String searchUser = q == null? "": q;
+		
+		Page<UserEntity> user = userService.findAll(searchUser, pageable);
 		int nowPage = user.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - 2, 1);
 		int endPageNumber = Math.min(nowPage + 2, user.getTotalPages());
@@ -116,7 +119,7 @@ public class AdminController {
 		model.addAttribute("startPage", 0);
 		model.addAttribute("endPage", end);
 		model.addAttribute("user", user);
-	
+		model.addAttribute("q", searchUser);
 		return "admin/user_list";
 	}
 	
