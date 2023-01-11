@@ -24,7 +24,8 @@ public interface IUserRepository extends JpaRepository<UserEntity, Integer>{
 	@Query(value = "select count(*) as count,  DATE_FORMAT(createTime, '%c/%e') as date "
 			+ "from gooslegoosle.UserEntity "
 			+ "where createTime BETWEEN DATE_ADD(NOW(), INTERVAL -2 WEEK ) AND NOW() "
-			+ "group by date"
+			+ "group by date "
+			+ "ORDER BY date"
 			, nativeQuery = true)
 	 List<ChartDto>  findLastTwoWeeks();
 	

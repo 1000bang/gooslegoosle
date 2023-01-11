@@ -102,4 +102,8 @@ public class UserEntity {
 	@CreationTimestamp
 	private Timestamp createTime;
 
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value = {"user"})
+	private List<MessageEntity> message;
+	
 }
