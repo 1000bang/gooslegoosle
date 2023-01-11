@@ -21,5 +21,5 @@
 		</c:if>
 	</div>
 </section>
-<section style="width: 100%; min-height: 145px;"></section>
+<section style="width: 100%; min-height: 160px;"></section>
 <%@ include file="../layout/footer.jsp"%>
