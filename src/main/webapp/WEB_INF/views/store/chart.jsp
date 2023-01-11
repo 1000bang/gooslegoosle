@@ -5,7 +5,7 @@
 
 
 
-<section class="py-5">
+<section class="py-5" style="min-height: 757px">
 	<h2 style="text-align: center;">통계</h2>
 	<div class="container mt-1" style="border-top: 3px solid #000">
 
@@ -34,26 +34,6 @@
 
 	</div>
 </section>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>

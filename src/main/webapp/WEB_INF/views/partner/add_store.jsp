@@ -79,7 +79,7 @@
 </section>
 
 <footer id="footer" style="position: absolute;
-    top: 113%;">
+    top: 108%;">
 	<div class="footer-line">
 		<div id="endLogo">
 			<a href=""><img src="/images/logo2.png" alt=""></a>
