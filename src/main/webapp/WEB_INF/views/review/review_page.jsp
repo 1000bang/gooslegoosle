@@ -34,7 +34,9 @@
 					</div>
 					<div class="about_story">
 						<h2>${review.getReviewTitle()}</h2>
-						<div class="content_text">${review.getReviewContent()}</div>
+						<div  class="content_text">
+						<div>${review.getReviewContent()}</div>
+						</div>
 						<a id="into" class="btn btn-outline-dark mt-auto" href="review/${review.getId()}">더보기</a>
 						<br><br>
 					</div>
