@@ -1,6 +1,7 @@
 package com.threebee.gooslegoosle.entity;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -66,5 +68,7 @@ public class PartnerEntity {
 	@ColumnDefault("FALSE")
     private Boolean upload;
 	
+	@CreationTimestamp
+	private Timestamp createTime;
 
 }

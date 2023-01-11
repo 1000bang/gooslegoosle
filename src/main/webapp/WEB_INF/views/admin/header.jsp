@@ -65,8 +65,9 @@
 				<ul>
 					<li><a href="/admin/manage">Store M</a></li>
 					<li><a href="/admin/user">User M</a></li>
-					<li><a href="/seviceCenter">Service Center</a></li>
-					<li><a  href="/logout">LogOut</a></li>
+					<li><a href="/seviceCenter">Service</a></li>
+					<li><a href="/admin/statics" style="color: #0067a3">Statics</a></li>
+					<li><a href="/logout">LogOut</a></li>
 				</ul>
 			</nav>
 		</header>

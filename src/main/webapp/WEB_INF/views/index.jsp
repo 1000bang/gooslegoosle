@@ -87,6 +87,7 @@
 				<div class="swiper-wrapper" id="food-slice">
 					<c:forEach var="storeInfo" items="${koreanStore.content}">
 						<div class="swiper-slide">
+						
 							<a href="/store/${storeInfo.id}"> <img
 								src="http://localhost:9090/magazine/${storeInfo.image[0].postImageUrl}"
 								alt="">

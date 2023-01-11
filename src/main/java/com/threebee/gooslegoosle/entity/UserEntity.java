@@ -99,6 +99,7 @@ public class UserEntity {
 		return "UserEntity []";
 	}
 	
-
+	@CreationTimestamp
+	private Timestamp createTime;
 
 }

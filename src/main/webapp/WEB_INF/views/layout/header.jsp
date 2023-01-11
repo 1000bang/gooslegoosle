@@ -95,10 +95,10 @@
 								</ul></li>
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">
-									<li id="more--view"><a href="/admin/manage">Manage</a></li>
+									<li id="more--view"><a href="/admin/manage" style="color: #0067a3">Manage</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="/auth/partner/main_partner">Partner?</a></li>
+									<li><a href="/auth/partner/main_partner" style="color: #0067a3">Partner?</a></li>
 								</c:otherwise>
 							</c:choose>
 

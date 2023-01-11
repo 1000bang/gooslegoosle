@@ -13,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.entity.NoticeEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.service.NoticeService;
 import com.threebee.gooslegoosle.service.PartnerService;
+import com.threebee.gooslegoosle.service.ReviewService;
 import com.threebee.gooslegoosle.service.UserService;
 
 @Controller
@@ -29,6 +31,9 @@ public class AdminController {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	ReviewService reviewService;
+	
 	@GetMapping("/admin/manage")
 	public String fetchAwaitingList(Model model,
 			@PageableDefault(size = 4, sort = "id", direction = Direction.DESC) Pageable pageable) {
@@ -113,7 +118,40 @@ public class AdminController {
 		return "redirect:/admin/user";
 	}
 	
-	
+	@GetMapping("/admin/statics")
+	public String fetchStatics(Model model) {
+		List<ChartDto>  partner = partnerService.lastTwoWeeksPartner();
+		List<ChartDto> review = reviewService.lastTwoWeeksReview();
+		List<ChartDto> user = userService.lastTwoWeeksUser();
+		
+		List<List<?>> part = new ArrayList<>();
+		for (int i = 0; i < partner.size(); i++) {
+			List<String> data = new ArrayList<>();
+			data.add(partner.get(i).getDate());
+			data.add(partner.get(i).getCount());
+			part.add(data);
+		}
+		List<List<?>> rev = new ArrayList<>();
+		for (int i = 0; i < review.size(); i++) {
+			List<String> data = new ArrayList<>();
+			data.add(review.get(i).getDate());
+			data.add(review.get(i).getCount());
+			rev.add(data);
+		}
+		List<List<?>> use = new ArrayList<>();
+		for (int i = 0; i < user.size(); i++) {
+			List<String> data = new ArrayList<>();
+			data.add(user.get(i).getDate());
+			data.add(user.get(i).getCount());
+			use.add(data);
+		}
+		
+		model.addAttribute("user", use);
+		model.addAttribute("review", rev);
+		model.addAttribute("partner", part);
+		
+		return "/admin/statics";
+	}
 
 
 }

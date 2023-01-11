@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
@@ -7,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.entity.UserEntity;
 
 public interface IUserRepository extends JpaRepository<UserEntity, Integer>{
@@ -17,15 +19,15 @@ public interface IUserRepository extends JpaRepository<UserEntity, Integer>{
 			+ " where username = ?1 "
 			, nativeQuery = true)
 	Optional<UserEntity> findbyUsername(String username);
+
+
+	@Query(value = "select count(*) as count,  DATE_FORMAT(createTime, '%c/%e') as date "
+			+ "from gooslegoosle.UserEntity "
+			+ "where createTime BETWEEN DATE_ADD(NOW(), INTERVAL -2 WEEK ) AND NOW() "
+			+ "group by date"
+			, nativeQuery = true)
+	 List<ChartDto>  findLastTwoWeeks();
 	
-//	@Query(value = " INSERT INTO userentity (address, createdDate, email, "
-//			+ " loginType, password, phoneNumber, "
-//			+ " role, username) VALUES ( ?, now(), ? , ?, ?, ? "
-//			+ " ?, ?) "
-//			,nativeQuery = true)
-//	Optional<UserEntity> savePartner(String address,
-//			String email, String loginType, String password, String phoneNumber,
-//			String role, String username);
 
 	
 }

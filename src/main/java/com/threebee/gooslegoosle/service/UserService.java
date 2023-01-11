@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.UserRole;
 import com.threebee.gooslegoosle.repository.IUserRepository;
@@ -122,6 +123,10 @@ public class UserService {
 	public void unStopUser(int id) {
 		UserEntity user = findId(id);
 		user.setEnable(true);
+	}
+
+	public  List<ChartDto>  lastTwoWeeksUser() {
+		return iUserRepository.findLastTwoWeeks();
 	}
 
 }
