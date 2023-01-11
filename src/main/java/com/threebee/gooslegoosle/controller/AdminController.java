@@ -8,15 +8,22 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
+import com.threebee.gooslegoosle.dto.ResponseDto;
+import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.NoticeEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.NoticeService;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.ReviewService;
@@ -33,6 +40,9 @@ public class AdminController {
 
 	@Autowired
 	ReviewService reviewService;
+	
+	@Autowired
+	MessageService messageService;
 	
 	@GetMapping("/admin/manage")
 	public String fetchAwaitingList(Model model,
@@ -56,7 +66,19 @@ public class AdminController {
 		return "admin/manage";
 	}
 	
-
+	@GetMapping("/admin/message/{id}")
+	public String fetchMessage(@PathVariable int id, Model model) {
+		UserEntity user = userService.findId(id);
+		model.addAttribute("user",user);
+		return "admin/message";
+	}
+	
+	@PostMapping("/admin/message/send/{id}")
+	@ResponseBody
+	public ResponseDto<Integer> fetchSendMessage(@PathVariable int id, @RequestBody MessageEntity mes) {
+		messageService.sendMessage(id, mes);
+		return new ResponseDto<Integer>(HttpStatus.OK, 1);
+	}
 
 	@GetMapping("/admin/manage/approve/{id}")
 	public String fetchApprove(@PathVariable int id) {

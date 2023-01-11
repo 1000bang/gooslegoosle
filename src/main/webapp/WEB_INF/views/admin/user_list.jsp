@@ -16,14 +16,15 @@
 				<th>회원 역할</th>
 				<th>가입 날짜</th>
 				<th>경고 횟수</th>
-				<th>강티</th>
+				<th>이용 제한</th>
+				<th>쪽지 </th>
 			</tr>
 		</thead>
 
 		<c:forEach var="users" items="${user.content}">
 			<tbody>
 				<tr>
-					<td>${users.id}</td>
+					<td id="userId">${users.id}</td>
 					<td>${users.username}</td>
 					<td>${users.role}</td>
 					<td>${users.createdDate}</td>
@@ -41,7 +42,8 @@
 									href="/admin/unstop/${users.id}">정지해제 </a>
 							</c:when>
 						</c:choose></td>
-
+<td><a type="button" class="btn-sm"
+						style="color: white; background-color: #63BFBC" onclick="window.open('/admin/message/${users.id}', '네이버팝업', 'width=700px,height=600px,scrollbars=yes')"> 쪽지보내기 </a> </td>
 				</tr>
 			</tbody>
 		</c:forEach>
