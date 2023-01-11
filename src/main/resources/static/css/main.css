@@ -204,6 +204,7 @@ a {
 #m-content1 {
 	margin: 0 auto;
 	margin-bottom: 30px;
+	position: relative;
 }
 
 /* content2 */
@@ -252,6 +253,9 @@ a {
 	height: 20vh;
 	border-radius: 9%;
 	object-fit: cover;
+}
+.main-Content{
+	position: relative;
 }
 /* ------------------------------------ */
 

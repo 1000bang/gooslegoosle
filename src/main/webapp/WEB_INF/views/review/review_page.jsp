@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 
-<header class="bg-dark py-5">
-	<div class="container px-4 px-lg-5 my-5">
+<header class="bg-dark">
+	<div class="container my-5" id="container-top">
 		<div class="text-center text-white">
 			<h1 class="display-4 fw-bolder">Food in Life</h1>
 			<p class="lead fw-normal text-white-50 mb-0">당신의 즐겼던 리뷰를 공유 해주세요</p>
@@ -11,9 +11,9 @@
 </header>
 
 <section class="py-5">
-	<div class="container px-4 px-lg-5 mt-5">
+	<div class="container px-4 px-lg-5 mt-5" >
 		<div class="d-flex justify-content-between m-2">
-		<div class="d-flex justify-content m-2">
+		<div class="d-flex justify-content">
 			<button class="btn" style="color: white; background-color: #63BFBC;">
 				<a href="/review/review_save">리뷰 작성하기</a>
 			</button>
