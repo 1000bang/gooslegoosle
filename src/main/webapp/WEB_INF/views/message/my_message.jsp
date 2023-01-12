@@ -26,6 +26,8 @@
 		<c:choose>
 			<c:when test="${principal.user.role eq 'ADMIN'}">
 				<c:forEach var="num" items="${message.content}" varStatus="status">
+					<!--  여기 -->
+					<c:set var="count" value="${message.totalElements - (status.count + (message.numberOfElements * (nowPage -1)))}"></c:set>
 					<tbody>
 
 						<c:set var="nowDate">
@@ -38,7 +40,8 @@
 							onclick="window.open('/my_message/'+ ${num.id}, '메세지팝업', 'width=700px,height=600px,scrollbars=yes')">
 							<td style="color: red"><c:if
 									test="${nowDate - dataDate le 100}"> new </c:if></td>
-							<td>${fn:length(message.content)- status.index}</td>
+							<td>${count}</td>
+							<%-- <td>${fn:length(message.content)- status.index}</td> --%>
 							<td>${num.comment}</td>
 							<td>${num.user.userNickname}</td>
 							<td><fmt:formatDate value="${num.createTime}"
@@ -121,6 +124,12 @@
 </div>
 
 
+<script>
 
+$( document ).ready(function() {
+    console.log(">>>"+${nowPage});
+});
+
+</script>
 <%@ include file="../layout/footer.jsp"%>
 

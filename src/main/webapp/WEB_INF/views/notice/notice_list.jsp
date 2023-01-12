@@ -22,7 +22,6 @@
 
 			</tr>
 		</thead>
-
 		<c:forEach var="num" items="${notice.content}" varStatus="status">
 			<tbody>
 				<c:set var="now" value="<%=new java.util.Date()%>" />
@@ -37,6 +36,7 @@
 					<td style="color: red"><c:if
 							test="${nowDate - dataDate le 100}"> new </c:if></td>
 					<td>${fn:length(notice.content)- status.index}</td>
+					<td>${count}</td>
 					<td>${num.title}</td>
 					<td>${num.userId.userNickname}</td>
 					<td><fmt:formatDate value="${num.createDate}"

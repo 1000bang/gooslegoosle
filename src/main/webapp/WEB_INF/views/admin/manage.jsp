@@ -10,6 +10,15 @@
 <div class="container" style="min-height: 630px">
 	<h2 class="h2">파트너 관리</h2>
 	<br />
+	<div class="d-flex justify-content-end m-2">
+		<form action="/admin/manage/search" method="get" class="form-inline">
+			<input class="form-control mr-2" type="text"
+				placeholder="가게명을 입력하세요 " name="q">
+			<!-- &nbsp;&nbsp; -->
+			<button type="submit" class="btn" style="color: white; background-color: #63BFBC">검색</button>
+		</form>
+	</div>
+	
 	<div class="row">
 		<c:forEach var="request" items="${store.content}">
 			<div class="col-md-6">

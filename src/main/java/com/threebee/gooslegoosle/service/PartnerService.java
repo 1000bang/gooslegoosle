@@ -84,8 +84,8 @@ public class PartnerService {
 	}
 
 	@Transactional
-	public Page<PartnerEntity> getApplyList(Pageable page) {
-		return iPartnerRepository.findAll(page);
+	public Page<PartnerEntity> getApplyList(String q , Pageable page) {
+		return iPartnerRepository.findAll(q, page);
 
 	}
 

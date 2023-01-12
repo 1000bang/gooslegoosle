@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
@@ -43,6 +44,11 @@ public interface IPartnerRepository extends JpaRepository<PartnerEntity, Integer
 			+ "ORDER BY date",
 			nativeQuery = true)
 	public  List<ChartDto>  findTwoWeeks();
+
+	
+	@Query(value = "SELECT * FROM PartnerEntity WHERE storeName LIKE %:item%",
+			nativeQuery = true)
+	public Page<PartnerEntity> findAll(@Param("item")String q, Pageable page);
 	
 	
 }
