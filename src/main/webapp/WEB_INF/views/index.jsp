@@ -56,6 +56,9 @@
 	<div class="k-container">
 		<div class="title">
 			<h2>#전체</h2>
+			<button class="btn">
+					<a href="/store/all">전체 보기</a>
+				</button>
 		</div>
 		<div class="main-Content">
 			<div class="swiper mySwiper myswiper1" style="height: 300px">
@@ -271,7 +274,6 @@
 		slidesPerView : 5,
 		spaceBetween : 5,
 		slidesPerGroup : 4,
-		spaceBetween : 20,
 		slidesPerGroup : 5,
 		loop : true,
 		loopFillGroupWithBlank : true,
