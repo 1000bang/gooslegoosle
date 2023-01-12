@@ -20,8 +20,14 @@ public class MyMessageService {
 	IMyMessageRepository iMyMessageRepository;
 
 	@Transactional
-	public Page<MessageEntity> getMessageList(Pageable pageable) {
-
+	public Page<MessageEntity> getMessageList(int id, Pageable pageable) {
+		
+		return iMyMessageRepository.findMyMessage(id, pageable);
+	}
+	
+	@Transactional
+	public Page<MessageEntity> getAllMessageList(Pageable pageable) {
+		
 		return iMyMessageRepository.findAll(pageable);
 	}
 

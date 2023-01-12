@@ -50,6 +50,11 @@ public class ServiceCenterService {
 	public void deleteServiceById(int id) {
 		serviceRepository.deleteByIds(id);
 	}
+
+	public Page<ServiceCenterEntity> getServiceMyList(int id, Pageable pageable) {
+		
+		return serviceRepository.findByUserId(id, pageable);
+	}
 	
 	
 }

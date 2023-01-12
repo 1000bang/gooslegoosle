@@ -23,6 +23,7 @@
 			</tr>
 		</thead>
 		<c:forEach var="num" items="${notice.content}" varStatus="status">
+			<c:set var="count" value="${(notice.totalElements + 1) - (status.count + (10 * (nowPage - 1)))}"></c:set>
 			<tbody>
 				<c:set var="now" value="<%=new java.util.Date()%>" />
 				<c:set var="nowDate">
@@ -35,7 +36,6 @@
 				<tr onclick="location.href = '/notice/'+ ${num.id}">
 					<td style="color: red"><c:if
 							test="${nowDate - dataDate le 100}"> new </c:if></td>
-					<td>${fn:length(notice.content)- status.index}</td>
 					<td>${count}</td>
 					<td>${num.title}</td>
 					<td>${num.userId.userNickname}</td>

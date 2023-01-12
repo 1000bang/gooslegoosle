@@ -102,7 +102,7 @@ public class AdminController {
 	}
 	
 	@GetMapping({"/admin/user", "/admin/user/search"})
-	public String fetchUser(Model model,@RequestParam(required = false) String q, @PageableDefault(size = 4, sort = "id", direction = Direction.DESC) Pageable pageable) {
+	public String fetchUser(Model model,@RequestParam(required = false) String q, @PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
 		String searchUser = q == null? "": q;
 		
@@ -116,6 +116,7 @@ public class AdminController {
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
+		
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", 0);

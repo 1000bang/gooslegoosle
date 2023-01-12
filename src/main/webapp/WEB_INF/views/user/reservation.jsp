@@ -32,20 +32,23 @@
 			<c:choose>
 				<c:when test="${empty reservation.content}">
 					<div class="d-flex justify-content-center">
-					<h4 style="color:#63BFBC">${principal.user.userNickname}님의 예약 내역이 없습니다.</h4>
+						<h4 style="color: #63BFBC">${principal.user.userNickname}님의
+							예약 내역이 없습니다.</h4>
 					</div>
-					<br/>
+					<br />
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="num" items="${reservation.content}"
 						varStatus="status">
+						<c:set var="count"
+							value="${(reservation.totalElements + 1) - (status.count + (8 * (nowPage - 1)))}"></c:set>
 
 
 						<tbody>
 							<tr>
 								<td style="color: red"><c:if
 										test="${status.first || num.approve eq 'Wait'}">New</c:if></td>
-								<td>${fn:length(reservation.content)- status.index}</td>
+								<td>${count}</td>
 								<td>${num.user.userNickname}</td>
 								<td>${num.store.partner.storeName}</td>
 								<td>${num.headCount}</td>

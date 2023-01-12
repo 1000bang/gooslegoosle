@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="../layout/header.jsp"%>
+<%@ include file="../admin/header.jsp"%>
 
 
 
@@ -22,31 +22,30 @@
 
 			</tr>
 		</thead>
-
-		<c:forEach var="service" items="${services.content}"
-			varStatus="status">
-			<c:set var="count"
+				<c:forEach var="service" items="${services.content}"
+					varStatus="status">
+					<c:set var="count"
 				value="${(services.totalElements + 1) - (status.count + (6 * (nowPage - 1)))}"></c:set>
-			<tbody>
-				<c:set var="now" value="<%=new java.util.Date()%>" />
-				<c:set var="nowDate">
-					<fmt:formatDate value="${now}" pattern="yyyyMMddHH" />
-				</c:set>
-				<c:set var="dataDate">
-					<fmt:formatDate value="${service.createDate}" pattern="yyyyMMddHH" />
-				</c:set>
-
-				<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
-					<td style="color: red"><c:if
-							test="${nowDate - dataDate le 100}"> new </c:if></td>
-					<td>${count}</td>
-					<td>${service.title}</td>
-					<td>${service.userId.userNickname}</td>
-					<td><fmt:formatDate value="${service.createDate}"
-							pattern="yyyy-MM-dd" /></td>
-				</tr>
-			</tbody>
-		</c:forEach>
+					<tbody>
+						<c:set var="now" value="<%=new java.util.Date()%>" />
+						<c:set var="nowDate">
+							<fmt:formatDate value="${now}" pattern="yyyyMMddHH" />
+						</c:set>
+						<c:set var="dataDate">
+							<fmt:formatDate value="${service.createDate}"
+								pattern="yyyyMMddHH" />
+						</c:set>
+						<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
+							<td style="color: red"><c:if
+									test="${nowDate - dataDate le 100}"> new </c:if></td>
+							<td>${count}</td>
+							<td>${service.title}</td>
+							<td>${service.userId.userNickname}</td>
+							<td><fmt:formatDate value="${service.createDate}"
+									pattern="yyyy-MM-dd" /></td>
+						</tr>
+					</tbody>
+				</c:forEach>
 	</table>
 
 	<hr />

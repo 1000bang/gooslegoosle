@@ -23,11 +23,10 @@ public class MessageController {
 	@Autowired
 	private MyMessageService myMessageService;
 
-	@GetMapping("/my_message")
-	public String fetchMessageList( Model model,
+	@GetMapping("/admin/message")
+	public String fetchAllMessageList( Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
-		
-		Page<MessageEntity> myMessage = myMessageService.getMessageList(pageable);
+		Page<MessageEntity> myMessage = myMessageService.getAllMessageList(pageable);
 		int nowPage = myMessage.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - 2, 1);
 		int endPageNumber = Math.min(nowPage + 2, myMessage.getTotalPages());
@@ -41,8 +40,32 @@ public class MessageController {
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", 0);
 		model.addAttribute("endPage", end);
-
 		model.addAttribute("message", myMessage);
+		
+		return "message/admin_message";
+	}
+	
+	
+	@GetMapping("/my_message")
+	public String fetchMessageList( Model model,
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable, @AuthenticationPrincipal PrincipalDetail detail) {
+		
+		Page<MessageEntity> myMessage = myMessageService.getMessageList(detail.getUser().getId(), pageable);
+		int nowPage = myMessage.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, myMessage.getTotalPages());
+		int end = myMessage.getTotalPages() - 1;
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
+		model.addAttribute("message", myMessage);
+		
 		return "message/my_message";
 	}
 	
