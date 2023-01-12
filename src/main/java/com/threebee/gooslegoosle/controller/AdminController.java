@@ -45,11 +45,13 @@ public class AdminController {
 	@Autowired
 	MessageService messageService;
 	
-	@GetMapping("/admin/manage")
-	public String fetchAwaitingList(Model model,
+	@GetMapping({"/admin/manage", "/admin/manage/search"})
+	public String fetchAwaitingList(Model model, @RequestParam(required = false) String q,
 			@PageableDefault(size = 4, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
-		Page<PartnerEntity> partner = partnerService.getApplyList(pageable);
+		String searchPartner = q == null? "": q;
+		
+		Page<PartnerEntity> partner = partnerService.getApplyList(searchPartner ,pageable);
 		int nowPage = partner.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - 2, 1);
 		int endPageNumber = Math.min(nowPage + 2, partner.getTotalPages());
@@ -109,7 +111,7 @@ public class AdminController {
 		int startPageNumber = Math.max(nowPage - 2, 1);
 		int endPageNumber = Math.min(nowPage + 2, user.getTotalPages());
 		int end = user.getTotalPages() - 1;
-
+	
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
