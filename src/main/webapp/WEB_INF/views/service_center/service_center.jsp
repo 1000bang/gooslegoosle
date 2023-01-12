@@ -14,6 +14,7 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
+				<th></th>
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
@@ -23,33 +24,43 @@
 		</thead>
 		<c:choose>
 			<c:when test="${principal.user.role eq 'ADMIN'}">
-				<c:forEach var="service" items="${services.content}">
-				<tbody>
-					<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
-						<td>${service.id}</td>
-						<td>${service.title}</td>
-						<td>${service.userId.userNickname}</td>
-						<td>${service.createDate}</td>
-					</tr>
-				</tbody>
-			</c:forEach>
+				<c:forEach var="service" items="${services.content}" varStatus="status">
+					<tbody>
+						<c:set var="now" value="<%=new java.util.Date()%>" />
+						<c:set var="nowDate">
+							<fmt:formatDate value="${now}" pattern="yyyyMMddHH" />
+						</c:set>
+						<c:set var="dataDate">
+							<fmt:formatDate value="${service.createDate}" pattern="yyyyMMddHH" />
+						</c:set>
+						<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
+							<td style="color: red"><c:if
+									test="${nowDate - dataDate le 100}"> new </c:if></td>
+							<td>${fn:length(services.content)- status.index}</td>
+							<td>${service.title}</td>
+							<td>${service.userId.userNickname}</td>
+							<td><fmt:formatDate value="${service.createDate}"
+									pattern="yyyy-MM-dd" /></td>
+						</tr>
+					</tbody>
+				</c:forEach>
 			</c:when>
-		
+
 			<c:otherwise>
 				<c:forEach var="service" items="${services.content}">
-				<c:choose>
-				<c:when test="${principal.user.id == service.userId.id}">
-					<tbody>
-					<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
-						<td>${service.id}</td>
-						<td>${service.title}</td>
-						<td>${service.userId.userNickname}</td>
-						<td>${service.createDate}</td>
-					</tr>
-					</tbody>
-				</c:when>
-				</c:choose>
-			</c:forEach>
+					<c:choose>
+						<c:when test="${principal.user.id == service.userId.id}">
+							<tbody>
+								<tr onclick="location.href = '/seviceCenter/'+ ${service.id}">
+									<td>${service.id}</td>
+									<td>${service.title}</td>
+									<td>${service.userId.userNickname}</td>
+									<td>${service.createDate}</td>
+								</tr>
+							</tbody>
+						</c:when>
+					</c:choose>
+				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</table>
@@ -58,10 +69,8 @@
 
 	<a type="button" class="btn" href="/seviceCenter/board"
 		style="float: right; color: white; background-color: #63BFBC;">글쓰기
-	</a>
-
-<br/>
-<ul class="pagination justify-content-center" style="margin: 20px 0">
+	</a> <br />
+	<ul class="pagination justify-content-center" style="margin: 20px 0">
 
 		<c:set var="isDisabled" value="disabled">
 		</c:set>

@@ -1,6 +1,7 @@
 package com.threebee.gooslegoosle.entity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -74,6 +76,9 @@ public class ReservationEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "storeId")
 	private StoreEntity store;
+	
+	@CreationTimestamp
+	private Timestamp createTime;
 	
 	@Override
 	public String toString() {

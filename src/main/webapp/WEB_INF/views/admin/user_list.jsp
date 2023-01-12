@@ -20,6 +20,7 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
+				<th></th>
 				<th>회원 번호</th>
 				<th>회원 이름</th>
 				<th>회원 역할</th>
@@ -30,13 +31,19 @@
 			</tr>
 		</thead>
 
-		<c:forEach var="users" items="${user.content}">
+		<c:forEach var="users" items="${user.content}" varStatus="status">
 			<tbody>
+			<c:set var="now" value="<%=new java.util.Date()%>" />
+			<c:set var="nowDate"><fmt:formatDate value="${now}" pattern="yyyyMMddHH" /></c:set> 
+			<c:set var="dataDate"><fmt:formatDate value="${users.createdDate}" pattern="yyyyMMddHH" /></c:set> 
+				
+				
 				<tr>
-					<td id="userId">${users.id}</td>
+					<td style="color: red"><c:if test="${nowDate - dataDate le 100}"> new </c:if></td>
+					<td>${fn:length(user.content)- status.index}</td>
 					<td>${users.username}</td>
 					<td>${users.role}</td>
-					<td>${users.createdDate}</td>
+					<td><fmt:formatDate value="${users.createdDate}" pattern="yyyy-MM-dd"/></td>
 					<td>${users.warning}</td>
 
 					<td><a type="button" class="btn-sm btn-warning"
@@ -56,6 +63,9 @@
 						onclick="window.open('/admin/message/${users.id}', '쪽지보내기', 'width=700px,height=600px,scrollbars=yes')">
 							쪽지보내기 </a></td>
 				</tr>
+				
+				
+				
 			</tbody>
 		</c:forEach>
 	</table>

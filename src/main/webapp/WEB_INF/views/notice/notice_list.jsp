@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%@ include file="../layout/header.jsp"%>
 
 
@@ -9,11 +9,12 @@
 <br>
 
 <div class="container" style="min-height: 558px">
-<h1 class="h2"> 공지사항 </h1>
-<br>
-	<table class="table table-hover" >
+	<h1 class="h2">공지사항</h1>
+	<br>
+	<table class="table table-hover">
 		<thead>
 			<tr>
+				<th></th>
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
@@ -22,23 +23,36 @@
 			</tr>
 		</thead>
 
-		<c:forEach var="num" items="${notice.content}">
-		<tbody>
-			<tr onclick="location.href = '/notice/'+ ${num.id}" >
-				<td>${num.id}</td>
-				<td>${num.title}</td>
-				<td>${num.userId.userNickname}</td>
-				<td>${num.createDate}</td>
-			</tr>
-		</tbody>
+		<c:forEach var="num" items="${notice.content}" varStatus="status">
+			<tbody>
+				<c:set var="now" value="<%=new java.util.Date()%>" />
+				<c:set var="nowDate">
+					<fmt:formatDate value="${now}" pattern="yyyyMMddHH" />
+				</c:set>
+				<c:set var="dataDate">
+					<fmt:formatDate value="${num.createDate}" pattern="yyyyMMddHH" />
+				</c:set>
+
+				<tr onclick="location.href = '/notice/'+ ${num.id}">
+					<td style="color: red"><c:if
+							test="${nowDate - dataDate le 100}"> new </c:if></td>
+					<td>${fn:length(notice.content)- status.index}</td>
+					<td>${num.title}</td>
+					<td>${num.userId.userNickname}</td>
+					<td><fmt:formatDate value="${num.createDate}"
+							pattern="yyyy-MM-dd" /></td>
+				</tr>
+			</tbody>
 		</c:forEach>
 	</table>
 
-<hr/>
-<c:if test="${principal.user.role eq 'ADMIN'}">
-<a type="button" class="btn" href="/notice/board" style="float: right; color: white; background-color: #63BFBC;">글쓰기 </a>
-</c:if>
-<br/>
+	<hr />
+	<c:if test="${principal.user.role eq 'ADMIN'}">
+		<a type="button" class="btn" href="/notice/board"
+			style="float: right; color: white; background-color: #63BFBC;">글쓰기
+		</a>
+	</c:if>
+	<br />
 	<ul class="pagination justify-content-center" style="margin: 20px 0">
 
 		<c:set var="isDisabled" value="disabled">

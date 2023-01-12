@@ -4,7 +4,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
@@ -140,7 +140,6 @@
 			$(document).ready(function() {
 				console.log(${i});
 				if ($("#mes") == 0) {
-					console.log("123123");
 					$("#temp").css({
 						display : none
 					})

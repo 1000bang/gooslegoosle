@@ -14,6 +14,7 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
+				<th></th>
 				<th>번호</th>
 				<th>내용</th>
 				<th>받는 사람</th>
@@ -24,41 +25,56 @@
 		</thead>
 		<c:choose>
 			<c:when test="${principal.user.role eq 'ADMIN'}">
-				<c:forEach var="num" items="${message.content}">
+				<c:forEach var="num" items="${message.content}" varStatus="status">
 					<tbody>
-						<tr onclick="#">
-							<td>${num.id}</td>
+
+						<c:set var="nowDate">
+							<fmt:formatDate value="${now}" pattern="yyyyMMddHH" />
+						</c:set>
+						<c:set var="dataDate">
+							<fmt:formatDate value="${num.createTime}" pattern="yyyyMMddHH" />
+						</c:set>
+						<tr
+							onclick="window.open('/my_message/'+ ${num.id}, '메세지팝업', 'width=700px,height=600px,scrollbars=yes')">
+							<td style="color: red"><c:if
+									test="${nowDate - dataDate le 100}"> new </c:if></td>
+							<td>${fn:length(message.content)- status.index}</td>
 							<td>${num.comment}</td>
 							<td>${num.user.userNickname}</td>
-							<td>${num.createTime}</td>	
-										
+							<td><fmt:formatDate value="${num.createTime}"
+									pattern="yyyy-MM-dd" /></td>
+
 						</tr>
 					</tbody>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
-					<c:forEach var="num" items="${message.content}">
-				<c:choose>
-					<c:when test="${principal.user.id == num.user.id}">
-						<tbody>
-						<tr onclick="window.open('/my_message/'+ ${num.id}, '네이버팝업', 'width=700px,height=600px,scrollbars=yes')">
-							<td>${num.id}</td>
-							<td>${num.comment}</td>
-							<td>${num.user.userNickname}</td>
-							<td>${num.createTime}</td>
-							<c:choose>
-							<c:when test="${num.read eq true}">
-							<td>읽음</td>	
-							</c:when>
-							<c:when test="${num.read eq false}">
-							<td>안읽음</td>	
-							</c:when>
-							</c:choose>	
-						</tr>
-					</tbody>
-					</c:when>
-				</c:choose>
-					
+				<c:forEach var="num" items="${message.content}" varStatus="status">
+					<c:choose>
+						<c:when test="${principal.user.id == num.user.id}">
+							<tbody>
+								<tr
+									onclick="window.open('/my_message/'+ ${num.id}, '네이버팝업', 'width=700px,height=600px,scrollbars=yes')">
+									<td style="color: red"><c:if
+											test="${nowDate - dataDate le 100}"> new </c:if></td>
+									<td>${fn:length(message.content)- status.index}</td>
+									<td>${num.comment}</td>
+									<td>${num.user.userNickname}</td>
+									<td><fmt:formatDate value="${num.createTime}"
+											pattern="yyyy-MM-dd" /></td>
+									<c:choose>
+										<c:when test="${num.read eq true}">
+											<td>읽음</td>
+										</c:when>
+										<c:when test="${num.read eq false}">
+											<td>안읽음</td>
+										</c:when>
+									</c:choose>
+								</tr>
+							</tbody>
+						</c:when>
+					</c:choose>
+
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
