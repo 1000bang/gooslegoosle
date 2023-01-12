@@ -1,6 +1,7 @@
 package com.threebee.gooslegoosle.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,10 +28,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.threebee.gooslegoosle.auth.PrincipalDetail;
 import com.threebee.gooslegoosle.dto.ResponseDto;
-import com.threebee.gooslegoosle.dto.StoreFileDTO;
 import com.threebee.gooslegoosle.dto.kakao.pay.PaymentReqDto;
 import com.threebee.gooslegoosle.dto.kakao.pay.PaymentResDto;
-import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
@@ -87,6 +86,15 @@ public class StoreController {
 		
 		model.addAttribute("storeDetail",detail);
 		return "/store/reservation";
+	}
+	
+	@GetMapping("/store/all")
+	public String fetchAllStore(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		String searchWords = searchWord == null ? "": searchWord;
+		List<StoreEntity> store = storeService.findAll(searchWords, pageable);
+		
+		model.addAttribute("store",store);
+		return "/store/all_store";
 	}
 	
 	@Autowired

@@ -252,9 +252,21 @@ td{
 }
 
 #m-content2>div>.title {
+	display: flex; 
+	justify-content: space-between;
 	margin: 45px 45px 15px 45px;
 	border-bottom: 1px solid #F6F6F6;
 	margin-bottom: 15px;
+}
+
+#m-content2>div>.title .btn{
+	
+	background-color: #63BFBC;
+	margin-bottom: 7px;
+    padding-top: 10px;
+}
+#m-content2>div>.title .btn a{
+	color: white; 
 }
 
 #m-content2>div {
@@ -265,6 +277,70 @@ td{
 	margin-bottom: 30px;
 	border-radius: 28px;
 	background-color: #fff;
+}
+#m-content2>div:first-child {
+	margin-top: 30px;
+}
+
+#m-content2 .con1{
+	width: 40%;
+	height: 100%;
+	border-right: 1px solid #F6F6F6;
+}
+#m-content2 .con1 img{
+	width: 15vw;
+	height: 20vh;
+	border-radius: 9%;
+	object-fit: cover;
+	margin: 11% 8%;
+	
+}
+#m-content2 .con2{
+	width: 55%;
+	height: 100%;
+	text-align: left;
+	padding: 3%;
+}
+#m-content2 .con2 .storeHeader{
+	display: flex;
+	
+}
+#m-content2 .con2 .storeContent{
+	height: 3vh;
+}
+#m-content2 .con2 .storeContent span{
+	font-weight: 570;
+	margin-right: 10px;
+}
+#m-content2 .con2 .storeHeader p{
+	line-height: 45px;
+}
+
+#m-content2 .con2 .allstoreName{
+	font-family: Trip Sans,serif;
+	font-weight: 700;
+	margin: 0 4% 10% 0;
+	padding-top: 3px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#m-content2 .con3{
+	width: 25%;
+	height: 100%;
+	padding-top: 10%;
+}
+#m-content2 .con3 .btn{
+	width : 70%;
+	height: 25%;
+	color: white; 
+	background-color: #63BFBC;
+	margin: 0 8% 6% 0;
+    padding: 1% 1% 0% 1%;
+}
+#m-content2 .con3 .btn a{
+	color: #fff;
 }
 
 #m-content2 #food-slice {
