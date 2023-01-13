@@ -42,12 +42,18 @@
 						varStatus="status">
 						<c:set var="count"
 							value="${(reservation.totalElements + 1) - (status.count + (8 * (nowPage - 1)))}"></c:set>
-
+						<c:set var="now" value="<%=new java.util.Date()%>" />
+						<c:set var="nowDate">
+							<fmt:formatDate value="${now}" pattern="yyyyMMddHH" />
+						</c:set>
+						<c:set var="dataDate">
+							<fmt:formatDate value="${num.createTime}"
+								pattern="yyyyMMddHH" /></c:set>
 
 						<tbody>
 							<tr>
 								<td style="color: red"><c:if
-										test="${status.first || num.approve eq 'Wait'}">New</c:if></td>
+									test="${nowDate - dataDate le 100}"> new </c:if></td>
 								<td>${count}</td>
 								<td>${num.user.userNickname}</td>
 								<td>${num.store.partner.storeName}</td>

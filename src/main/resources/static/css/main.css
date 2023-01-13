@@ -281,6 +281,30 @@ td{
 #m-content2>div:first-child {
 	margin-top: 30px;
 }
+.listHeader{
+	width: 50%;
+	height: 10%;
+	margin: 0 auto;
+	display: flex;
+}
+.listHeader .imgBox{
+	width: 17%;
+	padding-left: 1%;
+}
+
+
+.listHeader .imgBox img{
+	width: 100%;
+	height: 100%;
+}
+.listHeader .listHeader-title{
+	padding-top: 6%;
+    margin-left: 3%;
+}
+.listHeader .listHeader-title h4{
+	color: #63BFBC;
+	font-weight: bold;
+}
 
 #m-content2 .con1{
 	width: 40%;
@@ -390,17 +414,6 @@ td{
 	margin: 0 auto;
 	position: relative;
 }
-/* card 안됨  */
-/* .card{
-	height: 20em;
-}
-.card-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-} */
 
 #endLogo {
 	width: 150px;

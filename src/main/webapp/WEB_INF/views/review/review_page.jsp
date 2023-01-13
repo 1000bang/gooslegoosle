@@ -52,7 +52,8 @@
 					<div class="d-flex flex-row">
 						<h2>${review.getReviewTitle()}</h2>
 						<c:if test="${nowDate - dataDate le 100}">
-						<p style="background-color: red; color: white; width:30px; height:30px; border-radius: 2em; font-size: 10px; text-align: center; padding-top: 7px">New</p>
+						<p style="background-color: red; color: white; width:30px; height:30px; border-radius: 2em; font-size: 10px; text-align: center; padding-top: 7px; position: absolute;
+    right: 6%; top: 43%;">New</p>
 						</c:if>
 					</div>
 						<div class="content_text">

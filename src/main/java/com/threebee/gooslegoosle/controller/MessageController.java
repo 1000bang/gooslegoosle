@@ -71,7 +71,7 @@ public class MessageController {
 	}
 	
 	@GetMapping("/my_message/{id}")
-	public String getchMessageDetail(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetail detail) {
+	public String fetchMessageDetail(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetail detail) {
 		model.addAttribute("message", myMessageService.getMessageDetail(id, detail));
 		
 		return "/message/my_message_detail";

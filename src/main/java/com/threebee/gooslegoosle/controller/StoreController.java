@@ -129,7 +129,7 @@ public class StoreController {
 	}
 	
 	@GetMapping("/store/reservation/{id}/reservation_next")
-	public String reservationNext(Model model, @PathVariable int id, @AuthenticationPrincipal PrincipalDetail detail) {
+	public String fetchReservationNext(Model model, @PathVariable int id, @AuthenticationPrincipal PrincipalDetail detail) {
 		
 		
 		//ReservationEntity reservationEntity = reservationService.findid(detail.getUser().getId()); 위에 insert 후에 영수증 느낌으로 뿌려줄 때 사용
@@ -139,13 +139,13 @@ public class StoreController {
 	}
 	
 	@GetMapping("/store/reservation/pay/fail")
-	public String payFail() {
+	public String fetchPayFail() {
 		return "/store/reservation_pay_fail";
 	}
 	
 	@PostMapping("/pay/ready")
 	@ResponseBody
-	public ResponseDto<PaymentResDto> readyForPay(@RequestBody PaymentReqDto reqData){
+	public ResponseDto<PaymentResDto> fetchReadyForPay(@RequestBody PaymentReqDto reqData){
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		
@@ -178,7 +178,7 @@ public class StoreController {
 	
 	//////////////////////////SUCCESS APPROVAL/////////////////////////////////
 	@GetMapping("/pay/success")
-	public String payCompleted(@RequestParam("pg_token") String pgToken, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+	public String fetchPayCompleted(@RequestParam("pg_token") String pgToken, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		
