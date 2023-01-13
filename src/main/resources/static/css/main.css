@@ -15,6 +15,9 @@ a {
 	text-decoration: none;
 	color: black;
 }
+a:hover{
+	color: #000;
+}
 tr{
 	text-align: center;
 }
