@@ -37,6 +37,7 @@ public class MessageController {
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
+		
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", 0);

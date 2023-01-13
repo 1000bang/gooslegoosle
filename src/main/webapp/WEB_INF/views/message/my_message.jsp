@@ -27,7 +27,7 @@
 			<c:when test="${principal.user.role eq 'ADMIN'}">
 				<c:forEach var="num" items="${message.content}" varStatus="status">
 					<!--  여기 -->
-					<c:set var="count" value="${message.totalElements - (status.count + (message.numberOfElements * (nowPage -1)))}"></c:set>
+					<c:set var="count" value="${(message.totalElements+1) - (status.count + (10 * (nowPage - 1)))}"></c:set>
 					<tbody>
 
 						<c:set var="nowDate">
