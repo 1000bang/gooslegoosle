@@ -91,9 +91,6 @@ public class UserEntity {
 	@Enumerated(EnumType.STRING)
 	private LoginType loginType;
 
-	@CreationTimestamp
-	private Timestamp createdDate;
-
 	@Override
 	public String toString() {
 		return "UserEntity []";
