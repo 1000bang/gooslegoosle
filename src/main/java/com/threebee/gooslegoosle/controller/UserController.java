@@ -40,6 +40,7 @@ import com.threebee.gooslegoosle.model.GoogleLogin;
 import com.threebee.gooslegoosle.model.KakaoLogin;
 import com.threebee.gooslegoosle.model.NaverLogin;
 import com.threebee.gooslegoosle.model.SocialLogin;
+import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.ReservationService;
 import com.threebee.gooslegoosle.service.StoreService;
@@ -52,6 +53,9 @@ public class UserController {
 	PartnerService partnerService;
 	
 	@Autowired
+	MessageService messageService;
+	
+	@Autowired
 	StoreService storeService;
 	
 	@GetMapping("test")
@@ -60,10 +64,9 @@ public class UserController {
 	}
 	
 	@GetMapping({ "", "/", "index", "search"})
-	public String fetchIndex(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
+	public String fetchIndex(@AuthenticationPrincipal PrincipalDetail detail, @RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchWords = searchWord == null ? "": searchWord;
 		
-	
 		
 		List<StoreEntity> store = storeService.findAll(searchWords, pageable);
 		Page<StoreEntity> koreanStore = storeService.findKorean(searchWords, pageable);
