@@ -35,15 +35,15 @@
 			<tbody>
 			<c:set var="now" value="<%=new java.util.Date()%>" />
 			<c:set var="nowDate"><fmt:formatDate value="${now}" pattern="yyyyMMddHH" /></c:set> 
-			<c:set var="dataDate"><fmt:formatDate value="${users.createdDate}" pattern="yyyyMMddHH" /></c:set> 
 			<c:set var="count" value="${(user.totalElements + 1) - (status.count + (10 * (nowPage - 1)))}"></c:set>
+			<c:set var="dataDate"><fmt:formatDate value="${users.createTime}" pattern="yyyyMMddHH" /></c:set> 
 				
 				<tr>
 					<td style="color: red"><c:if test="${nowDate - dataDate le 100}"> new </c:if></td>
 					<td>${count}</td>
 					<td>${users.username}</td>
 					<td>${users.role}</td>
-					<td><fmt:formatDate value="${users.createdDate}" pattern="yyyy-MM-dd"/></td>
+					<td><fmt:formatDate value="${users.createTime}" pattern="yyyy-MM-dd"/></td>
 					<td>${users.warning}</td>
 
 					<td><a type="button" class="btn-sm btn-warning"
