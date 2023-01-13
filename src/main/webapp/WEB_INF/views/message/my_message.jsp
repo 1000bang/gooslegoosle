@@ -23,29 +23,30 @@
 
 			</tr>
 		</thead>
-				<c:forEach var="num" items="${message.content}" varStatus="status">
-					<c:set var="count" value="${(message.totalElements + 1) - (status.count + (10 * (nowPage - 1)))}"></c:set>
-							<tbody>
-								<tr
-									onclick="window.open('/my_message/'+ ${num.id}, '네이버팝업', 'width=700px,height=600px,scrollbars=yes')">
-									<td style="color: red"><c:if
-											test="${nowDate - dataDate le 100}"> new </c:if></td>
-									<td>${count}</td>
-									<td>${num.comment}</td>
-									<td>${num.user.userNickname}</td>
-									<td><fmt:formatDate value="${num.createTime}"
-											pattern="yyyy-MM-dd" /></td>
-									<c:choose>
-										<c:when test="${num.read eq true}">
-											<td>읽음</td>
-										</c:when>
-										<c:when test="${num.read eq false}">
-											<td>안읽음</td>
-										</c:when>
-									</c:choose>
-								</tr>
-							</tbody>
-				</c:forEach>
+		<c:forEach var="num" items="${message.content}" varStatus="status">
+			<c:set var="count"
+				value="${(message.totalElements + 1) - (status.count + (10 * (nowPage - 1)))}"></c:set>
+			<tbody>
+				<tr
+					onclick="window.open('/my_message/'+ ${num.id}, '네이버팝업', 'width=700px,height=600px,scrollbars=yes')">
+					<td style="color: red"><c:if
+							test="${nowDate - dataDate le 100}"> new </c:if></td>
+					<td>${count}</td>
+					<td>${num.comment}</td>
+					<td>${num.user.userNickname}</td>
+					<td><fmt:formatDate value="${num.createTime}"
+							pattern="yyyy-MM-dd" /></td>
+					<c:choose>
+						<c:when test="${num.read eq true}">
+							<td>읽음</td>
+						</c:when>
+						<c:when test="${num.read eq false}">
+							<td>안읽음</td>
+						</c:when>
+					</c:choose>
+				</tr>
+			</tbody>
+		</c:forEach>
 	</table>
 
 	<hr />
@@ -90,4 +91,3 @@
 
 
 <%@ include file="../layout/footer.jsp"%>
-

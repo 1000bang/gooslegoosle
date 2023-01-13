@@ -2,32 +2,39 @@
 <%@include file="../layout/header.jsp"%>
 
 
-<div class="container">
+<div class="container" style="display: flex; justify-content: space-between; width: 54%;">
 
 
+<div>
 
 <input type="hidden" id="id" value="${principal.user.id}">
 <input type="hidden" id="review-id" value="${reviews.getId()}">
 <button id="back" class="btn btn-outline-secondary" onclick="history.back();">돌아가기</button>
+</div>
+<div>
 <c:if test="${reviews.user.id == principal.user.id}">
 	<a class="btn btn-outline-warning" id="" href="/review/${reviews.id}/review_update">수정하기</a>
 	<button class="btn btn-outline-danger" id="reviewDelete">삭제하기</button>
 </c:if>
 </div>
+</div>
 <br/>
 <br/>
 <div class="detail-body">
 	<div id="review-profile">
-		<div class="about-profile">
+		<div class="about-profile" style="">
 			<img alt="" style="width: 100%; height: 100%; object-fit: cover" src="http://localhost:9090/magazine/${reviews.thumbnail}">
 		</div>
 		<div class="title">
 			<p>${reviews.getReviewTitle()}</p>
 		</div>
 		<div class="address">
+			<strong>가게 이름  : </strong>${reviews.store.partner.storeName}
+		</div>
+		<div class="address">
 			<strong>주소  : </strong>${reviews.store.partner.address}
 		</div>
-		<div class="review-content">${reviews.getReviewContent()}</div>
+		<div class="review-content" style="overflow:hiddlen; word-break:break-all;">${reviews.getReviewContent()}</div>
 		<div class="rate">
 			<p>★★★★★</p>
 			<p>작성자 : <span>${reviews.getUser().getUserNickname()}</span></p>
