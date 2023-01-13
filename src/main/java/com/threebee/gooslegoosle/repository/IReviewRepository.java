@@ -6,13 +6,24 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
 
 public interface IReviewRepository extends JpaRepository<ReviewEntity, Integer> {
 
-	Page<ReviewEntity> findByreviewContentContaining(String search, Pageable pageable);
+	@Query(value = "SELECT "
+			+ "r.* "
+			+ "FROM reviewentity AS r "
+			+ "JOIN storeentity AS s "
+			+ "JOIN partnerentity AS p "
+			+ "ON r.storeId = s.id "
+			+ "AND s.partner_id = p.id "
+			+ "WHERE p.storeName LIKE %:item% ", 
+			countQuery = "SELECT COUNT(*) FROM reviewentity",
+			nativeQuery = true)
+	Page<ReviewEntity> findByreviewContentContaining(@Param("item")String search, Pageable pageable);
 	
 	
 	@Query(value = " SELECT * "

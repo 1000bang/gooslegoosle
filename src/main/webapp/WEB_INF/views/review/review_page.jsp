@@ -60,7 +60,7 @@
 							<div>${review.getReviewContent()}</div>
 						</div>
 						<a id="into" class="btn btn-outline-dark mt-auto"
-							href="review/${review.getId()}">더보기</a> <br>
+							href="/review/${review.getId()}">더보기</a> <br>
 						<br>
 					</div>
 
