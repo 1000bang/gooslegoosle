@@ -1,0 +1,52 @@
+
+
+#store-apply{
+    background: url(../images/bg-store-apply.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+}
+
+#store-info-bg{
+    width: 80%;
+    margin: 80px auto;
+    background-color: white;
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.info-title{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.form-group >label {
+    margin-bottom: 10px;
+}
+
+.time{
+    margin-bottom: 10px;
+}
+
+#store-item{
+    width: 100%;
+    height: 80px;
+}
+
+.time-form-wrap{
+    float: left;
+    width: 30%;
+    margin-right: 3%;
+}
+
+#breaktime{
+    margin-right: 0;
+}
+
+#main{
+    display: block;
+}

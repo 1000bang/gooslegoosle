@@ -1,0 +1,42 @@
+server: 
+  port: 9090
+  servlet:
+    context-path: "/"
+   
+
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB_INF/views/
+      suffix: .jsp
+  datasource:
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gooslegoosle?serverTimezone=Asia/Seoul
+    username: ten
+    password: 1q2w3e4r5t!
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto : update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      user-new-id-generator-mappings: false
+    show-sql: true
+    properties:
+      hibernate.format_sql : true
+
+  jasckson:
+    serialization:
+      fail-on-empty-beans: false
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      
+file:
+
+#  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
+  path: C:\androidworkspace\gooslegoosle\magazine\
+#  path: C:\ii\gooslegoosle\magazine\
