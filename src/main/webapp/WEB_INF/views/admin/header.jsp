@@ -13,6 +13,8 @@
 
 <html lang="en">
 <head>
+<meta id="_csrf" name="${_csrf.parameterName}" content="${_csrf.token}">
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}">
 <meta charset="UTF-8">
 
 <title>구슬구슬</title>
@@ -77,7 +79,7 @@
 					
 					<li><a href="/admin/seviceCenter">Service</a></li>
 					<li><a href="/admin/statics" style="color: #0067a3">Statics</a></li>
-					<li><a href="/logout">LogOut</a></li>
+					<li><a href="/m-logout">LogOut</a></li>
 				</ul>
 			</nav>
 		</header>

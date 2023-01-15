@@ -1,4 +1,5 @@
-
+let token = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 let index = {
 	init: function() {
 
@@ -19,6 +20,10 @@ let index = {
 		}
 		
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "POST",
 			url: '/admin/message/send/'+id,
 			data: JSON.stringify(data),

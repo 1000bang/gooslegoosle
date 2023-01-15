@@ -1,3 +1,6 @@
+let token = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
 let index = {
 
 	init: function() {
@@ -20,6 +23,10 @@ let index = {
 		Swal.fire('인증번호 발송 완료!');
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "GET",
 			url: "/auth/check",
 			data: {
@@ -74,6 +81,10 @@ let index = {
 		};
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "POST",
 			url: "/auth/joinProc", //post를 이 주소로 보낸
 			data: JSON.stringify(data), //http 메세지 body영역에 들어감 
@@ -112,6 +123,10 @@ let index = {
 
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "PUT",
 			url: "/api/user",
 			data: JSON.stringify(data),

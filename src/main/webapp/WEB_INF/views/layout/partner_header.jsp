@@ -10,6 +10,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta id="_csrf" name="${_csrf.parameterName}" content="${_csrf.token}">
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}">
 <title>구슬구슬파트너센터</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
@@ -65,7 +67,7 @@
 										href="/partner/chart/${principal.user.id}">통계 </a></li>
 
 								</c:if>
-								<li class="nav-item"><a class="nav-link" href="/logout">로그아웃
+								<li class="nav-item"><a class="nav-link" href="/m-logout">로그아웃
 								</a></li>
 							</c:otherwise>
 						</c:choose>

@@ -115,6 +115,10 @@
 	});
 </script>
 <script>
+
+let token = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
 	function reservation() {
 		let data = {
 			request : $("#request").val(),
@@ -130,6 +134,10 @@
 		console.log(data);
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type : "POST",
 			url : "/store/reservation/" + store + "/save",
 			data : JSON.stringify(data),

@@ -14,7 +14,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
+<meta id="_csrf" name="${_csrf.parameterName}" content="${_csrf.token}">
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}">
 <title>구슬구슬</title>
 <link rel="shortcut icon" href="/images/fav.png">
 <link rel="stylesheet"
@@ -116,7 +117,7 @@
 											Reservation</a></li>
 									<li><a class="dropdown-item" href="/seviceCenter">Service
 											Center</a></li>
-									<li><a class="dropdown-item" href="/logout">LogOut</a></li>
+									<li><a class="dropdown-item" href="/m-logout">LogOut</a></li>
 								</ul></li>
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">

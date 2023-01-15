@@ -10,6 +10,7 @@
 <div class="container" style="min-height: 590px; padding-top: 50px;">
 	<form action="/auth/loginProc" method="Post">
 		<div class="form-group">
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 			<label for="usernmae">이름 :</label> <input type="text"
 				class="form-control" placeholder="Enter usernmae" id="username"
 				name="username" value="hong123">

@@ -4,6 +4,7 @@
 
 <div class="container" style="min-height: 675px">
 	<form action="/api/reviews" method="POST" enctype="multipart/form-data">
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 		<label for="thumb" style="margin-top: 30px; font-weight: 600">썸네일</label>
 		<div class="custom-file mb-2">
 			<input type="file" name="file" class="custom-file-input"

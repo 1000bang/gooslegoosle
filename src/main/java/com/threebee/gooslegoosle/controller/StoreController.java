@@ -233,8 +233,8 @@ public class StoreController {
 		reservationService.saveReservation(resData, principalDetail.getUser(), tid); 
 		
 		MessageEntity newMsg = MessageEntity.builder()
-				.comment(resData.getUser().getUserNickname() + "님 예약 신청이 도착했습니다. \n \t\t- 구슬구슬 팀").build();
-		messageService.sendMessageByUserId(resData.getUser().getId(), newMsg);
+				.comment(resData.getStore().getUser().getUserNickname() + "님 예약 신청이 도착했습니다. \n \t\t- 구슬구슬 팀").build();
+		messageService.sendMessageByUserId(resData.getStore().getUser().getId(), newMsg);
 		
 		
 		model.addAttribute("reservationDetail", resData);

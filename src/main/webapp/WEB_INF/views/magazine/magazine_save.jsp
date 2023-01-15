@@ -8,6 +8,7 @@
 <div class="container">
     <form action="/magazine/save" method="post"
         enctype="multipart/form-data">
+        <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
         <label for="thumb"> 썸네일 </label>
         <div class="custom-file mb-2">
             <input type="file" name="file" class="custom-file-input"
