@@ -54,7 +54,7 @@ public class PartnerEntity {
 //	
 	@Column(nullable = false, length = 13)
 	@NotNull
-	@Size(min = 12, max = 14)
+	@Size(min = 10, max = 12)
 	private String phoneNumber;
 	
 	private String status;

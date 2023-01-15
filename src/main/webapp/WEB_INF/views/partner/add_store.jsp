@@ -107,6 +107,25 @@
 		</div>
 	</div>
 </footer>
+<script>
+$("#storePics").on(
+		"change",
+		  function() {
+			$(this).siblings(".custom-file-label").addClass("selected")
+			.html("");
+			
+			
+			 var files=$('input[name="storePics"]')[0].files;
+			console.log(files);
+			
+			
+			for (i = 0; i < files.length; i++) {
+				$(this).siblings(".custom-file-label").addClass("selected")
+				.append(files[i].name);
+				} 
+
+		});
+</script>
 </div>
 </body>
 </html>

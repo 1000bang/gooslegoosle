@@ -65,6 +65,7 @@
 
 			<nav id="nav">
 				<ul>
+					<li><a href="/">Home</a></li>
 					<li><a href="/admin/manage">Store M</a></li>
 					<li id="more--view"><a href="/admin/manage">User M</a>
 						<ul id="nave--moreview--item" style="padding-top: 0">

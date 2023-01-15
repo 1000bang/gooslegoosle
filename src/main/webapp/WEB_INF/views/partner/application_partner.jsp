@@ -179,7 +179,7 @@
 			}
 		}).open();
 	}
-	$(".custom-file-input").on(
+	$("#businessCard").on(
 			"change",
 			function() {
 				var fileName = $(this).val().split("\\").pop();
