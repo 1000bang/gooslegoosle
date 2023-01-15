@@ -24,18 +24,18 @@
 
 		<div class="form-group d-flex">
 			 <input type="text"
-				class="form-control mr-1 " placeholder="Enter phoneNumber"
-				id="phoneNumber" value="010-1234-1234">
+				class="form-control mr-1 " placeholder="Enter phoneNumber ex) 01012341234"
+				id="phoneNumber" >
 				<input type="button" style="width: 10vh; color: white; background-color: #63BFBC;"
-					onclick="" class="form-control mr-1 btn"
+					id="btn--send" class="form-control mr-1 btn"
 					value="sms전송">
 		</div>
 		<div class="form-group d-flex">
 			 <input type="text"
-				class="form-control mr-1 " placeholder="Enter code"
-				id="authCode" value="sms로 수신한 인증번호 5자리를 입력하세요">
+				class="form-control mr-1 "
+				id="authCode" placeholder="sms로 수신한 인증번호 4자리를 입력하세요">
 				<input type="button" style="width: 10vh; color: white; background-color: #63BFBC;" 
-					onclick="" class="form-control mr-1 btn"
+					id="checkBtn" class="form-control mr-1 btn"
 					value="인증하기">
 		</div>	
 		

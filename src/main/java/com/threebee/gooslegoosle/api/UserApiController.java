@@ -1,5 +1,7 @@
 package com.threebee.gooslegoosle.api;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,40 +15,75 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.threebee.gooslegoosle.dto.ResponseDto;
-import com.threebee.gooslegoosle.dto.exception.ErrorResponse;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.service.UserService;
- 
+
+import net.nurigo.sdk.NurigoApp;
+import net.nurigo.sdk.message.model.Message;
+import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
+import net.nurigo.sdk.message.response.SingleMessageSentResponse;
+import net.nurigo.sdk.message.service.DefaultMessageService;
+
 @RestController
 public class UserApiController {
 
 	@Autowired
-	UserService userService;     
-	
+	UserService userService;
+
 	@PostMapping("/auth/joinProc")
-	public ResponseDto<Integer> save(@RequestBody UserEntity user) {
+	public ResponseDto<Integer> fetchSave(@RequestBody UserEntity user) {
 		userService.saveUser(user);
-		
+
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
-	}    
-	
-	
+	}
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	@PutMapping("/api/user")
-	public ResponseDto<Integer> update(@RequestBody UserEntity user){
-		
-		//validation처리 예외잡아서 사용자한테 떨궈주면 됨 
+	public ResponseDto<Integer> fetchUpdate(@RequestBody UserEntity user) {
+
+		// validation처리 예외잡아서 사용자한테 떨궈주면 됨
 		userService.updateUser(user);
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-		
-		//2. 컨텍스트 홀더에 밀어넣기
+
+		// 2. 컨텍스트 홀더에 밀어넣기
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
+
+	@GetMapping("/auth/check")
+	public String fetchSMS(String phoneNumber) {
+		System.out.println("123");
+		Random rand = new Random();
+		String numStr = "";
+		for (int i = 0; i < 4; i++) {
+			String ran = Integer.toString(rand.nextInt(10));
+			numStr += ran;
+		}
+
+		System.out.println("수신자 번호 : " + phoneNumber);
+		System.out.println("인증번호 : " + numStr);
+		certifiedPhoneNumber(phoneNumber, numStr);
+		return numStr;
+	}
+
+	DefaultMessageService messageService;
+
 	
-	
-	
+	public void certifiedPhoneNumber(String phoneNumber, String numStr) {
+		messageService = NurigoApp.INSTANCE.initialize("NCSJQVU63UFNIHKW","H9TT57VRBXM65BEA0DOEO37IATDN1JKX","https://api.coolsms.co.kr");
+
+		Message message = new Message();
+		// 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.
+		message.setFrom("01094110807");
+		message.setTo(phoneNumber);
+		message.setText("구슬구슬 휴대폰인증 : 인증번호는[" + numStr + "] 입니다.");
+
+		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
+		System.out.println(response);
+
+	}
+
 }

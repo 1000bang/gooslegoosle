@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -17,6 +18,9 @@ import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.UserRole;
 import com.threebee.gooslegoosle.repository.IMessageRepository;
 import com.threebee.gooslegoosle.repository.IUserRepository;
+
+import net.nurigo.sdk.message.model.Message;
+import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Service
 public class UserService {
@@ -97,9 +101,8 @@ public class UserService {
 		});
 		userEntity.setRole(UserRole.HOST);
 
-		MessageEntity msg = MessageEntity.builder()
-				.user(userEntity)
-				.comment("안녕하세요 " + userEntity.getUserNickname()+"님 \n 지원하신 파트너 신청에 성공하였습니다.\n \t\t - 구슬구슬 팀")
+		MessageEntity msg = MessageEntity.builder().user(userEntity)
+				.comment("안녕하세요 " + userEntity.getUserNickname() + "님 \n 지원하신 파트너 신청에 성공하였습니다.\n \t\t - 구슬구슬 팀")
 				.build();
 		messageRepository.save(msg);
 	}
@@ -120,11 +123,9 @@ public class UserService {
 	public void setWarningUser(int id) {
 		UserEntity user = findId(id);
 		user.setWarning(user.getWarning() + 1);
-		
-		MessageEntity msg = MessageEntity.builder()
-				.user(user)
-				.comment("안녕하세요 " + user.getUserNickname()+"님 \n 사용자의 신고로 인해 경고조치 "+ user.getWarning() +"회 적용되었습니다. \n \t\t - 구슬구슬 팀")
-				.build();
+
+		MessageEntity msg = MessageEntity.builder().user(user).comment("안녕하세요 " + user.getUserNickname()
+				+ "님 \n 사용자의 신고로 인해 경고조치 " + user.getWarning() + "회 적용되었습니다. \n \t\t - 구슬구슬 팀").build();
 		messageRepository.save(msg);
 	}
 
@@ -143,5 +144,6 @@ public class UserService {
 	public List<ChartDto> lastTwoWeeksUser() {
 		return iUserRepository.findLastTwoWeeks();
 	}
+
 
 }
