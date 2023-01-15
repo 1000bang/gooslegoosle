@@ -41,7 +41,7 @@ let index = {
 						icon: 'error',
 						title: '인증오류',
 						text: '인증번호가 올바르지 않습니다!',
-						footer: '<a href="/">다음에 인증하기</a>'
+						footer: '<a href="/">다음에 가입하기</a>'
 					})
 				}
 			});
@@ -58,6 +58,8 @@ let index = {
 
 
 	save: function() {
+		
+		if($("#confirmMsg").text() == '비밀번호 일치' && $("#authCode").val() != null){
 		let data = {
 			username: $("#username").val(),
 			userNickname: $("#userNickname").val(),
@@ -84,12 +86,20 @@ let index = {
 		}).fail(function(error) {
 			console.log(error.responseJSON.message);
 			alert("회원가입실패" + error.responseJSON.message);
-		});
+		});}else{
+			Swal.fire({
+						icon: 'error',
+						title: '인증오류',
+						text: '인증절차가 진행되지 않았습니다.',
+						footer: '<a href="/">다음에 가입하기</a>'
+					})
+		}
 
 	},
 	update: function() {
 		let data = {
 			id: $("#id").val(),
+			userNickname: $("#userNickname").val(),
 			username: $("#username").val(),
 			password: $("#password").val(),
 			email: $("#email").val(),
