@@ -76,21 +76,23 @@ public class ReservationService {
 	
 	
 	@Transactional
-	public void setApprove(String id) {
+	public ReservationEntity setApprove(String id) {
 		int ids = Integer.parseInt(id);
 		ReservationEntity res = reservationRepository.findById(ids).orElseThrow(()->{
 			return new IllegalArgumentException("해당 예약내역을 찾을 수 없습니다. ");
 		});		
 		res.setApprove("Approve");
+		return res;
 	}
 	
 	@Transactional
-	public void setDeny(String id) {
+	public ReservationEntity setDeny(String id) {
 		int ids = Integer.parseInt(id);
 		ReservationEntity res = reservationRepository.findById(ids).orElseThrow(()->{
 			return new IllegalArgumentException("해당 예약내역을 찾을 수 없습니다. ");
 		});			
 		res.setApprove("Deny");
+		return res;
 	}
 
 	public ReservationEntity findById(int id) {

@@ -30,7 +30,7 @@ public class UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder bcencoder;
-
+	
 	public UserEntity searchUserName(@NotNull String username) {
 
 		return iUserRepository.findbyUsername(username).orElseGet(() -> {
@@ -39,14 +39,14 @@ public class UserService {
 	}
 
 	@Transactional
-	public int saveUser(UserEntity user) {
+	public UserEntity saveUser(UserEntity user) {
 		String rawPassword = user.getPassword();
 		String bcPassword = bcencoder.encode(rawPassword);
 		user.setEnable(true);
 		user.setPassword(bcPassword);
 		user.setRole(UserRole.USER);
-		iUserRepository.save(user);
-		return 1;
+		UserEntity users = iUserRepository.save(user);
+		return users;
 	}
 
 	public UserEntity findUserName(String username) {
@@ -90,9 +90,6 @@ public class UserService {
 		return userEntity;
 	}
 
-	@Autowired
-	IMessageRepository messageRepository;
-
 	@Transactional
 	public void setHost(int id) {
 		System.out.println("sethost");
@@ -101,10 +98,6 @@ public class UserService {
 		});
 		userEntity.setRole(UserRole.HOST);
 
-		MessageEntity msg = MessageEntity.builder().user(userEntity)
-				.comment("안녕하세요 " + userEntity.getUserNickname() + "님 \n 지원하신 파트너 신청에 성공하였습니다.\n \t\t - 구슬구슬 팀")
-				.build();
-		messageRepository.save(msg);
 	}
 
 	public UserEntity findId(int id) {
@@ -120,13 +113,11 @@ public class UserService {
 	}
 
 	@Transactional
-	public void setWarningUser(int id) {
+	public UserEntity setWarningUser(int id) {
 		UserEntity user = findId(id);
 		user.setWarning(user.getWarning() + 1);
-
-		MessageEntity msg = MessageEntity.builder().user(user).comment("안녕하세요 " + user.getUserNickname()
-				+ "님 \n 사용자의 신고로 인해 경고조치 " + user.getWarning() + "회 적용되었습니다. \n \t\t - 구슬구슬 팀").build();
-		messageRepository.save(msg);
+		return user;
+		
 	}
 
 	@Transactional
@@ -136,9 +127,10 @@ public class UserService {
 	}
 
 	@Transactional
-	public void unStopUser(int id) {
+	public UserEntity unStopUser(int id) {
 		UserEntity user = findId(id);
 		user.setEnable(true);
+		return user;
 	}
 
 	public List<ChartDto> lastTwoWeeksUser() {

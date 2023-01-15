@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.threebee.gooslegoosle.dto.ResponseDto;
+import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.UserService;
 
 import net.nurigo.sdk.NurigoApp;
@@ -30,10 +32,19 @@ public class UserApiController {
 	@Autowired
 	UserService userService;
 
+	private DefaultMessageService messageService;
+
+	@Autowired
+	private MessageService localMsgService;
+
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> fetchSave(@RequestBody UserEntity user) {
-		userService.saveUser(user);
-
+		UserEntity users = userService.saveUser(user);
+		MessageEntity newMsg = MessageEntity.builder()
+		.comment(users.getUserNickname()+"님 구슬구슬 회원가입을 축하합니다 \n"
+				+ "\t\t- 구슬구슬 팀")
+		.build();
+		localMsgService.sendMessageByUserId(users.getId(), newMsg);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 
@@ -69,11 +80,9 @@ public class UserApiController {
 		return numStr;
 	}
 
-	DefaultMessageService messageService;
-
-	
 	public void certifiedPhoneNumber(String phoneNumber, String numStr) {
-		messageService = NurigoApp.INSTANCE.initialize("NCSJQVU63UFNIHKW","H9TT57VRBXM65BEA0DOEO37IATDN1JKX","https://api.coolsms.co.kr");
+		messageService = NurigoApp.INSTANCE.initialize("NCSJQVU63UFNIHKW", "H9TT57VRBXM65BEA0DOEO37IATDN1JKX",
+				"https://api.coolsms.co.kr");
 
 		Message message = new Message();
 		// 발신번호 및 수신번호는 반드시 01012345678 형태로 입력되어야 합니다.

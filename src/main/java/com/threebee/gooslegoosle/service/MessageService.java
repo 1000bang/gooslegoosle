@@ -19,7 +19,7 @@ public class MessageService {
 	@Autowired
 	IUserRepository userRepository;
 
-	public void sendMessage(int id, MessageEntity mes) {
+	public void sendMessageByUserId(int id, MessageEntity mes) {
 
 		UserEntity user = userRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");

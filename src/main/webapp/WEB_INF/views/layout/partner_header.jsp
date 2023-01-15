@@ -42,7 +42,6 @@
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="/">구슬구슬</a></li>
-						<li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
 
 						<c:choose>
 							<c:when test="${empty principal}">
@@ -53,13 +52,15 @@
 							</c:when>
 							<c:otherwise>
 								<c:if test="${principal.user.role eq 'HOST'}">
-									
+
 									<li class="nav-item"><a class="nav-link"
 										href="/partner/addstore/${principal.user.id}">가게 등록</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="/partner/updateStore/${principal.user.id}">가게 수정</a></li>
 									<li class="nav-item"><a class="nav-link"
 										href="/partner/reservation/${principal.user.id}">예약관리</a></li>
+									<li class="nav-item"><a class="nav-link" href="/store/my/${principal.user.id}">내 가게</a></li>
+
 									<li class="nav-item"><a class="nav-link"
 										href="/partner/chart/${principal.user.id}">통계 </a></li>
 

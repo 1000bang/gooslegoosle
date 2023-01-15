@@ -30,9 +30,11 @@ import com.threebee.gooslegoosle.auth.PrincipalDetail;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.dto.kakao.pay.PaymentReqDto;
 import com.threebee.gooslegoosle.dto.kakao.pay.PaymentResDto;
+import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
+import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.ReservationService;
 import com.threebee.gooslegoosle.service.ReviewService;
@@ -45,7 +47,7 @@ public class StoreController {
 	private	StoreService storeService;
 	
 	@Autowired
-	private PartnerService partnerService;
+	private MessageService messageService;
 	
 	@Autowired
 	private ReviewService reviewService;
@@ -78,6 +80,32 @@ public class StoreController {
 		model.addAttribute("storeDetail",detail);
 		return "/store/detail";
 	}
+	
+	@GetMapping("/store/my/{id}")
+	public String fetchPatenrToStore(Model model, @PathVariable int id, 
+			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		
+		StoreEntity detail = storeService.findByUserId(id);
+	
+		Page<ReviewEntity> storeReview = reviewService.getStoreReviewList(detail.getId(), pageable);
+		int nowPage = storeReview.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, storeReview.getTotalPages());
+		int end = storeReview.getTotalPages() - 1;
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
+		model.addAttribute("review",storeReview);
+		model.addAttribute("storeDetail",detail);
+		return "/store/detail";
+	}
+	
 	
 	@GetMapping("/store/reservation/{id}")
 	public String fetchReserve(Model model, @PathVariable int id) {
@@ -203,6 +231,11 @@ public class StoreController {
 	
 
 		reservationService.saveReservation(resData, principalDetail.getUser(), tid); 
+		
+		MessageEntity newMsg = MessageEntity.builder()
+				.comment(resData.getUser().getUserNickname() + "님 예약 신청이 도착했습니다. \n \t\t- 구슬구슬 팀").build();
+		messageService.sendMessageByUserId(resData.getUser().getId(), newMsg);
+		
 		
 		model.addAttribute("reservationDetail", resData);
 		model.addAttribute("response", response);
