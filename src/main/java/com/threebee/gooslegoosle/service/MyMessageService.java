@@ -35,11 +35,11 @@ public class MyMessageService {
 	public MessageEntity getMessageDetail(int id, PrincipalDetail detail) {
 
 		MessageEntity msg = iMyMessageRepository.findById(id).orElseThrow(() -> {
-			return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
+			return new IllegalArgumentException("해당 메세지를 찾을 수 없습니다.");
 		});
-		
+		 
 		msg.setRead(true);
-		List<MessageEntity> mes = iMyMessageRepository.findAll();
+		List<MessageEntity> mes = iMyMessageRepository.findAllById(detail.getUser().getId());
 		
 		detail.getUser().setMessage(mes);
 		
