@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
+
+<div class="listHeader">
+	<div class="imgBox"><img src="/images/logo2.png" alt=""></div>
+	<div class="listHeader-title">
+		<h4>#아직 디자인 전</h4>
+		<h4>#단계 입니다.</h4>
+	</div>
+</div>
 <article id="m-content2" >
+	
 	<c:forEach var="storeInfo" items="${store.content}">
 		<div class="all-container"
 			style="display: flex; justify-content: space-between;width: 55%; height: 250px;">

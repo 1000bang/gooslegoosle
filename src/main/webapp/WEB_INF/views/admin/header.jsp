@@ -59,8 +59,8 @@
 	<div id="wrap">
 		<header id="header" class="main_header">
 
-			<div id="logo">
-				<a href="/"><img src="/images/logo2.png" alt=""></a>
+			<div id="logo" style="width: 160px; padding-top: 3%;">
+				<a href="/admin/manage" style="text-decoration: none"><h2 style="font-family: cursive; font-weight: bold; ">구슬구슬M</h2></a>
 			</div>
 
 			<nav id="nav">

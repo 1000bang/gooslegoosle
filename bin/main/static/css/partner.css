@@ -1,0 +1,100 @@
+html{
+        background-color: #dbf0f0;
+    }
+
+#wrap{
+    width: 100%;
+}
+
+.header-color{
+    background-color: #63BFBC;
+}
+
+
+#partner-join{
+ 
+}
+
+.info-title{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.info-box{
+    background-color: white;
+    padding: 50px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+}
+
+.form-group >label {
+    margin-bottom: 10px;
+}
+
+.info{
+    margin-bottom: 10px;
+}
+
+.ma-bo{
+    margin-top: 20px;
+}
+
+#find--btn{
+	width: 800px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+
+}
+
+#btn-partner-join{
+    width: 400px;
+    height: 50px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 50px;
+    padding: 0;
+    margin: 0 auto;
+    display: block;
+}
+
+#postcode{
+	width: 50%;
+	margin-bottom: 12px;
+}
+
+#warning--wrap{
+	width: 100%;
+	height: auto;
+    background: url(../images/bg-header.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+	text-align: center;
+	color: white;
+	padding-top: 80px;
+}
+
+#login-warning{
+	font-size: 32px;
+	font-weight: 600;
+}
+
+.warning-msg{
+	margin: 20px auto;
+}
+
+.move--btn{
+	margin-bottom: 50px;
+	margin-top: 10px;
+	background-color: white;
+}
+
+.move--btn:hover{
+    background-color: brown;
+    color: white;
+}
+
+.btn--mar{
+	margin-right: 20px;
+}
+

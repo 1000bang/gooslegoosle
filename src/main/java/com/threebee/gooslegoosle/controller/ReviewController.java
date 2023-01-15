@@ -43,7 +43,7 @@ public class ReviewController {
 			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
 		String searchTitle = search == null ? "" : search;
-		Page<ReviewEntity> reviews = reviewService.getReviewList(searchTitle.replace("//", ""), pageable);
+		Page<ReviewEntity> reviews = reviewService.getReviewList(searchTitle, pageable);
 		int nowPage = reviews.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - 2, 1);
 		int endPageNumber = Math.min(nowPage + 2, reviews.getTotalPages());
@@ -87,7 +87,7 @@ public class ReviewController {
 	}
 
 	@GetMapping("/review/{id}")
-	public String showReviewDetail(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+	public String fetchShowReviewDetail(@PathVariable int id, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
 		ReviewEntity reviewEntity = reviewService.reviewDetail(id);
 		
 		model.addAttribute("reviews", reviewEntity);
@@ -98,7 +98,7 @@ public class ReviewController {
 	private StoreService storeService;
 	
 	@GetMapping("/review/review_save")
-	public String reviewSave(Model model, @AuthenticationPrincipal PrincipalDetail detail) {
+	public String fetchReviewSave(Model model, @AuthenticationPrincipal PrincipalDetail detail) {
 		List<String> storename = storeService.findReservedStore(detail.getUser());
 		List<Map<String, String>> storeAndResData = new ArrayList<>();
 		
@@ -118,7 +118,7 @@ public class ReviewController {
 	}
 
 	@PostMapping("/api/reviews")
-	public String save(ReviewFileDto file, @AuthenticationPrincipal PrincipalDetail detail) {
+	public String fetchSave(ReviewFileDto file, @AuthenticationPrincipal PrincipalDetail detail) {
 		System.out.println(file);
 		reviewService.write(file, detail.getUser());
 
@@ -127,7 +127,7 @@ public class ReviewController {
 	}
 
 	@GetMapping("/review/{reviewId}/review_update")
-	public String updateReview(@PathVariable int reviewId, Model model) {
+	public String fetchUpdateReview(@PathVariable int reviewId, Model model) {
 		model.addAttribute("review", reviewService.reviewDetail(reviewId));
 		return "/review/review_update";
 	}

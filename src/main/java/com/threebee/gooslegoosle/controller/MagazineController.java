@@ -78,7 +78,7 @@ public class MagazineController {
 	}
 
 	@GetMapping("/api/magazine/delete/{id}")
-	public String delete(@PathVariable int id, Model model) {
+	public String fetchDelete(@PathVariable int id, Model model) {
 
 		magazineService.deleteMagazine(id);
 

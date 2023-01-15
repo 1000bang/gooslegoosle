@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/partner_header.jsp"%>
-<section id="store-apply">
+<section id="store-apply" style="height: 108%;">
 	<form action="/partner/add_store/${partner.id}" class="was-validated"
 		id="store-info-bg" method="post" enctype="multipart/form-data">
 		<input type="hidden" id="storeId" value="${partner.id}">
@@ -79,7 +79,7 @@
 </section>
 
 <footer id="footer" style="position: absolute;
-    top: 108%;">
+    top: 113%;">
 	<div class="footer-line">
 		<div id="endLogo">
 			<a href=""><img src="/images/logo2.png" alt=""></a>

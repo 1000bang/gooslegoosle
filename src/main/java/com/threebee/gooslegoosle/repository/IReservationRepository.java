@@ -36,7 +36,7 @@ public interface IReservationRepository extends JpaRepository<ReservationEntity,
 			+ " WHERE "
 			+ "    storeid = ?1 "
 			+ " AND(date BETWEEN DATE_ADD(NOW(), INTERVAL -1 WEEK ) AND NOW()) "
-			+ "GROUP BY date", nativeQuery = true)
+			+ "GROUP BY date ORDER BY date", nativeQuery = true)
 	List<ChartDto> findByStoreIdForChartWeek(int id);
 	
 //	//한달 

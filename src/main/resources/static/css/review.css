@@ -1,5 +1,5 @@
 .my_container {
-	width: 328px;
+	width: 321px;
 	height: 486px;
 	display: flex;
 	flex-direction: column;
@@ -9,6 +9,7 @@
 	margin: 25px 3% 0 0;
 	animation: reviewBox 3s;
 	background-color: #fff;
+	position: relative;
 }
 
 .bg-dark {
