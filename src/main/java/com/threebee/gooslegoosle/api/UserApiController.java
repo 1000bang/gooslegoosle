@@ -1,5 +1,6 @@
 package com.threebee.gooslegoosle.api;
 
+import java.util.Properties;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.threebee.gooslegoosle.dto.ResponseDto;
@@ -94,5 +96,13 @@ public class UserApiController {
 		System.out.println(response);
 
 	}
+	
+	// 아이디 찾기
+	@PostMapping("/auth/find")
+	public  ResponseDto<?> fetchFindPassword(@RequestBody UserEntity user){
+		UserEntity userEntity = userService.findId(user.getEmail());
+		return new ResponseDto<>(HttpStatus.OK, userEntity.getUsername());
+	}
+	
 
 }

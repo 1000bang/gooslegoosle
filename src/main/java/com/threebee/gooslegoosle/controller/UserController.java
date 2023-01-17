@@ -217,6 +217,10 @@ public class UserController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 	}
 	
+	@GetMapping("/auth/find")
+	public String fetchFindLoginInfo() {
+		return "user/find_password";
+	}
 	
 	
 
