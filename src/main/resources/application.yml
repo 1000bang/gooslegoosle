@@ -13,8 +13,8 @@ spring:
   datasource:
     driver-class-name : com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/gooslegoosle?serverTimezone=Asia/Seoul
-    username: ten
-    password: 1q2w3e4r5t!
+    username: root
+    password: asd1234
 
   jpa:
     open-in-view: true
@@ -38,5 +38,5 @@ spring:
 file:
 
 #  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
-  path: C:\androidworkspace\gooslegoosle\magazine\
-#  path: C:\ii\gooslegoosle\magazine\
+#  path: C:\androidworkspace\gooslegoosle\magazine\
+  path: C:\ii\gooslegoosle\magazine\

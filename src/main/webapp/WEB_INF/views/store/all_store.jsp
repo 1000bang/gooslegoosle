@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
-<article id="m-content2">
+<article id="m-content2" style="height: 1600px; overflow: hidden;" class="m-content2">
 	<c:forEach var="storeInfo" items="${store}">
 		<div class="all-container"
 			style="display: flex; justify-content: space-between;width: 55%; height: 250px;">
@@ -50,5 +50,11 @@
 		</div>
 	</c:forEach>
 </article>
+
+<script type="text/javascript">
+	$(window).scroll(() => {
+		console.log(${storeInfo.totalElement});
+	}); 
+</script>
 <%@include file="../layout/footer.jsp"%>
 

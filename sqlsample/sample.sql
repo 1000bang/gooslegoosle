@@ -474,7 +474,7 @@ DROP TABLE IF EXISTS `UserEntity`;
 CREATE TABLE `UserEntity` (
   `id` int NOT NULL AUTO_INCREMENT,
   `address` varchar(255) DEFAULT NULL,
-  `createdDate` datetime(6) DEFAULT NULL,
+  `createTime` datetime(6) DEFAULT NULL,
   `detailAddress` varchar(255) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `extraAddress` varchar(255) DEFAULT NULL,
