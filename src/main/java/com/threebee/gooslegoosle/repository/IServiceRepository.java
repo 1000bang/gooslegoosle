@@ -2,6 +2,8 @@ package com.threebee.gooslegoosle.repository;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +17,8 @@ public interface IServiceRepository extends JpaRepository<ServiceCenterEntity, I
 	@Transactional
 	@Query(value = "DELETE FROM serviceCenterEntity WHERE id = ?1", nativeQuery =  true)
 	void deleteByIds(int id);
+
+	@Query(value = "SELECT * FROM serviceCenterEntity WHERE userId = ?1", nativeQuery =  true)
+	Page<ServiceCenterEntity> findByUserId(int id, Pageable pageable);
 
 }

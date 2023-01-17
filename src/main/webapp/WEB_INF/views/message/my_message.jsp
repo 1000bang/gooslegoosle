@@ -14,44 +14,39 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
+				<th></th>
 				<th>번호</th>
 				<th>내용</th>
 				<th>받는 사람</th>
 				<th>날짜</th>
+				<th>상태</th>
 
 			</tr>
 		</thead>
-		<c:choose>
-			<c:when test="${principal.user.role eq 'ADMIN'}">
-				<c:forEach var="num" items="${message.content}">
-					<tbody>
-						<tr onclick="#">
-							<td>${num.id}</td>
-							<td>${num.comment}</td>
-							<td>${num.user.userNickname}</td>
-							<td>${num.createTime}</td>					
-						</tr>
-					</tbody>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-					<c:forEach var="num" items="${message.content}">
-				<c:choose>
-					<c:when test="${principal.user.id == num.user.id}">
-						<tbody>
-						<tr onclick="window.open('/my_message/'+ ${num.id}, '네이버팝업', 'width=700px,height=600px,scrollbars=yes')">
-							<td>${num.id}</td>
-							<td>${num.comment}</td>
-							<td>${num.user.userNickname}</td>
-							<td>${num.createTime}</td>
-						</tr>
-					</tbody>
-					</c:when>
-				</c:choose>
-					
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>
+		<c:forEach var="num" items="${message.content}" varStatus="status">
+			<c:set var="count"
+				value="${(message.totalElements + 1) - (status.count + (10 * (nowPage - 1)))}"></c:set>
+			<tbody>
+				<tr
+					onclick="window.open('/my_message/'+ ${num.id}, '네이버팝업', 'width=700px,height=600px,scrollbars=yes')">
+					<td style="color: red"><c:if
+							test="${nowDate - dataDate le 100}"> new </c:if></td>
+					<td>${count}</td>
+					<td>${num.comment}</td>
+					<td>${num.user.userNickname}</td>
+					<td><fmt:formatDate value="${num.createTime}"
+							pattern="yyyy-MM-dd" /></td>
+					<c:choose>
+						<c:when test="${num.read eq true}">
+							<td>읽음</td>
+						</c:when>
+						<c:when test="${num.read eq false}">
+							<td>안읽음</td>
+						</c:when>
+					</c:choose>
+				</tr>
+			</tbody>
+		</c:forEach>
 	</table>
 
 	<hr />
@@ -95,6 +90,4 @@
 </div>
 
 
-
 <%@ include file="../layout/footer.jsp"%>
-

@@ -10,6 +10,7 @@
 <div class="container" style="min-height: 590px; padding-top: 50px;">
 	<form action="/auth/loginProc" method="Post">
 		<div class="form-group">
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 			<label for="usernmae">이름 :</label> <input type="text"
 				class="form-control" placeholder="Enter usernmae" id="username"
 				name="username" value="hong123">
@@ -37,11 +38,13 @@
 
 		<div class="d-flex flex-column align-items-center">
 
-			<button type="submit" id="" class="btn"
+			<button type="submit" id="" class="btn" 
 				style="width: 30vh; height: 5vh; color: white; background-color: #63BFBC;">Log-in</button>
+				<br>
+			<a class="btn"
+						style="width: 30vh; height: 5vh; color: white; background-color: #63BFBC; line-height: 40px;" href="/auth/find">아이디/비밀번호 찾기</a>
 
-
-			<hr />
+<br>
 			<span class="social-sign-in__title" style="text-decoration: underline;">간편 로그인</span> <br>
 			<div class="d-flex ">
 				<a

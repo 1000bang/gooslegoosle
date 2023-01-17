@@ -1,9 +1,9 @@
+let token = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
 let index = {
 
 	init: function(){
-		$("#btn--save").bind("click", () => {
-			this.save();
-		});
 		
 		$("#btn--update").bind("click", () => {
 			this.update();
@@ -20,6 +20,10 @@ let index = {
 		};
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "Put",
 			url: `/api/magazine/${$("#board-id").attr("data-id")}`,
 			data: JSON.stringify(data),

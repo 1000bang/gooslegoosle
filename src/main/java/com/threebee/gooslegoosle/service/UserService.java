@@ -24,7 +24,7 @@ public class UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder bcencoder;
-
+	
 	public UserEntity searchUserName(@NotNull String username) {
 
 		return iUserRepository.findbyUsername(username).orElseGet(() -> {
@@ -33,15 +33,14 @@ public class UserService {
 	}
 
 	@Transactional
-	public int saveUser(UserEntity user) {
-		System.out.println(user);
+	public UserEntity saveUser(UserEntity user) {
 		String rawPassword = user.getPassword();
 		String bcPassword = bcencoder.encode(rawPassword);
 		user.setEnable(true);
 		user.setPassword(bcPassword);
 		user.setRole(UserRole.USER);
-		iUserRepository.save(user);
-		return 1;
+		UserEntity users = iUserRepository.save(user);
+		return users;
 	}
 
 	public UserEntity findUserName(String username) {
@@ -92,7 +91,7 @@ public class UserService {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});
 		userEntity.setRole(UserRole.HOST);
-		System.out.println("sethost끝 ");
+
 	}
 
 	public UserEntity findId(int id) {
@@ -103,14 +102,16 @@ public class UserService {
 		return user;
 	}
 
-	public Page<UserEntity> findAll(Pageable pageable) {
-		return iUserRepository.findAll(pageable);
+	public Page<UserEntity> findAll(String q, Pageable pageable) {
+		return iUserRepository.findAll(q, pageable);
 	}
 
 	@Transactional
-	public void setWarningUser(int id) {
+	public UserEntity setWarningUser(int id) {
 		UserEntity user = findId(id);
 		user.setWarning(user.getWarning() + 1);
+		return user;
+		
 	}
 
 	@Transactional
@@ -118,15 +119,61 @@ public class UserService {
 		UserEntity user = findId(id);
 		user.setEnable(false);
 	}
-	
+
 	@Transactional
-	public void unStopUser(int id) {
+	public UserEntity unStopUser(int id) {
 		UserEntity user = findId(id);
 		user.setEnable(true);
+		return user;
 	}
 
-	public  List<ChartDto>  lastTwoWeeksUser() {
+	public List<ChartDto> lastTwoWeeksUser() {
 		return iUserRepository.findLastTwoWeeks();
 	}
+
+	
+	public UserEntity findId(@NotNull String email) {
+		return iUserRepository.findInfo(email).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
+		});
+	}
+	
+	public String getTempPassword() {
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+		String str = "";
+
+		// 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
+		int idx = 0;
+		for (int i = 0; i < 10; i++) {
+			idx = (int) (charSet.length * Math.random());
+			str += charSet[idx];
+		}
+		return str;
+	}
+	
+	@Transactional
+	public String searchPasswordChange(String email) {
+		UserEntity userEntity = iUserRepository.findInfo(email).orElseThrow(() -> {
+			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
+		});
+		String rawPassword = "";
+		if (userEntity.getLoginType() == null || userEntity.getLoginType().equals("")) {
+
+			rawPassword = getTempPassword();
+			String encPassword = bcencoder.encode(rawPassword);
+
+			userEntity.setPassword(encPassword);
+
+		}
+		return rawPassword;
+	}
+
+	public UserEntity searchPassword(@NotNull(message = "ID는 필수값입니다.") String username, @NotNull String email) {
+		
+		return null;
+	}
+
 
 }

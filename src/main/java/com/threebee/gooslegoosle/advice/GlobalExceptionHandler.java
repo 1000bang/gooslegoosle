@@ -86,7 +86,7 @@ public ResponseEntity<?> exception(Exception e) {
 				.builder()
 				.statusCode(HttpStatus.BAD_REQUEST.toString())
 				.code(HttpStatus.BAD_REQUEST.value())
-				.message("비밀번호를 입력하세요 ")
+				.message(e.getMessage())
 				.build();
 
 		

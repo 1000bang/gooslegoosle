@@ -3,6 +3,8 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
@@ -12,7 +14,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
+<meta id="_csrf" name="${_csrf.parameterName}" content="${_csrf.token}">
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}">
 <title>구슬구슬</title>
 <link rel="shortcut icon" href="/images/fav.png">
 <link rel="stylesheet"
@@ -21,7 +24,10 @@
 <link rel="stylesheet" href="/css/review_detail.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/footer.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -48,8 +54,8 @@
 	href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
 
 </head>
@@ -81,13 +87,22 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">
-									
+
 								</c:when>
 								<c:otherwise>
 									<li class="bell">
 										<div class="bellBox">
 											<a href="/my_message"><img src="/images/bell.png" alt=""></a>
-											<p style="width: 50%; height: 50%;">1</p>
+											<c:forEach var="item" items="${principal.user.message}">
+												<c:if test="${item.read eq false}">
+													<c:set var="i" value="${i + 1}" />
+													<input hidden="false" value="${i}" id="mes">
+												</c:if>
+											</c:forEach>
+											
+											<c:if test="${i ge 0}">
+											<p id="temp" style="width: 50%; height: 50%;">${i}</p>
+										</c:if>
 										</div>
 									</li>
 								</c:otherwise>
@@ -105,7 +120,7 @@
 											Reservation</a></li>
 									<li><a class="dropdown-item" href="/seviceCenter">Service
 											Center</a></li>
-									<li><a class="dropdown-item" href="/logout">LogOut</a></li>
+									<li><a class="dropdown-item" href="/m-logout">LogOut</a></li>
 								</ul></li>
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">
@@ -124,3 +139,14 @@
 				</ul>
 			</nav>
 		</header>
+
+		<script>
+			$(document).ready(function() {
+				console.log(${i});
+				if ($("#mes") == 0) {
+					$("#temp").css({
+						display : none
+					})
+				}
+			});
+		</script>

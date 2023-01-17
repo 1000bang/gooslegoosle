@@ -30,9 +30,11 @@ import com.threebee.gooslegoosle.auth.PrincipalDetail;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.dto.kakao.pay.PaymentReqDto;
 import com.threebee.gooslegoosle.dto.kakao.pay.PaymentResDto;
+import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.ReviewEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
+import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.ReservationService;
 import com.threebee.gooslegoosle.service.ReviewService;
@@ -45,7 +47,7 @@ public class StoreController {
 	private	StoreService storeService;
 	
 	@Autowired
-	private PartnerService partnerService;
+	private MessageService messageService;
 	
 	@Autowired
 	private ReviewService reviewService;
@@ -79,6 +81,32 @@ public class StoreController {
 		return "/store/detail";
 	}
 	
+	@GetMapping("/store/my/{id}")
+	public String fetchPatenrToStore(Model model, @PathVariable int id, 
+			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		
+		StoreEntity detail = storeService.findByUserId(id);
+	
+		Page<ReviewEntity> storeReview = reviewService.getStoreReviewList(detail.getId(), pageable);
+		int nowPage = storeReview.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, storeReview.getTotalPages());
+		int end = storeReview.getTotalPages() - 1;
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
+		model.addAttribute("review",storeReview);
+		model.addAttribute("storeDetail",detail);
+		return "/store/detail";
+	}
+	
+	
 	@GetMapping("/store/reservation/{id}")
 	public String fetchReserve(Model model, @PathVariable int id) {
 		
@@ -89,10 +117,22 @@ public class StoreController {
 	}
 	
 	@GetMapping("/store/all")
-	public String fetchAllStore(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
-		String searchWords = searchWord == null ? "": searchWord;
-		List<StoreEntity> store = storeService.findAll(searchWords, pageable);
+	public String fetchAllStore(Model model, @PageableDefault(size = 6, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		Page<StoreEntity> store = storeService.findAll(pageable);
 		
+		int nowPage = store.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - 2, 1);
+		int endPageNumber = Math.min(nowPage + 2, store.getTotalPages());
+		int end = store.getTotalPages() - 1;
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", end);
 		model.addAttribute("store",store);
 		return "/store/all_store";
 	}
@@ -117,7 +157,7 @@ public class StoreController {
 	}
 	
 	@GetMapping("/store/reservation/{id}/reservation_next")
-	public String reservationNext(Model model, @PathVariable int id, @AuthenticationPrincipal PrincipalDetail detail) {
+	public String fetchReservationNext(Model model, @PathVariable int id, @AuthenticationPrincipal PrincipalDetail detail) {
 		
 		
 		//ReservationEntity reservationEntity = reservationService.findid(detail.getUser().getId()); 위에 insert 후에 영수증 느낌으로 뿌려줄 때 사용
@@ -127,13 +167,13 @@ public class StoreController {
 	}
 	
 	@GetMapping("/store/reservation/pay/fail")
-	public String payFail() {
+	public String fetchPayFail() {
 		return "/store/reservation_pay_fail";
 	}
 	
 	@PostMapping("/pay/ready")
 	@ResponseBody
-	public ResponseDto<PaymentResDto> readyForPay(@RequestBody PaymentReqDto reqData){
+	public ResponseDto<PaymentResDto> fetchReadyForPay(@RequestBody PaymentReqDto reqData){
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		
@@ -166,7 +206,7 @@ public class StoreController {
 	
 	//////////////////////////SUCCESS APPROVAL/////////////////////////////////
 	@GetMapping("/pay/success")
-	public String payCompleted(@RequestParam("pg_token") String pgToken, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+	public String fetchPayCompleted(@RequestParam("pg_token") String pgToken, Model model, @AuthenticationPrincipal PrincipalDetail principalDetail) {
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		
@@ -191,6 +231,11 @@ public class StoreController {
 	
 
 		reservationService.saveReservation(resData, principalDetail.getUser(), tid); 
+		
+		MessageEntity newMsg = MessageEntity.builder()
+				.comment(resData.getStore().getUser().getUserNickname() + "님 예약 신청이 도착했습니다. \n \t\t- 구슬구슬 팀").build();
+		messageService.sendMessageByUserId(resData.getStore().getUser().getId(), newMsg);
+		
 		
 		model.addAttribute("reservationDetail", resData);
 		model.addAttribute("response", response);

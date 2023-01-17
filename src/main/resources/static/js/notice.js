@@ -1,3 +1,6 @@
+let token = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
 let index = {
 
 	init: function(){
@@ -17,6 +20,10 @@ let index = {
 		};
 
 		$.ajax({
+			
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
 			type: "POST",
 			url: "/api/notice",
 			data: JSON.stringify(data),
@@ -45,6 +52,10 @@ let index = {
 		};
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "Put",
 			url: `/api/notice/${$("#board-id").attr("data-id")}`,
 			data: JSON.stringify(data),

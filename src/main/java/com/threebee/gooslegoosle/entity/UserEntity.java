@@ -42,8 +42,8 @@ public class UserEntity {
 	
 	
 	@Column(nullable = false, length = 100, unique = true)
-	@NotNull
-	@Size(min = 2)
+	@NotNull(message = "ID는 필수값입니다.")
+	@Size(min = 2, message = "ID가 너무 짧습니다. ")
 	private String username;
 
 	@Column(nullable = false, length = 100)
@@ -97,7 +97,7 @@ public class UserEntity {
 	@CreationTimestamp
 	private Timestamp createTime;
 
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties(value = {"user"})
 	private List<MessageEntity> message;
 	

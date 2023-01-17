@@ -11,14 +11,40 @@
 	<div class="row">
 		<div class="col-lg-8">
 			<div class="card mb-4">
-				<a href="#!"><img class="card-img-top"
-					src="http://localhost:9090/magazine/${storeDetail.image[0].postImageUrl}"
-					alt="..."></a>
+				<c:choose>
+					<c:when test="${fn:length(storeDetail.image) ge 2}">
+						<div class="swiper myswiper0" >
+							<div class="swiper-wrapper" style="height: fit-content;">
+								<c:forEach var="items" items="${storeDetail.image}">
+									<div class="swiper-slide">
+										<img class="card-img-top"
+											src="http://localhost:9090/magazine/${items.postImageUrl}"
+											alt="...">
+									</div>
+								</c:forEach>
+							</div>
+							<div class="swiper-button-next swiper-button-next0"
+								style="position: absolute; right: 0%; top: 50%;"></div>
+							<div class="swiper-button-prev swiper-button-prev0"
+								style="position: absolute; left: 0%; top: 50%;"></div>
+						</div>
+					
+					</c:when>
+					<c:otherwise>
+						<a href="#!"><img class="card-img-top"
+							src="http://localhost:9090/magazine/${storeDetail.image[0].postImageUrl}"
+							alt="..."></a>
+
+					</c:otherwise>
+
+				</c:choose>
+
 				<div class="card-body">
 					<div class="small text-muted"># ${storeDetail.category}</div>
 					<h1 class="card-title h1">${storeDetail.partner.storeName}</h1>
-					<br/>
-					<input type="button" class="btn btn-warning" onClick="sendLinkDefault();" value="카카오톡으로 공유하기 " style="color: white" />
+					<br /> <input type="button" class="btn btn-warning"
+						onClick="sendLinkDefault();" value="카카오톡으로 공유하기 "
+						style="color: white" />
 				</div>
 			</div>
 			<div class="card mb-4">
@@ -101,15 +127,14 @@
 								<hr />
 								<h5 class="card-title h5">${reviews.reviewTitle}</h5>
 								<p class="card-text">${reviews.reviewContent}</p>
-								<p>
-									<img class="card-img"
-										src="http://localhost:9090/magazine/${reviews.thumbnail}"
-										alt="...">
-								</p>
 
-								<a type="button" class="btn"
-									style="color: white; background-color: #63BFBC; width: 15vh"
-									href="#"> 더보기</a>
+								<div class="d-flex flex-row">
+									<p>
+										<a type="button" class="btn"
+											style="color: white; background-color: #63BFBC; width: 15vh"
+											href="/review/${reviews.id}"> 더보기</a>
+									</p>
+								</div>
 							</div>
 
 						</div>
@@ -192,6 +217,17 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8c530edd51a40103966e7768c176ca6c&libraries=services"></script>
 <script>
+	const swiper0 = new Swiper('.myswiper0', {
+		direction : 'horizontal',
+		autoHeight : true,
+		loop : true,
+		navigation : {
+			nextEl : '.myswiper0 .swiper-button-next0',
+			prevEl : '.myswiper0 .swiper-button-prev0',
+		},
+
+	});
+
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
 		center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표

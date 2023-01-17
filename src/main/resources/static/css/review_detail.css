@@ -1,6 +1,8 @@
-.detail-body{
+		.detail-body{
+		width: 50%;
 			display: flex;
 			justify-content: center;
+			margin: 0 auto;
 		}
 		.review-profile{
 			width: 100vw;
@@ -59,11 +61,12 @@
     		background-color: white;
 		}
 		.review-content{
+			width: 100%;
 			margin-bottom: 15px;
 		}
 		.like img{
-		width: 20px;
-		height: 20px;
+			width: 20px;
+			height: 20px;
 		}
 		.replyText{
 			padding-top: 10px;

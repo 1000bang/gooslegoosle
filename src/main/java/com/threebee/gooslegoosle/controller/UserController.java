@@ -2,6 +2,10 @@ package com.threebee.gooslegoosle.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
@@ -31,6 +36,7 @@ import org.springframework.web.client.RestTemplate;
 import com.threebee.gooslegoosle.auth.PrincipalDetail;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.dto.kakao.pay.PaymentResDto;
+import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
@@ -39,6 +45,7 @@ import com.threebee.gooslegoosle.model.GoogleLogin;
 import com.threebee.gooslegoosle.model.KakaoLogin;
 import com.threebee.gooslegoosle.model.NaverLogin;
 import com.threebee.gooslegoosle.model.SocialLogin;
+import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.ReservationService;
 import com.threebee.gooslegoosle.service.StoreService;
@@ -51,16 +58,28 @@ public class UserController {
 	PartnerService partnerService;
 	
 	@Autowired
+	MessageService messageService;
+	
+	@Autowired
 	StoreService storeService;
 	
-	@GetMapping("test")
-	public String test() {
-		return "user/test";
+	@GetMapping("/m-logout")
+	public String  fetchLogout(HttpServletRequest req, HttpServletResponse res) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth != null) {
+			new SecurityContextLogoutHandler().logout(req, res, auth);
+		}
+		
+		return "redirect:/";
 	}
 	
+	
+	
 	@GetMapping({ "", "/", "index", "search"})
-	public String fetchIndex(@RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
+	public String fetchIndex(@AuthenticationPrincipal PrincipalDetail detail, @RequestParam(required = false) String searchWord,Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchWords = searchWord == null ? "": searchWord;
+		
 		
 		List<StoreEntity> store = storeService.findAll(searchWords, pageable);
 		Page<StoreEntity> koreanStore = storeService.findKorean(searchWords, pageable);
@@ -197,5 +216,12 @@ public class UserController {
 				.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 	}
+	
+	@GetMapping("/auth/find")
+	public String fetchFindLoginInfo() {
+		return "user/find_password";
+	}
+	
+	
 
 }

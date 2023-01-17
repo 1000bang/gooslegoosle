@@ -1,3 +1,5 @@
+let token = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
 let index = {
 	init: function() {
@@ -39,6 +41,10 @@ let index = {
 			
 		};
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "POST",
 			url: `/store/update/${id}`,
 			data: JSON.stringify(data),
@@ -64,9 +70,12 @@ let index = {
 
 		var form = $('#uploadForm')[0];
 
-		var formData = new FormData(form);
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "POST",
 			url: `/api/partner/${id}`,
 			data: formDate,
@@ -106,6 +115,10 @@ let index = {
 		console.log("===========" + id);
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "POST",
 			url: `/api/partner/add_store/${id}`,
 			data: JSON.stringify(data),
@@ -136,6 +149,10 @@ let index = {
 		console.log(id);
 		console.log(data);
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "POST",
 			url: `/partner/add_menu/${id}`,
 			data: JSON.stringify(data),
@@ -165,6 +182,10 @@ let index = {
 		console.log(id);
 		console.log(data);
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "POST",
 			url: `/partner/add_menu/${id}/done`,
 			data: JSON.stringify(data),
@@ -187,6 +208,10 @@ let index = {
 
 	menuDelete: function(menuId) {
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "DELETE",
 			url: `/menu/delete/${menuId}`,
 			dataType: "json"
@@ -208,6 +233,10 @@ let index = {
 			menuPrice: $("#menuPrice").val(),
 		}
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: "put",
 			url: `/menu/update/${menuId}`,
 			data: JSON.stringify(menuData),

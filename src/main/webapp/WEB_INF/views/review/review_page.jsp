@@ -35,18 +35,32 @@
 
 		<div class="Row">
 			<c:forEach var="review" items="${reviews.content}">
+				<c:set var="now" value="<%=new java.util.Date()%>" />
+				<c:set var="nowDate">
+					<fmt:formatDate value="${now}" pattern="yyyyMMddHH" />
+				</c:set>
+				<c:set var="dataDate">
+					<fmt:formatDate value="${review.createTime}" pattern="yyyyMMddHH" />
+				</c:set>
+				
 				<div class="my_container">
 					<div class="review_picture">
 						<img alt=""
 							src="http://localhost:9090/magazine/${review.thumbnail}">
 					</div>
 					<div class="about_story">
+					<div class="d-flex flex-row">
 						<h2>${review.getReviewTitle()}</h2>
+						<c:if test="${nowDate - dataDate le 100}">
+						<p style="background-color: red; color: white; width:30px; height:30px; border-radius: 2em; font-size: 10px; text-align: center; padding-top: 7px; position: absolute;
+    right: 6%; top: 43%;">New</p>
+						</c:if>
+					</div>
 						<div class="content_text">
 							<div>${review.getReviewContent()}</div>
 						</div>
 						<a id="into" class="btn btn-outline-dark mt-auto"
-							href="review/${review.getId()}">더보기</a> <br>
+							href="/review/${review.getId()}">더보기</a> <br>
 						<br>
 					</div>
 

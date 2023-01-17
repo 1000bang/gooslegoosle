@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/partner_header.jsp"%>
-<section id="store-apply">
+<section id="store-apply" style="height: 108%;">
 	<form action="/partner/add_store/${partner.id}" class="was-validated"
 		id="store-info-bg" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 		<input type="hidden" id="storeId" value="${partner.id}">
 		<div id="store-info" class="info-box">
 			<p class="info-title">가게 영업 정보를 입력해주세요 !</p>
@@ -79,7 +80,7 @@
 </section>
 
 <footer id="footer" style="position: absolute;
-    top: 108%;">
+    top: 113%;">
 	<div class="footer-line">
 		<div id="endLogo">
 			<a href=""><img src="/images/logo2.png" alt=""></a>
@@ -107,6 +108,25 @@
 		</div>
 	</div>
 </footer>
+<script>
+$("#storePics").on(
+		"change",
+		  function() {
+			$(this).siblings(".custom-file-label").addClass("selected")
+			.html("");
+			
+			
+			 var files=$('input[name="storePics"]')[0].files;
+			console.log(files);
+			
+			
+			for (i = 0; i < files.length; i++) {
+				$(this).siblings(".custom-file-label").addClass("selected")
+				.append(files[i].name);
+				} 
+
+		});
+</script>
 </div>
 </body>
 </html>

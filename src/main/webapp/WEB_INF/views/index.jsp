@@ -272,7 +272,6 @@
 
 	var swipers = new Swiper(".mySwiper", {
 		slidesPerView : 5,
-		spaceBetween : 5,
 		slidesPerGroup : 4,
 		slidesPerGroup : 5,
 		loop : true,
