@@ -30,14 +30,14 @@
 
 		<c:if test="${empty principal.user.loginType}">
 			<div class="form-group">
-				<label for="password">Password:</label> <input type="password"
-					class="form-control" id="password" value="">
+			<label for="password">Password:</label> <input type="password" class="form-control" id="password" value="" placeholder="새로운 비밀번호 입력...">
 			</div>
 			<div class="form-group">
 				<input type="password" class="form-control"
 					placeholder="Enter password Again" id="passwordConfirm">
 				<span id="confirmMsg"></span>
 			</div>
+		
 		</c:if>
 
 		<div class="form-group">

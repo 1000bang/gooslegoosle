@@ -1,6 +1,5 @@
 package com.threebee.gooslegoosle.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -13,14 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
-import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.UserRole;
-import com.threebee.gooslegoosle.repository.IMessageRepository;
 import com.threebee.gooslegoosle.repository.IUserRepository;
-
-import net.nurigo.sdk.message.model.Message;
-import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Service
 public class UserService {
