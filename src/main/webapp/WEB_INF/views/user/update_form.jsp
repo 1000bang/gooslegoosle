@@ -20,7 +20,7 @@
 		
 		<c:if test="${empty principal.user.loginType}">
 		<div class="form-group">
-			<label for="password">Password:</label> <input type="password" class="form-control" id="password" value="">
+			<label for="password">Password:</label> <input type="password" class="form-control" id="password" value="" placeholder="새로운 비밀번호 입력...">
 		</div>
 		</c:if>
 		
