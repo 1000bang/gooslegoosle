@@ -16,13 +16,13 @@
 	<div class="input-group justify-content-center">
 			<button type="button" id="searchId" class="btn" style="width: 30vh; height: 5vh; color: white; background-color: #63BFBC;">찾기</button>
 	</div>
-	<form action="" method="Post">
+	<form action="/auth/findPw" method="Post">
 
 		<div class="form-group">
 			<label for="email">비밀번호 찾기</label> 
-			<input type="id" class="form-control" placeholder="Enter Id" id="id" name="id" >
+			<input type="text" class="form-control" placeholder="Enter Id" id="username" name="username" >
 			<br>
-			<input type="email" class="form-control" placeholder="Enter Email" id="email" name="email" >
+			<input type="email" class="form-control" placeholder="Enter Email" id="email1" name="email1" >
 		</div>
 		<br>
 		

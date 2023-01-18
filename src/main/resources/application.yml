@@ -38,9 +38,9 @@ spring:
 file:
 
 #  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
-#  path: C:\androidworkspace\gooslegoosle\magazine\
-  path: C:\ii\gooslegoosle\magazine\
+  path: C:\androidworkspace\gooslegoosle\magazine\
+#  path: C:\ii\gooslegoosle\magazine\
 
 mail:
-  id: tjdqls2s@naver.com
-  pw: tjdqls1722
+  id: #메일 아이디
+  pw: #메일 비밀번호

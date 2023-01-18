@@ -132,13 +132,13 @@ public class UserService {
 	}
 
 	
-	public UserEntity findId(@NotNull String email) {
+	public UserEntity fetchFindId(@NotNull String email) {
 		return iUserRepository.findInfo(email).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});
 	}
 	
-	public String getTempPassword() {
+	public String fetchTempPassword() {
 		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
 				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
@@ -154,14 +154,14 @@ public class UserService {
 	}
 	
 	@Transactional
-	public String searchPasswordChange(String email) {
+	public String fetchPasswordChange(String email) {
 		UserEntity userEntity = iUserRepository.findInfo(email).orElseThrow(() -> {
 			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
 		});
 		String rawPassword = "";
 		if (userEntity.getLoginType() == null || userEntity.getLoginType().equals("")) {
 
-			rawPassword = getTempPassword();
+			rawPassword = fetchTempPassword();
 			String encPassword = bcencoder.encode(rawPassword);
 
 			userEntity.setPassword(encPassword);
@@ -170,9 +170,12 @@ public class UserService {
 		return rawPassword;
 	}
 
-	public UserEntity searchPassword(@NotNull(message = "ID는 필수값입니다.") String username, @NotNull String email) {
-		
-		return null;
+	@Transactional
+	public UserEntity fetchFindPassword(@NotNull(message = "ID는 필수값입니다.") String username, @NotNull String email) {
+		UserEntity userEntity = iUserRepository.findPw(email, username).orElseThrow(() -> {
+			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
+		});
+		return userEntity;
 	}
 
 

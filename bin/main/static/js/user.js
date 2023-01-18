@@ -182,8 +182,8 @@ let index = {
 	},
 	searchPw: function() {
 		let data = {
-			id : $("#id").val(),
-			email: $("#email").val()
+			username : $("#username").val(),
+			email: $("#email1").val(),
 		}
 
 		console.log(data);
@@ -200,13 +200,14 @@ let index = {
 			if (data.httpStatus == "OK") {
 				Swal.fire({
                     icon: 'success',
-                    text: "이메일로 임시 비밀번호를 보냈습니다.",
+                    text: `이메일로 임시 비밀번호를 보냈습니다.`,
                 });
 			}
 		}).fail(function(error) {
+			alert(data.body)
 				Swal.fire({
                     icon: 'fail',
-                    text: "입력된 이메일이 없습니다. ",
+                    text: `입력된 이메일이 없습니다.`,
                 });
 		});
 
