@@ -13,8 +13,8 @@ spring:
   datasource:
     driver-class-name : com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/gooslegoosle?serverTimezone=Asia/Seoul
-    username: root
-    password: asd1234
+    username: ten
+    password: 1q2w3e4r5t!
 
   jpa:
     open-in-view: true
@@ -23,7 +23,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       user-new-id-generator-mappings: false
-    show-sql: true
+    show-sql: false
     properties:
       hibernate.format_sql : true
 
@@ -37,8 +37,8 @@ spring:
       
 file:
 
-#  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
-  path: C:\androidworkspace\gooslegoosle\magazine\
+  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
+#  path: C:\androidworkspace\gooslegoosle\magazine\
 #  path: C:\ii\gooslegoosle\magazine\
 
 mail:

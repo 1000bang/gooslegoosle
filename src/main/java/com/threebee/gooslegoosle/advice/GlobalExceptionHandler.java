@@ -40,10 +40,10 @@ private List<CustomError> errorList;
 
 public ResponseEntity<?> exception(Exception e) {
 		
-		System.out.println("--------------");
+		System.out.println(">>>>>>Error<<<<<<<<");
 		System.out.println(e.getClass().getName());
 		System.out.println(e.getLocalizedMessage());
-		System.out.println("--------------");
+		System.out.println(">>>>>>Error<<<<<<<<");
 		
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
 	}
