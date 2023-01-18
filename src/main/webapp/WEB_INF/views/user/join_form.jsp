@@ -9,22 +9,22 @@
 	<form action="">
 		<div class="form-group"><input type="text"
 				class="form-control" placeholder="Enter userId" id="username"
-				value="홍길동">
+				value="">
 
 		</div>
 		<div class="form-group"><input type="text"
 				class="form-control" placeholder="Enter userName" id="userNickname"
-				value="홍길동">
+				value="">
 
 		</div>
 		<div class="form-group"> <input type="password"
 				class="form-control" placeholder="Enter password" id="password"
-				value="asd123">
+				value="">
 		</div>
 		
 		<div class="form-group"> <input type="password"
 				class="form-control" placeholder="Enter password Again" id="passwordConfirm"
-				value="asd123">
+				value="">
 				<span id="confirmMsg"></span>
 		</div>
 		
@@ -66,7 +66,7 @@
 
 		<div class="form-group"><input type="email"
 				class="form-control" placeholder="Enter email" id="email"
-				value="abc@naver.com">
+				value="">
 		</div>
 
 

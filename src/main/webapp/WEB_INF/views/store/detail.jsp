@@ -14,7 +14,7 @@
 				<c:choose>
 					<c:when test="${fn:length(storeDetail.image) ge 2}">
 						<div class="swiper myswiper0" >
-							<div class="swiper-wrapper" style="height: fit-content;">
+							<div class="swiper-wrapper">
 								<c:forEach var="items" items="${storeDetail.image}">
 									<div class="swiper-slide">
 										<img class="card-img-top"

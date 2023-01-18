@@ -60,7 +60,7 @@ public class UserEntity {
 
 	@Column(nullable = false, length = 100)
 	@NotNull
-	@Size(min = 11, max = 12)
+	@Size(min = 11, max = 14)
 	private String phoneNumber;
 	
 	@Column(nullable = false, length = 100) 
