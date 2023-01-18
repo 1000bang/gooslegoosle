@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
-<article id="m-content2" style="height: 1600px; overflow: hidden;" class="m-content2">
 
-<div class="listHeader">
-	<div class="imgBox"><img src="/images/logo2.png" alt=""></div>
-	<div class="listHeader-title">
-		<h4>#아직 디자인 전</h4>
-		<h4>#단계 입니다.</h4>
+<header class="bg-dark">
+	<div class="container my-5" id="container-top">
+		<div class="text-center text-white">
+			<h1 class="display-4 fw-bolder">Best Store</h1>
+			<p class="lead fw-normal text-white-50 mb-0">
+				<span>당</span> <span>신</span> <span>이</span> <span>찾</span> <span>는</span>
+				<span>맛</span> <span>집</span> <span>리</span> <span>스</span> <span>트</span>
+			</p>
+		</div>
 	</div>
-</div>
+</header>
 <article id="m-content2" >
 	
 	<c:forEach var="storeInfo" items="${store.content}">

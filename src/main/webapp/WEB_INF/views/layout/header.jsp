@@ -22,6 +22,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/review.css">
 <link rel="stylesheet" href="/css/review_detail.css">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/reset.css">
@@ -61,12 +62,12 @@
 </head>
 <body>
 	<div id="wrap">
-		<header id="header" class="main_header">
+		<header id="header" class="main_header myrow">
 
-			<div id="logo">
+			<div id="logo" class="mycol-2">
 				<a href="/"><img src="/images/logo2.png" alt=""></a>
 			</div>
-			<div class="searchBox">
+			<div class="searchBox mycol-5">
 				<form action="/search">
 					<button type="submit" class="searchButton">
 						<img src="/images/search.png" alt="">
@@ -74,7 +75,7 @@
 					<input type="text" placeholder="음식 또는 식당명 입력" name="searchWord">
 				</form>
 			</div>
-			<nav id="nav">
+			<div id="nav" class="mycol-5">
 				<ul>
 					<c:choose>
 						<c:when test="${empty principal}">
@@ -137,7 +138,7 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-			</nav>
+			</div>
 		</header>
 
 		<script>

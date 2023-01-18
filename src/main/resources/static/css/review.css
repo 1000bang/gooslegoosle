@@ -143,8 +143,8 @@ body .lead {
   position: relative;
   top: 20px;
   display: inline-block;
-  animation: bounce .3s ease infinite alternate;
-  font-family: 'Titan One', cursive;
+  animation: bounce .3s ease 2 alternate;
+  font-family: auto;
   color: #ccc;
 /*   text-shadow: 0 1px 0 #fff,
                0 2px 0 #fff,
