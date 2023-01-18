@@ -25,7 +25,10 @@
 <link rel="stylesheet" href="/css/review_detail.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/footer.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link

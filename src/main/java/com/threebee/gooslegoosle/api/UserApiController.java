@@ -1,8 +1,19 @@
 package com.threebee.gooslegoosle.api;
 
+import java.util.Properties;
 import java.util.Random;
 
+import javax.mail.Authenticator;
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.model.LoginType;
 import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.UserService;
 
@@ -37,13 +49,17 @@ public class UserApiController {
 	@Autowired
 	private MessageService localMsgService;
 
+	@Value("${mail.id}")
+	private String id;
+
+	@Value("${mail.pw}")
+	private String pw;
+
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> fetchSave(@RequestBody UserEntity user) {
 		UserEntity users = userService.saveUser(user);
 		MessageEntity newMsg = MessageEntity.builder()
-		.comment(users.getUserNickname()+"님 구슬구슬 회원가입을 축하합니다 \n"
-				+ "\t\t- 구슬구슬 팀")
-		.build();
+				.comment(users.getUserNickname() + "님 구슬구슬 회원가입을 축하합니다 \n" + "\t\t- 구슬구슬 팀").build();
 		localMsgService.sendMessageByUserId(users.getId(), newMsg);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
@@ -93,6 +109,61 @@ public class UserApiController {
 		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
 		System.out.println(response);
 
+	}
+
+	// 아이디 찾기
+	@PostMapping("/auth/find")
+	public ResponseDto<?> fetchFindId(@RequestBody UserEntity user) {
+		UserEntity userEntity = userService.fetchFindId(user.getEmail());
+		return new ResponseDto<>(HttpStatus.OK, userEntity.getUsername());
+	}
+
+	@PostMapping("/auth/findPw")
+	public ResponseDto<?> fetchFindPassword(@RequestBody UserEntity user) {
+		UserEntity userEntity = userService.fetchFindPassword(user.getEmail(), user.getUsername());
+
+		return new ResponseDto<>(HttpStatus.OK, naverMailSend(userEntity.getEmail()));
+	}
+
+	public int naverMailSend(String email) {
+		String host = "smtp.naver.com";
+		// 테스트후 개인정보 보안상 비밀번호는 지워주세요
+
+		// SMTP 서버 정보를 설정한다.
+		Properties props = new Properties(); // Properties는 java.util의 Properties입니다.
+		props.put("mail.smtp.host", host); // smtp의 호스트
+		props.put("mail.smtp.port", 587); // 587 포트 사용
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+		Session session = Session.getDefaultInstance(props, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(id, pw);
+			}
+		});
+
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(id)); // 발신자의 이메일
+			// 수신자 이메일
+			message.addRecipient(RecipientType.TO, new InternetAddress(email));
+
+			// 메일 제목
+			message.setSubject("GoosleGoosle.");
+
+			// 메일 내용
+			String temporary = userService.fetchPasswordChange(email);
+			
+			message.setText("안녕하세요.\n 구슬구슬  입니다. \n 임시비밀번호 : " + temporary); // 랜덤인 임시비밀번호를 생성
+
+			// send the message
+			Transport.send(message);
+			return 0;
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 
 }

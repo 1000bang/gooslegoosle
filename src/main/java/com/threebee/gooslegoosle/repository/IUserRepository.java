@@ -35,6 +35,12 @@ public interface IUserRepository extends JpaRepository<UserEntity, Integer>{
 
 	@Query(value = "SELECT * FROM userentity WHERE username LIKE %:item% OR userNickname LIKE %:item%", nativeQuery = true)
 	Page<UserEntity> findAll(@Param("item")String q, Pageable pageable);
+
+	@Query(value = "select * from userentity where email = ?1 ", nativeQuery = true)
+	Optional<UserEntity> findInfo(String email);
+	
+	@Query(value = "select * from userentity where username = ?1 and email = ?2 ", nativeQuery = true)
+	Optional<UserEntity> findPw(String username, String email);
 	
 
 	

@@ -1,6 +1,5 @@
 package com.threebee.gooslegoosle.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -13,14 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
-import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.UserRole;
-import com.threebee.gooslegoosle.repository.IMessageRepository;
 import com.threebee.gooslegoosle.repository.IUserRepository;
-
-import net.nurigo.sdk.message.model.Message;
-import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Service
 public class UserService {
@@ -135,6 +129,53 @@ public class UserService {
 
 	public List<ChartDto> lastTwoWeeksUser() {
 		return iUserRepository.findLastTwoWeeks();
+	}
+
+	
+	public UserEntity fetchFindId(@NotNull String email) {
+		return iUserRepository.findInfo(email).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
+		});
+	}
+	
+	public String fetchTempPassword() {
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+		String str = "";
+
+		// 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
+		int idx = 0;
+		for (int i = 0; i < 10; i++) {
+			idx = (int) (charSet.length * Math.random());
+			str += charSet[idx];
+		}
+		return str;
+	}
+	
+	@Transactional
+	public String fetchPasswordChange(String email) {
+		UserEntity userEntity = iUserRepository.findInfo(email).orElseThrow(() -> {
+			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
+		});
+		String rawPassword = "";
+		if (userEntity.getLoginType() == null || userEntity.getLoginType().equals("")) {
+
+			rawPassword = fetchTempPassword();
+			String encPassword = bcencoder.encode(rawPassword);
+
+			userEntity.setPassword(encPassword);
+
+		}
+		return rawPassword;
+	}
+
+	@Transactional
+	public UserEntity fetchFindPassword(@NotNull(message = "ID는 필수값입니다.") String username, @NotNull String email) {
+		UserEntity userEntity = iUserRepository.findPw(email, username).orElseThrow(() -> {
+			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
+		});
+		return userEntity;
 	}
 
 

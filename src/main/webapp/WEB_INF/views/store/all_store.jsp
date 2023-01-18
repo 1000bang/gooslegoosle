@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp"%>
+<article id="m-content2" style="height: 1600px; overflow: hidden;" class="m-content2">
 
 <div class="listHeader">
 	<div class="imgBox"><img src="/images/logo2.png" alt=""></div>
@@ -93,5 +94,11 @@
 		</li>
 	</ul>
 </article>
+
+<script type="text/javascript">
+	$(window).scroll(() => {
+		console.log(${storeInfo.totalElement});
+	}); 
+</script>
 <%@include file="../layout/footer.jsp"%>
 

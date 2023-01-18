@@ -15,7 +15,10 @@
 <title>구슬구슬파트너센터</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/footer.css">
 <link rel="stylesheet" href="/css/partner.css">
 <link rel="stylesheet" href="/css/partner_main.css">
 <link rel="stylesheet" href="/css/apply_store.css">

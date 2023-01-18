@@ -33,6 +33,7 @@ dependencies {
 	implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
 	implementation 'org.springframework.security:spring-security-taglibs'
 	implementation 'net.nurigo:sdk:4.2.7'
+	implementation group: 'javax.mail', name: 'mail', version: '1.4.7'
 	
 	
 	}
