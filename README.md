@@ -17,6 +17,9 @@
 [![notion](https://user-images.githubusercontent.com/113667600/213478594-d65f4631-f330-4c5e-8462-d8378b9ce2df.png)](https://1000bang.notion.site/Project-373eb1c07a074cff9e69d2c44bae356d)
 
 ## 기능 :
+<details>
+<summary>토글 접기/펼치기</summary>
+<div markdown="1">
 
 ### 유저 : 
 
@@ -72,6 +75,10 @@
     - 최근 2주별 일별 가입건수
     - 최근 2주 일별 리뷰 등록 수
     - 최근 2주 일별 파트너십 신청 수
+
+</div>
+</details>
+
     
     
 ## 회원가입
