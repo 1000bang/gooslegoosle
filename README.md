@@ -22,13 +22,17 @@
 
 <br><br>
 
-## 트렐로 : 이미지를 클릭하면 해당 페이지로 이동합니다!
+## 트렐로 : 
+
+이미지를 클릭하면 해당 페이지로 이동합니다!
 
 [![trello](https://user-images.githubusercontent.com/113667600/213486591-200c0368-01bf-47ab-a7eb-23f43f76db25.png)](https://trello.com/b/o3e9VVuB/gooslegoosle-timeline)
 <br><br>
 
 
-## 노션 : 이미지를 클릭하면 해당 페이지로 이동합니다!
+## 노션 : 
+
+이미지를 클릭하면 해당 페이지로 이동합니다!
 
 [![notion](https://user-images.githubusercontent.com/113667600/213486605-dfb47065-485f-491b-ae81-3e8cbbdbfbed.png)](https://1000bang.notion.site/Project-373eb1c07a074cff9e69d2c44bae356d)
 <br><br>
@@ -111,13 +115,25 @@
 
 ![회원가입](https://user-images.githubusercontent.com/113667600/213486888-17f63b65-5657-40c7-8971-bbedb3f11103.gif)
 
-## 메뉴 수정
-![메뉴수정](https://user-images.githubusercontent.com/113667600/213476728-c18cfd12-8b7a-467e-8e9a-1be296f71fed.gif)
-![메뉴수정2](https://user-images.githubusercontent.com/113667600/213476932-9839e62e-c2ca-4d77-9cea-bbf091374596.gif)
-
+## 로그인 
+    
+![로그인](https://user-images.githubusercontent.com/113667600/213491397-9940c772-f217-47a1-9e70-5263ac297153.gif)
+    
+## 정보수정/ 나의리뷰 / 내 예약목록 
+    
+![정보수정](https://user-images.githubusercontent.com/113667600/213491430-a6b7670d-91ae-4162-9cc9-f2024e48e643.gif)
+    
+## 예약하기
+![예약](https://user-images.githubusercontent.com/113667600/213491116-3c3cc208-f3ff-42bb-8cc0-058a92fb8c10.gif)
+    
 ## 파트너 신청
 ![파트너신청](https://user-images.githubusercontent.com/113667600/213477012-5cd971d6-fdf9-4a5a-8499-8653d37ed233.gif)
 
+
+## 메뉴 수정
+![메뉴수정](https://user-images.githubusercontent.com/113667600/213476728-c18cfd12-8b7a-467e-8e9a-1be296f71fed.gif)
+![메뉴수정2](https://user-images.githubusercontent.com/113667600/213476932-9839e62e-c2ca-4d77-9cea-bbf091374596.gif)    
+    
 </div>
 </details>
 
