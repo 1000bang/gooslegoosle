@@ -1,18 +1,19 @@
 
 # 구슬구슬 - gooslegoosle 🍚
-<br>
+
 ## B조
-<br>
 프로젝트 기간 : 2022. 12.26 ~ 2023. 01.14
 
 팀원 : 천병재(팀장) 강성빈
-<br>
+<br><br>
 ## 프로젝트 목적 :
 
 갓지은 따뜻한 식사를 할 수 있도록 사용자에게 전국의 맛집을 소개하고 
 
 사용자는 맛집을 예약하고 리뷰를 공유하는 웹 반응형 홈페이지 제작
-<br>
+<br><br>
+
+
 ## 구슬구슬이란 ?
 
 ![Untitled](https://user-images.githubusercontent.com/113667600/209509785-9dc5a84a-8544-414e-b7de-604497148e5d.png)
@@ -20,16 +21,19 @@
 ### 잘지은 한끼를 먹을 수 있게 맛집정보를 공유하고 예약하는 사이트
 
 
-<br>
 
 ## 트렐로 :
 
 [![trello](https://user-images.githubusercontent.com/113667600/213486591-200c0368-01bf-47ab-a7eb-23f43f76db25.png)](https://trello.com/b/o3e9VVuB/gooslegoosle-timeline)
-<br>
+<br><br>
+
+
 ## 노션 :
 
 [![notion](https://user-images.githubusercontent.com/113667600/213486605-dfb47065-485f-491b-ae81-3e8cbbdbfbed.png)](https://1000bang.notion.site/Project-373eb1c07a074cff9e69d2c44bae356d)
-<br>
+<br><br>
+
+
 ## 기능 :
 <details>
 <summary>토글 접기/펼치기</summary>
@@ -94,8 +98,11 @@
 </details>
 
 
-<br>
+<br><br>
+
+
 ## 실행화면
+
 <details>
 <summary>토글 접기/펼치기</summary>
 <div markdown="1">  
