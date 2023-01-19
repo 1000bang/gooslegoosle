@@ -69,6 +69,7 @@
 #image .textbox h1{
 	font-size: 50px;
 	margin-bottom: 20px;
+	font-weight: bold;
 }
 #m-content1 .swiper-wrapper .swiper-slide{
 	background-position: center;

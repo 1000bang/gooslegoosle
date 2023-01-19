@@ -24,7 +24,7 @@
 <article id="m-content1">
 	<section id="image">
 		<!-- Slider main container -->
-		<div class="textbox"><h1>안녕하세요~~~~~~</h1> <p>temp text</p> </div>
+		<div class="textbox"><h1>정성스럽게 당신을 맞이하는 구슬구슬</h1> <p>#맛집 #점심 #저녁 #데이트 #한식 #중식 #일식 #양식</p> </div>
 		<div class="swiper myswiper0" >
 			<div class="swiper-wrapper" >
 				<!-- Additional required wrapper -->
