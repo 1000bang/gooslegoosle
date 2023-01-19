@@ -89,12 +89,14 @@ public class AdminController {
 		PartnerEntity store = partnerService.findPartnerById(id);
 		System.out.println(store);
 		UserEntity user = store.getUser();
-		userService.setHost(user.getId());
-		partnerService.setApprove(store, user);
+		UserEntity users = userService.setHost(user.getId());
+		partnerService.setApprove(store, users);
 		MessageEntity newMsg = MessageEntity.builder()
 				.comment(user.getUserNickname()+"님 구슬구슬 파트너로 승인되셨습니다. \n"
 						+ "\t\t- 구슬구슬 팀")
 				.build();
+		
+		System.out.println("11111");
 		messageService.sendMessageByUserId(user.getId(), newMsg);
 		return "redirect:/admin/manage";
 	}

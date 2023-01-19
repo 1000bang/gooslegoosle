@@ -34,9 +34,11 @@
 		</div>
 
 	</form>
-
+<br/>
+<div class="d-flex justify-content-end">
 	<button type="button" id="btn--update" class="btn" style="color: white; background-color: #63BFBC;">글 수정하기 </button>
-
+</div>
+<br/><br/><br/>
 </div>
 
 <script>

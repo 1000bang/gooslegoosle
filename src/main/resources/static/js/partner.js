@@ -229,8 +229,8 @@ let index = {
 	
 		menuUpdate: function(menuId) {
 		let menuData = {
-			menuName: $("#menuName").val(),
-			menuPrice: $("#menuPrice").val(),
+			menuName: $("#menuName"+menuId).val(),
+			menuPrice: $("#menuPrice"+menuId).val(),
 		}
 		$.ajax({
 			beforeSend : function(xhr){
@@ -245,7 +245,7 @@ let index = {
 		}).done(function(resData) {
 			if (resData.httpStatus == "OK") {
 				alert("수정 완료 되었습니다. ");
-				
+				location.reload();	
 			}
 		}).fail(function(error) {
 			alert("수정 실패하였습니다. ");

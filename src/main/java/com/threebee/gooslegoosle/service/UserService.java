@@ -85,13 +85,13 @@ public class UserService {
 	}
 
 	@Transactional
-	public void setHost(int id) {
+	public UserEntity setHost(int id) {
 		System.out.println("sethost");
 		UserEntity userEntity = iUserRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});
 		userEntity.setRole(UserRole.HOST);
-
+		return userEntity;
 	}
 
 	public UserEntity findId(int id) {

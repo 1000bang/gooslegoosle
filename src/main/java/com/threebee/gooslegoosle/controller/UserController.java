@@ -145,7 +145,7 @@ public class UserController {
 		ResponseEntity<String> response = rt.exchange("https://kapi.kakao.com/v1/payment/cancel", HttpMethod.POST,
 				reqCancle, String.class);
 		reservationService.setCancle(res.getId());
-		return "redirect://myReservation";
+		return "redirect:/myReservation";
 	}
 	
 	@GetMapping("/auth/login_form")

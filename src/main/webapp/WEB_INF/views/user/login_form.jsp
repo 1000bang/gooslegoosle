@@ -12,14 +12,14 @@
 		<div class="form-group">
 			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 			<label for="usernmae">이름 :</label> <input type="text"
-				class="form-control" placeholder="Enter usernmae" id="username"
-				name="username" value="hong123">
+				class="form-control" placeholder="Enter userId" id="username"
+				name="username" >
 
 		</div>
 		<div class="form-group">
 			<label for="password">비밀번호 :</label> <input type="password"
 				class="form-control" placeholder="Enter password" id="password"
-				name="password" value="asd123">
+				name="password" >
 		</div>
 
 		<input type="hidden" name="${error}" content="${exception}"></input>

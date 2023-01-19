@@ -55,8 +55,12 @@
 		<ul class="list-group">
 			<c:forEach var="reply" items="${reviews.reviewReplys}">
 				<li class="list-group-item d-flex justify-content-between">
-					<div class="replyTextTitle">댓글()</div>
-					<div class="replyTextContent">${reply.replyContent}</div>
+					<div class="d-flex">
+					<div class="replyTextTitle">댓글</div>
+					<div class="replyTextContent">
+					${reply.replyContent}
+					</div>
+					</div>
 					<div class="d-flex">
 						<div class="replyText">작성자 :&nbsp;${reply.user.userNickname}&nbsp;&nbsp;&nbsp;</div>
 						<c:if test="${reply.user.id eq principal.user.id}">

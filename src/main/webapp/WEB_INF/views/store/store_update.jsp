@@ -87,12 +87,12 @@
 		<c:forEach var="item" items="${store.menu}">
 			<div class="form-group">
 				<label for="phoneNumber">메뉴이름 </label> <input type="text"
-					class="form-control" id="menuName" value="${item.menuName}">
+					class="form-control" id="menuName${item.id}" value="${item.menuName}">
 			</div>
 
 			<div class="form-group">
 				<label for="phoneNumber">메뉴가격</label> <input type="text"
-					class="form-control" id="menuPrice" value="${item.menuPrice}">
+					class="form-control" id="menuPrice${item.id}" value="${item.menuPrice}">
 			</div>
 			<div class="input-group justify-content-center">
 

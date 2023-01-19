@@ -55,7 +55,7 @@ public class ReservationEntity {
 	
 	@Column(nullable = false, length = 13)
 	@NotNull
-	@Size(min = 12, max = 13)
+	@Size(min = 11, max = 14)
 	private String phoneNumber;
 	
 	@Lob

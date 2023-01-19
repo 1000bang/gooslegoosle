@@ -123,10 +123,10 @@ public class UserApiController {
 	public ResponseDto<?> fetchFindPassword(@RequestBody UserEntity user) {
 		UserEntity userEntity = userService.fetchFindPassword(user.getEmail(), user.getUsername());
 
-		return new ResponseDto<>(HttpStatus.OK, naverMailSend(userEntity.getEmail()));
+		return new ResponseDto<>(HttpStatus.OK, naverMailSend(userEntity.getId(),userEntity.getEmail()));
 	}
 
-	public int naverMailSend(String email) {
+	public int naverMailSend(int ids, String email) {
 		String host = "smtp.naver.com";
 		// 테스트후 개인정보 보안상 비밀번호는 지워주세요
 
@@ -137,7 +137,7 @@ public class UserApiController {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
-		Session session = Session.getDefaultInstance(props, new Authenticator() {
+		Session session = Session.getInstance(props, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(id, pw);
@@ -151,7 +151,7 @@ public class UserApiController {
 			message.addRecipient(RecipientType.TO, new InternetAddress(email));
 
 			// 메일 제목
-			message.setSubject("GoosleGoosle.");
+			message.setSubject("GoosleGoosle. 임시비밀번호 입니다. ");
 
 			// 메일 내용
 			String temporary = userService.fetchPasswordChange(email);
@@ -160,6 +160,13 @@ public class UserApiController {
 
 			// send the message
 			Transport.send(message);
+			UserEntity user = userService.findId(ids);
+			MessageEntity msg = MessageEntity.builder()
+					.comment(user.getUserNickname()+"님 임시 비밀번호 변경되었습니다.\n"
+							+ "회원 정보 수정을 통해 새비밀번호로 변경해주세요 \n"
+							+ "- 구슬구슬 팀")
+					.build();
+			localMsgService.sendMessageByUserId(user.getId(), msg);
 			return 0;
 		} catch (MessagingException e) {
 			e.printStackTrace();
