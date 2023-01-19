@@ -102,8 +102,8 @@ let index = {
 				alert("회원가입성공 ")
 				location.href = "/"; // 성공하면 루트컨텍스트로 가
 			}).fail(function(error) {
-				console.log(error.responseJSON.message);
-				alert("회원가입실패" + error.responseJSON.message);
+				console.log(error.responseJSON);
+				alert("회원가입실패" + error.responseJSON.message.ConstraintViolationImpl);
 			});
 		} else {
 			Swal.fire({
