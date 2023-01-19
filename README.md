@@ -9,20 +9,16 @@
 
 
 ## 트렐로 :
-<a href="hhttps://trello.com/b/o3e9VVuB/gooslegoosle-timeline">
-<img src="https://img.shields.io/badge/Trello-#0052CC?style=flat-square&logo=Trello&logoColor=white"/></svg>
-</a>
+
+[![trello](https://user-images.githubusercontent.com/113667600/213479229-08d39994-ab42-4b95-819f-579130671dad.png)](https://trello.com/b/o3e9VVuB/gooslegoosle-timeline)
 
 ## 노션 :
 
-<a href="https://1000bang.notion.site/Project-373eb1c07a074cff9e69d2c44bae356d">
-<img src="https://img.shields.io/badge/Notion-#000000?style=flat-square&logo=Notion&logoColor=white"/>
-</a>
-
+[![notion](https://user-images.githubusercontent.com/113667600/213478594-d65f4631-f330-4c5e-8462-d8378b9ce2df.png)](https://1000bang.notion.site/Project-373eb1c07a074cff9e69d2c44bae356d)
 
 ## 기능 :
 
-##유저 : 
+### 유저 : 
 
 - 회원가입
     - Postcode API
@@ -48,7 +44,7 @@
     - 파트너 전환 성공시 웰컴 메세지 자동 전송
     - 경고 조치시 메세지 자동전송
 
-##파트너 : 
+### 파트너 : 
 
 - 파트너신청
 - 가게 등록
@@ -63,7 +59,7 @@
 - 고객센터를 통해 블랙 컨슈머 신고
 - 리뷰 답글 / 관리
 
-##관리자 :
+### 관리자 :
 
 - 매거진/ 공지사항 작성
     - 새로운 회원 또는 게시물 등록시 24시간 동안 new 표시
