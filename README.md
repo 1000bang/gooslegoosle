@@ -22,13 +22,13 @@
 
 <br><br>
 
-## 트렐로 :
+## 트렐로 : 이미지를 클릭하면 해당 페이지로 이동합니다!
 
 [![trello](https://user-images.githubusercontent.com/113667600/213486591-200c0368-01bf-47ab-a7eb-23f43f76db25.png)](https://trello.com/b/o3e9VVuB/gooslegoosle-timeline)
 <br><br>
 
 
-## 노션 :
+## 노션 : 이미지를 클릭하면 해당 페이지로 이동합니다!
 
 [![notion](https://user-images.githubusercontent.com/113667600/213486605-dfb47065-485f-491b-ae81-3e8cbbdbfbed.png)](https://1000bang.notion.site/Project-373eb1c07a074cff9e69d2c44bae356d)
 <br><br>
@@ -106,6 +106,7 @@
 <details>
 <summary>토글 접기/펼치기</summary>
 <div markdown="1">  
+    
 ## 회원가입
 
 ![회원가입](https://user-images.githubusercontent.com/113667600/213486888-17f63b65-5657-40c7-8971-bbedb3f11103.gif)
