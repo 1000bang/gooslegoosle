@@ -1,69 +1,67 @@
 package com.threebee.gooslegoosle.advice;
 
-
-
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
-
-import com.threebee.gooslegoosle.dto.exception.CustomError;
-import com.threebee.gooslegoosle.dto.exception.ErrorResponse;
-
-
-
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-	
-	/*
-	 * private String statusCode;
-private String requestUri;
-private int code;
-private String message;
-private String resultCode;
-private List<CustomError> errorList;
-	 * 
-	 */
-	
+	@ExceptionHandler(value = Exception.class)
+	public void exception(Exception e) {
 
-public ResponseEntity<?> exception(Exception e) {
-		
 		System.out.println(">>>>>>Error<<<<<<<<");
 		System.out.println(e.getClass().getName());
 		System.out.println(e.getLocalizedMessage());
 		System.out.println(">>>>>>Error<<<<<<<<");
+
+		// return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
+	}
+
+	@ExceptionHandler(value = MethodArgumentNotValidException.class)
+	public ResponseEntity<?> methodArgumentNotValidException(MethodArgumentNotValidException e, BindingResult result) {
+		List<String> error = new ArrayList<>();
+		result.getAllErrors().forEach((item)->{	
+			error.add(item.getDefaultMessage());
+		});
 		
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
+
+		 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
 	}
 	
+	
+	
+	/*
+	 * IllegalArgumentException MethodArgumentNotValidException
+	 * HttpRequestMethodNotSupportedException
+	 * SQLIntegrityConstraintViolationException unexpectedRollbackException
+	 */
 
-/*
- * IllegalArgumentException
- * MethodArgumentNotValidException
- * HttpRequestMethodNotSupportedException
- * SQLIntegrityConstraintViolationException
- * unexpectedRollbackException
- */
-
-
-//	@ExceptionHandler(value = IllegalArgumentException.class)
-//	public String illegalArgumentException(IllegalArgumentException e) {
-//		return "<h1>" + e.getMessage() + "</h1>";
+//
+//	@ExceptionHandler(value = ConstraintViolationException.class)
+//	public ResponseEntity<?> constraintViolationException(ConstraintViolationException e, BindingResult br) {
+//		System.out.println("11111111111111111111");
+//		br.getAllErrors().forEach( item -> {
+//			System.out.println(">>>>>>Error<<<<<<<<");
+//			System.out.println(item.getObjectName());
+//			System.out.println(item.getDefaultMessage());
+//			System.out.println(">>>>>>Error<<<<<<<<");
+//		});
+//		
+//		System.out.println(e.getClass().getName());
+//		System.out.println(e.getLocalizedMessage());
+//		
+//		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage().toString());
 //		
 //	}
-//
+////
 //	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 //	public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException e) {
 //		
@@ -132,6 +130,5 @@ public ResponseEntity<?> exception(Exception e) {
 //		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
 //		
 //	}
-
 
 }

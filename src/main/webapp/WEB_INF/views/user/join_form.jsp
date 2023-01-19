@@ -4,8 +4,11 @@
 
 
 <br>
+
 <br>
 <div class="container" style="min-height: 630px">
+	<h2> 회원가입 </h2>
+	<br>
 	<form action="">
 		<div class="form-group"><input type="text"
 				class="form-control" placeholder="Enter userId" id="username"

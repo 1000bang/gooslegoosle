@@ -99,11 +99,25 @@ let index = {
 				dataType: "json" // 응답이 왔을 때 mime type 지정
 
 			}).done(function(data, textStatus, xhr) {
-				alert("회원가입성공 ")
-				location.href = "/"; // 성공하면 루트컨텍스트로 가
+				Swal.fire({
+					icon: 'success',
+                    title: '회원가입 성공 ',
+                    text: '축하합니다 구슬구슬 회원가입에 성공하셨습니다.',
+                    confirmButtonColor : "#63BFBC",
+                    confirmButtonText : "확인"
+                    
+				}).then((result) => {
+                    if (result.isConfirmed) {
+						location.href = "/"; // 성공하면 루트컨텍스트로 가
+						};
+				});
 			}).fail(function(error) {
 				console.log(error.responseJSON);
-				alert("회원가입실패" + error.responseJSON.message.ConstraintViolationImpl);
+				Swal.fire({
+				icon: 'error',
+				title: '작성오류',
+				text: error.responseJSON,
+			})
 			});
 		} else {
 			Swal.fire({

@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
-import com.threebee.gooslegoosle.model.LoginType;
 import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.UserService;
 
@@ -57,7 +56,8 @@ public class UserApiController {
 	private String pw;
 
 	@PostMapping("/auth/joinProc")
-	public ResponseDto<Integer> fetchSave(@RequestBody UserEntity user) {
+	public ResponseDto<Integer> fetchSave(@Valid @RequestBody UserEntity user) {
+		System.out.println("1111111111");
 		UserEntity users = userService.saveUser(user);
 		MessageEntity newMsg = MessageEntity.builder()
 				.comment(users.getUserNickname() + "님 구슬구슬 회원가입을 축하합니다 \n" + "\t\t- 구슬구슬 팀").build();
