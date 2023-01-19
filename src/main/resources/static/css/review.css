@@ -12,6 +12,15 @@
 	position: relative;
 }
 
+#popup{
+	position: absolute;
+    left: 37%;
+}
+#popup a{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
 .bg-dark {
 	background-image: url("/images/bg.jpg");
 	background-position: center;
