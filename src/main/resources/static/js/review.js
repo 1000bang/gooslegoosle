@@ -1,3 +1,6 @@
+let token = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
 let index = {
 	init: function(){
 		$('#update').bind('click', () => {
@@ -21,6 +24,10 @@ let index = {
 		}
 		// ajax 통신 요청
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type:'PUT',
 			url:`/api/review/${reviewId}`,
 			data:JSON.stringify(data),
@@ -39,6 +46,10 @@ let index = {
 		let reviewId = $("#review-id").val();
 		console.log(reviewId)
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type:'DELETE',
 			url: `/api/review/${reviewId}`,
 		}).done(function(data, textStatus, xhr){
@@ -57,6 +68,10 @@ let index = {
 		};
 		console.log(replyData)
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type:'POST',
 			url:`/api/review/${replyData.reviewId}/replySave`,
 			data:JSON.stringify(replyData),
@@ -77,6 +92,10 @@ let index = {
 		console.log(reviewId);
 		console.log(replyId);
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type:'DELETE',
 			url:`/api/review/${reviewId}/reply/${replyId}`,
 			dataType:'json',

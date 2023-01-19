@@ -12,10 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.threebee.gooslegoosle.dto.ChartDto;
-import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
 import com.threebee.gooslegoosle.model.UserRole;
-import com.threebee.gooslegoosle.repository.IMessageRepository;
 import com.threebee.gooslegoosle.repository.IUserRepository;
 
 @Service
@@ -26,7 +24,7 @@ public class UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder bcencoder;
-
+	
 	public UserEntity searchUserName(@NotNull String username) {
 
 		return iUserRepository.findbyUsername(username).orElseGet(() -> {
@@ -35,14 +33,14 @@ public class UserService {
 	}
 
 	@Transactional
-	public int saveUser(UserEntity user) {
+	public UserEntity saveUser(UserEntity user) {
 		String rawPassword = user.getPassword();
 		String bcPassword = bcencoder.encode(rawPassword);
 		user.setEnable(true);
 		user.setPassword(bcPassword);
 		user.setRole(UserRole.USER);
-		iUserRepository.save(user);
-		return 1;
+		UserEntity users = iUserRepository.save(user);
+		return users;
 	}
 
 	public UserEntity findUserName(String username) {
@@ -86,22 +84,14 @@ public class UserService {
 		return userEntity;
 	}
 
-	@Autowired
-	IMessageRepository messageRepository;
-
 	@Transactional
-	public void setHost(int id) {
+	public UserEntity setHost(int id) {
 		System.out.println("sethost");
 		UserEntity userEntity = iUserRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
 		});
 		userEntity.setRole(UserRole.HOST);
-
-		MessageEntity msg = MessageEntity.builder()
-				.user(userEntity)
-				.comment("안녕하세요 " + userEntity.getUserNickname()+"님 \n 지원하신 파트너 신청에 성공하였습니다.\n \t\t - 구슬구슬 팀")
-				.build();
-		messageRepository.save(msg);
+		return userEntity;
 	}
 
 	public UserEntity findId(int id) {
@@ -117,15 +107,11 @@ public class UserService {
 	}
 
 	@Transactional
-	public void setWarningUser(int id) {
+	public UserEntity setWarningUser(int id) {
 		UserEntity user = findId(id);
 		user.setWarning(user.getWarning() + 1);
+		return user;
 		
-		MessageEntity msg = MessageEntity.builder()
-				.user(user)
-				.comment("안녕하세요 " + user.getUserNickname()+"님 \n 사용자의 신고로 인해 경고조치 "+ user.getWarning() +"회 적용되었습니다. \n \t\t - 구슬구슬 팀")
-				.build();
-		messageRepository.save(msg);
 	}
 
 	@Transactional
@@ -135,13 +121,62 @@ public class UserService {
 	}
 
 	@Transactional
-	public void unStopUser(int id) {
+	public UserEntity unStopUser(int id) {
 		UserEntity user = findId(id);
 		user.setEnable(true);
+		return user;
 	}
 
 	public List<ChartDto> lastTwoWeeksUser() {
 		return iUserRepository.findLastTwoWeeks();
 	}
+
+	
+	public UserEntity fetchFindId(@NotNull String email) {
+		return iUserRepository.findInfo(email).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ");
+		});
+	}
+	
+	public String fetchTempPassword() {
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+		String str = "";
+
+		// 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
+		int idx = 0;
+		for (int i = 0; i < 10; i++) {
+			idx = (int) (charSet.length * Math.random());
+			str += charSet[idx];
+		}
+		return str;
+	}
+	
+	@Transactional
+	public String fetchPasswordChange(String email) {
+		UserEntity userEntity = iUserRepository.findInfo(email).orElseThrow(() -> {
+			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
+		});
+		String rawPassword = "";
+		if (userEntity.getLoginType() == null || userEntity.getLoginType().equals("")) {
+
+			rawPassword = fetchTempPassword();
+			String encPassword = bcencoder.encode(rawPassword);
+
+			userEntity.setPassword(encPassword);
+
+		}
+		return rawPassword;
+	}
+
+	@Transactional
+	public UserEntity fetchFindPassword(@NotNull(message = "ID는 필수값입니다.") String username, @NotNull String email) {
+		UserEntity userEntity = iUserRepository.findPw(email, username).orElseThrow(() -> {
+			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
+		});
+		return userEntity;
+	}
+
 
 }

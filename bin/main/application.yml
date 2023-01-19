@@ -23,7 +23,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       user-new-id-generator-mappings: false
-    show-sql: true
+    show-sql: false
     properties:
       hibernate.format_sql : true
 
@@ -40,3 +40,7 @@ file:
   path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
 #  path: C:\androidworkspace\gooslegoosle\magazine\
 #  path: C:\ii\gooslegoosle\magazine\
+
+mail:
+  id: bang0999@naver.com
+  pw: qudwo123

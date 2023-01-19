@@ -12,6 +12,15 @@
 	position: relative;
 }
 
+#popup{
+	position: absolute;
+    left: 37%;
+}
+#popup a{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
 .bg-dark {
 	background-image: url("/images/bg.jpg");
 	background-position: center;
@@ -143,8 +152,8 @@ body .lead {
   position: relative;
   top: 20px;
   display: inline-block;
-  animation: bounce .3s ease infinite alternate;
-  font-family: 'Titan One', cursive;
+  animation: bounce .3s ease 2 alternate;
+  font-family: auto;
   color: #ccc;
 /*   text-shadow: 0 1px 0 #fff,
                0 2px 0 #fff,
@@ -183,4 +192,13 @@ body .lead {
                  0 5px 5px rgba(0, 0, 0, .2); */
           
   }
+}
+@keyframes reviewBox {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
 }

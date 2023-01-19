@@ -80,7 +80,7 @@ public class AdminController {
 	@PostMapping("/admin/message/send/{id}")
 	@ResponseBody
 	public ResponseDto<Integer> fetchSendMessage(@PathVariable int id, @RequestBody MessageEntity mes) {
-		messageService.sendMessage(id, mes);
+		messageService.sendMessageByUserId(id, mes);
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 
@@ -89,9 +89,15 @@ public class AdminController {
 		PartnerEntity store = partnerService.findPartnerById(id);
 		System.out.println(store);
 		UserEntity user = store.getUser();
-		userService.setHost(user.getId());
-		partnerService.setApprove(store, user);
-
+		UserEntity users = userService.setHost(user.getId());
+		partnerService.setApprove(store, users);
+		MessageEntity newMsg = MessageEntity.builder()
+				.comment(user.getUserNickname()+"님 구슬구슬 파트너로 승인되셨습니다. \n"
+						+ "\t\t- 구슬구슬 팀")
+				.build();
+		
+		System.out.println("11111");
+		messageService.sendMessageByUserId(user.getId(), newMsg);
 		return "redirect:/admin/manage";
 	}
 	
@@ -128,8 +134,10 @@ public class AdminController {
 	
 	@GetMapping("/admin/warning/{id}")
 	public String fetchWarningUser(@PathVariable int id, Model model) {
-		userService.setWarningUser(id);
-		
+		UserEntity user = userService.setWarningUser(id);
+		MessageEntity newMsg = MessageEntity.builder().user(user).comment("안녕하세요 " + user.getUserNickname()
+		+ "님 \n 사용자의 신고로 인해 경고조치, 현재 총" + user.getWarning() + "회 적용되었습니다. \n \t\t - 구슬구슬 팀").build();
+		messageService.sendMessageByUserId(user.getId(), newMsg);
 		return "redirect:/admin/user";
 	}
 
@@ -142,8 +150,12 @@ public class AdminController {
 	
 	@GetMapping("/admin/unstop/{id}")
 	public String fetchUnStopUser(@PathVariable int id, Model model) {
-		userService.unStopUser(id);
-			
+	 UserEntity user = userService.unStopUser(id);
+	 MessageEntity newMsg = MessageEntity.builder()
+				.comment(user.getUserNickname()+"님 구슬구슬 정지가 해제되셨습니다. \n"
+						+ "\t\t- 구슬구슬 팀")
+				.build();
+		messageService.sendMessageByUserId(user.getId(), newMsg);
 		return "redirect:/admin/user";
 	}
 	

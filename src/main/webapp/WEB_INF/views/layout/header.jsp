@@ -14,16 +14,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
+<meta id="_csrf" name="${_csrf.parameterName}" content="${_csrf.token}">
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}">
 <title>구슬구슬</title>
 <link rel="shortcut icon" href="/images/fav.png">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/review.css">
 <link rel="stylesheet" href="/css/review_detail.css">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/footer.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -50,19 +55,19 @@
 	href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
 
 </head>
 <body>
 	<div id="wrap">
-		<header id="header" class="main_header">
+		<header id="header" class="main_header myrow">
 
-			<div id="logo">
+			<div id="logo" class="mycol-2">
 				<a href="/"><img src="/images/logo2.png" alt=""></a>
 			</div>
-			<div class="searchBox">
+			<div class="searchBox mycol-5">
 				<form action="/search">
 					<button type="submit" class="searchButton">
 						<img src="/images/search.png" alt="">
@@ -70,7 +75,7 @@
 					<input type="text" placeholder="음식 또는 식당명 입력" name="searchWord">
 				</form>
 			</div>
-			<nav id="nav">
+			<div id="nav" class="mycol-5">
 				<ul>
 					<c:choose>
 						<c:when test="${empty principal}">
@@ -116,7 +121,7 @@
 											Reservation</a></li>
 									<li><a class="dropdown-item" href="/seviceCenter">Service
 											Center</a></li>
-									<li><a class="dropdown-item" href="/logout">LogOut</a></li>
+									<li><a class="dropdown-item" href="/m-logout">LogOut</a></li>
 								</ul></li>
 							<c:choose>
 								<c:when test="${principal.user.role eq 'ADMIN'}">
@@ -133,7 +138,7 @@
 						</c:otherwise>
 					</c:choose>
 				</ul>
-			</nav>
+			</div>
 		</header>
 
 		<script>

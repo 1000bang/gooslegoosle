@@ -18,7 +18,7 @@
 			<thead>
 				<tr>
 				
-					<th> </th>
+					<th><input type="checkbox" name="resId'" onclick='selectAll(this)' value="selectall'"> </th>
 					<th>예약번호</th>
 					<th>예약자 성함 </th>
 					<th>휴대폰 번호</th>
@@ -98,7 +98,16 @@
 
 <br />
 <br />
-
+<script>
+function selectAll(selectAll)  {
+	  const checkboxes 
+	       = document.getElementsByName('resId');
+	  
+	  checkboxes.forEach((checkbox) => {
+	    checkbox.checked = selectAll.checked;
+	  })
+	}
+</script>
 
 <script type="text/javascript" src="/js/reservation.js"></script>
 <%@ include file="../layout/footer.jsp"%>

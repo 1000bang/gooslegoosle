@@ -43,7 +43,7 @@ public class ReviewController {
 			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
 		String searchTitle = search == null ? "" : search;
-		Page<ReviewEntity> reviews = reviewService.getReviewList(searchTitle.replace("//", ""), pageable);
+		Page<ReviewEntity> reviews = reviewService.getReviewList(searchTitle, pageable);
 		int nowPage = reviews.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - 2, 1);
 		int endPageNumber = Math.min(nowPage + 2, reviews.getTotalPages());

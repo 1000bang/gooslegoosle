@@ -5,68 +5,111 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
-<br><br>
-	
+<br>
+<br>
+
 <div class="container">
-<input type="hidden"  id='result' value="0"></input>
-<div onclick='count(${principal.user.id})'
-			class="mb-4"><h2 class="h2">회원정보 수정 </h2></div>
-			
+	<input type="hidden" id='result' value="0"></input>
+	<div onclick='count(${principal.user.id})' class="mb-4">
+		<h2 class="h2">회원정보 수정</h2>
+	</div>
+
 	<form action="">
-			<input type="hidden" name="id" id="id" value = "${principal.user.id}"></input>
+		<input type="hidden" name="id" id="id" value="${principal.user.id}"></input>
 		<div class="form-group">
-			<label for="username">UserName:</label> <input type="text" class="form-control" id="username" value="${principal.user.username}" readonly="readonly">
+			<label for="username">UserId:</label> <input type="text"
+				class="form-control" id="username"
+				value="${principal.user.username}" readonly="readonly">
 		</div>
-		
+
+		<div class="form-group">
+			<label for="userNickName">UserNickName:</label> <input type="text"
+				class="form-control" id="userNickname"
+				value="${principal.user.userNickname}">
+		</div>
+
 		<c:if test="${empty principal.user.loginType}">
-		<div class="form-group">
-			<label for="password">Password:</label> <input type="password" class="form-control" id="password" value="">
-		</div>
+			<div class="form-group">
+			<label for="password">Password:</label> <input type="password" class="form-control" id="password" value="" placeholder="새로운 비밀번호 입력...">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control"
+					placeholder="Enter password Again" id="passwordConfirm">
+				<span id="confirmMsg"></span>
+			</div>
+		
 		</c:if>
-		
+
 		<div class="form-group">
-			<label for="phoneNumber">PhoneNumber:</label> <input type="text" class="form-control" id="phoneNumber" value="${principal.user.phoneNumber}">
+			<label for="phoneNumber">PhoneNumber:</label> <input type="text"
+				class="form-control" id="phoneNumber"
+				value="${principal.user.phoneNumber}">
 		</div>
-		
+
 		<div class="form-group">
-			<label for="email">Email:</label> <input type="email" class="form-control" id="email" value="${principal.user.email}">
+			<label for="email">Email:</label> <input type="email"
+				class="form-control" id="email" value="${principal.user.email}">
 		</div>
-		
+
 		<div class="form-group">
+		<label for="email">Address:</label>
 			<div class="d-flex mb-1">
 				<input type="text" id="postcode" placeholder="우편번호"
-					class="form-control mr-1" value = "${principal.user.postCode}"> <input type="button" style="width: 15vh; color: white; background-color: #63BFBC;"
+					class="form-control mr-1" value="${principal.user.postCode}">
+				<input type="button"
+					style="width: 15vh; color: white; background-color: #63BFBC;"
 					onclick="daumPostcode()" class="form-control mr-1 btn"
 					value="우편번호 찾기">
 			</div>
 
-			<br> <input type="text" class="form-control" id="address"
-				placeholder="주소" value = "${principal.user.address}"><br> 
-				<input type="text"
-				id="extraAddress" placeholder="참고항목" class="form-control mb-3" value = "${principal.user.extraAddress}">
+			<input type="text" class="form-control mb-1" id="address"
+				placeholder="주소" value="${principal.user.address}">
+			<input type="text" id="extraAddress" placeholder="참고항목"
+				class="form-control mb-1" value="${principal.user.extraAddress}">
 			<input class="form-control mb-4" type="text" id="detailAddress"
-				placeholder="상세주소" value = "${principal.user.detailAddress}">
+				placeholder="상세주소" value="${principal.user.detailAddress}">
 		</div>
 
 	</form>
 	<div class="input-group justify-content-end">
-<c:choose >
-<c:when test="${empty principal.user.loginType}">
-		<button type="button" id="btn--update"
-			class="btn align-self-end" style="width:15vh; color: white; background-color: #63BFBC;"> update </button>
-	</c:when>
-	<c:otherwise>
-<label > 소셜 로그인 회원은 정보를 수정할 수 없습니다. </label>
-	</c:otherwise>
-	</c:choose>
-	
-	
+		<c:choose>
+			<c:when test="${empty principal.user.loginType}">
+				<button type="button" id="btn--update" class="btn align-self-end"
+					style="width: 15vh; color: white; background-color: #63BFBC;">
+					update</button>
+			</c:when>
+			<c:otherwise>
+				<label> 소셜 로그인 회원은 정보를 수정할 수 없습니다. </label>
+			</c:otherwise>
+		</c:choose>
+
+
 	</div>
 </div>
 <script type="text/javascript" src="/js/user.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+$('#passwordConfirm').keyup(function(){
+	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
+	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
+	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
+		var password = document.getElementById('password');					//비밀번호 
+		var passwordConfirm = document.getElementById('passwordConfirm');	//비밀번호 확인 값
+		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+		var correctColor = "#5D9CEC";	//맞았을 때 출력되는 색깔.
+		var wrongColor ="#DF6464";	//틀렸을 때 출력되는 색깔
+		
+		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+			confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+			confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+		}else{
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML ="비밀번호 불일치";
+		}
+	});
+	
 	function daumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -137,5 +180,6 @@ function count(value)  {
 	}
 
 </script>
-<br><br>
+<br>
+<br>
 <%@ include file="../layout/footer.jsp"%>

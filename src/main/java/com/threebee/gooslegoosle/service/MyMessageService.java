@@ -39,8 +39,9 @@ public class MyMessageService {
 		});
 		 
 		msg.setRead(true);
+
 		List<MessageEntity> mes = iMyMessageRepository.findAllById(detail.getUser().getId());
-		
+
 		detail.getUser().setMessage(mes);
 		
 		return msg;

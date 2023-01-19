@@ -104,8 +104,11 @@ public class PartnerService {
 	public void setApprove(PartnerEntity partner, UserEntity user) {
 		System.out.println("setapprove");
 		PartnerEntity editingStore = findPartnerById(partner.getId());
+		System.out.println(editingStore);
 		editingStore.setUser(user);
+		System.out.println("111111111");
 		editingStore.setStatus("approve");
+		System.out.println("2222222222");
 
 	}
 

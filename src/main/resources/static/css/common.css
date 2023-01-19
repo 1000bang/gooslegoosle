@@ -1,0 +1,52 @@
+.mycol-1 {
+	width: 7.611548556%;
+	
+}
+.mycol-2 {
+	width: 16.01049869%;
+}
+.mycol-3 {
+	width: 24.40944882%;
+}
+.mycol-4 {
+	width: 32.80839895%;
+}
+.mycol-5 {
+	width: 41.20734908%;
+}
+.mycol-6 {
+	width: 49.60629921%;
+}
+
+.mycol-7 {
+	width: 58.00524934%;
+}
+.mycol-8 {
+	width: 66.40419948%;
+}
+.mycol-9 {
+	width: 74.80314961%;
+}
+.mycol-10 {
+	width: 83.20209974%;
+}
+.mycol-11 {
+	width: 91.60104987%;
+}
+.mycol-12 {
+	width: 100%;
+}
+div[class^=mycol] {
+	margin-right: 0.7874015748%;
+}
+div[class^=mycol]:last-child {
+	margin-right: 0%;
+}
+.myrow::after {
+	display: table;
+	content: '';
+	clear: both;
+}
+.myrow > div {
+	float: left;
+}

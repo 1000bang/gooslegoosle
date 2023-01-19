@@ -135,6 +135,7 @@ public class StoreService {
 		
 		return storeRepository.findStoreByUserId(id);
 	}
+
 	
 	
 	

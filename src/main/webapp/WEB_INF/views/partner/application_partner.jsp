@@ -21,7 +21,7 @@
 				action="/partner/${principal.user.id}" method="POST"
 				enctype="multipart/form-data">
 				<input type="hidden" id="id" value="${principal.user.id}">
-
+<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 				<div id="partner-info" class="info-box" style="border: 1px solid #000; margin: 30px">
 					<p class="info-title">사장님 정보를 입력해주세요 !</p>
 					<div class="form-group">
@@ -179,7 +179,7 @@
 			}
 		}).open();
 	}
-	$(".custom-file-input").on(
+	$("#businessCard").on(
 			"change",
 			function() {
 				var fileName = $(this).val().split("\\").pop();

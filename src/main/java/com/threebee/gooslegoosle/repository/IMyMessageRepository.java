@@ -17,8 +17,9 @@ public interface IMyMessageRepository extends JpaRepository<MessageEntity, Integ
 
 	@Query(value = "SELECT * FROM messageentity WHERE userId = ?1 ", nativeQuery = true)
 	Page<MessageEntity> findMyMessage(int id, Pageable pageable);
-
+	
 	@Query(value = "SELECT * FROM messageentity WHERE userId = ?1 ", nativeQuery = true)
 	List<MessageEntity> findAllById(int id);
+
 
 }

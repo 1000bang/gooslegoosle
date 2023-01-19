@@ -31,14 +31,17 @@ import com.threebee.gooslegoosle.dto.ResApproveDto;
 import com.threebee.gooslegoosle.dto.ResponseDto;
 import com.threebee.gooslegoosle.dto.StoreFileDTO;
 import com.threebee.gooslegoosle.entity.MenuEntity;
+import com.threebee.gooslegoosle.entity.MessageEntity;
 import com.threebee.gooslegoosle.entity.PartnerEntity;
 import com.threebee.gooslegoosle.entity.ReservationEntity;
 import com.threebee.gooslegoosle.entity.StoreEntity;
 import com.threebee.gooslegoosle.entity.UserEntity;
+import com.threebee.gooslegoosle.service.MessageService;
 import com.threebee.gooslegoosle.service.PartnerService;
 import com.threebee.gooslegoosle.service.ReservationService;
 import com.threebee.gooslegoosle.service.StoreService;
 import com.threebee.gooslegoosle.service.UserService;
+
 @Controller
 public class PartnerController {
 
@@ -48,6 +51,9 @@ public class PartnerController {
 	@Autowired
 	private StoreService storeService;
 
+	@Autowired
+	private MessageService messageService;
+	
 	@Autowired
 	private UserService userService;
 
@@ -64,8 +70,8 @@ public class PartnerController {
 	@GetMapping("/partner/chart/{id}")
 	public String fetchChart(Model model, @PathVariable int id) {
 		StoreEntity store = storeService.findByUserId(id);
-		
-		//일별 통계 
+
+		// 일별 통계
 		List<ChartDto> res = reservationService.findByStoreIdWeek(store.getId());
 		List<List<?>> day = new ArrayList<>();
 		for (int i = 0; i < res.size(); i++) {
@@ -74,19 +80,19 @@ public class PartnerController {
 			data2.add(res.get(i).getCount());
 			day.add(data2);
 		}
-		
-		//주별 통계 
+
+		// 주별 통계
 		List<ChartMonthDTO> week = reservationService.findByStoreIdMonth(store.getId());
 
 		List<ChartSixMonthDTO> month = reservationService.findByStoreIdHalfYear(store.getId());
-		System.out.println(">>>>>>>" +day);
-		System.out.println(">>>>>>>" +week);
+		System.out.println(">>>>>>>" + day);
+		System.out.println(">>>>>>>" + week);
 		model.addAttribute("day", day);
 		model.addAttribute("week", week);
 		model.addAttribute("month", month);
 		return "store/chart";
 	}
-	
+
 	@GetMapping("/partner/updateStore/{id}")
 	public String fetchUpdate(Model model, @PathVariable int id) {
 		PartnerEntity partner = partnerService.findPartnerByUserId(id);
@@ -100,10 +106,10 @@ public class PartnerController {
 	ReservationService reservationService;
 
 	@GetMapping("/partner/reservation/{id}")
-	public String fetchRes(@PathVariable int id, Model model
-			,@PageableDefault(size = 8, sort = "id", direction = Direction.DESC) Pageable pageable) {
+	public String fetchRes(@PathVariable int id, Model model,
+			@PageableDefault(size = 8, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		StoreEntity store = storeService.findByUserId(id);
-		Page<ReservationEntity> res = reservationService.findByStoreId(store.getId(),pageable);
+		Page<ReservationEntity> res = reservationService.findByStoreId(store.getId(), pageable);
 		int nowPage = res.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - 2, 1);
 		int endPageNumber = Math.min(nowPage + 2, res.getTotalPages());
@@ -142,12 +148,13 @@ public class PartnerController {
 
 	@PostMapping("/partner/add_store/{id}")
 	public String fetchSaveStore(StoreFileDTO store, @PathVariable int id, Model model) {
-		
+
 		PartnerEntity partner = partnerService.findPartnerById(id);
-		if(storeService.findByUserId(partner.getUser().getId()) != null) {
+		if (storeService.findByUserId(partner.getUser().getId()) != null) {
 			System.out.println(">>>>>>>>>here");
 			return "partner/fail_store";
-		};
+		}
+		;
 		StoreEntity stores = storeService.saveStore(store, partner);
 		List<MenuEntity> menus = partnerService.findMenuByStoreId(stores.getId());
 		model.addAttribute("menus", menus);
@@ -173,6 +180,10 @@ public class PartnerController {
 		} else {
 			partnerService.saveMenu(menu, store);
 		}
+		MessageEntity newMsg = MessageEntity.builder()
+				.comment(store.getUser().getUserNickname() + "님 구슬구슬 가게등록을 성공하셨습니다. \n" + "\t\t- 구슬구슬 팀").build();
+		messageService.sendMessageByUserId(store.getUser().getId(), newMsg);
+
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
 
@@ -204,22 +215,33 @@ public class PartnerController {
 	@ResponseBody
 	public ResponseDto<Integer> fetchApproveRes(@RequestBody ResApproveDto resId) {
 		System.out.println(resId);
+		ReservationEntity user = null;
 		for (int i = 0; i < resId.getId().size(); i++) {
-			reservationService.setApprove(resId.getId().get(i));
+			user = reservationService.setApprove(resId.getId().get(i));
+			MessageEntity newMsg = MessageEntity.builder()
+					.comment(user.getUser().getUserNickname() + "님 "+ user.getStore().getPartner().getStoreName() +"예약 승인되었습니다. \n \t\t- 구슬구슬 팀").build();
+			messageService.sendMessageByUserId(user.getUser().getId(), newMsg);
+			
 		}
+
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
-	
+
 	@PostMapping("reservation/deny")
 	@ResponseBody
 	public ResponseDto<Integer> fetchDenyRes(@RequestBody ResApproveDto resId) {
-	
+		ReservationEntity user = null;
 		for (int i = 0; i < resId.getId().size(); i++) {
-			reservationService.setDeny(resId.getId().get(i));
+			user = reservationService.setDeny(resId.getId().get(i));
+			MessageEntity newMsg = MessageEntity.builder()
+					.comment(user.getUser().getUserNickname() + "님 "+ user.getStore().getPartner().getStoreName() +"예약 거절되었습니다. \n \t\t- 구슬구슬 팀").build();
+			messageService.sendMessageByUserId(user.getUser().getId(), newMsg);
+			
 		}
+		
+
+		
 		return new ResponseDto<Integer>(HttpStatus.OK, 1);
 	}
-	
-	
 
 }

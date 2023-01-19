@@ -1,3 +1,6 @@
+let token = $("meta[name='_csrf']").attr("content");
+let csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
 let index = {
 	init: function() {
 		$('#kakao-Pay').bind("click", () => {
@@ -18,6 +21,10 @@ let index = {
 		console.log("request : " + request)
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: 'post',
 			url: '/pay/ready',
 			data: JSON.stringify(data),
@@ -49,6 +56,10 @@ let index = {
 		};
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: 'post',
 			url: '/reservation/approve',
 			data: JSON.stringify(data),
@@ -78,6 +89,10 @@ let index = {
 		};
 
 		$.ajax({
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeader, token);
+			},
+			
 			type: 'post',
 			url: '/reservation/deny',
 			data: JSON.stringify(data),

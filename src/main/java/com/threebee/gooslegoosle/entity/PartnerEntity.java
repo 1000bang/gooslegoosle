@@ -52,9 +52,9 @@ public class PartnerEntity {
 	
 	private String detailAddress;
 //	
-	@Column(nullable = false, length = 13)
+	@Column(nullable = false)
 	@NotNull
-	@Size(min = 12, max = 14)
+	@Size(min = 10, max = 14)
 	private String phoneNumber;
 	
 	private String status;

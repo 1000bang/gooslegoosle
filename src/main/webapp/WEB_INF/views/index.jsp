@@ -24,22 +24,18 @@
 <article id="m-content1">
 	<section id="image">
 		<!-- Slider main container -->
-
+		<div class="textbox"><h1>정성스럽게 당신을 맞이하는 구슬구슬</h1> <p>#맛집 #점심 #저녁 #데이트 #한식 #중식 #일식 #양식</p> </div>
 		<div class="swiper myswiper0" >
 			<div class="swiper-wrapper" >
 				<!-- Additional required wrapper -->
 				<!-- Slides -->
 				<div class="swiper-slide">
-					<img src="../images/k-food.jpg" alt="">
 				</div>
 				<div class="swiper-slide">
-					<img src="../images/j-food.jpg" alt="">
 				</div>
 				<div class="swiper-slide">
-					<img src="../images/c-food.jpg" alt="">
 				</div>
 				<div class="swiper-slide">
-					<img src="../images/w-food.jpg" alt="">
 				</div>
 			</div>
 			<div class="swiper-button-next swiper-button-next0" style="position: absolute; right: 0%; top: 50%;"></div>
@@ -202,7 +198,9 @@
 	$(".loginInfo").fadeOut(5000);
 	const swiper0 = new Swiper('.myswiper0', {
 		direction : 'horizontal',
-		loop : true,
+		autoplay : {
+			delay:3000,
+		},
 		navigation : {
 			nextEl : '.myswiper0 .swiper-button-next0',
 			prevEl : '.myswiper0 .swiper-button-prev0',

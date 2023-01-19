@@ -13,9 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -29,7 +29,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
 @Entity
@@ -45,12 +44,12 @@ public class UserEntity {
 	
 	@Column(nullable = false, length = 100, unique = true)
 	@NotNull(message = "ID는 필수값입니다.")
-	@Size(min = 2, message = "ID가 너무 짧습니다. ")
+	@Size(min = 5, max = 15, message = " ID가 너무 짧습니다.  5자 이상으로 입력하세요")
 	private String username;
 
 	@Column(nullable = false, length = 100)
 	@NotNull
-	@Size(min = 2)
+	@Size(min = 2, message = "닉네임 너무 짧습니다. ")
 	private String userNickname;
 	
 	@Column(nullable = false, length = 100)
@@ -60,12 +59,12 @@ public class UserEntity {
 
 	@Column(nullable = false, length = 100)
 	@NotNull
-	@Size(min = 12, max = 13)
+	@Size(min = 11, max = 14, message = "휴대폰번호 형식을 확인해주세요 ")
 	private String phoneNumber;
 	
-	@Column(nullable = false, length = 100) 
+	@Column(nullable = false, length = 100, unique = true) 
 	@NotNull
-	@Email
+	@Email(message = "email 형식을 확인해주세요")
 	private String email;
 	
 	@ColumnDefault("True")

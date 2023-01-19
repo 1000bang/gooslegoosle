@@ -4,38 +4,48 @@
 
 
 <br>
+
 <br>
 <div class="container" style="min-height: 630px">
+	<h2> 회원가입 </h2>
+	<br>
 	<form action="">
 		<div class="form-group"><input type="text"
 				class="form-control" placeholder="Enter userId" id="username"
-				value="홍길동">
+				value="">
 
 		</div>
 		<div class="form-group"><input type="text"
 				class="form-control" placeholder="Enter userName" id="userNickname"
-				value="홍길동">
+				value="">
 
 		</div>
 		<div class="form-group"> <input type="password"
 				class="form-control" placeholder="Enter password" id="password"
-				value="asd123">
+				value="">
 		</div>
+		
+		<div class="form-group"> <input type="password"
+				class="form-control" placeholder="Enter password Again" id="passwordConfirm"
+				value="">
+				<span id="confirmMsg"></span>
+		</div>
+		
 
 		<div class="form-group d-flex">
 			 <input type="text"
-				class="form-control mr-1 " placeholder="Enter phoneNumber"
-				id="phoneNumber" value="010-1234-1234">
+				class="form-control mr-1 " placeholder="Enter phoneNumber ex) 01012341234"
+				id="phoneNumber" >
 				<input type="button" style="width: 10vh; color: white; background-color: #63BFBC;"
-					onclick="" class="form-control mr-1 btn"
+					id="btn--send" class="form-control mr-1 btn"
 					value="sms전송">
 		</div>
 		<div class="form-group d-flex">
 			 <input type="text"
-				class="form-control mr-1 " placeholder="Enter code"
-				id="authCode" value="sms로 수신한 인증번호 5자리를 입력하세요">
+				class="form-control mr-1 "
+				id="authCode" placeholder="sms로 수신한 인증번호 4자리를 입력하세요">
 				<input type="button" style="width: 10vh; color: white; background-color: #63BFBC;" 
-					onclick="" class="form-control mr-1 btn"
+					id="checkBtn" class="form-control mr-1 btn"
 					value="인증하기">
 		</div>	
 		
@@ -59,7 +69,7 @@
 
 		<div class="form-group"><input type="email"
 				class="form-control" placeholder="Enter email" id="email"
-				value="abc@naver.com">
+				value="">
 		</div>
 
 
@@ -78,6 +88,27 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+$('#passwordConfirm').keyup(function(){
+	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
+	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
+	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
+		var password = document.getElementById('password');					//비밀번호 
+		var passwordConfirm = document.getElementById('passwordConfirm');	//비밀번호 확인 값
+		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+		var correctColor = "#5D9CEC";	//맞았을 때 출력되는 색깔.
+		var wrongColor ="#DF6464";	//틀렸을 때 출력되는 색깔
+		
+		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+			confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+			confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+		}else{
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML ="비밀번호 불일치";
+		}
+	});
+
+
 	function daumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {
