@@ -1,10 +1,13 @@
 
 # 구슬구슬 - gooslegoosle 🍚
+<br><br>
+<figure class="third">
+    <img src="https://user-images.githubusercontent.com/113667600/213643487-6ae60551-e7c6-44a2-8d1d-517be56c4dbb.png">
+    <img src="https://user-images.githubusercontent.com/113667600/213643555-da38c1fd-ab8e-4d43-93f9-6e3e98f6ff65.png">
+    <img src="https://user-images.githubusercontent.com/113667600/213643580-55da52cd-038f-4ef4-9f3b-2f749a6e83f8.png">
+figure>
 
-![main](https://user-images.githubusercontent.com/113667600/213643487-6ae60551-e7c6-44a2-8d1d-517be56c4dbb.png)
-![main2](https://user-images.githubusercontent.com/113667600/213643555-da38c1fd-ab8e-4d43-93f9-6e3e98f6ff65.png)
-![main3](https://user-images.githubusercontent.com/113667600/213643580-55da52cd-038f-4ef4-9f3b-2f749a6e83f8.png)
-
+<br><br>
 
 ## B조
 프로젝트 기간 : 2022. 12.26 ~ 2023. 01.14
@@ -43,7 +46,7 @@
 [![notion](https://user-images.githubusercontent.com/113667600/213486605-dfb47065-485f-491b-ae81-3e8cbbdbfbed.png)](https://1000bang.notion.site/Project-373eb1c07a074cff9e69d2c44bae356d)
 <br><br>
 
-## 깃 :
+## 깃플로우 전략 :
 ![image](https://user-images.githubusercontent.com/113667600/213645055-7a8ecd45-d237-477c-91b6-9debd3701bdb.png)
 <br><br>
 
@@ -53,7 +56,7 @@
 <br><br>
 
 ## ERD :
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8c8e0dc3-d5b9-40c3-95ac-2a21d47acbfe/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/113667600/213646005-618ae222-d5e7-4848-ba40-0298a3cbb5c0.png)
 <br><br>
 
 ## 핵심기능 :
