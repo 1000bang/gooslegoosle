@@ -44,7 +44,7 @@
 	google.charts.setOnLoadCallback(drawChart);
 
 	function drawChart() {
-
+		
 		var data = google.visualization.arrayToDataTable([
 				[ '일자별', ' 예약건수', {role : "style"} ],
 				<c:forEach items="${day}" var="item">

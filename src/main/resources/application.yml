@@ -37,10 +37,10 @@ spring:
       
 file:
 
-  path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
-#  path: C:\androidworkspace\gooslegoosle\magazine\
+# path: '/Users/1000bang/workspace/soulfood/gooslegoosle/magazine/'
+  path: C:\androidworkspace\gooslegoosle\magazine\
 #  path: C:\ii\gooslegoosle\magazine\
 
 mail:
-#  id: 발신자 id
-#  pw: 발신자 pw
+  id: bang0999@naver.com
+  pw: qudwo123
