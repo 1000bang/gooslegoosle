@@ -1,6 +1,11 @@
 
 # 구슬구슬 - gooslegoosle 🍚
 
+![main](https://user-images.githubusercontent.com/113667600/213643487-6ae60551-e7c6-44a2-8d1d-517be56c4dbb.png)
+![main2](https://user-images.githubusercontent.com/113667600/213643555-da38c1fd-ab8e-4d43-93f9-6e3e98f6ff65.png)
+![main3](https://user-images.githubusercontent.com/113667600/213643580-55da52cd-038f-4ef4-9f3b-2f749a6e83f8.png)
+
+
 ## B조
 프로젝트 기간 : 2022. 12.26 ~ 2023. 01.14
 
@@ -38,6 +43,23 @@
 [![notion](https://user-images.githubusercontent.com/113667600/213486605-dfb47065-485f-491b-ae81-3e8cbbdbfbed.png)](https://1000bang.notion.site/Project-373eb1c07a074cff9e69d2c44bae356d)
 <br><br>
 
+## 깃 :
+![image](https://user-images.githubusercontent.com/113667600/213645055-7a8ecd45-d237-477c-91b6-9debd3701bdb.png)
+<br><br>
+
+## 사용기술 및 라이브러리
+
+![image](https://user-images.githubusercontent.com/113667600/213644232-6ebaccf2-cc41-4fbd-b278-c3f248c26af6.png)
+<br><br>
+
+## ERD :
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8c8e0dc3-d5b9-40c3-95ac-2a21d47acbfe/Untitled.png)
+<br><br>
+
+## 핵심기능 :
+![image](https://user-images.githubusercontent.com/113667600/213645726-24cc9254-5d5e-4c86-afab-b2936ad2be90.png)
+![image](https://user-images.githubusercontent.com/113667600/213645747-efbf9994-c59f-4ae0-9fd5-c5b10b3247a0.png)
+<br><br>
 
 ## 기능 :
 <details>
