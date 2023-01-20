@@ -111,7 +111,7 @@
 		format : "yyyy-mm-dd",
 		language : "english",
 		startDate : '-3d',
-		/* minDate : today */
+		minDate : today
 	});
 </script>
 <script>
