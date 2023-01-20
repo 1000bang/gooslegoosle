@@ -20,6 +20,7 @@
 	animation: dropLogo 1.3s;
 	z-index: 9999;
 	max-width: 163px;
+	min-width: 140px;
     padding-left: 11%;
 }
 
