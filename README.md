@@ -4,11 +4,11 @@
 
 <table>
   <tr>
-    <td> <img src="https://user-images.githubusercontent.com/113667600/213643487-6ae60551-e7c6-44a2-8d1d-517be56c4dbb.png", height="500px" width="300px"></td>
+    <td> <img src="https://user-images.githubusercontent.com/113667600/213643487-6ae60551-e7c6-44a2-8d1d-517be56c4dbb.png", height="400px" width="300px"> </td>
       
-      <td><img src="https://user-images.githubusercontent.com/113667600/213643555-da38c1fd-ab8e-4d43-93f9-6e3e98f6ff65.png", height="500px" width="300px"></td>
+      <td> <img src="https://user-images.githubusercontent.com/113667600/213643555-da38c1fd-ab8e-4d43-93f9-6e3e98f6ff65.png", height="400px" width="300px"> </td>
       
-      <td><img src="https://user-images.githubusercontent.com/113667600/213643580-55da52cd-038f-4ef4-9f3b-2f749a6e83f8.png", height="500px" width="300px"></td>
+      <td> <img src="https://user-images.githubusercontent.com/113667600/213643580-55da52cd-038f-4ef4-9f3b-2f749a6e83f8.png", height="400px" width="300px"> </td>
   <tr>
 </table>
     
