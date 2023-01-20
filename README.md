@@ -112,29 +112,42 @@
 <summary>토글 접기/펼치기</summary>
 <div markdown="1">  
     
-## 회원가입
+## 회원가입 - 공통
 
 ![회원가입](https://user-images.githubusercontent.com/113667600/213486888-17f63b65-5657-40c7-8971-bbedb3f11103.gif)
 
-## 로그인 
+## 로그인 - 공통
     
 ![로그인](https://user-images.githubusercontent.com/113667600/213491397-9940c772-f217-47a1-9e70-5263ac297153.gif)
     
-## 정보수정/ 나의리뷰 / 내 예약목록 
+## 정보수정/ 나의리뷰 / 내 예약목록 - 공통 
     
 ![정보수정](https://user-images.githubusercontent.com/113667600/213491430-a6b7670d-91ae-4162-9cc9-f2024e48e643.gif)
     
-## 예약하기
+## 예약하기 - 공통
 ![예약](https://user-images.githubusercontent.com/113667600/213491116-3c3cc208-f3ff-42bb-8cc0-058a92fb8c10.gif)
     
-## 파트너 신청
+## 파트너 신청 - 파트너
 ![파트너신청](https://user-images.githubusercontent.com/113667600/213477012-5cd971d6-fdf9-4a5a-8499-8653d37ed233.gif)
 
 
-## 메뉴 수정
+## 메뉴 수정 및 예약관리 - 파트너 
 ![메뉴수정](https://user-images.githubusercontent.com/113667600/213476728-c18cfd12-8b7a-467e-8e9a-1be296f71fed.gif)
 ![메뉴수정2](https://user-images.githubusercontent.com/113667600/213476932-9839e62e-c2ca-4d77-9cea-bbf091374596.gif)    
-    
+
+## 파트너 승인 - 관리자
+![admin파트너승인](https://user-images.githubusercontent.com/113667600/213639226-5032d413-b936-4997-85bb-07d88ebad7e6.gif)
+
+## 유저관리 - 관리자
+![admin유저관리1](https://user-images.githubusercontent.com/113667600/213639234-e2294029-f685-48bd-9da7-b7478d174b08.gif)
+![admin유저관리2](https://user-images.githubusercontent.com/113667600/213639246-fcd97cf4-2118-4590-853c-0eaf6442db24.gif)
+
+
+## 고객센터, 통계 - 관리자 
+![admin고객센터,통계](https://user-images.githubusercontent.com/113667600/213639209-2184cfcf-f426-4637-8b46-7616e0764cfe.gif)
+
+
+
 </div>
 </details>
 
