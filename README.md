@@ -1,6 +1,6 @@
 
 # 구슬구슬 - gooslegoosle 🍚
-<br><br>
+
 
 <table>
   <tr>
